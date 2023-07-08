@@ -1,0 +1,331 @@
+/* 【n】【a】【v】【b】【a】【r】 【s】【t】【y】【l】【e】【s】 */
+.navToolBar {
+  justify-content: space-between;
+}
+.alignBox {
+  display: flex;
+  align-items: center;
+}
+.logoInnerBox {
+  width: 139.15px;
+  height: 38.54px;
+  display: flex;
+  align-items: center;
+}
+
+.selectComponentWrapper {
+  position: relative;
+  background-color: transparent;
+  color: #ffffff;
+  margin: 0;
+  padding: 14px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.selectButtonWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.css-9x4ru2-MuiSvgIcon-root.languageIcon {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+.expandMoreSharp {
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+/* .selectButtonWrapper .css-1hvofyz-MuiTypography-root{
+  margin-right: 0;
+} */
+
+.selectOptionsWrapper {
+  visibility: hidden;
+  position: absolute;
+  top: 105%;
+  left: 0;
+  background-color: #ffffff;
+  padding: 0;
+  color: #000000;
+  /* transition-delay: 1s; */
+}
+
+.currencyOptionsClassName {
+  visibility: hidden;
+  position: absolute;
+  top: 105%;
+  right: 0;
+  background-color: #ffffff;
+  padding: 0;
+  color: #000000;
+}
+.selectButton {
+  background-color: transparent;
+  color: #ffffff;
+  border: white solid 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selectComponentWrapper:hover,
+.selectComponentWrapper:hover .selectButton {
+  background-color: white;
+  color: black;
+}
+.selectComponentWrapper:hover,
+.selectComponentWrapper:hover .selectOptionsWrapper,
+.selectComponentWrapper:hover .currencyOptionsClassName {
+  visibility: visible;
+  /* transition-delay: 1s; */
+}
+
+/* Drawer styles for small screens. */
+.drawer .MuiPaper-root-MuiDrawer-paper {
+  min-width: 30%;
+  max-width: 34%;
+}
+.drawer .MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  color: #000000 !important;
+}
+/* 
+    
+
+
+/* styles for the menu item */
+.menuItem {
+  color: #000000;
+}
+.menuItem .MuiListItemIcon-root {
+  position: absolute;
+  left: 5px;
+}
+.menuItem .MuiSvgIcon-root {
+  font-size: 12px;
+  color: #000000;
+}
+.menuItem:hover {
+  background-color: #000000;
+}
+.itemBox {
+  display: flex;
+  align-items: center;
+  position: relative;
+  right: -10px;
+}
+
+/* .paperStyles{z-index: 900;top:6; border-radius:0} */
+
+.itemLabel {
+  padding: 0 5px;
+}
+
+.flagRenderPadding {
+  padding: 0 3.5px;
+}
+
+.hamburgMenu {
+  background-color: #ffffff;
+}
+
+/* cutsom dropdown menu styles of the navbar i,e explore more and  agents*/
+
+.ul {
+  margin: 0;
+  padding: 14px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ulChild {
+  padding: 0;
+  cursor: default;
+  z-index: 1301;
+}
+
+.ul > .li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: calc(100%);
+  box-sizing: border-box;
+}
+
+.ul > .li > div {
+  display: flex;
+  align-items: center;
+}
+
+.ul > .li .ulChild {
+  visibility: hidden;
+  position: absolute;
+  top: 169%;
+  left: -9px;
+  opacity: 0;
+  transition: 0.1s ease-in;
+  display: inline-block;
+  white-space: nowrap;
+  width: auto;
+  min-width: 100%;
+  list-style: none;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.liChild {
+  height: 33px;
+  font-family: DubaiRegular16;
+  letter-spacing: 0px;
+  padding: 0 10px;
+  cursor: default;
+  line-height: 33px;
+}
+
+.liChild:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+ul:hover {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+.ul:hover .ulChild {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  visibility: visible;
+  transition-delay: 0.05s;
+  opacity: 1;
+}
+
+.ul > .li:hover .ulChild {
+  visibility: visible;
+  transition-delay: 0.05s;
+  opacity: 1;
+}
+
+.divWrapper:hover svg {
+  fill: #000;
+}
+
+/* Additional styles for increasing spacing */
+.divWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.divWrapper > :not(:last-child) {
+  margin-right: 8px; /* Adjust the spacing value as needed */
+}
+
+/* 【R】【e】【g】【i】【s】【t】【e】【r】 【s】【t】【y】【l】【e】【s】 */
+
+.registerAndLoginBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  margin-top: 10px;
+}
+
+.registerAndloginDivMargin {
+  margin: 1rem;
+}
+
+/* 【L】【i】【s】【t】【i】【n】【g】   【P】【o】【p】【U】【p】 【H】【e】【a】【d】【e】【r】
+  【C】【s】【s】 */
+
+.ListingHeaderWrapper {
+  width: 100%;
+  margin: 0 auto 15px 0;
+  position: sticky;
+  top: 63px;
+  padding: 2% 0;
+  z-index: 1000;
+  background: #ffffff;
+}
+.bottomHeaderLinksWrapper {
+  margin: 2% 0 0 0.1%;
+  /* min-height: 50px; */
+}
+.bottomHeaderLinks a {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  overflow: hidden;
+  cursor: pointer;
+  font-size: 1px;
+  margin-top: 0 auto;
+}
+
+.bottomHeaderLinks a::after {
+  content: "";
+  bottom: -2px;
+  display: block;
+  width: 0;
+  height: 2px;
+  border-bottom: 2px solid black;
+  transition: width 0.3s ease-in-out;
+}
+
+.bottomHeaderLinks a:hover::after {
+  width: 100%;
+}
+
+.MuiDivider-root.headerDivider {
+  color: #000000;
+  border-color: #000000;
+  top: 20px;
+}
+
+@media (max-width: 1024px) {
+  .hidden-xs {
+    display: none;
+  }
+  .selectButton {
+    color: #000000;
+  }
+  .selectOptionsWrapper {
+    z-index: 1310;
+    color: #000000;
+  }
+  .selectComponentWrapper {
+    color: #000000;
+  }
+
+  /* .selectContainer.open .MuiPaper-root .MuiMenu-paper .MuiPopover-paper{
+    background-color: #000000;
+  } */
+}
+
+@media (min-width: 1024px) {
+  .show-md {
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 1132px) and (min-width: 1024px) {
+  .MuiAppBar-root .navBarOpt span {
+    font-size: 0.9rem;
+  }
+
+  .MuiAppBar-root .navBarOpt svg {
+    font-size: 0.9rem;
+    padding: 0px;
+  }
+
+  .flagRenderPadding {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .navBarOpt .MuiToolbar-root {
+    padding: 0px;
+  }
+}

@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: /opt/apps/portal-frontend/valcom-app
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - '/opt/apps/portal-frontend/valcom-app/src:/app/src'
+      - '/opt/apps/portal-frontend/valcom-app/public:/app/public'
+
