@@ -1,17 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Grid, TextField } from "@mui/material";
 import CustomButton from "../../../../Components/Button/CustomButton";
 import { ButtonRightArrow } from "../../../../Assets/SVG/Common/CommonSvgs";
-import { disableInputFocusOnScroll } from "../../../../utils/utility";
+
 
 const SubscribeForm = ({ email, handleInputChange, error, handleSubmit }) => {
-  useEffect(() => {
-    window.addEventListener("scroll", disableInputFocusOnScroll);
-
-    return () => {
-      window.removeEventListener("scroll", disableInputFocusOnScroll);
-    };
-  }, []);
+ 
 
   return (
     <form onSubmit={handleSubmit}>

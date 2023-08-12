@@ -3,14 +3,14 @@ import { Grid } from "@mui/material";
 import RatingsOtherDetails from "./RatingsOtherDetails/RatingsOtherDetails";
 import DetailedCarousel from "./DetailedCarousel/DetailedCarousel";
 
-const PropertyDetailBottom = () => {
+const PropertyDetailBottom = ({ listingId, property }) => {
   return (
     <Grid container>
-      <Grid item xs={12} sm={7} md={7} pr={2}>
-        <DetailedCarousel />
+      <Grid item xs={12} sm={6} md={6} pr={2}>
+        <DetailedCarousel listingId={listingId} property={property} />
       </Grid>
-      <Grid item xs={12} sm={5} md={5}>
-        <RatingsOtherDetails />
+      <Grid item xs={12} sm={6} md={6}>
+        <RatingsOtherDetails listingId={listingId} property={property} />
       </Grid>
     </Grid>
   );

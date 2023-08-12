@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Box, Grid, Container, Typography } from "@mui/material";
-import { validateEmail } from "../../../utils/utility";
 import SubscribeForm from "./SubscribeForm/SubscribeForm";
+import isEmail from "validator/lib/isEmail";
+import { subscribeToNewsletter } from "../../../network/apiServices";
+import { isEqual } from "lodash";
+import { errorToast, successToast } from "../../../utils/useToast";
 
 const LandingPageSubscribeSection = () => {
   const [email, setEmail] = useState("");
@@ -14,9 +17,23 @@ const LandingPageSubscribeSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateEmail(email)) {
+    if (isEmail(email)) {
+      let data = {
+        email: email,
+      };
+
+      subscribeToNewsletter(data)
+        .then((res) => {
+          if (!isEqual(res.data.status, "SUCCESS")) {
+            //toast failure message
+            errorToast(`Oops! Something went wrong.`);
+          } else {
+            //success scenario
+            successToast(`You've been successfully subscribed`);
+          }
+        })
+        .catch((error) => {});
       setEmail("");
-      // Perform any additional actions here, such as submitting the form
     } else {
       setError(true);
     }

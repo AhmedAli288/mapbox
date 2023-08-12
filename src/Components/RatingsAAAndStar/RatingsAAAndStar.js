@@ -11,7 +11,7 @@ function RatingsAAAndStar({ darkStars = true }) {
       <Stack direction="row" spacing={2}>
         <Box mb={1} className="tagWithInfo">
           <Typography variant="DubaiRegular20" className="tagWithInfoText">
-            AA
+            N/A
           </Typography>
           <Box className="tagWithInfoIcon">
             <div className="tagWithInfoIconContainer">
@@ -27,14 +27,14 @@ function RatingsAAAndStar({ darkStars = true }) {
           </Box>
         </Box>
         <Typography variant="DubaiRegular18">
-          Building Classification
+          Building Not Yet Classified
         </Typography>
       </Stack>
 
       <Stack direction="row" spacing={2}>
         <Box className="tagWithInfo">
           <Typography variant="DubaiRegular20" className="tagWithInfoText">
-            4.6
+            N/A
           </Typography>
           <Box className="tagWithInfoIcon">
             <div className="tagWithInfoIconContainer">
@@ -54,9 +54,9 @@ function RatingsAAAndStar({ darkStars = true }) {
             </div>
           </Box>
         </Box>
-        <RatingStarAndOthers defaultValue={4.6} dark={darkStars} />
+        <RatingStarAndOthers defaultValue={0} dark={darkStars} />
         <Typography variant="DubaiRegular16" className="ratingComponent">
-          (87 Ratings)
+          (0 Ratings)
         </Typography>
       </Stack>
     </>

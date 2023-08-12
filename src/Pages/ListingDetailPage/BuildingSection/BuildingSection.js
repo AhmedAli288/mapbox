@@ -1,78 +1,148 @@
-import React from "react";
-import { Box, Typography, Grid } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box, Typography, Grid, Stack, useMediaQuery, } from "@mui/material";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import {
-  exclusives,
-  keys,
-  detailItems,
-} from "../../../Constants/ConstantValues";
-import { getObjectById } from "../../../utils/utility";
+
 import RatingsAAAndStar from "../../../Components/RatingsAAAndStar/RatingsAAAndStar";
 import CustomButton from "../../../Components/Button/CustomButton";
 import { ButtonRightArrow } from "../../../Assets/SVG/Common/CommonSvgs";
+import { cdnPath } from "../../../Constants/StaticPagesConstants";
+import { isMediumScreens } from "../../../Constants/ConstantValues";
+import { extractMasterDeveloper } from "../../../utils/utility";
 
-function BuildingSection({ listingId }) {
-  listingId = listingId.id;
-  const listingObject = getObjectById(exclusives, listingId);
+function  BuildingSection({ buildingObject, width = 544, height = 473 }) {
+  const [detailItems, setDetailItems] = useState({});
+  // listingId = listingId.id;
+  // const buildingObject = getObjectById(exclusives, listingId);
+  // const { listings } = useContext(AppContext);
+    // Use useMediaQuery to determine the screen width
+    const isMediumScreen = useMediaQuery(isMediumScreens);
+  useEffect(() => {
+    if (buildingObject) {
+      const getPropertyTypesString = (buildingObject) => {
+        const propertyTypes = [];
 
-  return (
+        if (buildingObject.penthousefROM || buildingObject.penthouseTo) {
+          propertyTypes.push("penthouse");
+        }
+
+        if (buildingObject.apartmentsFrom || buildingObject.apartmentsTO) {
+          propertyTypes.push("Apartments");
+        }
+
+        if (buildingObject.duplexFrom || buildingObject.duplexTo) {
+          propertyTypes.push("Duplex");
+        }
+
+        if (buildingObject.triplexFrom || buildingObject.triplexTo) {
+          propertyTypes.push("Triplex");
+        }
+        if (buildingObject.townhouseFrom || buildingObject.townhouseTo) {
+          propertyTypes.push("Townhouse");
+        }
+
+        if (buildingObject.villaFrom || buildingObject.villaTo) {
+          propertyTypes.push("Villa");
+        }
+
+        return propertyTypes.join(", ");
+      };
+      const developerEntry = buildingObject.crmAssociates
+        ? buildingObject.crmAssociates.find(
+            (associate) => associate.crmAssociateType === "Developer"
+          )
+        : null;
+
+      setDetailItems({
+        Building:
+          buildingObject.buildingName || buildingObject.subAreaSubCommunity,
+        Developer: developerEntry
+          ? extractMasterDeveloper(developerEntry.crmAssociate)
+          : "Not Available",
+
+        Stories: buildingObject.stories || "Not Available",
+        Units:
+          buildingObject.residentialUnits !== ""
+            ? buildingObject.residentialUnits
+            : "Not Available",
+        "Property Use":
+          buildingObject.buildingUsage || buildingObject.PropertyType,
+        "Year Built": buildingObject.yearCompleted,
+        "Units Type": getPropertyTypesString(buildingObject),
+      });
+    }
+  }, [buildingObject]);
+
+  return buildingObject && Object.keys(detailItems).length > 0 ? (
     <Box id="buildingSection" className="buildingSectionWrapper">
-      <Box className="buildingImageWrapper">
-        <LazyLoadImage
-          src={`https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80`}
-          className="homePageBackgroundImage"
-        />
-      </Box>
-      <Box className="buildingTextWrapper">
-        <Typography variant="AlwynNewRoundedRegular28">
-          {listingObject.building}
-        </Typography>
-        <Box className="ratingsStarBuildingSection">
-          <RatingsAAAndStar
-            darkStars={false}
-            className="ratingsStarBuildingSection"
+      <Stack
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        spacing={isMediumScreen? 2: 5}
+        useFlexGap
+        flexWrap="wrap"
+      >
+        <Box className="buildingImageWrapper">
+          <LazyLoadImage
+            src={
+              buildingObject.buildingImages
+                ? `${buildingObject.buildingImages}?tr=w-${width},h-${height}`
+               
+                : `${cdnPath}/dbuilding/1.jpg?tr=w-${width},h-${height}`
+            }
+            className="defaultNeighborhoodImage"
           />
         </Box>
+        <Box className="buildingTextWrapper">
+          <Typography variant="AlwynNewRoundedRegular28">
+            {buildingObject.buildingName}
+          </Typography>
+          <Box className="ratingsStarBuildingSection">
+            <RatingsAAAndStar
+              darkStars={false}
+              className="ratingsStarBuildingSection"
+            />
+          </Box>
 
-        <Box className="buildingDetailsGridWrapper">
-          <Grid container spacing={2}>
-            {detailItems.map((item, index) => (
-              <React.Fragment key={index}>
-                <Grid item xs={6} sm={6} md={6}>
-                  <Typography variant="AlwynNewRoundedRegular16">
-                    {item}
-                  </Typography>
-                </Grid>
-                <Grid item xs={6} sm={6} md={6}>
-                  <Typography variant="AlwynNewRoundedRegular16">
-                    {listingObject[keys[index]]}
-                  </Typography>
-                </Grid>
-              </React.Fragment>
-            ))}
-          </Grid>
+          <Box className="buildingDetailsGridWrapper">
+            <Grid container spacing={2}>
+              {Object.entries(detailItems).map(([key, value], index) => (
+                <React.Fragment key={index}>
+                  <Grid item xs={6} sm={6} md={6}>
+                    <Typography variant="AlwynNewRoundedRegular16">
+                      {key}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={6} sm={6} md={6}>
+                    <Typography variant="AlwynNewRoundedRegular16">
+                      {value}
+                    </Typography>
+                  </Grid>
+                </React.Fragment>
+              ))}
+            </Grid>
+          </Box>
+          <Box className="buildingSectionButtonWrapper">
+            <Grid container>
+              <Grid item  xs={12} sm={12} md={12}>
+                <Link
+                  to={`/building/${buildingObject.buildingName}/${buildingObject.referenceNo}`}
+                >
+                  <CustomButton
+                    dark={false}
+                    text="Learn more about the Building"
+                    typographyVariant="AlwynNewRoundedRegular16"
+                    rightIcon={<ButtonRightArrow />}
+                  />
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
         </Box>
-        <Box className="buildingSectionButtonWrapper">
-        <Grid container >
-          <Grid item xs={6} sm={6} md={8} lg={8} xl={8} >
-            <Link
-              to={`/building/${listingObject.buildingData.id}/${listingObject.buildingData.buildingName}`}
-              state={listingId}
-            >
-              <CustomButton
-                dark={false}
-                text="Learn more about the Building"
-                typographyVariant="AlwynNewRoundedRegular16"
-                rightIcon={<ButtonRightArrow />}
-              />
-            </Link>
-          </Grid>
-          </Grid>
-        </Box>
-      </Box>
+      </Stack>
     </Box>
-  );
+  ) : null;
 }
 
 export default BuildingSection;

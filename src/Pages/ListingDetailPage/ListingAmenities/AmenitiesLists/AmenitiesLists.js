@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Divider, Grid, Stack, Typography, Box } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import InfoIconDescription from "../../../../Components/InfoIconDescription/InfoIconDescription";
@@ -9,25 +9,37 @@ const _ = require("lodash");
 const AmenitiesLists = ({
   leftData,
   rightData,
+  reactComponentLeft,
   reactComponent,
+  reactComponentRight,
   buildingDividers,
+  buildingObject,
 }) => {
-  const propertyAmenities = leftData;
-  const buildingAmenities = rightData;
+  const [expanded, setExpanded] = useState(false);
+  const visibleLeftData = expanded ? leftData : leftData.slice(0, 9);
+  const visibleRightData = expanded ? rightData : rightData.slice(0, 9);
+  // const propertyAmenities = visibleLeftData;
+  // const buildingAmenities = visibleRightData;
+  const handleClick = () => {
+    setExpanded(!expanded);
+  };
+
+  useEffect(() => {}, [buildingObject]);
 
   return (
     <>
       <Grid
         container
         flexDirection={"row"}
-        alignItems={"center"}
+        // alignItems={"center"}
         className="amenitiesListsContainer"
       >
-        {reactComponent()}
+
+        {reactComponent?reactComponent():null}
 
         {buildingDividers ? (
           <Grid item xs={12} mt={2} flexDirection={"column"}>
-            {propertyAmenities.map((item, id) => {
+            {visibleLeftData.map((item, id) => {
               return (
                 <React.Fragment key={id}>
                   <Grid container display="flex" flexDirection="row">
@@ -44,7 +56,6 @@ const AmenitiesLists = ({
                         </Typography>
                         <Box className="buildingInfoIcon">
                           <div className="tagWithInfoIconContainer">
-                            {/* <ListingCardIcon shape={'infoCircle'} />  */}
                             <InfoIcon />
                             <div className="tagWithInfoIconTextBox">
                               <InfoIconDescription
@@ -65,7 +76,7 @@ const AmenitiesLists = ({
                     )}
                     <Grid item xs={8}>
                       <Typography variant="DubaiRegular18">
-                        {buildingAmenities[id]}
+                        {visibleRightData[id]}
                       </Typography>
                     </Grid>
                   </Grid>
@@ -74,39 +85,44 @@ const AmenitiesLists = ({
               );
             })}
           </Grid>
-        ) : (
-          <>
-            <Grid item xs={12} sm={5.5} mr={4}>
-              {propertyAmenities.map((item, id) => {
-                return (
-                  <Stack key={id} direction={"column"} spacing={0.5} mt={0.5}>
-                    <Typography variant="DubaiRegular18">{item}</Typography>
-                    <Divider />
-                  </Stack>
-                );
-              })}
-              <Box className="amenitiesListViewBtn">
+        ) :
+         <>
+          <Grid item xs={12} sm={5.5} mr={4} >
+          {reactComponentLeft()}
+            {visibleLeftData.map((item, id) => {
+              return (
+                <Stack key={id} direction={"column"} spacing={0.5} mt={0.5}>
+                  <Typography variant="DubaiRegular18">{item}</Typography>
+                  <Divider />
+                </Stack>
+              );
+            })}
+            {expanded || leftData.length <= 9 ? null : (
+              <Box className="amenitiesListViewBtn" onClick={handleClick}>
                 <Typography variant="DubaiRegular18">View more</Typography>
                 <KeyboardArrowDownIcon />
               </Box>
-            </Grid>
-            <Grid item xs={12} sm={5.5}>
-              {buildingAmenities.map((item, id) => {
-                return (
-                  <Stack key={id} direction={"column"} spacing={0.5} mt={0.5}>
-                    <Typography variant="DubaiRegular18">{item}</Typography>
-                    <Divider />
-                  </Stack>
-                );
-              })}
-
-              <Box className="amenitiesListViewBtn">
+            )}
+          </Grid>
+          <Grid item xs={12} sm={5.5}>
+              {reactComponentRight()}
+            {visibleRightData.map((item, id) => {
+              return (
+                <Stack key={id} direction={"column"} spacing={0.5} mt={0.5}>
+                  <Typography variant="DubaiRegular18">{item}</Typography>
+                  <Divider />
+                </Stack>
+              );
+            })}
+            {expanded || rightData.length <= 9 ? null : (
+              <Box className="amenitiesListViewBtn" onClick={handleClick}>
                 <Typography variant="DubaiRegular18">View more</Typography>
                 <KeyboardArrowDownIcon />
               </Box>
-            </Grid>
-          </>
-        )}
+            )}
+          </Grid>
+        </>
+        }
       </Grid>
     </>
   );

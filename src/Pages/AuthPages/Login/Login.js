@@ -1,36 +1,64 @@
-import React, { useState } from "react";
-import { TextField, FormControl, IconButton, OutlinedInput, InputAdornment, Typography, Grid, FormHelperText } from "@mui/material";
+import React, { useState, useContext } from "react";
+import {
+  TextField,
+  FormControl,
+  IconButton,
+  OutlinedInput,
+  InputAdornment,
+  Typography,
+  Grid,
+  FormHelperText,
+} from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import { isEmail } from "validator";
 import CustomButton from "../../../Components/Button/CustomButton";
 import ListingCardIcon from "../../../Assets/SVG/ListingCardIcons/ListingCardIcons";
-import { validatePassword, objToBase64 } from "../../../utils/utility";
-import { userLogin } from "../../../network/apiServices";
+import { objToBase64 } from "../../../utils/utility";
+import { userLogin, getUserDetails } from "../../../network/apiServices";
 import { isEqual } from "lodash";
+import AppContext from "../../../context/AppContext";
+import { errorToast, successToast } from "../../../utils/useToast";
 
 function Login() {
+  const context = useContext(AppContext);
+  const { setUserObj } = context;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [emailError, setEmailError] = useState(true);
+  const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [invalidEmailPassword, setInvalidEmailPassword] = useState(false);
-  const [passwordValidationErrors, setPasswordValidationErrors] = useState([]);
-  const [isEmailTouched, setIsEmailTouched] = useState(false);
-  const [isPasswordTouched, setIsPasswordTouched] = useState(false);
   const [loginFailedMsg, setLoginFailedMsg] = useState("");
 
   const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (emailError || passwordError || isEqual(email, "") || isEqual(password, "")) {
+    let emailErrorVar = false;
+    let passwordErrorVar = false;
+
+    if (!isEmail(email)) {
+      setEmailError(true);
+      emailErrorVar = true;
+    } else {
+      setEmailError(false);
+    }
+
+    if (isEqual(password, "")) {
+      setPasswordError(true);
+      passwordErrorVar = true;
+    }
+
+    if (
+      emailErrorVar ||
+      passwordErrorVar ||
+      isEqual(email, "") ||
+      isEqual(password, "")
+    ) {
       setInvalidEmailPassword(true);
     } else {
       let data = {
@@ -41,64 +69,70 @@ function Login() {
         .then((data) => {
           if (!isEqual(data.data.status, "SUCCESS")) {
             setLoginFailedMsg(data.data.message);
-            setIsEmailTouched(false);
-            setIsPasswordTouched(false);
           } else {
             //update app reference
-            // localStorage.setItem("reference_key", base64Generator());
-            // localStorage.setItem("app_reference", JSON.stringify(data.data.authToken));
-            localStorage.setItem("user_details", objToBase64(data.data.userDetails));
+            localStorage.setItem(
+              "reference_key",
+              data.config.headers.APP_REFERENCE_KEY
+            );
+            localStorage.setItem(
+              "app_reference",
+              JSON.stringify(data.data.authToken)
+            );
+            successToast("Logged in successfully!");
+            getUserDetails({ email })
+              .then((res) => {
+                localStorage.setItem(
+                  "user_details",
+                  objToBase64(res.data.userDetails)
+                );
+
+                setUserObj(res.data.userDetails);
+              })
+              .catch((err) => {
+                errorToast(`Error: ${err}`);
+              });
             //redirect
             navigate("/");
           }
         })
-        .catch((error) => {
-          console.log("Login Error: ", error);
-        });
-
-      setEmail("");
-      setPassword("");
-      setIsEmailTouched(false);
-      setIsPasswordTouched(false);
+        .catch((error) => {});
     }
   };
 
   const handleEmail = (event) => {
+    setEmailError(false);
+    setInvalidEmailPassword(false);
     setEmail(event.target.value);
-    if (!isEmail(event.target.value)) {
-      setEmailError(true);
-    } else {
-      setEmailError(false);
-    }
   };
+
   const handlePassword = (event) => {
+    setPasswordError(false);
+    setInvalidEmailPassword(false);
     setPassword(event.target.value);
-    // const validation = validatePassword(event.target.value);
-    // if (validation.isValid) {
-    //   setPasswordError(false);
-    //   setPasswordValidationErrors([]);
-    // } else {
-    //   setPasswordError(true);
-    //   setPasswordValidationErrors(validation.errors);
-    // }
   };
-
-  const handleEmailBlur = () => {
-    setIsEmailTouched(true);
-  };
-  const handlePasswordBlur = () => {
-    setIsPasswordTouched(true);
-  };
-
-  const isLoginButtonDisabled = emailError || passwordError || isEqual(email, "") || isEqual(password, "");
 
   return (
     <Grid item>
-      <Grid className="authComponentsWrapper" container justifyContent={"center"} alignItems={"center"}>
-        <form className="" onSubmit={handleSubmit}>
-          <Grid container rowSpacing={2} direction={"column"} textAlign={"center"}>
+      <Grid
+        className="authComponentsWrapper"
+        container
+        item
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
+        <form className="authForm" onSubmit={handleSubmit} noValidate>
+          <Grid
+            container
+            rowSpacing={2}
+            direction={"column"}
+            textAlign={"center"}
+          >
             <Grid item>
-              <Typography className="loginTypographyLight" variant="GothamBlack18">
+              <Typography
+                className="loginTypographyLight"
+                variant="GothamBlack18"
+              >
                 Welcome back
               </Typography>
             </Grid>
@@ -111,88 +145,87 @@ function Login() {
                 type={"email"}
                 value={email}
                 error={emailError}
+                size="small"
                 fullWidth
-                required={true}
                 FormHelperTextProps={{ disabled: true }}
                 onChange={handleEmail}
-                onBlur={handleEmailBlur}
               />
             </Grid>
-            {isEmailTouched &&
+            {emailError &&
               (isEqual(email, "") ? (
                 <Grid container item columnSpacing={2} alignItems={"start"}>
                   <Grid item xs={1}>
                     <ListingCardIcon shape="exclamationError" />
                   </Grid>
                   <Grid item xs={10}>
-                    <FormHelperText className="customHelperText">Email address should not be empty</FormHelperText>
+                    <FormHelperText className="customHelperText">
+                      Email address should not be empty
+                    </FormHelperText>
                   </Grid>
                 </Grid>
-              ) : emailError ? (
+              ) : (
                 <Grid container item columnSpacing={2} alignItems={"start"}>
                   <Grid item xs={1}>
                     <ListingCardIcon shape="exclamationError" />
                   </Grid>
                   <Grid item xs={10}>
-                    <FormHelperText className="customHelperText">Invalid email</FormHelperText>
+                    <FormHelperText className="customHelperText">
+                      Invalid email
+                    </FormHelperText>
                   </Grid>
                 </Grid>
-              ) : (
-                ""
               ))}
             <Grid item>
-              <FormControl variant="outlined" fullWidth>
+              <FormControl
+                className="loginTextInput"
+                variant="outlined"
+                fullWidth
+              >
                 <OutlinedInput
-                  className="loginTextInput"
+                  className=" loginPasswordInput"
                   id={"password"}
                   type={showPassword ? "text" : "password"}
                   endAdornment={
                     <InputAdornment position="end">
-                      <IconButton className="password-icon" aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
+                      <IconButton
+                        className="password-icon"
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        edge="end"
+                      >
                         {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
                     </InputAdornment>
                   }
                   value={password}
-                  error={passwordError}
                   placeholder="Password"
-                  required={true}
+                  size="small"
                   fullWidth
                   onChange={handlePassword}
-                  onBlur={handlePasswordBlur}
                 />
               </FormControl>
             </Grid>
-            {(isPasswordTouched || passwordError) &&
-              (isEqual(password, "") ? (
-                <Grid container item columnSpacing={2} alignItems={"start"}>
-                  <Grid item xs={1}>
-                    <ListingCardIcon shape="exclamationError" />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <FormHelperText className="customHelperText">Password should not be empty</FormHelperText>
-                  </Grid>
+            {passwordError && isEqual(password, "") && (
+              <Grid container item columnSpacing={2} alignItems={"start"}>
+                <Grid item xs={1}>
+                  <ListingCardIcon shape="exclamationError" />
                 </Grid>
-              ) : (
-                // passwordValidationErrors.map((error, index) => (
-                //   <Grid key={index} container spacing={1} alignItems={"center"}>
-                //     <Grid item>
-                //       <ListingCardIcon shape="exclamationError" />
-                //     </Grid>
-                //     <Grid item>
-                //       <FormHelperText className="customHelperText">{error}</FormHelperText>
-                //     </Grid>
-                //   </Grid>
-                // ))
-                ""
-              ))}
+                <Grid item xs={10}>
+                  <FormHelperText className="customHelperText">
+                    Password should not be empty
+                  </FormHelperText>
+                </Grid>
+              </Grid>
+            )}
             {invalidEmailPassword && (
               <Grid container item columnSpacing={2} alignItems={"start"}>
                 <Grid item xs={1}>
                   <ListingCardIcon shape="exclamationError" />
                 </Grid>
                 <Grid item xs={10}>
-                  <FormHelperText className="customHelperText">{"Invalid email or password"}</FormHelperText>
+                  <FormHelperText className="customHelperText">
+                    {"Invalid email or password"}
+                  </FormHelperText>
                 </Grid>
               </Grid>
             )}
@@ -202,14 +235,19 @@ function Login() {
                   <ListingCardIcon shape="exclamationError" />
                 </Grid>
                 <Grid item xs={10}>
-                  <FormHelperText className="customHelperText">{loginFailedMsg}</FormHelperText>
+                  <FormHelperText className="customHelperText">
+                    {loginFailedMsg}
+                  </FormHelperText>
                 </Grid>
               </Grid>
             )}
 
             <Grid item>
               <Link className="loginLinkLight" to="/forgot-password">
-                <Typography className="loginTypographyLight" variant="DubaiRegular18">
+                <Typography
+                  className="loginTypographyLight"
+                  variant="DubaiRegular18"
+                >
                   Forgot password
                 </Typography>
               </Link>
@@ -222,14 +260,19 @@ function Login() {
                 text={"Login "}
                 rightIcon={<ListingCardIcon shape={"arrowRight"} />}
                 fullWidth={true}
-                isDisabled={isLoginButtonDisabled}
               />
             </Grid>
             <Grid item>
-              <Typography className="loginTypographyLight" variant="DubaiRegular18">
+              <Typography
+                className="loginTypographyLight"
+                variant="DubaiRegular18"
+              >
                 Don't have an account?{" "}
                 <Link className="loginLinkLight" to="/register">
-                  <Typography className="loginTypographyLight" variant="DubaiRegular18">
+                  <Typography
+                    className="loginTypographyLight"
+                    variant="DubaiRegular18"
+                  >
                     Sign up
                   </Typography>
                 </Link>

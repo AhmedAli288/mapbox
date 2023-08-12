@@ -1,54 +1,118 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { Box } from "@mui/material";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ListingDetailPageHeader from "../ListingDetailPage/ListingDetailPageHeader/ListingDetailPageHeader";
 import BuildingOtherInfo from "./BuildingOtherInfo/BuildingOtherInfo";
-import { exclusives } from "../../Constants/ConstantValues";
-import {
-  virtualTourData,
-  locationScoringFields,
-  otherAgentHeadings,
-  ratingsReviewsData,
-} from "../../Constants/ConstantValues";
-import { getObjectById } from "../../utils/utility";
 import BuildingFacts from "./BuildingFacts/BuildingFacts";
 import BuildingAmenities from "./BuildingAmenities/BuildingAmenities";
 import VirtualTourComponent from "../../Components/VirtualTour/VirtualTourComponent";
-import LocationScoring from "../../Components/LocationScoring/LocationScoring";
-import BuildingExPloreNeighborhood from "./BuildingExPloreNeighborhood/BuildingExPloreNeighborhood";
+// import LocationScoring from "../../Components/LocationScoring/LocationScoring";
 import BuildingAvailableUnits from "./BuildingAvailableUnits/BuildingAvailableUnits";
-import BuildingAroundTheBlock from "./BuildingAroundTheBlock/BuildingAroundTheBlock";
+// import BuildingAroundTheBlock from "./BuildingAroundTheBlock/BuildingAroundTheBlock";
 import OtherAgents from "../../Components/OtherAgents/OtherAgents";
-import SimilarBuildings from "./SimilarBuildings/SimilarBuildings";
-import RatingsReviewsSection from "./RatingsReviewsSection/RatingsReviewsSection";
+// import RatingsReviewsSection from "./RatingsReviewsSection/RatingsReviewsSection";
 import SearchingMap from "../../Components/SearchingMap/SearchMap";
+import SimilarBuildingsSection from "./SimilarBuildingsSection/SimilarBuildingsSection";
+import {
+  getListingsByBuilding,
+  getAgentDetails,
+  getBuildingDetails,
+} from "../../network/apiServices";
+import AppContext from "../../context/AppContext";
+import LoadingSkeleton from "../../Components/LoadingSkeleton/LoadingSkeleton";
+import LandingPageLinksArea from "../LandingPage/LandingPageLinksArea/LandingPageLinksArea";
+import LandingPageSubscribeSection from "../LandingPage/LandingPageSubscribeSection/LandingPageSubscribeSection";
+import { isEqual } from "lodash";
+import { errorToast } from "../../utils/useToast";
 
 function BuildingDetailPage() {
-  const location = useLocation();
-  const listingId = location.state;
-  const listingObject = getObjectById(exclusives, listingId);
+  const [buildingAgents, setBuildingAgents] = useState([]);
+  const [buildingData, setBuildingData] = useState({});
+  const { selectedCountry, setBuildingReferenceNoContext } =
+    useContext(AppContext);
 
-  return (
+  const { id } = useParams();
+
+  useEffect(() => {
+    setBuildingReferenceNoContext(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+
+  useEffect(() => {
+    async function fetchAndSetBuildingAgents() {
+      try {
+        const building = await getBuildingDetails({
+          buildingRefNumber: id,
+        });
+
+        setBuildingData(building.data);
+
+        //get building's listings
+        const listingsArray = await getListingsByBuilding({
+          countryName: selectedCountry,
+          buildingRefNumber: id,
+        });
+
+        if (!isEqual(listingsArray.data.status, "SUCCESS")) {
+          setBuildingAgents([]);
+          errorToast(
+            `Oops! Something went wrong: ${listingsArray.data.message}`
+          );
+        } else {
+          //get owners for all buildings listings
+          const emailList = listingsArray.data.listings
+            .filter((listing) => listing?.owner?.email)
+            .map((listing) => listing.owner.email);
+          //get agent details to populate other agents
+          const buildingAgentsDetails = await getAgentDetails({
+            agentEmail: emailList,
+          });
+
+          setBuildingAgents(buildingAgentsDetails.data.agentDetails);
+        }
+      } catch (error) {
+        errorToast(`Building and agent details: ${error}`);
+      }
+    }
+
+    fetchAndSetBuildingAgents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+  // buildingReferenceNoContext,buildingData
+
+  return Object.keys(buildingData).length > 0 ? (
     <Box className="listingDetailWrapper">
-      <ListingDetailPageHeader listingId={listingId} page={"buildingDetails"} />
+      <ListingDetailPageHeader
+        buildingObject={buildingData}
+        page={"buildingDetails"}
+      />
       <Box className="buildingDetailBodyWrapper">
-        <BuildingOtherInfo listingObject={listingObject} />
-        <BuildingFacts listingObject={listingObject} />
-        <BuildingAmenities listingObject={listingObject} />
-        <VirtualTourComponent
-          title={virtualTourData.title}
-          videoUrl={virtualTourData.videoUrl}
-        />
-        <SearchingMap />
-        <LocationScoring fields={locationScoringFields} />
-        <SimilarBuildings />
-        <OtherAgents title={otherAgentHeadings.buildingExpert} />
-        <BuildingExPloreNeighborhood listingObject={listingObject} />
-        <BuildingAvailableUnits listingObject={listingObject} />
-        <BuildingAroundTheBlock listingObject={listingObject} />
-        <RatingsReviewsSection generalData={ratingsReviewsData} />
+        <BuildingOtherInfo buildingObject={buildingData} />
+        <BuildingFacts buildingObject={buildingData} />
+        <BuildingAmenities buildingObject={buildingData} />
+        {buildingData?.video ? (
+          <VirtualTourComponent
+            title={buildingData?.subAreaSubCommunity}
+            videoUrl={buildingData.video}
+          />
+        ) : null}
+
+        <SearchingMap property={buildingData} />
+        {/* <LocationScoring fields={locationScoringFields} /> */}
+        <BuildingAvailableUnits buildingObject={buildingData} />
+        {/* <BuildingAroundTheBlock buildingObject={buildingData} /> */}
+        {/* <RatingsReviewsSection generalData={ratingsReviewsData} /> */}
+        <SimilarBuildingsSection buildingObject={buildingData} />
+        {buildingAgents.length > 0 ? (
+          <OtherAgents title={"Building Expert"} agents={buildingAgents} />
+        ) : null}
+        {/* <BuildingExPloreNeighborhood buildingObject={buildingData} /> */}
+        <LandingPageLinksArea />
+        <LandingPageSubscribeSection />
       </Box>
     </Box>
+  ) : (
+    <LoadingSkeleton />
   );
 }
 

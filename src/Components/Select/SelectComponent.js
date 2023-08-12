@@ -1,24 +1,32 @@
 import { useEffect } from "react";
-import { MenuItem, ListItemIcon, Typography, Box } from "@mui/material";
-import { ExpandMoreSharp, Check } from "@mui/icons-material";
+import { MenuItem, ListItemIcon, Typography, Box,useMediaQuery } from "@mui/material";
+import { ExpandMoreSharp, Check} from "@mui/icons-material";
 import { FlagRenderValue } from "../FlagRenderValue/FlagRenderValue";
+import { isMediumScreens } from "../../Constants/ConstantValues";
+
 
 const SelectComponent = ({
   value,
   onChange,
   items,
   currencyOptionsClassName,
+  customClass = null,
 }) => {
+  const isMediumScreen =useMediaQuery(isMediumScreens)
   useEffect(() => {}, [value]);
 
   const handleOptionClick = (option) => {
     // setSelectedOption(option);
+    // console.log(option)
 
     onChange(option);
+    
   };
+  // console.log(currencyOptionsClassName)
+  const classNameCustom = currencyOptionsClassName ? currencyOptionsClassName : "selectOptionsWrapper";
 
   return (
-    <div className="selectComponentWrapper">
+    <div className={`selectComponentWrapper ${customClass ? customClass : ""} `}>
       <div className="selectButtonWrapper">
         <button className="selectButton">
           {<FlagRenderValue value={value} />}
@@ -27,17 +35,15 @@ const SelectComponent = ({
       </div>
       <div
         className={
-          currencyOptionsClassName
-            ? "currencyOptionsClassName"
-            : "selectOptionsWrapper"
+          `${classNameCustom} ${isMediumScreen ? 'elevateSelectComponent' : ""}`
         }
       >
         {items.map((item) => (
           <MenuItem
             key={item.value}
             value={item.value}
-            className="menuItem"
-            onClick={() => handleOptionClick(item.value)}
+            className={`menuItem`}
+            onClick={() => handleOptionClick(item.label)}
           >
             {item.value === value && (
               <ListItemIcon>

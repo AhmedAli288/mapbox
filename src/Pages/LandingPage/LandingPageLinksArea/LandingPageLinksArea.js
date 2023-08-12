@@ -5,8 +5,17 @@ import {
   popularCitiesLinks,
 } from "../../../Constants/ConstantValues";
 import LinksAreaChildContainer from "./LinksAreaChildContainer/LinksAreaChildContainer";
+import { useNavigate } from "react-router-dom";
+import { objToBase64 } from "../../../utils/utility";
 
 const LandingPageLinksArea = () => {
+  const navigate = useNavigate();
+
+  const handleSeoLinkClick = (data) => {
+    const queryParamValue = objToBase64(data);
+    navigate(`/buy/search?value=${queryParamValue}`);
+  };
+
   return (
     <Container disableGutters={true} className="linksAreaContainer">
       <LinksAreaChildContainer
@@ -15,6 +24,7 @@ const LandingPageLinksArea = () => {
           viewing in some of our most popular areas.`}
         links={popularAreasLinks}
         colSize={7}
+        clickHandler={handleSeoLinkClick}
       />
 
       <LinksAreaChildContainer
@@ -22,6 +32,7 @@ const LandingPageLinksArea = () => {
         subHeading={`Find your next dream home in one of these cities.`}
         links={popularCitiesLinks}
         colSize={3}
+        clickHandler={handleSeoLinkClick}
       />
     </Container>
   );

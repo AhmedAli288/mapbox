@@ -17,6 +17,14 @@ import BecomeAnAgent from "../Pages/BecomeAnAgent/BecomeAnAgent";
 import ForgotPassword from "../Pages/AuthPages/ForgotPassword/ForgotPassword";
 import SpecificNeighbourhood from "../Components/SpecificNeighbourhood/SpecificNeighbourhood";
 import Profile from "../Pages/Profile/Profile";
+import BuildingGuidesPage from "../Pages/BuildingGuidesPage/BuildingGuidesPage";
+import CityGuides from "../Pages/CityGuides/CityGuides";
+import FindAnAgent from "../Pages/FindAnAgent/FindAnAgent";
+import BuildingClassification from "../Pages/BuildingClassification/BuildingClassification";
+import AgentProfile from "../Pages/AgentProfile/AgentProfile";
+import ComingSoon from "../Components/ComingSoon/ComingSoon";
+import DesirableNeighborhoods from "../Pages/DesirableNeighborhoods/DesirableNeighborhoods";
+import SearchLandingPage from "../Pages/SearchLandingPage/SearchLandingPage";
 
 function AppParentComponent() {
   const renderLayout = (component, showFooter = true, showPrivacy = false) => (
@@ -58,21 +66,84 @@ function AppParentComponent() {
             element={renderLayout(<LandingPageBody spacing={5} />)}
           />
           <Route
-            path="/listing/:id/:name"
+            path="/listing/:name/:id"
             element={renderLayout(<ListingDetailPage spacing={5} />)}
           />
           <Route
-            path="/building/:id/:name"
+            path="/building/:name/:id"
             element={renderLayout(<BuildingDetailPage spacing={5} />)}
+          />
+
+          <Route
+            path="/building-guides"
+            element={renderLayout(<BuildingGuidesPage spacing={5} />)}
           />
           <Route
             path="/specificneighbourhood/:name"
             element={renderLayout(<SpecificNeighbourhood />)}
           />
+
+          <Route path="/city-guides" element={renderLayout(<CityGuides />)} />
           <Route
-            path="/BecomeAnAgent"
+            path="/"
+            element={renderLayout(<LandingPageBody spacing={5} />)}
+          />
+          <Route
+            path="/building-classification"
+            element={renderLayout(<BuildingClassification />)}
+          />
+
+          <Route
+            path="/become-an-agent"
             element={renderLayout(<BecomeAnAgent />)}
           />
+          <Route
+            path="/find-an-agent"
+            element={renderLayout(<FindAnAgent />)}
+          />
+          <Route
+            path="/agent-profile/:name"
+            element={renderLayout(<AgentProfile />)}
+          />
+          <Route
+            path="/new-developments"
+            element={renderLayout(<ComingSoon />)}
+          />
+          <Route
+            path="/property-management"
+            element={renderLayout(<ComingSoon />)}
+          />
+          <Route path="/blog" element={renderLayout(<ComingSoon />)} />
+          <Route path="/mortgages" element={renderLayout(<ComingSoon />)} />
+          <Route
+            path="/AREICO-institute"
+            element={renderLayout(<ComingSoon />)}
+          />
+          <Route
+            path="/citizenship-services"
+            element={renderLayout(<ComingSoon />)}
+          />
+          <Route
+            path="/international-properties"
+            element={renderLayout(<ComingSoon />)}
+          />
+          <Route
+            path="/desirableNeighborhood/:name/:id"
+            element={renderLayout(<DesirableNeighborhoods />)}
+          />
+          <Route path="/search" element={renderLayout(<SearchLandingPage />)} />
+          <Route
+            path=":name/search"
+            element={renderLayout(<SearchLandingPage />)}
+          />
+
+          <Route path="/commercial" element={renderLayout(<ComingSoon />)} />
+          <Route path="/sell" element={renderLayout(<ComingSoon />)} />
+          <Route
+            path="/desirableNeighborhood/Burj Khalifa/:id"
+            element={renderLayout(<ComingSoon />)}
+          />
+          <Route path="/comingsoon" element={renderLayout(<ComingSoon />)} />
         </Routes>
       </ErrorBoundary>
     </ThemeProvider>

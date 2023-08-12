@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import { TextField, Stack, FormControl, Box } from "@mui/material";
+import { TextField, Stack, FormControl, Box, Grid } from "@mui/material";
 import CountDownTimer from "../../../CountDownTimer/CountDownTimer";
 
-function OTPAuthForm({ onSubmitFunc, length = 6, onOTPChange, counterDuration, errorComponent, onResend, isVerified }) {
+function OTPAuthForm({ onSubmitFunc, length = 6, onOTPChange, counterDuration, errorComponent, onResend, isVerified, setFormErrors, customClass }) {
   const [otp, setOTP] = useState(Array(length).fill(""));
   const inputRefs = useRef(Array(length).fill(null));
   const _ = require("lodash");
@@ -12,6 +12,14 @@ function OTPAuthForm({ onSubmitFunc, length = 6, onOTPChange, counterDuration, e
   }, []);
 
   const handleInputChange = (event, index) => {
+    setFormErrors({
+      mobileOTPValueError: null,
+      mobileOTPExpiryError: null,
+      mobileOTPInvalidError: null,
+      emailOTPValueError: null,
+      emailOTPExpiryError: null,
+      emailOTPInvalidError: null,
+    });
     const { value } = event.target;
     const updatedOTP = [...otp];
     updatedOTP[index] = value.slice(0, 1);
@@ -21,7 +29,6 @@ function OTPAuthForm({ onSubmitFunc, length = 6, onOTPChange, counterDuration, e
       inputRefs.current[index + 1]?.focus();
     }
     onOTPChange(updatedOTP);
-    
   };
 
   const handleKeyDown = (event, index) => {
@@ -42,36 +49,37 @@ function OTPAuthForm({ onSubmitFunc, length = 6, onOTPChange, counterDuration, e
   };
 
   return (
-    <Box className="authFormWrapper">
-      <form onSubmit={onSubmitFunc} className="authForm OTPStackForm">
+    <Box className={`authFormWrapper ${customClass}`}>
+      <form onSubmit={onSubmitFunc} className=" OTPStackForm">
         <FormControl className="OTPStackTextFieldWrapper">
-          <Stack direction="row" spacing={1} justifyContent="center">
+          <Grid container spacing={1} justifyContent="center">
             {otp.map((value, index) => (
-              <TextField
-              disabled={isVerified}
-                key={index}
-                onKeyDown={(event) => handleKeyDown(event, index)}
-                onKeyPress={handleInputKeyPress}
-                placeholder="-"
-                id={`otp-${index}`}
-                name={`otp-${index}`}
-                fullWidth
-                size="medium"
-                value={value}
-                onChange={(event) => handleInputChange(event, index)}
-                inputRef={(ref) => {
-                  inputRefs.current[index] = ref;
-                }}
-                InputProps={{
-                  classes: {
-                    input: "centered-placeholder",
-                  },
-                }}
-                autoComplete="off"
-              
-              />
+              <Grid item xs={2}>
+                <TextField
+                  disabled={isVerified}
+                  key={index}
+                  onKeyDown={(event) => handleKeyDown(event, index)}
+                  onKeyPress={handleInputKeyPress}
+                  placeholder="-"
+                  id={`otp-${index}`}
+                  name={`otp-${index}`}
+                  fullWidth
+                  size="medium"
+                  value={value}
+                  onChange={(event) => handleInputChange(event, index)}
+                  inputRef={(ref) => {
+                    inputRefs.current[index] = ref;
+                  }}
+                  InputProps={{
+                    classes: {
+                      input: "centered-placeholder",
+                    },
+                  }}
+                  autoComplete="off"
+                />
+              </Grid>
             ))}
-          </Stack>
+          </Grid>
         </FormControl>
       </form>
       <Stack direction="row" spacing={4} justifyContent="center" mt={2}>

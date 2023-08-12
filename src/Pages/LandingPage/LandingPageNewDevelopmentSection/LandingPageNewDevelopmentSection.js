@@ -17,21 +17,33 @@ function LandingPageNewDevelopmentSection() {
         mt={7}
         pb={5}
       >
-        <Grid item xs={12} sm={3} md={3} mb={2}>
-          <Typography variant="GothamBlack45">
-            Discover New Developments
-          </Typography>
-          <Link href="/">
-            <CustomButton
-              text="Learn More"
-              rightIcon={<ButtonRightArrow />}
-              fullWidth={false}
-              customClassName={"learnMoreBtnLanding"}
-            />
-          </Link>
+        <Grid
+          item
+          container
+          xs={12}
+          sm={3}
+          md={3}
+          mb={2}
+          order={{ xs: 2, sm: 1 }}
+        >
+          <Grid item xs={12}>
+            <Typography variant="GothamBlack45">
+              Discover New Developments
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Link href="/comingsoon">
+              <CustomButton
+                text="Learn More"
+                rightIcon={<ButtonRightArrow />}
+                fullWidth={false}
+                customClassName={"learnMoreBtnLanding"}
+              />
+            </Link>
+          </Grid>
         </Grid>
 
-        <Grid item xs={12} sm={7} md={7}>
+        <Grid item xs={12} sm={7} md={7} order={{ xs: 1, sm: 2 }}>
           <Box position="relative">
             <Box className="newDevelopmentOpacity"></Box>
             <BottomDetailsSection
@@ -43,6 +55,9 @@ function LandingPageNewDevelopmentSection() {
               activeStep={activeStep}
               setActiveStep={setActiveStep}
               images={devlopmentImages}
+              width={680}
+              height={400}
+              autoScroll
             />
           </Box>
         </Grid>

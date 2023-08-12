@@ -6,9 +6,9 @@ import {
   MapViewIcon,
 } from "../../Assets/SVG/Common/CommonSvgs";
 import Thumbnails from "./Thumbnails";
+import { Link as ScrollLink } from "react-scroll";
 
 const FLOOR_PLAN = "floorPlan";
-const MAP_VIEW = "map";
 const VIDEO = "video";
 
 const ThumbnailCarouselBottom = ({
@@ -18,7 +18,7 @@ const ThumbnailCarouselBottom = ({
   onViewChange,
   floorPlan = false,
   videoTour = false,
-  mapView = false,
+  mapView = true,
 }) => {
   const handleFloorPlanClick = () => {
     onViewChange(FLOOR_PLAN);
@@ -28,17 +28,13 @@ const ThumbnailCarouselBottom = ({
     onViewChange(VIDEO);
   };
 
-  const handleMapClick = () => {
-    onViewChange(MAP_VIEW);
-  };
-
   const gridItemCount = [floorPlan, videoTour, mapView].filter(Boolean).length;
 
-  const firstGridItemSize = 12 - gridItemCount * 2;
-  const additionalGridItemsSize = 2;
+  const firstGridItemSize = 12 - gridItemCount * 1.8;
+  const additionalGridItemsSize = 1.8;
 
   return (
-    <Grid container spacing={1} alignItems="center">
+    <Grid container spacing={0.5} alignItems="center" mt={-0.5}>
       <Grid item xs={12} sm={12} md={firstGridItemSize}>
         <Thumbnails
           images={images}
@@ -76,9 +72,14 @@ const ThumbnailCarouselBottom = ({
         </Grid>
       )}
 
-      {mapView && (
-        <Grid item xs={4} sm={4} md={additionalGridItemsSize}>
-          <Box className="floorPlanButton" onClick={handleMapClick}>
+      <Grid item xs={4} sm={4} md={additionalGridItemsSize}>
+        <ScrollLink
+          to={"mapSection"}
+          smooth={true}
+          offset={-300}
+          duration={500}
+        >
+          <Box className="floorPlanButton">
             <MapViewIcon />
             <Typography
               variant="DubaiRegular14"
@@ -87,8 +88,8 @@ const ThumbnailCarouselBottom = ({
               Map View
             </Typography>
           </Box>
-        </Grid>
-      )}
+        </ScrollLink>
+      </Grid>
     </Grid>
   );
 };

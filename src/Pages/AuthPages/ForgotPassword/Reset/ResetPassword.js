@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextField, Typography, Grid, FormHelperText } from "@mui/material";
 import { isEmail } from "validator";
 import { Link } from "react-router-dom";
@@ -6,68 +6,95 @@ import CustomButton from "../../../../Components/Button/CustomButton";
 import ListingCardIcon from "../../../../Assets/SVG/ListingCardIcons/ListingCardIcons";
 import { isEqual } from "lodash";
 import { resetUserPassword } from "../../../../network/apiServices";
+import { errorToast } from "../../../../utils/useToast";
+import LoadingSkeleton from "../../../../Components/LoadingSkeleton/LoadingSkeleton";
 
 function ResetPassword({ sendEmailUp, advanceCurrentStep }) {
   const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState(true);
-  const [isEmailTouched, setIsEmailTouched] = useState(false);
+  const [emailError, setEmailError] = useState(false);
   const [resetFailedMsg, setResetFailedMsg] = useState("");
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!emailError) {
+    let emailErrorVar = false;
+
+    if (!isEmail(email)) {
+      setEmailError(true);
+      emailErrorVar = true;
+    } else {
+      setEmailError(false);
+    }
+
+    if (!emailErrorVar) {
       sendEmailUp(email);
       // Perform any additional actions here, such as submitting the form, on return if email does not exist alert, else do the necessary action
       let data = {
         email,
       };
-
+      setLoading(true)
       resetUserPassword(data)
         .then((data) => {
-          console.log("Reset Password: ", data);
           if (!isEqual(data.data.status, "DELIVERED")) {
+            setLoading(false)
             setResetFailedMsg(data.data.message);
-            setIsEmailTouched(false);
+
           } else {
-            //toast
             advanceCurrentStep();
           }
         })
         .catch((error) => {
           console.log("Error: ", error); //toast
+          errorToast(`Error: ${error}`);
         });
 
       setEmail("");
-      setIsEmailTouched(false);
+      setResetFailedMsg("");
     }
   };
 
   const handleEmail = (event) => {
+    setEmailError(false);
+    setResetFailedMsg("");
     setEmail(event.target.value);
-    if (!isEmail(event.target.value)) {
-      setEmailError(true);
-    } else {
-      setEmailError(false);
-    }
   };
-
-  const handleEmailBlur = () => {
-    setIsEmailTouched(true);
-  };
-  const isContinueButtonDisabled = emailError || isEqual(email, "");
+useEffect(()=>{},[loading])
   return (
     <Grid item>
-      <Grid className="authComponentsWrapper" container justifyContent={"center"} alignItems={"center"}>
-        <form className="" onSubmit={handleSubmit}>
-          <Grid container rowSpacing={2} direction={"column"} textAlign={"center"}>
+      <Grid
+        className="authComponentsWrapper"
+        container
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
+            {loading ? (
+          <LoadingSkeleton
+            customClass={"loaderWrapperBlackBackground"}
+            customClassLoader={"loaderForBlackBackground"}
+          />
+        ) : (
+        <form className="authForm" onSubmit={handleSubmit} noValidate>
+          <Grid
+            container
+            rowSpacing={2}
+            direction={"column"}
+            textAlign={"center"}
+          >
             <Grid item>
-              <Typography className="loginTypographyLight" variant="GothamBlack18">
+              <Typography
+                className="loginTypographyLight"
+                variant="GothamBlack18"
+              >
                 Reset your password
               </Typography>
             </Grid>
             <Grid item>
-              <Typography className="loginTypographyLight" variant="DubaiRegular16">
-                Please enter your email address and instructions will be sent to your email.
+              <Typography
+                className="loginTypographyLight"
+                variant="DubaiRegular16"
+              >
+                Please enter your email address and instructions will be sent to
+                your email.
               </Typography>
             </Grid>
             <Grid item>
@@ -80,33 +107,34 @@ function ResetPassword({ sendEmailUp, advanceCurrentStep }) {
                 value={email}
                 error={emailError}
                 fullWidth
-                required={true}
+                size="small"
                 FormHelperTextProps={{ disabled: true }}
                 onChange={handleEmail}
-                onBlur={handleEmailBlur}
               />
             </Grid>
-            {isEmailTouched &&
+            {emailError &&
               (isEqual(email, "") ? (
                 <Grid container item columnSpacing={2} alignItems={"start"}>
                   <Grid item xs={1}>
                     <ListingCardIcon shape="exclamationError" />
                   </Grid>
                   <Grid item xs={10}>
-                    <FormHelperText className="customHelperText">Email address should not be empty.</FormHelperText>
+                    <FormHelperText className="customHelperText">
+                      Email address should not be empty.
+                    </FormHelperText>
                   </Grid>
                 </Grid>
-              ) : emailError ? (
+              ) : (
                 <Grid container item columnSpacing={2} alignItems={"start"}>
                   <Grid item xs={1}>
                     <ListingCardIcon shape="exclamationError" />
                   </Grid>
                   <Grid item xs={10}>
-                    <FormHelperText className="customHelperText">Email is invalid.</FormHelperText>
+                    <FormHelperText className="customHelperText">
+                      Email is invalid.
+                    </FormHelperText>
                   </Grid>
                 </Grid>
-              ) : (
-                ""
               ))}
             {resetFailedMsg && (
               <Grid container item columnSpacing={2} alignItems={"start"}>
@@ -114,7 +142,9 @@ function ResetPassword({ sendEmailUp, advanceCurrentStep }) {
                   <ListingCardIcon shape="exclamationError" />
                 </Grid>
                 <Grid item xs={10}>
-                  <FormHelperText className="customHelperText">{resetFailedMsg}</FormHelperText>
+                  <FormHelperText className="customHelperText">
+                    {resetFailedMsg}
+                  </FormHelperText>
                 </Grid>
               </Grid>
             )}
@@ -125,15 +155,21 @@ function ResetPassword({ sendEmailUp, advanceCurrentStep }) {
                 type="submit"
                 text={"Continue "}
                 rightIcon={<ListingCardIcon shape={"arrowRight"} />}
-                isDisabled={isContinueButtonDisabled}
+                // isDisabled={isContinueButtonDisabled}
                 fullWidth={true}
               />
             </Grid>
             <Grid item>
-              <Typography className="loginTypographyLight" variant="DubaiRegular18">
+              <Typography
+                className="loginTypographyLight"
+                variant="DubaiRegular18"
+              >
                 Don't have an account?{" "}
                 <Link className="loginLinkLight" to="/register">
-                  <Typography className="loginTypographyLight" variant="DubaiRegular18">
+                  <Typography
+                    className="loginTypographyLight"
+                    variant="DubaiRegular18"
+                  >
                     Sign up
                   </Typography>
                 </Link>
@@ -141,6 +177,8 @@ function ResetPassword({ sendEmailUp, advanceCurrentStep }) {
             </Grid>
           </Grid>
         </form>
+        )
+            }
       </Grid>
     </Grid>
   );

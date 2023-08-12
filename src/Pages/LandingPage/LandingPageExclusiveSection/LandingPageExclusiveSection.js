@@ -2,29 +2,34 @@ import React from "react";
 import { Box, Grid, Container } from "@mui/material";
 import ExclusivesTopSection from "./ExclusivesTopSection/ExclusivesTopSection";
 import Card from "../../../Components/Cards/Card";
-import { exclusives } from "../../../Constants/ConstantValues";
 import ViewAllExclusivesButton from "./ViewAllExclusivesButton/ViewAllExclusivesButton";
-// import { useDispatch } from "react-redux";
-// import { openPopUp } from "../../../Redux/features/listingPopUp/listingPopUpSlice";
+import ExclusiveCardSkeleton from "../../../Components/ExclusiveCardSkeleton/ExclusiveCardSkeleton";
 
-function LandingPageExclusiveSection() {
-  // const dispatch = useDispatch();
-  // const handleOpenPopUp = () => {
-  //   dispatch(openPopUp());
-  // };
+function LandingPageExclusiveSection({ exclusives }) {
   return (
     <Container className="LandingPageExclusiveSectionWrapper">
-
       <ExclusivesTopSection />
       <Box display="flex" justifyContent="center" className="center">
         <Grid container spacing={1.5}>
-          {exclusives.slice(0, 9).map((item, key) => {
-            return (
-              <Grid item xs={12} sm={6} md={4} lg={4} key={key}>
-                <Card  item={item} key={key} />
-              </Grid>
-            );
-          })}
+          {exclusives && exclusives?.length > 0
+            ? exclusives.slice(0, 9).map((item, key) => (
+                <Grid item xs={12} sm={6} md={4} lg={4} key={key}>
+                  <Card item={item} key={key} width={768} height={500} />
+                </Grid>
+              ))
+            : (() => {
+                const cardSkeletons = [];
+
+                for (let i = 0; i < 9; i++) {
+                  cardSkeletons.push(
+                    <Grid item xs={12} sm={6} md={4} lg={4} key={i}>
+                      <ExclusiveCardSkeleton />
+                    </Grid>
+                  );
+                }
+
+                return cardSkeletons;
+              })()}
         </Grid>
       </Box>
       <Box display="flex" justifyContent="center">

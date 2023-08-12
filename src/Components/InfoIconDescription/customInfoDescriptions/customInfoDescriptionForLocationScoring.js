@@ -1,5 +1,4 @@
 import React from "react";
-import InfoIconDescription from "../InfoIconDescription";
 import { Typography, Grid } from "@mui/material";
 
 function CustomInfoDescriptionForLocationScoring({ infoObj }) {

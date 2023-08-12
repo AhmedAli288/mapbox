@@ -12,9 +12,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import PasswordUpdated from "../ForgotPassword/PasswordUpdated/PasswordUpdated";
 
 function Register() {
-  const [exclusivesButtonHovered, setExclusivesButtonHovered] = useState([
-    false,
-  ]);
+  const [exclusivesButtonHovered] = useState([false]);
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -48,14 +46,12 @@ function Register() {
     languageSpoken: ["English"],
     reportingTo: "Robert",
     description: "working as a frontend dev in the turgos technology",
-    nationality: "Nigeria",
+    nationality: "Nigerien",
     jobTitle: "Frontend Dev",
     applicationSource: "MANSEEL",
   };
 
-  useEffect(() => {
-    console.log("Current step:", currentStep);
-  }, [currentStep, loading]);
+  useEffect(() => {}, [currentStep, loading]);
 
   const validateForm = (fields) => {
     const errors = {};
@@ -176,79 +172,95 @@ function Register() {
 
   return (
     <Box className="authComponentsWrapper">
-      <Typography variant="GothamBlack18" className="createAccountTypography">
-        Create your account
-      </Typography>
+      {(_.isEqual(currentStep, 1) ||
+        _.isEqual(currentStep, 2) ||
+        _.isEqual(currentStep, 3) ||
+        _.isEqual(currentStep, 4)) && (
+        <Typography variant="GothamBlack18" className="createAccountTypography">
+          Create your account
+        </Typography>
+      )}
       <Box>
         {_.isEqual(currentStep, 1) && (
           <NameForm
-            fname={fname}
-            lname={lname}
-            formErrors={formErrors}
-            handleInputChange={handleInputChange}
-            handleSubmitRegisterNames={handleSubmitRegisterNames}
-            exclusivesButtonHovered={exclusivesButtonHovered}
-            ButtonRightArrow={ButtonRightArrow}
+            {...{
+              fname,
+              lname,
+              formErrors,
+              handleInputChange,
+              handleSubmitRegisterNames,
+              exclusivesButtonHovered,
+              ButtonRightArrow,
+            }}
           />
         )}
         {/* next COmponent */}
         {_.isEqual(currentStep, 2) && (
           <EmailPhoneNumberInput
-            formErrors={formErrors}
-            handleInputChange={handleInputChange}
-            handleSubmitPhoneAndEmail={handleSubmitPhoneAndEmail}
-            exclusivesButtonHovered={exclusivesButtonHovered}
-            ButtonRightArrow={ButtonRightArrow}
-            callingCode={callingCode}
-            setCallingCode={setCallingCode}
-            loading={loading}
+            {...{
+              formErrors,
+              handleInputChange,
+              handleSubmitPhoneAndEmail,
+              exclusivesButtonHovered,
+              ButtonRightArrow,
+              callingCode,
+              setCallingCode,
+              loading,
+            }}
           />
         )}
 
         {_.isEqual(currentStep, 3) && (
           <OTPAuth
-            formErrors={formErrors}
-            handleInputChange={handleInputChange}
-            handleSubmitPhoneAndEmail={handleSubmitPhoneAndEmail}
-            exclusivesButtonHovered={exclusivesButtonHovered}
-            ButtonRightArrow={ButtonRightArrow}
-            callingCode={callingCode}
-            setCallingCode={setCallingCode}
-            email={email}
-            phoneNumber={phoneNumber}
-            emailOTPValue={emailOTPValue}
-            setEmailOTPValue={setEmailOTPValue}
-            mobileOTPValue={mobileOTPValue}
-            setMobileOTPValue={setMobileOTPValue}
-            setCurrentStep={setCurrentStep}
-            maxStep={maxStep}
-            isSmsVerified={isSmsVerified}
-            setIsSmsVerified={setIsSmsVerified}
-            isEmailVerified={isEmailVerified}
-            setIsEmailVerified={setIsEmailVerified}
+            {...{
+              formErrors,
+              handleInputChange,
+              handleSubmitPhoneAndEmail,
+              exclusivesButtonHovered,
+              ButtonRightArrow,
+              callingCode,
+              setCallingCode,
+              email,
+              phoneNumber,
+              emailOTPValue,
+              setEmailOTPValue,
+              mobileOTPValue,
+              setMobileOTPValue,
+              setCurrentStep,
+              maxStep,
+              isSmsVerified,
+              setIsSmsVerified,
+              isEmailVerified,
+              setIsEmailVerified,
+            }}
           />
         )}
         {_.isEqual(currentStep, 4) && (
           <CreatePassword
-            exclusivesButtonHovered={exclusivesButtonHovered}
-            password={password}
-            setPassword={setPassword}
-            signUpObject={signUpObject}
-            setCurrentStep={setCurrentStep}
-            currentStep={currentStep}
-            maxStep={maxStep}
+            {...{
+              exclusivesButtonHovered,
+              password,
+              setPassword,
+              signUpObject,
+              setCurrentStep,
+              currentStep,
+              maxStep,
+            }}
           />
         )}
         {_.isEqual(currentStep, 5) && (
           <PasswordUpdated
-            exclusivesButtonHovered={exclusivesButtonHovered}
-            password={password}
-            setPassword={setPassword}
-            signUpObject={signUpObject}
-            setCurrentStep={setCurrentStep}
-            currentStep={currentStep}
-            description={"Please login into your account"}
-            head={"Account created"}
+            {...{
+              exclusivesButtonHovered,
+              password,
+              setPassword,
+              signUpObject,
+              setCurrentStep,
+              currentStep,
+              description: "Please login into your account",
+              head: "Account created",
+              showAccountCreated: false,
+            }}
           />
         )}
       </Box>

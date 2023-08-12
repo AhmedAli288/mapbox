@@ -11,6 +11,22 @@ export const ButtonRightArrow = ({ width = 8, height = 11 }) => {
     </svg>
   );
 };
+export const ButtonLeftArrow = ({ width = 8, height = 11 }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="6.637"
+      height="11.428"
+      viewBox="0 0 6.637 11.428"
+    >
+      <path
+        id="dropdown"
+        d="M5.714,0a1.054,1.054,0,0,0-.8.332L.343,4.756a1.046,1.046,0,0,0,0,1.549,1.13,1.13,0,0,0,1.6,0l3.771-3.65L9.485,6.3a1.13,1.13,0,0,0,1.6,0,1.046,1.046,0,0,0,0-1.549L6.514.332A1.054,1.054,0,0,0,5.714,0Z"
+        transform="translate(0 11.428) rotate(-90)"
+      />
+    </svg>
+  );
+};
 
 export const DollarSign = ({ width = 15, height = 15 }) => {
   return (
@@ -78,7 +94,7 @@ export const pricing = () => {
   );
 };
 
-export const InfoIcon = ({ width = 2, height = 10 }) => {
+export const InfoIcon = ({ width = 2, height = 8 }) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height}>
       <path
@@ -412,6 +428,32 @@ export const LocationIcon = ({ width = 14, height = 21 }) => {
         data-name="Icon metro-location"
         d="M15.054,1.928a6.7,6.7,0,0,0-6.7,6.7c0,6.7,6.7,14.737,6.7,14.737s6.7-8.039,6.7-14.737a6.7,6.7,0,0,0-6.7-6.7Zm0,10.8a4.1,4.1,0,1,1,4.1-4.1A4.1,4.1,0,0,1,15.054,12.73Zm-2.6-4.1a2.6,2.6,0,1,1,2.6,2.6A2.6,2.6,0,0,1,12.458,8.627Z"
         transform="translate(-8.355 -1.928)"
+      />
+    </svg>
+  );
+};
+
+export const SmallSearchIcon = ({ width = 20, height = 20 }) => {
+  return (
+    <svg
+      id="Icons_Search"
+      data-name="Icons / Search"
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
+    >
+      <rect
+        id="Rectangle_430"
+        data-name="Rectangle 430"
+        width={width}
+        height={height}
+        fill="none"
+        opacity="0.2"
+      />
+      <path
+        id="search_FILL0_wght400_GRAD0_opsz48"
+        d="M130.929,226.822l-2.761-2.784a4.36,4.36,0,0,1-1.384.8,5.109,5.109,0,1,1,3.065-3.135,5.02,5.02,0,0,1-.831,1.483l2.781,2.764Zm-5.846-2.883a3.7,3.7,0,0,0,2.732-1.137,3.9,3.9,0,0,0,0-5.478,3.7,3.7,0,0,0-2.732-1.137,3.876,3.876,0,1,0,0,7.753Z"
+        transform="translate(-115.613 -210.91)"
       />
     </svg>
   );

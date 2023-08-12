@@ -3,11 +3,10 @@ import { MobileStepper, Container } from "@mui/material";
 import ThumbnailCarouselBottom from "./ThumbnailCarouselBottom";
 import ImagesSlider from "./ImagesSlider";
 import VideoComponent from "./VideoComponent";
-import MapComponent from "./MapComponent";
+import { isEmpty } from "lodash";
 
 const CAROUSEL = "carousel";
 const FLOOR_PLAN = "floorPlan";
-const MAP_VIEW = "map";
 const VIDEO = "video";
 
 function ThumbnailCarousel({
@@ -18,10 +17,11 @@ function ThumbnailCarousel({
   carouselImages = [],
   floorImages = [],
   videoUrl = "",
-  mapUrl = "",
   thumbnails = false,
   dots = true,
   dark = true,
+  width,
+  height,
 }) {
   const scrollableContainerRef = useRef(null);
   const carouselMaxSteps = carouselImages.length || 0;
@@ -63,6 +63,8 @@ function ThumbnailCarousel({
             handleBack={handleBack}
             handleNext={handleNext}
             images={carouselImages}
+            width={width}
+            height={height}
           />
         );
       case FLOOR_PLAN:
@@ -72,6 +74,8 @@ function ThumbnailCarousel({
             handleBack={handleBack}
             handleNext={handleNext}
             images={floorImages}
+            width={width}
+            height={height}
           />
         );
       case VIDEO:
@@ -80,8 +84,6 @@ function ThumbnailCarousel({
             <VideoComponent videoUrl={videoUrl} />
           </Container>
         );
-      case MAP_VIEW:
-        return <MapComponent mapUrl={mapUrl} />;
       default:
         return null;
     }
@@ -106,8 +108,7 @@ function ThumbnailCarousel({
           Ref={scrollableContainerRef}
           onViewChange={handleViewChange}
           floorPlan={floorImages.length ? true : false}
-          videoTour={videoUrl !== "" ? true : false}
-          mapView={mapUrl !== "" ? true : false}
+          videoTour={isEmpty(videoUrl) ? false : true}
         />
       )}
     </>

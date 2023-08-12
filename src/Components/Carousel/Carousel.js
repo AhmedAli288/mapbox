@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { MobileStepper } from "@mui/material";
 import ImagesSlider from "./ImagesSlider";
 
@@ -18,8 +18,12 @@ function Carousel({
   images,
   dots = true,
   dark = true,
+  width,
+  height,
+  autoScroll = false,
+  autoScrollInterval = 2500,
 }) {
-  const maxSteps = images.length;
+  const maxSteps = images?.length;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => (prevActiveStep + 1) % maxSteps);
@@ -31,6 +35,23 @@ function Carousel({
     );
   };
 
+  useEffect(() => {
+    let intervalId = null;
+
+    if (autoScroll) {
+      intervalId = setInterval(() => {
+        handleNext();
+      }, autoScrollInterval);
+    }
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeStep, autoScroll, autoScrollInterval]);
+
   return (
     <>
       <ImagesSlider
@@ -38,6 +59,8 @@ function Carousel({
         handleBack={handleBack}
         handleNext={handleNext}
         images={images}
+        width={width}
+        height={height}
       />
       {dots ? (
         <MobileStepper

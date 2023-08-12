@@ -4,41 +4,45 @@ const InputWithChangeBtn = ({
   initialValue,
   onValueChange,
   type,
+  customCLass = "",
+  enabled = false,
   setEnabled = null,
 }) => {
-  const [value, setValue] = useState(initialValue);
   const inputRef = useRef(null);
-  const [isTypingEnabled, setIsTypingEnabled] = useState(false);
+  const [isTypingEnabled, setIsTypingEnabled] = useState(enabled);
 
   const handleInputChange = (event) => {
-    setValue(event.target.value);
     onValueChange(event.target.value);
   };
 
   const handleStartTyping = () => {
     setIsTypingEnabled(true);
-    setEnabled(false);
     inputRef.current.focus();
+    if (setEnabled) {
+      setEnabled(true);
+    }
   };
 
   const handleInputClick = () => {
     if (!isTypingEnabled) {
       setIsTypingEnabled(true);
-      setEnabled(false);
       inputRef.current.focus();
+      if (setEnabled) {
+        setEnabled(true);
+      }
     }
   };
 
   return (
-    <div className="inputWithChange">
+    <div className={`inputWithChange ${customCLass}`}>
       <input
-        className="width94"
+        className="width100"
         type={type}
-        value={value}
-        onChange={handleInputChange}
+        value={initialValue}
+        onChange={isTypingEnabled ? handleInputChange : undefined}
         ref={inputRef}
         onClick={handleInputClick}
-        readOnly={!isTypingEnabled}
+        disabled={!isTypingEnabled}
         style={{
           pointerEvents: isTypingEnabled ? "auto" : "none",
         }}

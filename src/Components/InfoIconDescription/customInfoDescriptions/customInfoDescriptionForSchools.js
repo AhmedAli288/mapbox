@@ -7,7 +7,7 @@ function customInfoDescriptionForSchools({ infoObj }) {
     return (
       <Grid>
         <Grid item xs={12} p={1} pb={0}>
-          <Typography variant="AlwynNewRoundedRegular13" paragraph={true} width={"20vw"}>
+          <Typography variant="AlwynNewRoundedRegular14" paragraph={true} width={"20vw"}>
             {infoObj.topDescription}
           </Typography>
         </Grid>
@@ -36,12 +36,12 @@ function customInfoDescriptionForSchools({ infoObj }) {
         </Grid>
         <Grid item xs={12} p={1} pb={0}>
           <Grid item xs={12}>
-            <Typography variant="AlwynNewRoundedRegular13Bold" paragraph={true} width={"20vw"}>
+            <Typography variant="AlwynNewRoundedRegular14Bold" paragraph={true} width={"20vw"}>
               {infoObj.ratingMethodHeading}
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="AlwynNewRoundedRegular13" paragraph={true} width={"20vw"}>
+            <Typography variant="AlwynNewRoundedRegular14" paragraph={true} width={"20vw"}>
               {infoObj.ratingMethodDesc}
             </Typography>
           </Grid>

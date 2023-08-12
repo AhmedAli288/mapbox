@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import SelectComponent from "../../Select/SelectComponent";
 import { CountryFlags } from "../../../Assets/SVG/Flags/Flags";
-import { defaultCountry } from "../../../Constants/ConstantValues";
+import AppContext from "../../../context/AppContext";
 
 const CountrySelect = () => {
-  const initial = defaultCountry;
-  const [selectedCountry, setSelectedCountry] = useState(initial);
+const {selectedCountry, setSelectedCountry} =useContext(AppContext)
 
   const handleCountryChange = (selectedItem) => {
     setSelectedCountry(selectedItem);

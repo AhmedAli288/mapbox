@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect, useContext, useMemo } from "react";
 import {
   Table,
   TableBody,
@@ -18,162 +18,146 @@ import {
 } from "@mui/material";
 import { ExpandMore, Check } from "@mui/icons-material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { getListingsByBuilding } from "../../../network/apiServices";
+import AppContext from "../../../context/AppContext";
+import {
+  convertCurrency,
+  formatNumberWithCommasAndWithoutDecimals,
+} from "../../../utils/utility";
+import { errorToast } from "../../../utils/useToast";
 
 function filterRows(rows, status) {
-  if (_.isEqual("All", status)) {
+  if (_.isEqual("Active", status)) {
     return rows;
   }
   return rows.filter((row) => row.Status === status);
 }
 const _ = require("lodash");
 
-function BuildingAvailableUnits() {
-  const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("name");
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [status, setStatus] = React.useState("All");
-  const [expanded, setExpanded] = React.useState(false);
+function BuildingAvailableUnits({ buildingObject }) {
+  const [order, setOrder] = useState("asc");
+  const [orderBy, setOrderBy] = useState("id");
+  const [columnOrder, setColumnOrder] = useState("id");
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [status] = useState("Active");
+  const [expanded, setExpanded] = useState(false);
+  const [listingData, setListingData] = useState([]);
+
+  const { selectedCountry, conversionRates, toCurrency, selectedCurrency } =
+    useContext(AppContext);
+
+  const buildingReferenceNumber = buildingObject.referenceNo;
+
+  useEffect(() => {
+    async function fetchAndSetListings() {
+      try {
+        const listings = await getListingsByBuilding({
+          countryName: selectedCountry,
+          buildingRefNumber: buildingObject.referenceNo,
+        });
+
+        if (listings.data.status === "SUCCESS") {
+          setListingData(listings.data.listings);
+        } else {
+          setListingData([]);
+        }
+      } catch (error) {
+        errorToast(`Error: ${error}`);
+      }
+    }
+    fetchAndSetListings();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [buildingObject, buildingReferenceNumber]);
 
   function createData(
-    name,
-    Type,
-    Status,
-    Price,
-    PriceM2,
-    PriceSqFt,
-    Beds,
-    Baths,
-    FloorPlan
+    id,
+    saleOrRent,
+    listingStatus,
+    purchasePrice,
+    rentalPrice,
+    priceSqm,
+    priceSqft,
+    beds,
+    baths,
+    floorPlan
   ) {
+    // Determine the 'type' based on the 'saleOrRent' condition
+    const Type = saleOrRent === "For Rent" ? "Rent" : "Sale";
+
+    // Determine the 'status' based on the 'listingStatus' condition
+
+    const Status = listingStatus === "Published" ? "Active" : "Active";
+
+    // Determine the 'price' based on the 'purchasePrice' condition
+    const price =
+      purchasePrice !== null && purchasePrice !== ""
+        ? purchasePrice
+        : rentalPrice;
+
+    // Convert the 'price', 'priceSqm', and 'priceSqft' to the desired currency
+    const convertedPrice = convertCurrency(
+      conversionRates,
+      toCurrency,
+      selectedCurrency,
+      price
+    );
+
+    const m2Prce = priceSqm ? priceSqm : "0";
+    const PriceM2 = convertCurrency(
+      conversionRates,
+      toCurrency,
+      selectedCurrency,
+      m2Prce
+    );
+
+    const sqftPrice = formatNumberWithCommasAndWithoutDecimals(
+      priceSqft ? priceSqft : "0"
+    );
+    const PriceSqFt = convertCurrency(
+      conversionRates,
+      toCurrency,
+      selectedCurrency,
+      sqftPrice
+    );
+
     return {
-      name,
+      id,
       Type,
       Status,
-      Price,
+      Price: convertedPrice,
       PriceM2,
       PriceSqFt,
-      Beds,
-      Baths,
-      FloorPlan,
+      beds,
+      baths,
+      floorPlan,
     };
   }
 
-  const rows = [
-    createData(
-      "BR-624193",
-      "Sale",
-      "Active",
-      "AED 24",
-      "AED 878967",
-      "AED 24",
-      4,
-      12,
-      "Test2"
-    ),
-    createData(
-      "BR-624195",
-      "Rent",
-      "Contract Signed",
-      "AED 37",
-      "AED 986132",
-      "AED 24",
-      3,
-      80,
-      12,
-      "Tes1"
-    ),
-    createData(
-      "BR-624125",
-      "Rent",
-      "Under Offer",
-      "AED 49",
-      "AED 986178",
-      "AED 24",
-      3.9,
-      12,
-      "Floo45"
-    ),
-    createData(
-      "BR-624197",
-      "Sale",
-      "Active",
-      "AED 40",
-      "AED 894521",
-      "AED 24",
-      2,
-      10,
-      "Test3"
-    ),
-    createData(
-      "BR-624199",
-      "Rent",
-      "Active",
-      "AED 30",
-      "AED 754321",
-      "AED 24",
-      3,
-      15,
-      "Test4"
-    ),
-    createData(
-      "BR-624202",
-      "Sale",
-      "Contract Signed",
-      "AED 55",
-      "AED 675493",
-      "AED 24",
-      5,
-      18,
-      "Test5"
-    ),
-    createData(
-      "BR-624206",
-      "Rent",
-      "Under Offer",
-      "AED 42",
-      "AED 984751",
-      "AED 24",
-      4.5,
-      14,
-      "Test6"
-    ),
-    createData(
-      "BR-624210",
-      "Sale",
-      "Active",
-      "AED 47",
-      "AED 758924",
-      "AED 24",
-      3,
-      12,
-      "Test7"
-    ),
-    createData(
-      "BR-624214",
-      "Rent",
-      "Active",
-      "AED 35",
-      "AED 857149",
-      "AED 24",
-      2.5,
-      10,
-      "Test8"
-    ),
-    createData(
-      "BR-624218",
-      "Sale",
-      "Under Offer",
-      "AED 60",
-      "AED 984751",
-      "AED 24",
-      6,
-      20,
-      "Test9"
-    ),
-  ];
+  function createRows(listingData) {
+    if (listingData !== undefined) {
+      return listingData.map((item) =>
+        createData(
+          item.referenceNumber,
+          item.saleOrRent,
+          item.listingStatus,
+          item.purchasePrice,
+          item.rentalPrice,
+          item.priceSqm,
+          item.priceSqft,
+          item.beds,
+          item.baths,
+          item.floorPlan
+        )
+      );
+    }
+  }
+
+  // Call the function to create rows dynamically
+  const rows = createRows(listingData);
 
   const columnLabels = {
-    name: "Ref. No",
+    id: "Ref. No",
     Type: "Type",
     Status: "Status",
     Price: "Price",
@@ -182,32 +166,54 @@ function BuildingAvailableUnits() {
   };
 
   const columnSortOptions = {
-    name: ["Recent", "A - z", "Z - A"],
+    id: ["Ascending", "Descending"],
     Type: ["Rent", "Sale"],
-    Status: ["All", "Active", "Contract Signed", "Under Offer"],
+    // Status: ["All", "Active", "Contract Signed", "Under Offer"],
+    Status: ["Active"],
     Price: ["High to Low", "Low to High"],
     PriceM2: ["High to Low", "Low to High"],
     PriceSqFt: ["High to Low", "Low to High"],
   };
 
   const handleRequestSort = (property, event) => {
+    console.log("property: ", property);
+    console.log("event: ", event);
     setAnchorEl(event.currentTarget);
-    setOrderBy(property);
+    setColumnOrder(property);
   };
 
   const handleSortAction = (option) => {
+    console.log("option: ", option);
     let newOrder = "asc";
     if (
       _.isEqual(option, "High to Low") ||
-      _.isEqual(option, "Z - A") ||
+      _.isEqual(option, "Descending") ||
       _.isEqual(option, "Sale")
     ) {
       newOrder = "desc";
     }
     setOrder(newOrder);
 
-    if (_.isEqual(orderBy, "Status")) {
-      setStatus(option);
+    // Update the orderBy state based on the clicked column
+    if (
+      _.isEqual(option, "Recent") ||
+      _.isEqual(option, "Ascending") ||
+      _.isEqual(option, "Descending")
+    ) {
+      setOrderBy("id");
+    } else if (_.isEqual(option, "Rent") || _.isEqual(option, "Sale")) {
+      setOrderBy("Type");
+    } else if (_.isEqual(option, "Active")) {
+      setOrderBy("Status");
+    } else if (
+      _.isEqual(option, "High to Low") ||
+      _.isEqual(option, "Low to High")
+    ) {
+      setOrderBy("Price");
+    } else if (_.isEqual(option, "Price m²")) {
+      setOrderBy("PriceM2");
+    } else if (_.isEqual(option, "Price Sq.Ft")) {
+      setOrderBy("PriceSqFt");
     }
 
     handleClose();
@@ -219,29 +225,53 @@ function BuildingAvailableUnits() {
 
   const open = Boolean(anchorEl);
 
-  const filteredRows = React.useMemo(
+  const filteredRows = useMemo(
     () => filterRows(rows, status),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [order, orderBy, rows, status]
   );
 
-  const sortedRows = React.useMemo(() => {
+  const sortedRows = useMemo(() => {
     const comparator = (a, b) => {
-      if (
-        _.isEqual(typeof a[orderBy], "number") &&
-        _.isEqual((typeof b[orderBy], "number"))
-      ) {
-        return _.isEqual(order, "asc")
-          ? a[orderBy] - b[orderBy]
-          : b[orderBy] - a[orderBy];
+      const orderProp = a[orderBy];
+      const targetProp = b[orderBy];
+
+      if (orderProp === null && targetProp === null) {
+        return 0;
+      }
+
+      if (orderProp === null) {
+        return order === "asc" ? -1 : 1;
+      }
+
+      if (targetProp === null) {
+        return order === "asc" ? 1 : -1;
+      }
+
+      // Extract numeric part from alphanumeric strings for sorting
+      const extractNumericPart = (str) => {
+        const matches = str.match(/\d+/g);
+        return matches ? parseInt(matches.join("")) : NaN;
+      };
+
+      const numericOrderProp = extractNumericPart(orderProp);
+      const numericTargetProp = extractNumericPart(targetProp);
+
+      if (!isNaN(numericOrderProp) && !isNaN(numericTargetProp)) {
+        return order === "asc"
+          ? numericOrderProp - numericTargetProp
+          : numericTargetProp - numericOrderProp;
+      }
+
+      // Handle sorting for other data types
+      const compA = String(orderProp).toUpperCase();
+      const compB = String(targetProp).toUpperCase();
+
+      if (compA < compB) {
+        return order === "asc" ? -1 : 1;
+      } else if (compA > compB) {
+        return order === "asc" ? 1 : -1;
       } else {
-        const compA = a[orderBy].toUpperCase();
-        const compB = b[orderBy].toUpperCase();
-        if (compA < compB) {
-          return _.isEqual(order, "asc") ? -1 : 1;
-        }
-        if (compA > compB) {
-          return _.isEqual(order, "asc") ? 1 : -1;
-        }
         return 0;
       }
     };
@@ -251,11 +281,12 @@ function BuildingAvailableUnits() {
 
   const displayedRows = expanded ? sortedRows : sortedRows.slice(0, 7);
 
-  return (
-    <>
+  return listingData.length > 0 ? (
+    <Box className="paddingPageWidth">
       <Box className="availableUnitsHeader">
         <Typography variant="DubaiRegular20Bold">Available Units</Typography>
       </Box>
+
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -265,13 +296,15 @@ function BuildingAvailableUnits() {
                   <Box display="flex" alignItems="center">
                     <TableSortLabel
                       className="buildingTableLabelIcon"
-                      active={_.isEqual(orderBy, column)}
-                      direction={_.isEqual(orderBy, column) ? order : "asc"}
+                      active={_.isEqual(columnOrder, column)}
+                      direction={_.isEqual(columnOrder, column) ? order : "asc"}
                       onClick={(e) => handleRequestSort(column, e)}
                     >
                       <Typography variant="DubaiRegular18Bold">
                         {columnLabels[column]}
-                        {_.isEqual(orderBy, column)}
+                        {/* {_.isEqual(orderBy, column)} */}
+                        {/* {String(columnLabels[column])}
+  {String(_.isEqual(orderBy, column))} */}
 
                         <ExpandMore />
                       </Typography>
@@ -300,9 +333,9 @@ function BuildingAvailableUnits() {
           </TableHead>
           <TableBody>
             {displayedRows.map((row) => (
-              <TableRow key={row.name}>
+              <TableRow key={row.id}>
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {row.id}
                 </TableCell>
                 <TableCell>
                   <Typography variant="DubaiRegular18">{row.Type}</Typography>
@@ -324,14 +357,14 @@ function BuildingAvailableUnits() {
                   </Typography>
                 </TableCell>
                 <TableCell>
-                  <Typography variant="DubaiRegular18">{row.Beds}</Typography>
+                  <Typography variant="DubaiRegular18">{row.beds}</Typography>
                 </TableCell>
                 <TableCell>
-                  <Typography variant="DubaiRegular18">{row.Baths}</Typography>
+                  <Typography variant="DubaiRegular18">{row.baths}</Typography>
                 </TableCell>
                 <TableCell>
                   <Typography variant="DubaiRegular18">
-                    {row.FloorPlan}
+                    {row.floorPlan}
                   </Typography>
                 </TableCell>
               </TableRow>
@@ -341,7 +374,7 @@ function BuildingAvailableUnits() {
         <Popper open={open} anchorEl={anchorEl} elevation={20}>
           <Paper elevation={3}>
             <MenuList>
-              {columnSortOptions[orderBy].map((option) => (
+              {columnSortOptions[columnOrder].map((option) => (
                 <MenuItem
                   key={option}
                   onClick={() => handleSortAction(option)}
@@ -379,8 +412,8 @@ function BuildingAvailableUnits() {
           </Grid>
         </Grid>
       )}
-    </>
-  );
+    </Box>
+  ) : null;
 }
 
 export default BuildingAvailableUnits;

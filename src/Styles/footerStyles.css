@@ -1,8 +1,8 @@
 .footerStyles {
   background-color: black;
   color: white;
-  padding: "20px 0";
-  width: "100%";
+  padding: 20px 0;
+  width: 100%;
   margin-top: 3px;
 }
 
@@ -46,6 +46,7 @@
 
 .footerLinks {
   color: #fff !important;
+  cursor: pointer;
 }
 
 .footerStyles .MuiGrid-spacing-xs-4 {

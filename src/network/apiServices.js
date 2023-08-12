@@ -6,13 +6,31 @@ import {
   RefreshTokenURL,
   AllListingsURL,
   UserLoginURL,
+  UserLogoutURL,
+  UserDetailURL,
   ResetUserPasswordURL,
-  UpdateUserPasswordURL,
+  updateUserPasswordURL,
   emailOtpURL,
   smsOtpURL,
   validateEmailOtpURL,
   validateSmsOtpURL,
   signUpURL,
+  exclusiveListingsURL,
+  buildingDetailsURL,
+  agentDetailsURL,
+  contactAgentEmailURL,
+  agentListingsURL,
+  SavedPropertyURL,
+  SavedBuildingURL,
+  SavedSearchesgURL,
+  SavedAgentsgURL,
+  updateAccountDetailsURL,
+  listingsByBuildingURL,
+  similarBuildingsURL,
+  allDataSearchURL,
+  similarHomesURL,
+  filterSearchURL,
+  subscribeURL,
 } from "../Constants/ConstantValues";
 
 export const getAuthToken = () => {
@@ -38,8 +56,6 @@ export const postRefreshToken = async () => {
   return new Promise((resolve, reject) => {
     const app_reference = JSON.parse(localStorage.getItem("app_reference"));
     const ref = localStorage.getItem("reference_key");
-
-    console.log("app_reference: ", app_reference);
 
     const payload = {
       username: process.env.REACT_APP_RFRESH_TOKEN_USERNAME,
@@ -73,22 +89,20 @@ export const userLogin = async (payload) => {
   return axiosInstance.post(UserLoginURL, payload);
 };
 
+export const getUserDetails = async (payload) => {
+  return axiosInstance.post(UserDetailURL, payload);
+};
+
+export const userLogout = async (payload) => {
+  return axiosInstance.post(UserLogoutURL, payload);
+};
+
 export const resetUserPassword = async (payload) => {
   return axiosInstance.post(ResetUserPasswordURL, payload);
 };
 
-export const updateUserPassword = async (payload) => {
-  return axiosInstance.post(UpdateUserPasswordURL, payload);
-};
 export const getEmailOtp = async (emailPayLoad) => {
-  // console.log(manseel);
-  // try {
   return axiosInstance.post(emailOtpURL, emailPayLoad);
-
-  // Handle the response
-  // } catch (error) {
-  //   console.error("getEmailError:", error);
-  // }
 };
 
 export const getMobileOtp = async (smsPayLoad) => {
@@ -130,4 +144,71 @@ export const signUp = async (signUpPayLoad) => {
   } catch (error) {
     console.error("signUpError:", error);
   }
+};
+
+export const updateUserPassword = async (payload) => {
+  return axiosInstance.post(updateUserPasswordURL, payload);
+};
+export const updateAccountDetails = async (payload) => {
+  return axiosInstance.post(updateAccountDetailsURL, payload);
+};
+
+export const contactAgent = async (payload) => {
+  return axiosInstance.post(contactAgentEmailURL, payload);
+};
+
+export const getListingsByAgent = async (payload) => {
+  return axiosInstance.post(agentListingsURL, payload);
+};
+
+export const savedProperty = async (payload) => {
+  return axiosInstance.post(SavedPropertyURL, payload);
+};
+
+export const savedBuilding = async (payload) => {
+  return axiosInstance.post(SavedBuildingURL, payload);
+};
+
+export const savedSearches = async (payload) => {
+  return axiosInstance.post(SavedSearchesgURL, payload);
+};
+
+export const savedAgents = async (payload) => {
+  return axiosInstance.post(SavedAgentsgURL, payload);
+};
+
+export const getAllExclusives = async (payload) => {
+  return axiosInstance.post(exclusiveListingsURL, payload);
+};
+
+export const getBuildingDetails = async (payload) => {
+  return axiosInstance.post(buildingDetailsURL, payload);
+};
+
+export const getAgentDetails = async (payload) => {
+  return axiosInstance.post(agentDetailsURL, payload);
+};
+
+export const getListingsByBuilding = async (payload) => {
+  return axiosInstance.post(listingsByBuildingURL, payload);
+};
+
+export const getSimilarBuildingsDetails = async (payload) => {
+  return axiosInstance.post(similarBuildingsURL, payload);
+};
+
+export const getAllSearchData = async (payload) => {
+  return axiosInstance.post(allDataSearchURL, payload);
+};
+
+export const getFilteredSearchData = async (payload) => {
+  return axiosInstance.post(filterSearchURL, payload);
+};
+
+export const getSimilarHomesDetails = async (payload) => {
+  return axiosInstance.post(similarHomesURL, payload);
+};
+
+export const subscribeToNewsletter = async (payload) => {
+  return axiosInstance.post(subscribeURL, payload);
 };

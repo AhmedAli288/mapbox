@@ -1,52 +1,114 @@
 import React from "react";
-import { Box, Typography, Grid, Link } from "@mui/material";
+import { Box, Typography, Grid } from "@mui/material";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { getObjectById } from "../../../utils/utility";
-import { exclusives } from "../../../Constants/ConstantValues";
 import CustomButton from "../../../Components/Button/CustomButton";
 import { ButtonRightArrow } from "../../../Assets/SVG/Common/CommonSvgs";
+import { useNavigate } from "react-router-dom";
+import {
+  desirableNeighborhoods,
+  comingSoonURL,
+} from "../../../Constants/ConstantValues";
+import { cdnPath } from "../../../Constants/StaticPagesConstants";
+import FindAreaCard from "../../LandingPage/LandingPageFindArea/FindAreaCard/FindAreaCard";
+import { findArea } from "../../../Constants/ConstantValues";
+import { truncateText } from "../../../utils/utility";
+function Neighborhood({ property, width = 544, height = 273 }) {
+  const navigate = useNavigate();
+  const _ = require("lodash");
 
-function Neighborhood({ listingId }) {
-  const listingObject = getObjectById(exclusives, listingId.id);
+  const handleGuide = (value) => {
+    switch (value) {
+      case "allNeighborhoods":
+        navigate("/city-guides");
+        break;
+      default:
+        const neighborhoodObject = desirableNeighborhoods.find(({ title }) =>
+          _.isEqual(title, value)
+        );
 
+        const linkUrl = neighborhoodObject
+          ? neighborhoodObject.link
+          : comingSoonURL;
+
+        navigate(linkUrl);
+    }
+  };
+
+  const neighborhoodName = truncateText(
+    property.area || property.subAreaSubCommunity,
+    30
+  );
   return (
-    <Box id="neighborhoodSection" className="neighborhoodWrapper">
+    <Box
+      id="neighborhoodSection"
+      className="neighborhoodWrapper paddingPageWidth"
+    >
       <Box className="exploreNeighborhoodWrapper">
-        <Box>
-          <Grid container>
-            <Grid item xs={6} md={6}>
-              <Box className="exploreNeighborhoodImage">
-                <LazyLoadImage src={listingObject.neighborhoodImage} className="homePageBackgroundImage" />
-              </Box>
-            </Grid>
-            <Grid item xs={6} md={6}>
-              <Box className="exploreNeighborhoodTextAreaWrapper">
-                <Typography variant="GothamBlack30">Explore the neighborhood</Typography>
-                <Box className="neighborhoodCommunityWrapper">
-                  <Typography variant="DubaiRegular20Bold">{listingObject.community}</Typography>
-                </Box>
-                <Box className="neighborhoodCommunityWrapper">
-                  <Typography variant="DubaiRegular18">{listingObject.neighborhoodDescription}</Typography>
-                </Box>
-                <Box className="neighborhoodButtonWrapper">
-                  <Grid container spacing={2}>
-                    <Grid item xs md={6}>
-                      <CustomButton dark={false} text={`${listingObject.community} Guide`} rightIcon={<ButtonRightArrow />} />
-                    </Grid>
-                    <Grid item xs md={5}>
-                      <CustomButton dark={false} text={`All Neighborhoods`} rightIcon={<ButtonRightArrow />} />
-                    </Grid>
-                  </Grid>
-                </Box>
-              </Box>
-            </Grid>
+        <Grid
+          container
+          spacing={2}
+          justifyContent="center"
+          alignContent="center"
+        >
+          <Grid item xs={12} sm={12} md={6}>
+            <Box className="exploreNeighborhoodImage">
+              <LazyLoadImage
+                src={`${cdnPath}/dneighbour/1.jpg?tr=w-${width},h-${height}`}
+                className=" defaultNeighborhoodImage"
+              />
+            </Box>
           </Grid>
-        </Box>
+          <Grid item xs={12} sm={12} md={6} className="alignCenter">
+            <Box className="exploreNeighborhoodTextAreaWrapper">
+              <Typography variant="GothamBlack30">
+                Explore the neighborhood
+              </Typography>
+              <Box className="neighborhoodCommunityWrapper">
+                <Typography variant="DubaiRegular20Bold">
+                  {property.subAreaSubCommunity}
+                </Typography>
+              </Box>
+              <Box className="neighborhoodCommunityWrapper">
+                <Typography variant="DubaiRegular18">
+                  {property.neighborhoodDescription
+                    ? property.neighborhoodDescription.slice(0, 100)
+                    : null}
+                </Typography>
+              </Box>
+              <Box className="neighborhoodButtonWrapper">
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm={6} md={12} lg={7}>
+                    <CustomButton
+                      dark={false}
+                      text={`${neighborhoodName} Guide`}
+                      rightIcon={<ButtonRightArrow />}
+                      onClick={() =>
+                        handleGuide(
+                          property.area || property.subAreaSubCommunity
+                        )
+                      }
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={12} lg={5}>
+                    <CustomButton
+                      dark={false}
+                      text={`All Neighborhoods`}
+                      rightIcon={<ButtonRightArrow />}
+                      onClick={() => handleGuide("allNeighborhoods")}
+                    />
+                  </Grid>
+                </Grid>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
       </Box>
       <Box className="nearbyNeighborhoods">
-        <Typography variant="DubaiRegular20Bold">Nearby Neighborhods</Typography>
+        <Typography variant="DubaiRegular20Bold">
+          Nearby Neighborhods
+        </Typography>
 
-        <Grid container spacing={2} mt={2}>
+        {/* <Grid container spacing={2} mt={2}>
           {listingObject.nearbyNeighborhoods.map((item, id) => {
             return (
               <Grid item key={id} xs={12} sm={3.8} md={3.8}>
@@ -59,6 +121,19 @@ function Neighborhood({ listingId }) {
                     </Typography>
                   </Box>
                 </Link>
+              </Grid>
+            );
+          })}
+        </Grid> */}
+        <Grid container spacing={2} mt={1}>
+          {findArea.slice(0, 3).map((item, id) => {
+            return (
+              <Grid item key={id} xs={12} sm={3.8} md={3.8}>
+                <FindAreaCard
+                  imgLabel={item.imgLabel}
+                  imgPath={item.imgPath}
+                  link={item.link}
+                />
               </Grid>
             );
           })}

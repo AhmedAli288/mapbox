@@ -1,13 +1,291 @@
 import React from "react";
 
-const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.295" }) => {
+const ListingCardIcon = ({ shape, color, variant, width, height }) => {
   let svg;
   let shapeColor = color || "#fff"; // Default color is black if not provided
 
   switch (shape) {
+    case "searchIcon":
+      return (
+        <svg
+          id="Group_4"
+          data-name="Group 4"
+          xmlns="http://www.w3.org/2000/svg"
+          width="31"
+          height={"31"}
+          viewBox="0 0 31 31"
+        >
+          <rect
+            id="Rectangle_14"
+            data-name="Rectangle 14"
+            width={width ? width : "31"}
+            height={height ? height : "31"}
+            rx="2"
+          />
+          <g
+            id="Icons_Search"
+            data-name="Icons / Search"
+            transform="translate(5 4)"
+          >
+            <rect
+              id="Rectangle_430"
+              data-name="Rectangle 430"
+              width="22"
+              height="22"
+              fill="none"
+              opacity="0.2"
+            />
+            <path
+              id="Path_6"
+              data-name="Path 6"
+              d="M22.64,19.71l-4.47-4.273a9.168,9.168,0,0,0,2.019-5.789A9.818,9.818,0,0,0,10.094,0,9.818,9.818,0,0,0,0,9.648,9.818,9.818,0,0,0,10.094,19.3a10.175,10.175,0,0,0,6.056-1.93l4.47,4.273ZM2.884,9.648a6.988,6.988,0,0,1,7.21-6.892A6.988,6.988,0,0,1,17.3,9.648a6.988,6.988,0,0,1-7.21,6.892A6.988,6.988,0,0,1,2.884,9.648Z"
+              fill="#fff"
+            />
+          </g>
+        </svg>
+      );
+    case "population":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="48.891"
+          height="39.51"
+          viewBox="0 0 48.891 39.51"
+        >
+          <g
+            id="Group_23890"
+            data-name="Group 23890"
+            transform="translate(0 -0.001)"
+          >
+            <path
+              id="Path_15780"
+              data-name="Path 15780"
+              d="M73.077,41.789q0,.672,0,1.344c.008,6.561.023,13.122.011,19.683,0,.585.026,1.376-.315,1.7a3.3,3.3,0,0,1-2.032.917c-.829.015-1.248-.656-1.235-1.611.047-3.6.019-7.2.019-10.806a2.979,2.979,0,0,0-.022-.894,2.876,2.876,0,0,0-.512-.714c-.167.246-.475.489-.48.739-.041,1.886-.024,3.773-.024,5.66,0,1.973-.051,3.947.02,5.917.039,1.094-.552,1.757-1.434,1.732a3.148,3.148,0,0,1-1.894-1.149c-.3-.339-.237-1.056-.238-1.6q-.014-9.777.006-19.554a2.755,2.755,0,0,0-.237-1.353q-.426,2.64-.852,5.279c-.209,1.284-1.072,2.084-2.112,1.963a2.061,2.061,0,0,1-1.7-2.576q.864-4.861,1.82-9.7a2.053,2.053,0,0,1,2.262-1.822q4.888.048,9.777,0a2.055,2.055,0,0,1,2.244,1.846q.955,4.844,1.816,9.707a2.04,2.04,0,0,1-1.6,2.532c-1.087.2-2-.619-2.214-1.967q-.419-2.641-.848-5.28l-.228.012"
+              transform="translate(-44.564 -25.949)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15781"
+              data-name="Path 15781"
+              d="M10.18,49.877c0,5.549,0,10.812,0,16.076a7.863,7.863,0,0,1-.08,1.407,1.33,1.33,0,0,1-1.551,1.2c-.809-.081-1.111-.587-1.1-1.427q.065-4.05-.009-8.1a4.9,4.9,0,0,0-.529-1.465,5,5,0,0,0-.463,1.405q-.068,3.985-.009,7.972c.012.865-.089,1.626-1.128,1.619s-1.459-.693-1.456-1.714c.014-5.143.006-10.287.007-15.431V50.013l-.184-.02c-.246,1.475-.468,2.954-.746,4.423A1.4,1.4,0,0,1,1.3,55.705a1.472,1.472,0,0,1-1.3-1.759,2.019,2.019,0,0,1,.017-.256c.465-2.434.938-4.867,1.4-7.3a1.648,1.648,0,0,1,1.914-1.454q3.664.052,7.329,0A1.7,1.7,0,0,1,12.6,46.526c.394,2.186.833,4.365,1.239,6.549.07.377.22.857.062,1.133-.324.563-.8,1.378-1.276,1.421a2.016,2.016,0,0,1-1.5-1.148,17.4,17.4,0,0,1-.577-3.142c-.072-.4-.2-.8-.365-1.46"
+              transform="translate(0 -33.373)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15782"
+              data-name="Path 15782"
+              d="M145.9,49.969q0,7.967,0,15.934c0,.386.008.772-.007,1.157a1.339,1.339,0,0,1-1.455,1.444c-.9-.015-1.168-.618-1.155-1.493q.062-4.049-.007-8.1a4.978,4.978,0,0,0-.464-1.4,4.9,4.9,0,0,0-.528,1.463q-.078,4.048-.007,8.1c.017.91-.311,1.434-1.2,1.439a1.305,1.305,0,0,1-1.43-1.337c-.05-1.584-.028-3.17-.029-4.755,0-4.114,0-8.227-.179-12.377-.242,1.334-.515,2.663-.715,4-.155,1.04-.631,1.765-1.74,1.586s-1.341-1.084-1.165-2.075c.441-2.482.836-4.976,1.422-7.423a2.063,2.063,0,0,1,1.524-1.186c2.652-.123,5.314-.116,7.967,0a1.936,1.936,0,0,1,1.423,1.126c.615,2.573,1.084,5.183,1.542,7.791a1.423,1.423,0,0,1-1.256,1.781,1.367,1.367,0,0,1-1.633-1.265c-.275-1.463-.5-2.935-.745-4.4H145.9"
+              transform="translate(-100.844 -33.314)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15783"
+              data-name="Path 15783"
+              d="M83.19,0a4.177,4.177,0,0,1,4.08,4.105,4.1,4.1,0,1,1-8.19-.035A4.163,4.163,0,0,1,83.19,0"
+              transform="translate(-58.734)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15784"
+              data-name="Path 15784"
+              d="M156.878,20.218a3.148,3.148,0,1,1-3.17-3.2,3.2,3.2,0,0,1,3.17,3.2"
+              transform="translate(-111.846 -12.641)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15785"
+              data-name="Path 15785"
+              d="M21.23,20.176a3.141,3.141,0,1,1-3.215-3.147,3.2,3.2,0,0,1,3.215,3.147"
+              transform="translate(-11.105 -12.646)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15786"
+              data-name="Path 15786"
+              d="M49.98,4.567A2.732,2.732,0,0,1,52.823,7.24,2.716,2.716,0,0,1,50.1,10.148a2.852,2.852,0,0,1-2.9-2.791,2.876,2.876,0,0,1,2.785-2.79"
+              transform="translate(-35.053 -3.393)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15787"
+              data-name="Path 15787"
+              d="M123.716,10.129a2.7,2.7,0,0,1-2.793-2.711,2.725,2.725,0,0,1,2.771-2.875A2.881,2.881,0,0,1,126.549,7.4a2.849,2.849,0,0,1-2.833,2.732"
+              transform="translate(-89.813 -3.375)"
+              fill="#fff"
+            />
+          </g>
+        </svg>
+      );
+    case "pinPoint":
+      return (
+        <svg
+          id="Group_23887"
+          data-name="Group 23887"
+          xmlns="http://www.w3.org/2000/svg"
+          width="41.161"
+          height="40.338"
+          viewBox="0 0 41.161 40.338"
+        >
+          <path
+            id="Path_15818"
+            data-name="Path 15818"
+            d="M43.828,0c.36.045.721.084,1.08.137a11.78,11.78,0,0,1,6.951,3.606,11.982,11.982,0,0,1,3.167,6.324,10.115,10.115,0,0,1-.517,5.29,39.611,39.611,0,0,1-3.814,7.606c-1.26,2.018-2.606,3.984-3.926,5.965-.4.607-.841,1.194-1.276,1.78a2.9,2.9,0,0,1-4.7,0,100.051,100.051,0,0,1-6.085-9.21,35.769,35.769,0,0,1-2.981-6.29,9.8,9.8,0,0,1-.6-3.961,12.187,12.187,0,0,1,1.262-4.6A12.047,12.047,0,0,1,41.963.053L42.456,0Zm-.682,6.8a5.005,5.005,0,1,0,5,5.032,5.013,5.013,0,0,0-5-5.032"
+            transform="translate(-22.561)"
+          />
+          <path
+            id="Path_15819"
+            data-name="Path 15819"
+            d="M0,97.983a10.259,10.259,0,0,1,.329-1.2A5.354,5.354,0,0,1,1.952,94.7a13.667,13.667,0,0,1,3.976-2.189,29.411,29.411,0,0,1,4.994-1.37.312.312,0,0,1,.264.087c.667,1.016,1.323,2.04,2,3.1l-.8.139a26.644,26.644,0,0,0-6.035,1.692,8.371,8.371,0,0,0-2.2,1.287,2.811,2.811,0,0,0-.429.47.649.649,0,0,0,0,.878,3.9,3.9,0,0,0,1.288,1.073,18.328,18.328,0,0,0,4.947,1.866,38.312,38.312,0,0,0,5.747.932,49.078,49.078,0,0,0,6.5.192c1.588-.065,3.177-.178,4.756-.357a29.056,29.056,0,0,0,7.184-1.682,9.379,9.379,0,0,0,2.827-1.543,3.377,3.377,0,0,0,.541-.638.537.537,0,0,0,0-.583,2.757,2.757,0,0,0-.962-.954,12.819,12.819,0,0,0-3.144-1.484A30.651,30.651,0,0,0,28.2,94.366c-.067-.01-.133-.027-.231-.047.228-.346.446-.672.66-1,.443-.683.886-1.365,1.32-2.053a.243.243,0,0,1,.293-.137,25.877,25.877,0,0,1,7.013,2.281,9.2,9.2,0,0,1,2.7,2,4.387,4.387,0,0,1,1.183,2.49.32.32,0,0,0,.033.082v.732a9.362,9.362,0,0,1-.33,1.2,6.14,6.14,0,0,1-2.368,2.653,16.464,16.464,0,0,1-4.257,1.991,36.707,36.707,0,0,1-6.6,1.433,50.739,50.739,0,0,1-5.3.415c-.119,0-.238.025-.357.038h-2.7a.748.748,0,0,0-.129-.029c-.95-.05-1.9-.064-2.849-.155-1.436-.139-2.872-.3-4.3-.511a29.644,29.644,0,0,1-5.669-1.413A14.054,14.054,0,0,1,2,102.045,5.13,5.13,0,0,1,.119,99.289C.074,99.1.04,98.906,0,98.715v-.732"
+            transform="translate(0 -66.106)"
+          />
+        </svg>
+      );
+    case "growth":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="37.333"
+          height="39.641"
+          viewBox="0 0 37.333 39.641"
+        >
+          <g
+            id="Group_23888"
+            data-name="Group 23888"
+            transform="translate(0.001)"
+          >
+            <path
+              id="Path_15814"
+              data-name="Path 15814"
+              d="M82.376,57.1H73.5V46.967c0-3.512-.036-7.024.031-10.534a3.134,3.134,0,0,1,.683-2c2.475-2.488,5.051-4.876,7.6-7.289.1-.1.291-.1.56-.191Z"
+              transform="translate(-48.084 -17.635)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15815"
+              data-name="Path 15815"
+              d="M40.987,58.634,45.114,63.1l3.975-4.888.51.345a10.613,10.613,0,0,1,.151,1.267c.01,5.411-.027,10.821.032,16.231.014,1.274-.352,1.734-1.661,1.668-2.009-.1-4.028-.056-6.042-.015-.922.019-1.371-.245-1.365-1.26.032-5.7.02-11.4.032-17.094a3.38,3.38,0,0,1,.242-.717"
+              transform="translate(-26.637 -38.084)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15816"
+              data-name="Path 15816"
+              d="M16.367,75.038H7.509c0-3.937-.012-7.724.019-11.51a1.659,1.659,0,0,1,.432-1.072c2.7-2.632,5.438-5.231,8.407-8.072Z"
+              transform="translate(-4.912 -35.582)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15817"
+              data-name="Path 15817"
+              d="M2.028,24.413,0,22.888,12.263,10.754l5.847,6.08L31.962,2.978,30.708,1.551,37.332,0,35.979,6.718,34.186,5.262,18.518,21.03,12.17,14.28,2.028,24.413"
+              fill="#fff"
+            />
+          </g>
+        </svg>
+      );
+    case "rullingFamily":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="35.077"
+          height="36.841"
+          viewBox="0 0 35.077 36.841"
+        >
+          <g
+            id="Group_23891"
+            data-name="Group 23891"
+            transform="translate(0 0)"
+          >
+            <path
+              id="Path_15823"
+              data-name="Path 15823"
+              d="M17.666,36.814c-5.353,0-10.707-.035-16.059.026-1.257.014-1.685-.364-1.6-1.486.136-1.7.2-3.4.289-5.1a5.7,5.7,0,0,1,3.132-4.772c.722-.423,1.514-.753,2.194-1.224a1.147,1.147,0,0,0,.467-.971c-1.895-6.2-.408-12,2.388-17.644.089-.18.294-.357.282-.526-.173-2.533,2.452-2.785,3.886-3.893C14.341-.082,16.622-.1,18.8.086a9.017,9.017,0,0,1,5.75,2.595,4.315,4.315,0,0,0,.83.486c.2.123.515.225.578.4,1.09,3.011,2.238,6.007,3.192,9.056a17.191,17.191,0,0,1-.159,10.558c-.213.668-.015.954.59,1.175.2.072.381.18.574.265,3.113,1.366,4.8,3.592,4.835,6.83.014,1.388.015,2.777.088,4.162.049.935-.338,1.228-1.348,1.22-5.353-.04-10.706-.019-16.059-.018m3.463-19.591c1.908-1.232,3.9-2.38,4.158-4.895.161-1.555-.846-2.584-2.535-2.711A24.044,24.044,0,0,1,17.621,8.8a6.448,6.448,0,0,0-7.153,1.734,2.258,2.258,0,0,0-.6,2.066c.354,2.388,2.334,3.429,4.115,4.637,2.589-1.664,4.4-1.661,7.143-.014M8.62,9.354l.462.3a1.619,1.619,0,0,1,.235-.433A8.247,8.247,0,0,1,18.4,7.288a12.058,12.058,0,0,0,3.605.66c1.581.019,3.037.114,4.241,1.292a20.783,20.783,0,0,0-1.8-3.668,1.938,1.938,0,0,0-1.393-.66c-3.713-.048-7.426-.028-11.139,0-.37,0-.934.119-1.075.353C10.046,6.6,9.35,7.987,8.62,9.354M26.995,23.227c1.677-3.582,1.447-8.289-.307-9.69-.913,1.859-1.784,3.78-2.792,5.636a2.328,2.328,0,0,0,1.47,3.538l1.629.516M8.382,13.546c-1.727,1.461-1.94,6.54-.255,9.656.584-.176,1.184-.35,1.777-.539a2.616,2.616,0,0,0,1.527-3.084c-.992-2.036-2.041-4.048-3.049-6.034m13.977,8.261a35.677,35.677,0,0,1-4.932.623,33.45,33.45,0,0,1-4.756-.7c-.608,1.351-.548,1.729,1,2.538a8.081,8.081,0,0,0,7.71.032c1.588-.8,1.642-1.185.981-2.491m.3-18.31c-2.326-2.45-8.509-2.216-10.124,0Zm-5,16.135a1.879,1.879,0,0,0,.745.067,5.319,5.319,0,0,0,.942-.569,3.239,3.239,0,0,0-.621-.762,1.54,1.54,0,0,0-.852-.157c-.768.028-1.9-.2-1.958.781-.066,1.162,1.088.56,1.745.64"
+              fill="#fff"
+            />
+          </g>
+        </svg>
+      );
+    case "tourism":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36.298"
+          height="32.343"
+          viewBox="0 0 36.298 32.343"
+        >
+          <g
+            id="Group_23889"
+            data-name="Group 23889"
+            transform="translate(-7.318 -9.681)"
+          >
+            <path
+              id="Path_15821"
+              data-name="Path 15821"
+              d="M30.168,32.054c-1.059-1.246-2.1-2.47-3.139-3.692q-2.671-3.139-5.341-6.281a4.213,4.213,0,0,1-.568-.858,1.26,1.26,0,0,1,1.772-1.633q2.21,1.122,4.416,2.251c.614.313,1.233.618,1.839.946a.509.509,0,0,0,.618-.009,4.76,4.76,0,0,1,.554-.324.668.668,0,0,1,.948.149.706.706,0,0,1-.184.976l-.141.12c.683.351,1.341.689,2,1.026,1.408.719,2.821,1.428,4.222,2.161a.592.592,0,0,0,.676-.036,43.008,43.008,0,0,1,6.644-3.513,10.553,10.553,0,0,1,4-.945,2.655,2.655,0,0,1,1.93.7,1.638,1.638,0,0,1,.453,1.823,5.5,5.5,0,0,1-1.318,1.972A24.97,24.97,0,0,1,45.31,30.3,100.439,100.439,0,0,1,33.7,36.924c-3.526,1.744-7.1,3.391-10.659,5.063a1.141,1.141,0,0,0-.763.9c-.186,1.027-.454,2.04-.693,3.057a1.29,1.29,0,0,1-1.219,1.064.431.431,0,0,1-.5-.369c-.248-.879-.544-1.745-.81-2.621a11.689,11.689,0,0,0-2.643-4.477c-.521-.572-1.032-1.153-1.57-1.708a.424.424,0,0,1-.068-.593,1.278,1.278,0,0,1,1.575-.555c1.8.545,3.588,1.1,5.386,1.637a.613.613,0,0,0,.477-.051q3.922-3.036,7.825-6.1c.037-.028.07-.063.137-.123"
+              transform="translate(-7.36 -9.737)"
+            />
+            <path
+              id="Path_15822"
+              data-name="Path 15822"
+              d="M48.99,41.617c-.122,2.16.119,5.137,0,7.243a2.462,2.462,0,0,1,.285-.023.684.684,0,0,1,.469,1.182.473.473,0,0,1-.172.125c-.61.2-.72.656-.744,1.237-.075,1.877-.2,3.753-.3,5.629a1.382,1.382,0,0,1-1.174,1.4,1.07,1.07,0,0,1-1.225-.651,16.156,16.156,0,0,1-.623-1.628c-.989-2.875-2.325-6.655-3.321-9.529a.423.423,0,0,1,.208-.6c2.123-1.4,4.233-2.823,6.347-4.237.056-.037.115-.071.247-.152"
+              transform="translate(-15.386 -16.401)"
+            />
+          </g>
+        </svg>
+      );
+    case "info":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36.873"
+          height="40.18"
+          viewBox="0 0 36.873 40.18"
+        >
+          <g id="Group_23886" data-name="Group 23886" transform="translate(0)">
+            <path
+              id="Path_15824"
+              data-name="Path 15824"
+              d="M18.419,40.18v-6.6a41.653,41.653,0,0,1-4.481-.639C7.861,31.407,3.261,28.036.948,22.019A15.692,15.692,0,0,1,5.715,4.632,18.963,18.963,0,0,1,19.744.079c7.475.677,13.225,4.15,16.069,11.383,1.924,4.895,1.093,9.673-1.409,14.194-2.844,5.137-7.127,8.87-11.944,12.058-1.254.83-2.568,1.57-4.042,2.466M16.427,25.206h3.961v-11.5H16.427Zm1.952-14.85c1.442.006,2.282-.717,2.272-1.956-.01-1.221-.8-1.928-2.167-1.943-1.487-.016-2.3.646-2.313,1.883-.013,1.271.8,2.01,2.207,2.016"
+            />
+          </g>
+        </svg>
+      );
+    case "link":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="33.257"
+          height="33.199"
+          viewBox="0 0 33.257 33.199"
+        >
+          <g
+            id="Group_23892"
+            data-name="Group 23892"
+            transform="translate(0 0)"
+          >
+            <path
+              id="Path_15788"
+              data-name="Path 15788"
+              d="M8.477,41.648A8.26,8.26,0,0,1,.7,36.537,8.2,8.2,0,0,1,2.527,27.27c1.933-2.035,3.94-4,5.95-5.962a8.426,8.426,0,0,1,11.552-.284,2.17,2.17,0,0,1,.41,3.175,2.065,2.065,0,0,1-3.108.046,4.21,4.21,0,0,0-6.082.224q-2.88,2.846-5.724,5.726a4.231,4.231,0,0,0,2.489,7.261,4.1,4.1,0,0,0,3.474-1.278c.914-.9,1.808-1.816,2.722-2.713a2.1,2.1,0,0,1,3.178-.186,2.125,2.125,0,0,1-.195,3.128c-1.115,1.119-2.217,2.258-3.4,3.3a7.8,7.8,0,0,1-5.317,1.94"
+              transform="translate(0 -8.449)"
+            />
+            <path
+              id="Path_15789"
+              data-name="Path 15789"
+              d="M28.826,22.775A8.3,8.3,0,0,1,23.166,20.6a2.109,2.109,0,1,1,2.737-3.18,4.193,4.193,0,0,0,6.075-.213c1.938-1.919,3.889-3.825,5.777-5.793A4.194,4.194,0,0,0,35.713,4.3,4.06,4.06,0,0,0,31.75,5.488c-.914.9-1.808,1.817-2.723,2.715a2.189,2.189,0,0,1-3.191.18A2.2,2.2,0,0,1,26.06,5.24c.995-1.01,1.961-2.055,3.023-2.991A8.394,8.394,0,0,1,41,14.057c-2.153,2.384-4.5,4.6-6.842,6.8a7.541,7.541,0,0,1-5.329,1.917"
+              transform="translate(-9.971)"
+            />
+          </g>
+        </svg>
+      );
     case "accountCircle":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="15.922" height="15.922" viewBox="0 0 15.922 15.922">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="15.922"
+          height="15.922"
+          viewBox="0 0 15.922 15.922"
+        >
           <path
             id="account_circle_FILL0_wght400_GRAD0_opsz48"
             d="M82.826,188.439a11.462,11.462,0,0,1,2.488-1.343,7.406,7.406,0,0,1,2.647-.468,7.487,7.487,0,0,1,2.657.468,11.371,11.371,0,0,1,2.5,1.343,6.987,6.987,0,0,0,1.244-2.169,7.193,7.193,0,0,0,.368-2.309,6.767,6.767,0,1,0-13.534,0,7.02,7.02,0,0,0,.378,2.309A7.162,7.162,0,0,0,82.826,188.439Zm5.131-3.881a2.691,2.691,0,1,1,1.94-.786A2.626,2.626,0,0,1,87.957,184.558Zm.013,7.364a7.726,7.726,0,0,1-3.094-.627,8.033,8.033,0,0,1-4.249-4.245,7.939,7.939,0,0,1,0-6.184,8.06,8.06,0,0,1,4.244-4.239,7.939,7.939,0,0,1,6.184,0,8.073,8.073,0,0,1,4.239,4.24,7.926,7.926,0,0,1,0,6.179,8.046,8.046,0,0,1-4.24,4.249A7.66,7.66,0,0,1,87.97,191.922Zm-.009-1.194a7.3,7.3,0,0,0,2.14-.318,6.358,6.358,0,0,0,2.06-1.115,8.662,8.662,0,0,0-2.07-1.095,6.185,6.185,0,0,0-4.259,0,8.662,8.662,0,0,0-2.07,1.095,6.358,6.358,0,0,0,2.06,1.115A7.3,7.3,0,0,0,87.961,190.728Zm0-7.364a1.466,1.466,0,1,0-1.1-.428A1.495,1.495,0,0,0,87.961,183.364ZM87.961,181.831ZM87.961,189.275Z"
@@ -18,7 +296,12 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
       );
     case "exclamationError":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="15.998" height="15.998" viewBox="0 0 15.998 15.998">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="15.998"
+          height="15.998"
+          viewBox="0 0 15.998 15.998"
+        >
           <path
             id="Path_15773"
             data-name="Path 15773"
@@ -29,16 +312,44 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
       );
     case "positiveTickGreen":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-          <g id="Group_23885" data-name="Group 23885" transform="translate(-662.031 -1707.027)">
-            <circle id="Ellipse_189" data-name="Ellipse 189" cx="8" cy="8" r="8" transform="translate(662.031 1707.027)" fill="#28a909" />
-            <path id="Path_15901" data-name="Path 15901" d="M-23968.141-21742.1l-2.352-2.355,1-1,1.35,1.352,3.316-3.316,1,1Z" transform="translate(24637.188 23459.777)" fill="#fff" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+        >
+          <g
+            id="Group_23885"
+            data-name="Group 23885"
+            transform="translate(-662.031 -1707.027)"
+          >
+            <circle
+              id="Ellipse_189"
+              data-name="Ellipse 189"
+              cx="8"
+              cy="8"
+              r="8"
+              transform="translate(662.031 1707.027)"
+              fill="#28a909"
+            />
+            <path
+              id="Path_15901"
+              data-name="Path 15901"
+              d="M-23968.141-21742.1l-2.352-2.355,1-1,1.35,1.352,3.316-3.316,1,1Z"
+              transform="translate(24637.188 23459.777)"
+              fill="#fff"
+            />
           </g>
         </svg>
       );
     case "bakery":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="22.864" height="20.417" viewBox="0 0 22.864 20.417">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22.864"
+          height="20.417"
+          viewBox="0 0 22.864 20.417"
+        >
           <g id="bread" transform="translate(0 -27.4)">
             <g id="Page-1_4_" transform="translate(0 27.4)">
               <g id="_x30_05---Bread-Loaf" transform="translate(0 0)">
@@ -91,12 +402,36 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
       );
     case "butchery":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.675" viewBox="0 0 22 21.675">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="21.675"
+          viewBox="0 0 22 21.675"
+        >
           <g id="chop" transform="translate(0 -3.783)">
-            <g id="Group_13220" data-name="Group 13220" transform="translate(4.278 4.146)">
-              <path id="Path_10291" data-name="Path 10291" d="M102.547,13.1a.827.827,0,0,1-.04.264l-1.113,3.562H99.563l1.272-4.082a.876.876,0,0,1,1.712.256Z" transform="translate(-99.563 -12.229)" />
-              <path id="Path_10292" data-name="Path 10292" d="M216.377,13.106a.921.921,0,0,1-.04.26l-1.113,3.562H213.39l1.275-4.082a.876.876,0,0,1,1.712.26Z" transform="translate(-208.499 -12.233)" />
-              <path id="Path_10293" data-name="Path 10293" d="M337.937,13.1a.827.827,0,0,1-.04.264l-1.113,3.562h-1.831l1.272-4.082a.876.876,0,0,1,1.712.256Z" transform="translate(-324.839 -12.229)" />
+            <g
+              id="Group_13220"
+              data-name="Group 13220"
+              transform="translate(4.278 4.146)"
+            >
+              <path
+                id="Path_10291"
+                data-name="Path 10291"
+                d="M102.547,13.1a.827.827,0,0,1-.04.264l-1.113,3.562H99.563l1.272-4.082a.876.876,0,0,1,1.712.256Z"
+                transform="translate(-99.563 -12.229)"
+              />
+              <path
+                id="Path_10292"
+                data-name="Path 10292"
+                d="M216.377,13.106a.921.921,0,0,1-.04.26l-1.113,3.562H213.39l1.275-4.082a.876.876,0,0,1,1.712.26Z"
+                transform="translate(-208.499 -12.233)"
+              />
+              <path
+                id="Path_10293"
+                data-name="Path 10293"
+                d="M337.937,13.1a.827.827,0,0,1-.04.264l-1.113,3.562h-1.831l1.272-4.082a.876.876,0,0,1,1.712.256Z"
+                transform="translate(-324.839 -12.229)"
+              />
             </g>
             <path
               id="Path_10294"
@@ -104,7 +439,11 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
               d="M135.493,121.5h2.395l-2.745,7.651a8.313,8.313,0,0,0-.2,4.989l0,.014a4.323,4.323,0,0,0,1.582,2.326l.639.48a3.966,3.966,0,0,0,2.384.795h-4.9a3.966,3.966,0,0,1-2.384-.795l-.639-.48a4.323,4.323,0,0,1-1.582-2.326l0-.014a8.312,8.312,0,0,1,.2-4.989l2.745-7.651Z"
               transform="translate(-124.178 -112.663)"
             />
-            <g id="Group_13221" data-name="Group 13221" transform="translate(11.904 10.286)">
+            <g
+              id="Group_13221"
+              data-name="Group 13221"
+              transform="translate(11.904 10.286)"
+            >
               <path
                 id="Path_10295"
                 data-name="Path 10295"
@@ -130,7 +469,11 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
               d="M12.864,136.774a4.719,4.719,0,0,1-1.711-2.521,8.463,8.463,0,0,1-.3-1.869l.722-.036a7.7,7.7,0,0,0,.272,1.7,4,4,0,0,0,1.45,2.15l.643.48a3.624,3.624,0,0,0,2.167.722v.361h2.45a3.966,3.966,0,0,1-2.384-.795l-.639-.48a4.323,4.323,0,0,1-1.582-2.326l0-.014a8.312,8.312,0,0,1,.2-4.989l2.745-7.651H11.675L8.93,129.155a8.313,8.313,0,0,0-.2,4.989l0,.014a4.323,4.323,0,0,0,1.582,2.326l.639.48a3.966,3.966,0,0,0,2.384.795H14.38a4.3,4.3,0,0,1-.873-.506Z"
               transform="translate(-8.08 -112.663)"
             />
-            <g id="Group_13222" data-name="Group 13222" transform="translate(2.771 10.63)">
+            <g
+              id="Group_13222"
+              data-name="Group 13222"
+              transform="translate(2.771 10.63)"
+            >
               <path
                 id="Path_10299"
                 data-name="Path 10299"
@@ -138,8 +481,21 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                 transform="translate(-64.497 -364.828)"
                 fill="#d32144"
               />
-              <rect id="Rectangle_1452" data-name="Rectangle 1452" width="3.814" height="0.722" transform="translate(2.467 2.393) rotate(109.689)" fill="#d32144" />
-              <path id="Path_10300" data-name="Path 10300" d="M116.3,164.391l-.679-.247.364-1.01.68.244Z" transform="translate(-113.423 -163.134)" fill="#d32144" />
+              <rect
+                id="Rectangle_1452"
+                data-name="Rectangle 1452"
+                width="3.814"
+                height="0.722"
+                transform="translate(2.467 2.393) rotate(109.689)"
+                fill="#d32144"
+              />
+              <path
+                id="Path_10300"
+                data-name="Path 10300"
+                d="M116.3,164.391l-.679-.247.364-1.01.68.244Z"
+                transform="translate(-113.423 -163.134)"
+                fill="#d32144"
+              />
               <path
                 id="Path_10301"
                 data-name="Path 10301"
@@ -162,8 +518,21 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
               transform="translate(0)"
               fill="#fff"
             />
-            <rect id="Rectangle_1453" data-name="Rectangle 1453" width="3.814" height="0.722" transform="translate(5.239 13.024) rotate(109.707)" fill="#fff" />
-            <path id="Path_10304" data-name="Path 10304" d="M116.665,163.378l-.68-.244-.364,1.01.679.247Z" transform="translate(-110.652 -152.504)" fill="#fff" />
+            <rect
+              id="Rectangle_1453"
+              data-name="Rectangle 1453"
+              width="3.814"
+              height="0.722"
+              transform="translate(5.239 13.024) rotate(109.707)"
+              fill="#fff"
+            />
+            <path
+              id="Path_10304"
+              data-name="Path 10304"
+              d="M116.665,163.378l-.68-.244-.364,1.01.679.247Z"
+              transform="translate(-110.652 -152.504)"
+              fill="#fff"
+            />
             <path
               id="Path_10305"
               data-name="Path 10305"
@@ -197,7 +566,12 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
       );
     case "fish":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="21.019" height="21.02" viewBox="0 0 21.019 21.02">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="21.019"
+          height="21.02"
+          viewBox="0 0 21.019 21.02"
+        >
           <g id="fish" transform="translate(-0.011 0)">
             <path
               id="Path_10309"
@@ -225,7 +599,12 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
       );
     case "pig":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="25.667" height="15.112" viewBox="0 0 25.667 15.112">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25.667"
+          height="15.112"
+          viewBox="0 0 25.667 15.112"
+        >
           <g id="pig-silhouette" transform="translate(0 -3.358)">
             <path
               id="Path_267"
@@ -238,9 +617,28 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
       );
     case "pricing":
       return (
-        <svg id="dollar_1_" data-name="dollar(1)" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
-          <path id="Path_15523" data-name="Path 15523" d="M6,0A6,6,0,1,1,0,6,6,6,0,0,1,6,0Z" />
-          <circle id="Ellipse_174" data-name="Ellipse 174" cx="5.085" cy="5.085" r="5.085" transform="translate(0.915 0.915)" fill="#efcc08" />
+        <svg
+          id="dollar_1_"
+          data-name="dollar(1)"
+          xmlns="http://www.w3.org/2000/svg"
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+        >
+          <path
+            id="Path_15523"
+            data-name="Path 15523"
+            d="M6,0A6,6,0,1,1,0,6,6,6,0,0,1,6,0Z"
+          />
+          <circle
+            id="Ellipse_174"
+            data-name="Ellipse 174"
+            cx="5.085"
+            cy="5.085"
+            r="5.085"
+            transform="translate(0.915 0.915)"
+            fill="#efcc08"
+          />
           <path
             id="Icon_metro-dollar2"
             data-name="Icon metro-dollar2"
@@ -251,7 +649,12 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
       );
     case "shisha":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="18.181" height="23.271" viewBox="0 0 18.181 23.271">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18.181"
+          height="23.271"
+          viewBox="0 0 18.181 23.271"
+        >
           <g id="hookah" transform="translate(-56 0)">
             <path
               id="Path_252"
@@ -267,8 +670,19 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
               transform="translate(-99.273 0)"
               fill="#fff"
             />
-            <circle id="Ellipse_115" data-name="Ellipse 115" transform="translate(65.09 15.878)" fill="#fff" />
-            <path id="Path_254" data-name="Path 254" d="M216.328,264.294V264h-3.636v.294l-.158.394,1.976,1.411,1.976-1.411Z" transform="translate(-149.419 -252.001)" fill="#fff" />
+            <circle
+              id="Ellipse_115"
+              data-name="Ellipse 115"
+              transform="translate(65.09 15.878)"
+              fill="#fff"
+            />
+            <path
+              id="Path_254"
+              data-name="Path 254"
+              d="M216.328,264.294V264h-3.636v.294l-.158.394,1.976,1.411,1.976-1.411Z"
+              transform="translate(-149.419 -252.001)"
+              fill="#fff"
+            />
             <path
               id="Path_255"
               data-name="Path 255"
@@ -283,14 +697,29 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
               transform="translate(0 -236.728)"
               fill="#fff"
             />
-            <path id="Path_257" data-name="Path 257" d="M120.062,480a1.091,1.091,0,0,0,1.029,1.454h10.181A1.091,1.091,0,0,0,132.3,480Z" transform="translate(-61.091 -458.183)" fill="#fff" />
+            <path
+              id="Path_257"
+              data-name="Path 257"
+              d="M120.062,480a1.091,1.091,0,0,0,1.029,1.454h10.181A1.091,1.091,0,0,0,132.3,480Z"
+              transform="translate(-61.091 -458.183)"
+              fill="#fff"
+            />
           </g>
         </svg>
       );
     case "delivery":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28.015" height="24.271" viewBox="0 0 28.015 24.271">
-          <g id="Group_628" data-name="Group 628" transform="translate(0.5 0.5)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28.015"
+          height="24.271"
+          viewBox="0 0 28.015 24.271"
+        >
+          <g
+            id="Group_628"
+            data-name="Group 628"
+            transform="translate(0.5 0.5)"
+          >
             <path
               id="Path_234"
               data-name="Path 234"
@@ -395,8 +824,17 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
       );
     case "takeAway":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="26.573" height="26.573" viewBox="0 0 26.573 26.573">
-          <g id="Group_665" data-name="Group 665" transform="translate(0.5 0.5)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="26.573"
+          height="26.573"
+          viewBox="0 0 26.573 26.573"
+        >
+          <g
+            id="Group_665"
+            data-name="Group 665"
+            transform="translate(0.5 0.5)"
+          >
             <g id="te5P22">
               <g id="Group_624" data-name="Group 624" transform="translate(0)">
                 <path
@@ -419,7 +857,11 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                 />
               </g>
             </g>
-            <g id="Group_625" data-name="Group 625" transform="translate(3.25 9.1)">
+            <g
+              id="Group_625"
+              data-name="Group 625"
+              transform="translate(3.25 9.1)"
+            >
               <path
                 id="Path_219"
                 data-name="Path 219"
@@ -498,8 +940,17 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
       );
     case "inDine":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="33.618" height="23.112" viewBox="0 0 33.618 23.112">
-          <g id="Group_627" data-name="Group 627" transform="translate(0.501 0.5)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="33.618"
+          height="23.112"
+          viewBox="0 0 33.618 23.112"
+        >
+          <g
+            id="Group_627"
+            data-name="Group 627"
+            transform="translate(0.501 0.5)"
+          >
             <path
               id="Path_227"
               data-name="Path 227"
@@ -568,7 +1019,13 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
       );
     case "alcoholBeverage":
       return (
-        <svg id="wine" xmlns="http://www.w3.org/2000/svg" width="17.429" height="23.271" viewBox="0 0 17.429 23.271">
+        <svg
+          id="wine"
+          xmlns="http://www.w3.org/2000/svg"
+          width="17.429"
+          height="23.271"
+          viewBox="0 0 17.429 23.271"
+        >
           <path
             id="Path_247"
             data-name="Path 247"
@@ -576,7 +1033,13 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
             transform="translate(-278.976 -168.7)"
             fill="#fff"
           />
-          <path id="Path_248" data-name="Path 248" d="M116.751.682A.682.682,0,0,0,116.069,0h-2.921a.682.682,0,0,0-.682.682v3.7h4.285Z" transform="translate(-110.275)" fill="#fff" />
+          <path
+            id="Path_248"
+            data-name="Path 248"
+            d="M116.751.682A.682.682,0,0,0,116.069,0h-2.921a.682.682,0,0,0-.682.682v3.7h4.285Z"
+            transform="translate(-110.275)"
+            fill="#fff"
+          />
           <path
             id="Path_249"
             data-name="Path 249"
@@ -584,21 +1047,38 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
             transform="translate(-64.266 -120.655)"
             fill="#fff"
           />
-          <path id="Path_250" data-name="Path 250" d="M158.533,271h4.382v3.748h-4.382Z" transform="translate(-154.248 -258.682)" fill="#fff" />
-          <path id="Path_251" data-name="Path 251" d="M158.533,383.467h4.382v1.558h-4.382Z" transform="translate(-154.248 -366.038)" fill="#fff" />
+          <path
+            id="Path_250"
+            data-name="Path 250"
+            d="M158.533,271h4.382v3.748h-4.382Z"
+            transform="translate(-154.248 -258.682)"
+            fill="#fff"
+          />
+          <path
+            id="Path_251"
+            data-name="Path 251"
+            d="M158.533,383.467h4.382v1.558h-4.382Z"
+            transform="translate(-154.248 -366.038)"
+            fill="#fff"
+          />
         </svg>
       );
     case "featherHeart":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="12.95" height="11.487" viewBox="0 0 12.95 11.487">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="12.95"
+          height="11.487"
+          viewBox="0 0 12.95 11.487"
+        >
           <path
             id="Icon_feather-heart"
             data-name="Icon feather-heart"
             d="M12.89,5.38a3.013,3.013,0,0,0-4.262,0l-.581.581L7.467,5.38A3.013,3.013,0,0,0,3.206,9.642l.581.581,4.262,4.262,4.262-4.262.581-.581a3.013,3.013,0,0,0,0-4.262Z"
             transform="translate(-1.573 -3.747)"
-            fill="none"
-            stroke="#000"
-            strokeLinecap="round"
+            fill={color ? color : "#fff"}
+            stroke={color ? color : "#000"}
+            strokelinecap-="round"
             strokeLinejoin="round"
             strokeWidth="1.5"
           />
@@ -606,7 +1086,12 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
       );
     case "arrowRight":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox={`0 0 4.839 8.295`}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width={width ? width : "4.839"}
+          height={height ? height : "8.295"}
+          viewBox={`0 0 4.839 8.295`}
+        >
           <path
             id="Icon_ionic-ios-arrow-forward"
             data-name="Icon ionic-ios-arrow-forward"
@@ -616,9 +1101,31 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
           />
         </svg>
       );
+    case "arrowLeft":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="6.637"
+          height="11.428"
+          viewBox="0 0 6.637 11.428"
+        >
+          <path
+            id="dropdown"
+            d="M5.714,0a1.054,1.054,0,0,0-.8.332L.343,4.756a1.046,1.046,0,0,0,0,1.549,1.13,1.13,0,0,0,1.6,0l3.771-3.65L9.485,6.3a1.13,1.13,0,0,0,1.6,0,1.046,1.046,0,0,0,0-1.549L6.514.332A1.054,1.054,0,0,0,5.714,0Z"
+            transform="translate(0 11.428) rotate(-90)"
+            fill="#fff"
+          />
+        </svg>
+      );
     case "arrowDown":
       return (
-        <svg id="dropdown" xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox={`0 0 4.839 8.295`}>
+        <svg
+          id="dropdown"
+          xmlns="http://www.w3.org/2000/svg"
+          width={width ? width : "4.839"}
+          height={height ? height : "8.295"}
+          viewBox={`0 0 4.839 8.295`}
+        >
           <path
             id="sort-down-arrow-black"
             d="M3.333,4a.605.605,0,0,1-.467-.2L.2,1.133A.644.644,0,0,1,.2.2a.644.644,0,0,1,.933,0l2.2,2.2L5.533.2a.644.644,0,0,1,.933,0,.644.644,0,0,1,0,.933L3.8,3.8A.605.605,0,0,1,3.333,4Z"
@@ -629,11 +1136,33 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
       );
     case "silhouette":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="15.116" height="14.086" viewBox="0 0 15.116 14.086">
-          <g id="home-icon-silhouette_1_" data-name="home-icon-silhouette(1)" transform="translate(-0.001 -16.827)">
-            <path id="Path_10768" data-name="Path 10768" d="M0,0H3.791V3.864H0Z" transform="translate(5.799 27.049)" />
-            <g id="Group_15041" data-name="Group 15041" transform="translate(0.001 16.827)">
-              <g id="Group_15040" data-name="Group 15040" transform="translate(0 0)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="15.116"
+          height="14.086"
+          viewBox="0 0 15.116 14.086"
+        >
+          <g
+            id="home-icon-silhouette_1_"
+            data-name="home-icon-silhouette(1)"
+            transform="translate(-0.001 -16.827)"
+          >
+            <path
+              id="Path_10768"
+              data-name="Path 10768"
+              d="M0,0H3.791V3.864H0Z"
+              transform="translate(5.799 27.049)"
+            />
+            <g
+              id="Group_15041"
+              data-name="Group 15041"
+              transform="translate(0.001 16.827)"
+            >
+              <g
+                id="Group_15040"
+                data-name="Group 15040"
+                transform="translate(0 0)"
+              >
                 <path
                   id="Path_10766"
                   data-name="Path 10766"
@@ -660,7 +1189,12 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
       );
     case "redo":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="16.886" height="7.428" viewBox="0 0 16.886 7.428">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16.886"
+          height="7.428"
+          viewBox="0 0 16.886 7.428"
+        >
           <path
             id="Icon_material-redo"
             data-name="Icon material-redo"
@@ -672,9 +1206,22 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
 
     case "dollar":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="13.893" height="14.178" viewBox="0 0 13.893 14.178">
-          <g id="percentage_1_" data-name="percentage(1)" transform="translate(-3.525 1.424)">
-            <g id="Group_19045" data-name="Group 19045" transform="translate(3.525 -1.424)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="13.893"
+          height="14.178"
+          viewBox="0 0 13.893 14.178"
+        >
+          <g
+            id="percentage_1_"
+            data-name="percentage(1)"
+            transform="translate(-3.525 1.424)"
+          >
+            <g
+              id="Group_19045"
+              data-name="Group 19045"
+              transform="translate(3.525 -1.424)"
+            >
               <path
                 id="Path_11624"
                 data-name="Path 11624"
@@ -695,7 +1242,14 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
 
     case "share":
       return (
-        <svg id="Share_icon" data-name="Share icon" xmlns="http://www.w3.org/2000/svg" width="17.031" height="13.472" viewBox="0 0 17.031 13.472">
+        <svg
+          id="Share_icon"
+          data-name="Share icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="17.031"
+          height="13.472"
+          viewBox="0 0 17.031 13.472"
+        >
           <g id="Group_286" data-name="Group 286">
             <path
               id="Path_125"
@@ -715,21 +1269,64 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
 
     case "more":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="2.697" height="10.584" viewBox="0 0 2.697 10.584">
-          <g id="Icon_ionic-ios-more" data-name="Icon ionic-ios-more" transform="translate(2.697) rotate(90)">
-            <path id="Path_11621" data-name="Path 11621" d="M1.348,0A1.348,1.348,0,1,0,2.7,1.348,1.348,1.348,0,0,0,1.348,0Z" transform="translate(3.943)" />
-            <path id="Path_11622" data-name="Path 11622" d="M1.348,0A1.348,1.348,0,1,0,2.7,1.348,1.348,1.348,0,0,0,1.348,0Z" />
-            <path id="Path_11623" data-name="Path 11623" d="M1.348,0A1.348,1.348,0,1,0,2.7,1.348,1.348,1.348,0,0,0,1.348,0Z" transform="translate(7.887)" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="2.697"
+          height="10.584"
+          viewBox="0 0 2.697 10.584"
+        >
+          <g
+            id="Icon_ionic-ios-more"
+            data-name="Icon ionic-ios-more"
+            transform="translate(2.697) rotate(90)"
+          >
+            <path
+              id="Path_11621"
+              data-name="Path 11621"
+              d="M1.348,0A1.348,1.348,0,1,0,2.7,1.348,1.348,1.348,0,0,0,1.348,0Z"
+              transform="translate(3.943)"
+            />
+            <path
+              id="Path_11622"
+              data-name="Path 11622"
+              d="M1.348,0A1.348,1.348,0,1,0,2.7,1.348,1.348,1.348,0,0,0,1.348,0Z"
+            />
+            <path
+              id="Path_11623"
+              data-name="Path 11623"
+              d="M1.348,0A1.348,1.348,0,1,0,2.7,1.348,1.348,1.348,0,0,0,1.348,0Z"
+              transform="translate(7.887)"
+            />
           </g>
         </svg>
       );
 
     case "alreadyLiked":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 42 42">
-          <g id="Group_23601" data-name="Group 23601" transform="translate(-905.217 -1775.117)">
-            <g id="Component_495_5" data-name="Component 495 – 5" transform="translate(905.217 1775.117)">
-              <rect id="Rectangle_2684" data-name="Rectangle 2684" width="42" height="42" rx="4" transform="translate(42 42) rotate(180)" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="35"
+          height="35"
+          viewBox="0 0 42 42"
+        >
+          <g
+            id="Group_23601"
+            data-name="Group 23601"
+            transform="translate(-905.217 -1775.117)"
+          >
+            <g
+              id="Component_495_5"
+              data-name="Component 495 – 5"
+              transform="translate(905.217 1775.117)"
+            >
+              <rect
+                id="Rectangle_2684"
+                data-name="Rectangle 2684"
+                width="42"
+                height="42"
+                rx="4"
+                transform="translate(42 42) rotate(180)"
+              />
               <path
                 id="Icon_feather-heart"
                 data-name="Icon feather-heart"
@@ -738,17 +1335,44 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                 fill="#f22f2f"
               />
             </g>
-            <rect id="Rectangle_2727" data-name="Rectangle 2727" width="35" height="33" transform="translate(908.217 1779.117)" fill="rgba(255,255,255,0)" />
+            <rect
+              id="Rectangle_2727"
+              data-name="Rectangle 2727"
+              width="35"
+              height="33"
+              transform="translate(908.217 1779.117)"
+              fill="rgba(255,255,255,0)"
+            />
           </g>
         </svg>
       );
 
     case "like":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 42 42">
-          <g id="Group_23601" data-name="Group 23601" transform="translate(-905.217 -1775.117)">
-            <g id="Component_495_5" data-name="Component 495 – 5" transform="translate(905.217 1775.117)">
-              <rect id="Rectangle_2684" data-name="Rectangle 2684" width="42" height="42" rx="4" transform="translate(42 42) rotate(180)" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="35"
+          height="35"
+          viewBox="0 0 42 42"
+        >
+          <g
+            id="Group_23601"
+            data-name="Group 23601"
+            transform="translate(-905.217 -1775.117)"
+          >
+            <g
+              id="Component_495_5"
+              data-name="Component 495 – 5"
+              transform="translate(905.217 1775.117)"
+            >
+              <rect
+                id="Rectangle_2684"
+                data-name="Rectangle 2684"
+                width="42"
+                height="42"
+                rx="4"
+                transform="translate(42 42) rotate(180)"
+              />
               <path
                 id="Icon_feather-heart"
                 data-name="Icon feather-heart"
@@ -757,19 +1381,57 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                 stroke="white"
               />
             </g>
-            <rect id="Rectangle_2727" data-name="Rectangle 2727" width="35" height="33" transform="translate(908.217 1779.117)" fill="rgba(255,255,255,0)" />
+            <rect
+              id="Rectangle_2727"
+              data-name="Rectangle 2727"
+              width="35"
+              height="33"
+              transform="translate(908.217 1779.117)"
+              fill="rgba(255,255,255,0)"
+            />
           </g>
         </svg>
       );
 
     case "360":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 42 42">
-          <g id="Group_23602" data-name="Group 23602" transform="translate(-859.217 -1775.117)">
-            <g id="Component_494_2" data-name="Component 494 – 2" transform="translate(859.217 1775.117)">
-              <rect id="Rectangle_2684" data-name="Rectangle 2684" width="42" height="42" rx="4" transform="translate(42 42) rotate(180)" />
-              <g id="Group_23324" data-name="Group 23324" transform="translate(6.431 6)">
-                <text id="_360_" data-name="360°" transform="translate(2.57 11)" fill="#fff" fontSize="12" fontFamily="Dubai-Regular, Dubai">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="35"
+          height="35"
+          viewBox="0 0 42 42"
+        >
+          <g
+            id="Group_23602"
+            data-name="Group 23602"
+            transform="translate(-859.217 -1775.117)"
+          >
+            <g
+              id="Component_494_2"
+              data-name="Component 494 – 2"
+              transform="translate(859.217 1775.117)"
+            >
+              <rect
+                id="Rectangle_2684"
+                data-name="Rectangle 2684"
+                width="42"
+                height="42"
+                rx="4"
+                transform="translate(42 42) rotate(180)"
+              />
+              <g
+                id="Group_23324"
+                data-name="Group 23324"
+                transform="translate(6.431 6)"
+              >
+                <text
+                  id="_360_"
+                  data-name="360°"
+                  transform="translate(2.57 11)"
+                  fill="#fff"
+                  fontSize="12"
+                  fontFamily="Dubai-Regular, Dubai"
+                >
                   <tspan x="0" y="0">
                     360°
                   </tspan>
@@ -789,7 +1451,13 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
 
     case "m2":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="14.952" height="9.758" viewBox="0 0 14.952 9.758" fill={shapeColor}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14.952"
+          height="9.758"
+          viewBox="0 0 14.952 9.758"
+          fill={shapeColor}
+        >
           <path
             id="icon-area-sqm-black"
             d="M.456-6.51a1.807,1.807,0,0,1,1.355.483,1.916,1.916,0,0,1,.471,1.393V0H.392V-4.06a1.424,1.424,0,0,0-.163-.791.623.623,0,0,0-.547-.231,2.572,2.572,0,0,0-1.222.406V0H-3.43V-4.06a1.432,1.432,0,0,0-.162-.791.617.617,0,0,0-.543-.231,2.438,2.438,0,0,0-1.227.406V0h-1.89V-6.258l1.89-.182v.546a3.674,3.674,0,0,1,2-.616,1.691,1.691,0,0,1,1.526.7A5.49,5.49,0,0,1-.71-6.328,3.76,3.76,0,0,1,.456-6.51ZM7.7-8.176a1.977,1.977,0,0,1-.126.7,3.645,3.645,0,0,1-.5.84A14.666,14.666,0,0,1,5.936-5.348H7.6v1.316H3.486V-4.76q1.149-1.092,1.7-1.68a6.3,6.3,0,0,0,.727-.875A1.03,1.03,0,0,0,6.09-7.84a.47.47,0,0,0-.175-.4.749.749,0,0,0-.465-.133,1.485,1.485,0,0,0-.524.1,2.442,2.442,0,0,0-.582.336L3.486-8.9a2.812,2.812,0,0,1,.98-.63,3.173,3.173,0,0,1,1.162-.224,2.964,2.964,0,0,1,1.043.175,1.668,1.668,0,0,1,.749.532A1.374,1.374,0,0,1,7.7-8.176Z"
@@ -800,7 +1468,13 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
 
     case "sqft":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28.028" height="12.348" viewBox="0 0 28.028 12.348" fill={shapeColor}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28.028"
+          height="12.348"
+          viewBox="0 0 28.028 12.348"
+          fill={shapeColor}
+        >
           <path
             id="icon-area-sqft-black"
             d="M-10.465.2A5.818,5.818,0,0,1-14.035-.9l.9-1.386a4.749,4.749,0,0,0,2.548.826,2.6,2.6,0,0,0,1.253-.252.814.814,0,0,0,.455-.756.849.849,0,0,0-.147-.511,1.436,1.436,0,0,0-.518-.392q-.371-.189-1.113-.483l-.322-.126a10.239,10.239,0,0,1-1.442-.672,2.543,2.543,0,0,1-.868-.826,2.325,2.325,0,0,1-.322-1.274,2.1,2.1,0,0,1,.49-1.421A2.862,2.862,0,0,1-11.865-9a4.982,4.982,0,0,1,1.638-.266,5.434,5.434,0,0,1,1.617.259,6.143,6.143,0,0,1,1.589.763l-.9,1.372a6.549,6.549,0,0,0-1.183-.588,3.317,3.317,0,0,0-1.113-.182,1.85,1.85,0,0,0-1.009.224.689.689,0,0,0-.341.6.7.7,0,0,0,.139.427,1.456,1.456,0,0,0,.5.378,9.473,9.473,0,0,0,1.044.441l.306.112a12.464,12.464,0,0,1,1.44.63,2.611,2.611,0,0,1,.926.84,2.444,2.444,0,0,1,.376,1.414,2.451,2.451,0,0,1-.476,1.533,2.844,2.844,0,0,1-1.3.931A5.242,5.242,0,0,1-10.465.2ZM-2.331-6.5a8.138,8.138,0,0,1,1.218.091A9.227,9.227,0,0,1,.371-6.02V2.6h-1.89V-.336A3.309,3.309,0,0,1-3.317.2,2.346,2.346,0,0,1-5.276-.63,3.74,3.74,0,0,1-5.929-3,3.565,3.565,0,0,1-5.39-5.054,2.984,2.984,0,0,1-4.039-6.167,4.505,4.505,0,0,1-2.331-6.5Zm-.483,5.264a2.089,2.089,0,0,0,.634-.1,3.619,3.619,0,0,0,.662-.294V-5.068a3.585,3.585,0,0,0-.746-.084A1.554,1.554,0,0,0-3.5-4.613,2.421,2.421,0,0,0-3.969-3a2.491,2.491,0,0,0,.282,1.323A.962.962,0,0,0-2.814-1.232ZM5.08-8.162a.79.79,0,0,0-.627.266,1.113,1.113,0,0,0-.232.756v.84H5.859l-.2,1.5H4.221V0H2.331V-4.8H1.407V-6.3h.924v-.8a3.054,3.054,0,0,1,.294-1.358A2.219,2.219,0,0,1,3.486-9.4a2.617,2.617,0,0,1,1.379-.343,4.486,4.486,0,0,1,.84.07,3.94,3.94,0,0,1,.742.224L5.982-7.966a2.3,2.3,0,0,0-.458-.154A2.2,2.2,0,0,0,5.08-8.162Zm5.945,7.9A3.7,3.7,0,0,1,9.184.2a2.25,2.25,0,0,1-.955-.2A1.66,1.66,0,0,1,7.51-.658a2.111,2.111,0,0,1-.279-1.134V-4.8H6.083V-6.3H7.231V-7.714l1.89-.266V-6.3h1.75l-.2,1.5H9.121v2.716a.9.9,0,0,0,.147.588.52.52,0,0,0,.413.168,1.448,1.448,0,0,0,.378-.049,3.633,3.633,0,0,0,.448-.161Zm1.834.448a1.089,1.089,0,0,1-.567-.154,1.187,1.187,0,0,1-.413-.406,1.053,1.053,0,0,1-.154-.56,1.028,1.028,0,0,1,.154-.546,1.187,1.187,0,0,1,.413-.406,1.089,1.089,0,0,1,.567-.154,1.064,1.064,0,0,1,.553.154,1.249,1.249,0,0,1,.42.406,1,1,0,0,1,.161.546,1.053,1.053,0,0,1-.154.56,1.169,1.169,0,0,1-.42.406A1.1,1.1,0,0,1,12.859.182Z"
@@ -811,7 +1485,13 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
 
     case "bed":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="18.723" height="12.482" viewBox="0 0 18.723 12.482" fill={shapeColor}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18.723"
+          height="12.482"
+          viewBox="0 0 18.723 12.482"
+          fill={shapeColor}
+        >
           <path
             id="icon-bed-black"
             d="M9.6,15.655a2.5,2.5,0,1,0-2.555-2.5A2.524,2.524,0,0,0,9.6,15.655Zm10.215-4.993H13.008v5.826H6.2V9H4.5V21.482H6.2v-2.5H21.521v2.5h1.7V13.993A3.366,3.366,0,0,0,19.819,10.663Z"
@@ -822,7 +1502,13 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
 
     case "bath":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="15.881" height="13.896" viewBox="0 0 15.881 13.896" fill={shapeColor}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="15.881"
+          height="13.896"
+          viewBox="0 0 15.881 13.896"
+          fill={shapeColor}
+        >
           <path
             id="icon-bath-black"
             d="M15.136,9.2H2.481V4.731A.992.992,0,0,1,4.312,4.2a2.108,2.108,0,0,0,.212,2.576.372.372,0,0,0,.015.51l.351.351a.372.372,0,0,0,.526,0L8.364,4.689a.372.372,0,0,0,0-.526l-.351-.351A.372.372,0,0,0,7.5,3.8,2.1,2.1,0,0,0,5.513,3.32,2.48,2.48,0,0,0,.993,4.731V9.2H.744A.744.744,0,0,0,0,9.942v.5a.744.744,0,0,0,.744.744H.993v.993a2.97,2.97,0,0,0,.993,2.219V15.4a.744.744,0,0,0,.744.744h.5A.744.744,0,0,0,3.97,15.4v-.248h7.94V15.4a.744.744,0,0,0,.744.744h.5A.744.744,0,0,0,13.9,15.4V14.395a2.97,2.97,0,0,0,.993-2.219v-.993h.248a.744.744,0,0,0,.744-.744v-.5A.744.744,0,0,0,15.136,9.2Z"
@@ -831,13 +1517,34 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
         </svg>
       );
 
-    case "agentBadgeLvl1":
+    case "RERA":
       svg = (
-        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33.319" viewBox="0 0 33 33.319">
-          <g id="Group_19810" data-name="Group 19810" transform="translate(-294.526 -2811)">
-            <g id="Group_5303" data-name="Group 5303" transform="translate(82.21 2718.56)">
-              <g id="Group_3835" data-name="Group 3835" transform="translate(214.79 107.146)">
-                <g id="Group_3832" data-name="Group 3832" transform="translate(19.305)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width={width ? width : "33"}
+          height={height ? height : "33.319"}
+          viewBox={`0 0 33 33.319`}
+        >
+          <g
+            id="Group_19810"
+            data-name="Group 19810"
+            transform="translate(-294.526 -2811)"
+          >
+            <g
+              id="Group_5303"
+              data-name="Group 5303"
+              transform="translate(82.21 2718.56)"
+            >
+              <g
+                id="Group_3835"
+                data-name="Group 3835"
+                transform="translate(214.79 107.146)"
+              >
+                <g
+                  id="Group_3832"
+                  data-name="Group 3832"
+                  transform="translate(19.305)"
+                >
                   <g id="Group_3831" data-name="Group 3831">
                     <path
                       id="Path_2668"
@@ -860,7 +1567,11 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                   </g>
                 </g>
               </g>
-              <g id="Group_3842" data-name="Group 3842" transform="translate(218.299 92.44)">
+              <g
+                id="Group_3842"
+                data-name="Group 3842"
+                transform="translate(218.299 92.44)"
+              >
                 <g id="Group_3837" data-name="Group 3837">
                   <g id="Group_3836" data-name="Group 3836">
                     <path
@@ -872,7 +1583,11 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                     />
                   </g>
                 </g>
-                <g id="Group_3839" data-name="Group 3839" transform="translate(1.98 2.043)">
+                <g
+                  id="Group_3839"
+                  data-name="Group 3839"
+                  transform="translate(1.98 2.043)"
+                >
                   <g id="Group_3838" data-name="Group 3838">
                     <path
                       id="Path_2671"
@@ -881,8 +1596,16 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                       transform="translate(-223.55 -95.7)"
                       fill="#6b5401"
                     />
-                    <g id="Group_5235" data-name="Group 5235" transform="translate(4.771 1.127)">
-                      <g id="Group_483" data-name="Group 483" transform="translate(2.586 2.891)">
+                    <g
+                      id="Group_5235"
+                      data-name="Group 5235"
+                      transform="translate(4.771 1.127)"
+                    >
+                      <g
+                        id="Group_483"
+                        data-name="Group 483"
+                        transform="translate(2.586 2.891)"
+                      >
                         <path
                           id="Path_449"
                           data-name="Path 449"
@@ -918,10 +1641,26 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                           transform="translate(-2026.227 -1617.929)"
                           fill="#fff"
                         />
-                        <path id="Path_454" data-name="Path 454" d="M2089.684,1679.97l-.014.014h.014Z" transform="translate(-2088.647 -1678.971)" fill="#fff" />
-                        <path id="Path_455" data-name="Path 455" d="M2089.675,1679.96l-.014.014h0l.014-.014Z" transform="translate(-2088.637 -1678.962)" fill="#fff" />
+                        <path
+                          id="Path_454"
+                          data-name="Path 454"
+                          d="M2089.684,1679.97l-.014.014h.014Z"
+                          transform="translate(-2088.647 -1678.971)"
+                          fill="#fff"
+                        />
+                        <path
+                          id="Path_455"
+                          data-name="Path 455"
+                          d="M2089.675,1679.96l-.014.014h0l.014-.014Z"
+                          transform="translate(-2088.637 -1678.962)"
+                          fill="#fff"
+                        />
                       </g>
-                      <g id="Group_484" data-name="Group 484" transform="translate(0)">
+                      <g
+                        id="Group_484"
+                        data-name="Group 484"
+                        transform="translate(0)"
+                      >
                         <path
                           id="Path_456"
                           data-name="Path 456"
@@ -961,7 +1700,11 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                     />
                   </g>
                 </g>
-                <g id="Group_3841" data-name="Group 3841" transform="translate(1.366 1.429)">
+                <g
+                  id="Group_3841"
+                  data-name="Group 3841"
+                  transform="translate(1.366 1.429)"
+                >
                   <g id="Group_3840" data-name="Group 3840">
                     <path
                       id="Path_2672"
@@ -973,9 +1716,21 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                   </g>
                 </g>
               </g>
-              <g id="Group_3866" data-name="Group 3866" transform="translate(217.902 109.065)">
-                <g id="Group_3844" data-name="Group 3844" transform="translate(0 0)">
-                  <g id="Group_3843" data-name="Group 3843" transform="translate(0 0)">
+              <g
+                id="Group_3866"
+                data-name="Group 3866"
+                transform="translate(217.902 109.065)"
+              >
+                <g
+                  id="Group_3844"
+                  data-name="Group 3844"
+                  transform="translate(0 0)"
+                >
+                  <g
+                    id="Group_3843"
+                    data-name="Group 3843"
+                    transform="translate(0 0)"
+                  >
                     <path
                       id="Path_2673"
                       data-name="Path 2673"
@@ -983,7 +1738,11 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                       transform="translate(-220.36 -119.12)"
                       fill="#202020"
                     />
-                    <g id="Group_5299" data-name="Group 5299" transform="translate(2.47 1.217)">
+                    <g
+                      id="Group_5299"
+                      data-name="Group 5299"
+                      transform="translate(2.47 1.217)"
+                    >
                       <path
                         id="Path_4366"
                         data-name="Path 4366"
@@ -1012,10 +1771,32 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                         transform="translate(13.096 0.722) rotate(-17)"
                         fill="#fff"
                       />
-                      <g id="Group_5300" data-name="Group 5300" transform="matrix(0.999, -0.052, 0.052, 0.999, 8.731, 0.38)">
-                        <path id="Path_4370" data-name="Path 4370" d="M0,.094.315,0H.005s0,.007,0,.011A.657.657,0,0,1,0,.094Z" transform="translate(3.062 1.94)" fill="#fff" />
-                        <path id="Path_4371" data-name="Path 4371" d="M.716,0H.727V0H.007L0,0H.621" transform="translate(0.235 1.853)" fill="#fff" />
-                        <path id="Path_4372" data-name="Path 4372" d="M0,0,.061.085l.13-.03L.158.024Z" transform="translate(3.08 1.963)" fill="#fff" />
+                      <g
+                        id="Group_5300"
+                        data-name="Group 5300"
+                        transform="matrix(0.999, -0.052, 0.052, 0.999, 8.731, 0.38)"
+                      >
+                        <path
+                          id="Path_4370"
+                          data-name="Path 4370"
+                          d="M0,.094.315,0H.005s0,.007,0,.011A.657.657,0,0,1,0,.094Z"
+                          transform="translate(3.062 1.94)"
+                          fill="#fff"
+                        />
+                        <path
+                          id="Path_4371"
+                          data-name="Path 4371"
+                          d="M.716,0H.727V0H.007L0,0H.621"
+                          transform="translate(0.235 1.853)"
+                          fill="#fff"
+                        />
+                        <path
+                          id="Path_4372"
+                          data-name="Path 4372"
+                          d="M0,0,.061.085l.13-.03L.158.024Z"
+                          transform="translate(3.08 1.963)"
+                          fill="#fff"
+                        />
                         <path
                           id="Path_4373"
                           data-name="Path 4373"
@@ -1023,7 +1804,13 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                           transform="translate(1.277 1.451)"
                           fill="#fff"
                         />
-                        <path id="Path_4374" data-name="Path 4374" d="M0,.445.024.454.462.606l.012,0-.006,0L.031.455.018.45,1.074.017h0L1.087,0l0,0Z" transform="translate(1.277 1.451)" fill="#fff" />
+                        <path
+                          id="Path_4374"
+                          data-name="Path 4374"
+                          d="M0,.445.024.454.462.606l.012,0-.006,0L.031.455.018.45,1.074.017h0L1.087,0l0,0Z"
+                          transform="translate(1.277 1.451)"
+                          fill="#fff"
+                        />
                         <path
                           id="Path_4375"
                           data-name="Path 4375"
@@ -1045,10 +1832,32 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                           transform="translate(1.295 1.467)"
                           fill="#fff"
                         />
-                        <path id="Path_4378" data-name="Path 4378" d="M.024,0,0,.01l.007,0h.01L.024.005Z" transform="translate(1.808 1.98)" fill="#fff" />
-                        <path id="Path_4379" data-name="Path 4379" d="M.008,0,0,.008H.007S.008,0,.008,0Z" transform="translate(1.825 1.986)" fill="#fff" />
-                        <path id="Path_4380" data-name="Path 4380" d="M.008,0,0,.008H0L.008,0Z" transform="translate(1.825 1.985)" fill="#fff" />
-                        <g id="Group_5294" data-name="Group 5294" transform="translate(0 0)">
+                        <path
+                          id="Path_4378"
+                          data-name="Path 4378"
+                          d="M.024,0,0,.01l.007,0h.01L.024.005Z"
+                          transform="translate(1.808 1.98)"
+                          fill="#fff"
+                        />
+                        <path
+                          id="Path_4379"
+                          data-name="Path 4379"
+                          d="M.008,0,0,.008H.007S.008,0,.008,0Z"
+                          transform="translate(1.825 1.986)"
+                          fill="#fff"
+                        />
+                        <path
+                          id="Path_4380"
+                          data-name="Path 4380"
+                          d="M.008,0,0,.008H0L.008,0Z"
+                          transform="translate(1.825 1.985)"
+                          fill="#fff"
+                        />
+                        <g
+                          id="Group_5294"
+                          data-name="Group 5294"
+                          transform="translate(0 0)"
+                        >
                           <path
                             id="Path_4381"
                             data-name="Path 4381"
@@ -1119,13 +1928,34 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
       );
       break;
 
-    case "agentBadgeLvl2":
+    case "VALKOM":
       svg = (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28.052" height="33.319" viewBox="0 0 28.052 33.319">
-          <g id="Group_13212" data-name="Group 13212" transform="translate(-733 -2801.999)">
-            <g id="Group_13210" data-name="Group 13210" transform="translate(518.21 2709.559)">
-              <g id="Group_3835" data-name="Group 3835" transform="translate(214.79 107.146)">
-                <g id="Group_3832" data-name="Group 3832" transform="translate(19.305)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width={width ? width : "28.052"}
+          height={height ? height : "33.319"}
+          viewBox={`0 0 33 33.319`}
+        >
+          <g
+            id="Group_13212"
+            data-name="Group 13212"
+            transform="translate(-733 -2801.999)"
+          >
+            <g
+              id="Group_13210"
+              data-name="Group 13210"
+              transform="translate(518.21 2709.559)"
+            >
+              <g
+                id="Group_3835"
+                data-name="Group 3835"
+                transform="translate(214.79 107.146)"
+              >
+                <g
+                  id="Group_3832"
+                  data-name="Group 3832"
+                  transform="translate(19.305)"
+                >
                   <g id="Group_3831" data-name="Group 3831">
                     <path
                       id="Path_2668"
@@ -1148,7 +1978,11 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                   </g>
                 </g>
               </g>
-              <g id="Group_3842" data-name="Group 3842" transform="translate(218.299 92.44)">
+              <g
+                id="Group_3842"
+                data-name="Group 3842"
+                transform="translate(218.299 92.44)"
+              >
                 <g id="Group_3837" data-name="Group 3837">
                   <g id="Group_3836" data-name="Group 3836">
                     <path
@@ -1160,8 +1994,16 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                     />
                   </g>
                 </g>
-                <g id="Group_3839" data-name="Group 3839" transform="translate(1.92 2.004)">
-                  <g id="Group_3838" data-name="Group 3838" transform="translate(0 0)">
+                <g
+                  id="Group_3839"
+                  data-name="Group 3839"
+                  transform="translate(1.92 2.004)"
+                >
+                  <g
+                    id="Group_3838"
+                    data-name="Group 3838"
+                    transform="translate(0 0)"
+                  >
                     <path
                       id="Path_2671"
                       data-name="Path 2671"
@@ -1169,8 +2011,16 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                       transform="translate(-223.55 -95.7)"
                       fill="#d9d9d9"
                     />
-                    <g id="Group_5235" data-name="Group 5235" transform="translate(4.831 1.166)">
-                      <g id="Group_483" data-name="Group 483" transform="translate(2.619 2.922)">
+                    <g
+                      id="Group_5235"
+                      data-name="Group 5235"
+                      transform="translate(4.831 1.166)"
+                    >
+                      <g
+                        id="Group_483"
+                        data-name="Group 483"
+                        transform="translate(2.619 2.922)"
+                      >
                         <path
                           id="Path_452"
                           data-name="Path 452"
@@ -1185,9 +2035,19 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                           transform="translate(-2026.26 -1617.96)"
                           fill="#202020"
                         />
-                        <path id="Path_455" data-name="Path 455" d="M2089.675,1679.96l-.014.014h0l.014-.014Z" transform="translate(-2088.671 -1678.993)" fill="#fff" />
+                        <path
+                          id="Path_455"
+                          data-name="Path 455"
+                          d="M2089.675,1679.96l-.014.014h0l.014-.014Z"
+                          transform="translate(-2088.671 -1678.993)"
+                          fill="#fff"
+                        />
                       </g>
-                      <g id="Group_484" data-name="Group 484" transform="translate(0)">
+                      <g
+                        id="Group_484"
+                        data-name="Group 484"
+                        transform="translate(0)"
+                      >
                         <path
                           id="Path_456"
                           data-name="Path 456"
@@ -1227,7 +2087,11 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                     />
                   </g>
                 </g>
-                <g id="Group_3841" data-name="Group 3841" transform="translate(1.366 1.429)">
+                <g
+                  id="Group_3841"
+                  data-name="Group 3841"
+                  transform="translate(1.366 1.429)"
+                >
                   <g id="Group_3840" data-name="Group 3840">
                     <path
                       id="Path_2672"
@@ -1239,9 +2103,21 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                   </g>
                 </g>
               </g>
-              <g id="Group_3866" data-name="Group 3866" transform="translate(217.902 109.065)">
-                <g id="Group_3844" data-name="Group 3844" transform="translate(0 0)">
-                  <g id="Group_3843" data-name="Group 3843" transform="translate(0 0)">
+              <g
+                id="Group_3866"
+                data-name="Group 3866"
+                transform="translate(217.902 109.065)"
+              >
+                <g
+                  id="Group_3844"
+                  data-name="Group 3844"
+                  transform="translate(0 0)"
+                >
+                  <g
+                    id="Group_3843"
+                    data-name="Group 3843"
+                    transform="translate(0 0)"
+                  >
                     <path
                       id="Path_2673"
                       data-name="Path 2673"
@@ -1249,7 +2125,11 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                       transform="translate(-220.36 -119.12)"
                       fill="#202020"
                     />
-                    <g id="Group_5299" data-name="Group 5299" transform="translate(2.47 1.217)">
+                    <g
+                      id="Group_5299"
+                      data-name="Group 5299"
+                      transform="translate(2.47 1.217)"
+                    >
                       <path
                         id="Path_4366"
                         data-name="Path 4366"
@@ -1278,10 +2158,32 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                         transform="translate(13.096 0.722) rotate(-17)"
                         fill="#fff"
                       />
-                      <g id="Group_5300" data-name="Group 5300" transform="matrix(0.999, -0.052, 0.052, 0.999, 8.731, 0.38)">
-                        <path id="Path_4370" data-name="Path 4370" d="M0,.094.315,0H.005s0,.007,0,.011A.657.657,0,0,1,0,.094Z" transform="translate(3.062 1.94)" fill="#fff" />
-                        <path id="Path_4371" data-name="Path 4371" d="M.716,0H.727V0H.007L0,0H.621" transform="translate(0.235 1.853)" fill="#fff" />
-                        <path id="Path_4372" data-name="Path 4372" d="M0,0,.061.085l.13-.03L.158.024Z" transform="translate(3.08 1.963)" fill="#fff" />
+                      <g
+                        id="Group_5300"
+                        data-name="Group 5300"
+                        transform="matrix(0.999, -0.052, 0.052, 0.999, 8.731, 0.38)"
+                      >
+                        <path
+                          id="Path_4370"
+                          data-name="Path 4370"
+                          d="M0,.094.315,0H.005s0,.007,0,.011A.657.657,0,0,1,0,.094Z"
+                          transform="translate(3.062 1.94)"
+                          fill="#fff"
+                        />
+                        <path
+                          id="Path_4371"
+                          data-name="Path 4371"
+                          d="M.716,0H.727V0H.007L0,0H.621"
+                          transform="translate(0.235 1.853)"
+                          fill="#fff"
+                        />
+                        <path
+                          id="Path_4372"
+                          data-name="Path 4372"
+                          d="M0,0,.061.085l.13-.03L.158.024Z"
+                          transform="translate(3.08 1.963)"
+                          fill="#fff"
+                        />
                         <path
                           id="Path_4373"
                           data-name="Path 4373"
@@ -1289,7 +2191,13 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                           transform="translate(1.277 1.451)"
                           fill="#fff"
                         />
-                        <path id="Path_4374" data-name="Path 4374" d="M0,.445.024.454.462.606l.012,0-.006,0L.031.455.018.45,1.074.017h0L1.087,0l0,0Z" transform="translate(1.277 1.451)" fill="#fff" />
+                        <path
+                          id="Path_4374"
+                          data-name="Path 4374"
+                          d="M0,.445.024.454.462.606l.012,0-.006,0L.031.455.018.45,1.074.017h0L1.087,0l0,0Z"
+                          transform="translate(1.277 1.451)"
+                          fill="#fff"
+                        />
                         <path
                           id="Path_4375"
                           data-name="Path 4375"
@@ -1311,10 +2219,32 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                           transform="translate(1.295 1.467)"
                           fill="#fff"
                         />
-                        <path id="Path_4378" data-name="Path 4378" d="M.024,0,0,.01l.007,0h.01L.024.005Z" transform="translate(1.808 1.98)" fill="#fff" />
-                        <path id="Path_4379" data-name="Path 4379" d="M.008,0,0,.008H.007S.008,0,.008,0Z" transform="translate(1.825 1.986)" fill="#fff" />
-                        <path id="Path_4380" data-name="Path 4380" d="M.008,0,0,.008H0L.008,0Z" transform="translate(1.825 1.985)" fill="#fff" />
-                        <g id="Group_5294" data-name="Group 5294" transform="translate(0 0)">
+                        <path
+                          id="Path_4378"
+                          data-name="Path 4378"
+                          d="M.024,0,0,.01l.007,0h.01L.024.005Z"
+                          transform="translate(1.808 1.98)"
+                          fill="#fff"
+                        />
+                        <path
+                          id="Path_4379"
+                          data-name="Path 4379"
+                          d="M.008,0,0,.008H.007S.008,0,.008,0Z"
+                          transform="translate(1.825 1.986)"
+                          fill="#fff"
+                        />
+                        <path
+                          id="Path_4380"
+                          data-name="Path 4380"
+                          d="M.008,0,0,.008H0L.008,0Z"
+                          transform="translate(1.825 1.985)"
+                          fill="#fff"
+                        />
+                        <g
+                          id="Group_5294"
+                          data-name="Group 5294"
+                          transform="translate(0 0)"
+                        >
                           <path
                             id="Path_4381"
                             data-name="Path 4381"
@@ -1350,7 +2280,11 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
                 </g>
               </g>
             </g>
-            <g id="Group_11957" data-name="Group 11957" transform="translate(432.5 -9)">
+            <g
+              id="Group_11957"
+              data-name="Group 11957"
+              transform="translate(432.5 -9)"
+            >
               <path
                 id="Icon_awesome-star"
                 data-name="Icon awesome-star"
@@ -1383,8 +2317,22 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
 
     case "infoCircle":
       svg = (
-        <svg id="Component_142_13" data-name="Component 142 – 13" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
-          <circle id="Ellipse_45" data-name="Ellipse 45" cx="7.5" cy="7.5" r="7.5" fill={variant === "light" ? "#fff" : "#000"} />
+        <svg
+          id="Component_142_13"
+          data-name="Component 142 – 13"
+          xmlns="http://www.w3.org/2000/svg"
+          width="15"
+          height="15"
+          viewBox="0 0 15 15"
+        >
+          <circle
+            id="Ellipse_45"
+            data-name="Ellipse 45"
+            cx="7.5"
+            cy="7.5"
+            r="7.5"
+            fill={variant === "light" ? "#fff" : "#000"}
+          />
           <path
             id="Path_11365"
             data-name="Path 11365"
@@ -1398,8 +2346,23 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
 
     case "infoCircleTransparent":
       svg = (
-        <svg id="Component_142_13" data-name="Component 142 – 13" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
-          <circle id="Ellipse_45" data-name="Ellipse 45" cx="7.5" cy="7.5" r="7.5" stroke={variant === "light" ? "#000" : "#fff"} fill="none" />
+        <svg
+          id="Component_142_13"
+          data-name="Component 142 – 13"
+          xmlns="http://www.w3.org/2000/svg"
+          width="15"
+          height="15"
+          viewBox="0 0 15 15"
+        >
+          <circle
+            id="Ellipse_45"
+            data-name="Ellipse 45"
+            cx="7.5"
+            cy="7.5"
+            r="7.5"
+            stroke={variant === "light" ? "#000" : "#fff"}
+            fill="none"
+          />
           <path
             id="Path_11365"
             data-name="Path 11365"
@@ -1413,7 +2376,13 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
 
     case "subway":
       svg = (
-        <svg id="subway" xmlns="http://www.w3.org/2000/svg" width="17.295" height="22.099" viewBox="0 0 17.295 22.099">
+        <svg
+          id="subway"
+          xmlns="http://www.w3.org/2000/svg"
+          width="17.295"
+          height="22.099"
+          viewBox="0 0 17.295 22.099"
+        >
           <g id="Group_11970" data-name="Group 11970">
             <path
               id="Path_10286"
@@ -1428,10 +2397,26 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
 
     case "relaxingWalk":
       svg = (
-        <svg xmlns="http://www.w3.org/2000/svg" width="13.239" height="24.635" viewBox="0 0 13.239 24.635">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="13.239"
+          height="24.635"
+          viewBox="0 0 13.239 24.635"
+        >
           <g id="relaxing-walk" transform="translate(-14.782)">
-            <g id="Group_19097" data-name="Group 19097" transform="translate(14.782 0)">
-              <circle id="Ellipse_128" data-name="Ellipse 128" cx="2.365" cy="2.365" r="2.365" transform="translate(3.699)" />
+            <g
+              id="Group_19097"
+              data-name="Group 19097"
+              transform="translate(14.782 0)"
+            >
+              <circle
+                id="Ellipse_128"
+                data-name="Ellipse 128"
+                cx="2.365"
+                cy="2.365"
+                r="2.365"
+                transform="translate(3.699)"
+              />
               <path
                 id="Path_11625"
                 data-name="Path 11625"
@@ -1446,7 +2431,12 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
 
     case "cycling":
       svg = (
-        <svg xmlns="http://www.w3.org/2000/svg" width="22.891" height="20.477" viewBox="0 0 22.891 20.477">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22.891"
+          height="20.477"
+          viewBox="0 0 22.891 20.477"
+        >
           <g id="cycling" transform="translate(0 -26.999)">
             <path
               id="Path_11626"
@@ -1461,10 +2451,26 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
 
     case "megaphone":
       svg = (
-        <svg xmlns="http://www.w3.org/2000/svg" width="25.691" height="22.971" viewBox="0 0 25.691 22.971">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25.691"
+          height="22.971"
+          viewBox="0 0 25.691 22.971"
+        >
           <g id="icon-score-noise" transform="translate(-169 -226.303)">
-            <rect id="Rectangle_2732" data-name="Rectangle 2732" width="4.601" height="9.202" transform="translate(169 232.856)" />
-            <path id="Path_15607" data-name="Path 15607" d="M0,.856,9.975-5.7V17.273L0,10.058Z" transform="translate(174.751 232)" />
+            <rect
+              id="Rectangle_2732"
+              data-name="Rectangle 2732"
+              width="4.601"
+              height="9.202"
+              transform="translate(169 232.856)"
+            />
+            <path
+              id="Path_15607"
+              data-name="Path 15607"
+              d="M0,.856,9.975-5.7V17.273L0,10.058Z"
+              transform="translate(174.751 232)"
+            />
             <path
               id="Path_15608"
               data-name="Path 15608"
@@ -1499,7 +2505,12 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
 
     case "greenery":
       svg = (
-        <svg xmlns="http://www.w3.org/2000/svg" width="19.858" height="22.639" viewBox="0 0 19.858 22.639">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="19.858"
+          height="22.639"
+          viewBox="0 0 19.858 22.639"
+        >
           <g id="icon-score-greenery" transform="translate(-36.252)">
             <path
               id="Path_15458"
@@ -1510,23 +2521,959 @@ const ListingCardIcon = ({ shape, color, variant, width = "4.839", height = "8.2
         </svg>
       );
       break;
-    case "exclamationError":
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="15.998" height="15.998" viewBox="0 0 15.998 15.998">
-          <path
-            id="Path_15773"
-            data-name="Path 15773"
-            d="M8.6,16H7.394c-.172-.027-.345-.049-.516-.08a7.916,7.916,0,0,1-6.521-5.63A15.021,15.021,0,0,1,0,8.6V7.394c.027-.172.049-.345.08-.516A7.915,7.915,0,0,1,5.711.358,15.037,15.037,0,0,1,7.394,0H8.6c.172.027.345.049.516.08a7.916,7.916,0,0,1,6.521,5.63A15.038,15.038,0,0,1,16,7.394V8.6c-.027.172-.049.345-.08.516a7.915,7.915,0,0,1-5.63,6.521A15.017,15.017,0,0,1,8.6,16M8.785,4.009H7.207V8.79H8.785ZM7.217,11.986H8.787V10.4H7.217Z"
-            fill="#ff2323"
-          />
-        </svg>
-      );
+
     case "passwordUpdated":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
-          <g id="Group_23874" data-name="Group 23874" transform="translate(-662 -1707)">
-            <circle id="Ellipse_189" data-name="Ellipse 189" cx="28" cy="28" r="28" transform="translate(662 1707)" fill="#fff" />
-            <path id="Path_15901" data-name="Path 15901" d="M-23962.186-21728.648l-8.307-8.307,3.535-3.535,4.771,4.771,11.7-11.7,3.535,3.535Z" transform="translate(24648.721 23473)" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="56"
+          height="56"
+          viewBox="0 0 56 56"
+        >
+          <g
+            id="Group_23874"
+            data-name="Group 23874"
+            transform="translate(-662 -1707)"
+          >
+            <circle
+              id="Ellipse_189"
+              data-name="Ellipse 189"
+              cx="28"
+              cy="28"
+              r="28"
+              transform="translate(662 1707)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15901"
+              data-name="Path 15901"
+              d="M-23962.186-21728.648l-8.307-8.307,3.535-3.535,4.771,4.771,11.7-11.7,3.535,3.535Z"
+              transform="translate(24648.721 23473)"
+            />
+          </g>
+        </svg>
+      );
+    case "visaProcess":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="65.005"
+          height="64.961"
+          viewBox="0 0 65.005 64.961"
+        >
+          <g
+            id="Group_23900"
+            data-name="Group 23900"
+            transform="translate(-86.523 -2198.055)"
+          >
+            <path
+              id="Path_15833"
+              data-name="Path 15833"
+              d="M65.012,83.214v.862q0,11.4,0,22.806A10.96,10.96,0,0,1,55.934,118a10.47,10.47,0,0,1-2.045.179q-21.335.015-42.669,0a10.842,10.842,0,0,1-8-3.276,10.542,10.542,0,0,1-3.164-7.6C.023,99.462.046,91.615.049,83.768c0-.167.029-.334.05-.554ZM20.185,106.363A8.232,8.232,0,1,0,12,114.578a8.166,8.166,0,0,0,8.186-8.214m20.7-14.47H40.23l-31.836.041c-.71,0-1.423-.012-2.13.047a.681.681,0,0,0-.463.447,6.91,6.91,0,0,0-.022,1.21H40.886Zm-.008-5.051H5.833V88.5H40.879Zm3.961,18.451c1.049-5,3.638-7.473,7.726-7.406,3.979.065,6.6,2.665,7.41,7.389h1.7a9.051,9.051,0,0,0-4.708-7.934,8.8,8.8,0,0,0-9.835.462,8.922,8.922,0,0,0-3.953,7.489ZM52.356,94.56a4.812,4.812,0,0,0,4.918-4.778,4.875,4.875,0,1,0-4.918,4.778M22.942,98.9H40.864V97.241H22.942Zm.014,5.231H40.892v-1.642H22.956Zm0,5.255H40.874v-1.661H22.956Z"
+              transform="translate(86.498 2144.828)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15834"
+              data-name="Path 15834"
+              d="M.015,28.13v-.772c0-5.4-.042-10.791.014-16.186a10.785,10.785,0,0,1,6.265-10.1A10.42,10.42,0,0,1,11.124.007Q32.571,0,54.017.01A10.929,10.929,0,0,1,64.969,10.945c.069,5.541.017,11.085.015,16.627,0,.168-.027.335-.046.558Zm19.4-23.212a2.694,2.694,0,0,0-.362-.059c-2.3,0-4.611-.074-6.912.01C8.5,5,5.286,7.731,5.018,11.085c-.216,2.7-.092,5.433-.114,8.152,0,.04.051.08.09.138H6.624V18.46c0-2.059-.019-4.118.006-6.177a5.479,5.479,0,0,1,4.859-5.548c2.282-.222,4.6-.1,6.9-.132.334,0,.668,0,1.025,0ZM45.584,6.6c2.36,0,4.636,0,6.912,0a5.715,5.715,0,0,1,5.878,5.9c0,2.035,0,4.07,0,6.105,0,.259.021.518.031.75h1.679c0-2.586.174-5.121-.04-7.623a7.077,7.077,0,0,0-6.825-6.82c-2.481-.207-4.994-.036-7.494-.03-.038,0-.076.055-.143.108Zm2.788,16.705a.718.718,0,0,0,.009-.2Q46.545,17.7,44.706,12.29c-.275-.81-.946-.353-1.437-.45-.4-.078-.646.055-.8.516-.946,2.875-1.936,5.734-2.911,8.6-.263.775-.521,1.551-.788,2.345,1.586.17,1.587.17,2.033-1.174.084-.254.165-.51.247-.765.5-1.557.5-1.561,2.169-1.555.758,0,1.721-.252,2.217.115.523.387.617,1.371.869,2.1.5,1.445.49,1.448,2.064,1.283M26.1,11.926c-1.557-.285-1.623-.257-2.076,1.076-.94,2.765-1.87,5.533-2.815,8.334-.063-.18-.125-.338-.175-.5-.87-2.823-1.733-5.647-2.62-8.465a.819.819,0,0,0-.475-.509,7.757,7.757,0,0,0-1.341-.024,3.4,3.4,0,0,0,.072.436c1.151,3.528,2.316,7.052,3.447,10.587a.615.615,0,0,0,.8.494c.443-.085,1.014.306,1.277-.457.9-2.632,1.859-5.248,2.794-7.87l1.106-3.1m4.94,9.722a2.456,2.456,0,0,1-.134.346c-.355.7-.026,1.081.629,1.179a14.636,14.636,0,0,0,3.041.28A3.227,3.227,0,0,0,37.369,21.7a3.186,3.186,0,0,0-1.6-4.483c-.733-.384-1.528-.654-2.254-1.05a1.578,1.578,0,0,1-.917-1.818,1.559,1.559,0,0,1,1.637-1.3,24.948,24.948,0,0,1,2.664.275,2.614,2.614,0,0,1,.158-.373c.348-.639.067-.957-.557-1.064a10.767,10.767,0,0,0-1.954-.253,3.4,3.4,0,0,0-3.534,2.508c-.335,1.616.378,2.783,2.242,3.645.554.256,1.136.455,1.674.739a1.884,1.884,0,0,1-.884,3.623,29.545,29.545,0,0,1-3-.5M27.262,23.3H28.78V11.873H27.262Z"
+              transform="translate(86.523 2198.055)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15835"
+              data-name="Path 15835"
+              d="M28.071,135.98a6.385,6.385,0,0,1-6.571,6.44,6.471,6.471,0,1,1,6.571-6.44m-7.486,2.282L18.1,136.228l-1.092,1.35,3.838,3.121L26,134.346l-1.338-1.1-4.077,5.019"
+              transform="translate(76.859 2115.234)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15836"
+              data-name="Path 15836"
+              d="M142.965,95.706a3.109,3.109,0,0,1-6.218,0,3.109,3.109,0,1,1,6.218,0"
+              transform="translate(-0.947 2138.83)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15837"
+              data-name="Path 15837"
+              d="M119.657,42.62h-3.206l1.591-4.876,1.615,4.876"
+              transform="translate(12.035 2173.912)"
+              fill="#fff"
+            />
+          </g>
+        </svg>
+      );
+    case "skillSet":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="65.287"
+          height="64.958"
+          viewBox="0 0 65.287 64.958"
+        >
+          <g
+            id="Group_23893"
+            data-name="Group 23893"
+            transform="translate(0 -0.001)"
+          >
+            <path
+              id="Path_15825"
+              data-name="Path 15825"
+              d="M45.25,59.069c-3.733,1.479-7.425,2.738-10.933,4.388-3.459,1.626-6.731,3.648-10.145,5.529a24.319,24.319,0,0,0-1.514-2.3c-2.157-2.679-4.84-4.08-8.4-3.433a16.422,16.422,0,0,1-7.1.067c-.272-2.247-.533-4.188-.722-6.135a2.712,2.712,0,0,1,.306-1.251c.863-1.986.417-3.317-1.419-4.432a2.094,2.094,0,0,1-.973-1.162A5.309,5.309,0,0,0,0,45.684c.539-.977,1-1.842,1.487-2.69,1.613-2.8,2.947-5.689,2.783-9.034a4.269,4.269,0,0,0-.2-1.324C1.366,25.7,3.615,19.783,8.211,14.664c6.849-7.626,15.521-10.209,25.567-8.3,1.11.211,1.962.514,2.03,1.885.056,1.137-.324,1.7-1.482,1.72-3.447.053-3.446.057-4.533,3.341-.376,1.136-.764,2.269-1.133,3.408-.715,2.209-.623,2.461,1.29,3.673.169.107.336.217.5.327,1.295.846,1.337,1.626.146,2.661-2.253,1.959-2.254,1.96-.893,4.628.727,1.425,1.535,2.815,2.17,4.279a2.243,2.243,0,0,0,3.02,1.418c.433-.118.875-.2,1.314-.3,1.027-.221,1.51.281,1.557,1.247a11.418,11.418,0,0,1-.077,1.8,2.008,2.008,0,0,0,1.593,2.355c2.048.645,4.11,1.251,6.129,1.975a1.833,1.833,0,0,0,2.424-.855,15.409,15.409,0,0,0,.877-1.4c.42-.821,1.168-1.159,1.844-.683s1.469,1.137.822,2.259c-1.022,1.774-2.045,3.553-2.954,5.386-2.134,4.3-3.681,8.764-3.176,13.57"
+              transform="translate(0 -4.027)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15826"
+              data-name="Path 15826"
+              d="M136.193,6.872c.285.547.564,1.071.831,1.6.405.8,1.171,1.647,1.095,2.4-.071.706-1.044,1.319-1.613,1.979-.863,1-.518,4.611.539,5.416.6.453,1.237.845,1.965,1.337-.4,1.259-.742,2.553-1.254,3.775a1.547,1.547,0,0,1-1.211.666c-3.346-.03-5.339,2.251-4.689,5.494a1.169,1.169,0,0,1-.739,1.544c-1.132.5-2.214,1.112-3.286,1.661-3.6-3.424-5.768-3.262-8.563.625-.687-.2-1.4-.407-2.11-.625-2.29-.7-2.289-.706-2.353-3.177-.044-1.7-2.915-3.934-4.573-3.565-.628.14-1.26.264-1.935.4-.314-.611-.609-1.182-.9-1.755-1.168-2.3-1.167-2.3.493-4.163,1.04-1.165.682-4.691-.585-5.611-.565-.41-1.161-.777-1.806-1.205.2-.677.376-1.341.595-1.99.271-.8.371-1.836.933-2.311.459-.388,1.488-.094,2.264-.119,1.788-.058,4.081-3.124,3.515-4.921a1.694,1.694,0,0,1,1.187-2.475c.925-.357,1.789-.87,2.7-1.325.185.154.392.249.478.409,1.327,2.483,3.583,1.979,5.662,1.612.625-.111,1.268-.956,1.613-1.616.512-.982,1.1-1.156,2.02-.7a4.388,4.388,0,0,0,.563.2c.849.289,1.963.349,2.466.934.419.487.1,1.592.145,2.421.09,1.568,3.038,3.771,4.583,3.45.632-.132,1.269-.245,1.971-.379m-2.37,9.743A11.541,11.541,0,0,0,121.989,5.05,11.756,11.756,0,0,0,110.582,16.66a11.755,11.755,0,0,0,11.752,11.578,11.616,11.616,0,0,0,11.49-11.623"
+              transform="translate(-73.723)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15827"
+              data-name="Path 15827"
+              d="M141.711,27.589a8.333,8.333,0,1,1-8.52,8.091,8.413,8.413,0,0,1,8.52-8.091"
+              transform="translate(-93.074 -19.279)"
+              fill="#fff"
+            />
+          </g>
+        </svg>
+      );
+    case "exam":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="65.287"
+          height="64.958"
+          viewBox="0 0 65.287 64.958"
+        >
+          <g
+            id="Group_23893"
+            data-name="Group 23893"
+            transform="translate(0 -0.001)"
+          >
+            <path
+              id="Path_15825"
+              data-name="Path 15825"
+              d="M45.25,59.069c-3.733,1.479-7.425,2.738-10.933,4.388-3.459,1.626-6.731,3.648-10.145,5.529a24.319,24.319,0,0,0-1.514-2.3c-2.157-2.679-4.84-4.08-8.4-3.433a16.422,16.422,0,0,1-7.1.067c-.272-2.247-.533-4.188-.722-6.135a2.712,2.712,0,0,1,.306-1.251c.863-1.986.417-3.317-1.419-4.432a2.094,2.094,0,0,1-.973-1.162A5.309,5.309,0,0,0,0,45.684c.539-.977,1-1.842,1.487-2.69,1.613-2.8,2.947-5.689,2.783-9.034a4.269,4.269,0,0,0-.2-1.324C1.366,25.7,3.615,19.783,8.211,14.664c6.849-7.626,15.521-10.209,25.567-8.3,1.11.211,1.962.514,2.03,1.885.056,1.137-.324,1.7-1.482,1.72-3.447.053-3.446.057-4.533,3.341-.376,1.136-.764,2.269-1.133,3.408-.715,2.209-.623,2.461,1.29,3.673.169.107.336.217.5.327,1.295.846,1.337,1.626.146,2.661-2.253,1.959-2.254,1.96-.893,4.628.727,1.425,1.535,2.815,2.17,4.279a2.243,2.243,0,0,0,3.02,1.418c.433-.118.875-.2,1.314-.3,1.027-.221,1.51.281,1.557,1.247a11.418,11.418,0,0,1-.077,1.8,2.008,2.008,0,0,0,1.593,2.355c2.048.645,4.11,1.251,6.129,1.975a1.833,1.833,0,0,0,2.424-.855,15.409,15.409,0,0,0,.877-1.4c.42-.821,1.168-1.159,1.844-.683s1.469,1.137.822,2.259c-1.022,1.774-2.045,3.553-2.954,5.386-2.134,4.3-3.681,8.764-3.176,13.57"
+              transform="translate(0 -4.027)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15826"
+              data-name="Path 15826"
+              d="M136.193,6.872c.285.547.564,1.071.831,1.6.405.8,1.171,1.647,1.095,2.4-.071.706-1.044,1.319-1.613,1.979-.863,1-.518,4.611.539,5.416.6.453,1.237.845,1.965,1.337-.4,1.259-.742,2.553-1.254,3.775a1.547,1.547,0,0,1-1.211.666c-3.346-.03-5.339,2.251-4.689,5.494a1.169,1.169,0,0,1-.739,1.544c-1.132.5-2.214,1.112-3.286,1.661-3.6-3.424-5.768-3.262-8.563.625-.687-.2-1.4-.407-2.11-.625-2.29-.7-2.289-.706-2.353-3.177-.044-1.7-2.915-3.934-4.573-3.565-.628.14-1.26.264-1.935.4-.314-.611-.609-1.182-.9-1.755-1.168-2.3-1.167-2.3.493-4.163,1.04-1.165.682-4.691-.585-5.611-.565-.41-1.161-.777-1.806-1.205.2-.677.376-1.341.595-1.99.271-.8.371-1.836.933-2.311.459-.388,1.488-.094,2.264-.119,1.788-.058,4.081-3.124,3.515-4.921a1.694,1.694,0,0,1,1.187-2.475c.925-.357,1.789-.87,2.7-1.325.185.154.392.249.478.409,1.327,2.483,3.583,1.979,5.662,1.612.625-.111,1.268-.956,1.613-1.616.512-.982,1.1-1.156,2.02-.7a4.388,4.388,0,0,0,.563.2c.849.289,1.963.349,2.466.934.419.487.1,1.592.145,2.421.09,1.568,3.038,3.771,4.583,3.45.632-.132,1.269-.245,1.971-.379m-2.37,9.743A11.541,11.541,0,0,0,121.989,5.05,11.756,11.756,0,0,0,110.582,16.66a11.755,11.755,0,0,0,11.752,11.578,11.616,11.616,0,0,0,11.49-11.623"
+              transform="translate(-73.723)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15827"
+              data-name="Path 15827"
+              d="M141.711,27.589a8.333,8.333,0,1,1-8.52,8.091,8.413,8.413,0,0,1,8.52-8.091"
+              transform="translate(-93.074 -19.279)"
+              fill="#fff"
+            />
+          </g>
+        </svg>
+      );
+    case "startCareer":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="55.974"
+          height="64.961"
+          viewBox="0 0 55.974 64.961"
+        >
+          <g id="Group_23899" data-name="Group 23899" transform="translate(0)">
+            <path
+              id="Path_15896"
+              data-name="Path 15896"
+              d="M17.776,99.33q.063-3.76.124-7.52c.01-.667,0-1.334,0-2.209H29.129V82.862H40.117v-6.7h11.6V69.524H64.658a7.262,7.262,0,0,1,.1.869q.008,14.136,0,28.272a5.72,5.72,0,0,1-.076.665Z"
+              transform="translate(-8.787 -34.369)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15897"
+              data-name="Path 15897"
+              d="M54.741,0c2.845,1.265,4.015,2.8,3.893,5.117a4.859,4.859,0,0,1-9.472,1.336A4.943,4.943,0,0,1,51.65.542c.391-.2.8-.362,1.2-.542Z"
+              transform="translate(-24.186)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15898"
+              data-name="Path 15898"
+              d="M37.749,30.2c-.191,1.591-.412,2.966-.482,4.348a1.426,1.426,0,0,0,.692,1.063c1.073.543,2.206.974,3.331,1.408a6.823,6.823,0,0,1,4.474,5.892c.3,2.307.346,4.65.428,6.98.01.271-.418.695-.729.8a4.186,4.186,0,0,1-1.335.039c-3.224,0-3.218,0-3.416-3.272-.071-1.163-.167-2.325-.281-3.485a1.854,1.854,0,0,0-1.591-1.869c-1.215-.243-2.405-.611-3.76-.965C34.5,44.148,34.013,47,33.391,49.831c-.45,2.046-1.089,4.05-1.619,6.079a1.492,1.492,0,0,1-1.614,1.273c-1.383-.015-2.766,0-4.374,0,.157-1.039.235-1.864.41-2.668,1.073-4.933,2.183-9.858,3.232-14.8a2.115,2.115,0,0,0-.269-1.432A5.875,5.875,0,0,1,28.19,33.7c.394-1.95.493-3.96.768-6.353C25.6,29.5,24.153,32.744,21.9,35.457c1.062.862,2.046,1.7,3.069,2.478.822.629.8,1.24.246,2.065-.737,1.1-1.585,1.738-2.972,1.342-1.875-.535-3.759-1.041-5.868-1.623,1.158-1.3.811-2.1-.3-2.8-.918-.575-.888-.622-2.095.443A15.421,15.421,0,0,1,10.7,30.74c-.137-.6.834-1.591,1.5-2.172.251-.22,1.165.07,1.613.371,1.036.7,1.972,1.542,3.089,2.44,2.177-2.23,4.333-4.4,6.447-6.615a8,8,0,0,1,5.577-2.593c.986-.048,1.975-.041,2.958-.113a10.711,10.711,0,0,1,9.53,3.963,1.638,1.638,0,0,0,2.354.4c1.285-.716,2.642-1.307,3.987-1.908a2.5,2.5,0,0,1,3.388.86c.716,1.148.562,3.178-.626,3.753A45.388,45.388,0,0,1,42.965,32.1c-1.851.515-3.545-.59-5.215-1.906M21.6,33.947l-3.148-2.859-.665.932C20.25,34.4,20.8,34.693,21.6,33.947"
+              transform="translate(-5.283 -10.885)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15899"
+              data-name="Path 15899"
+              d="M4.128,41.377,7.756,48.1c-.912,1.391-.882,1.428.5,2.515.645.508,1.141.59,1.721-.078a1.026,1.026,0,0,1,.864-.3c2.2.693,4.391,1.444,6.712,2.221C16.3,54,15,55.619,13.661,57.208c-.617.731-1.186.26-1.731-.182q-4.808-3.9-9.622-7.792c-.035-.028-.066-.061-.1-.088-3.183-2.465-2.535-2.148-.5-4.81.788-1.028,1.638-2.009,2.416-2.957"
+              transform="translate(0 -20.455)"
+              fill="#fff"
+            />
+            <path
+              id="Path_15900"
+              data-name="Path 15900"
+              d="M17.11,55.642,16.1,54.718l1.731-2.1,1.059.812L17.11,55.642"
+              transform="translate(-7.959 -26.014)"
+              fill="#fff"
+            />
+          </g>
+        </svg>
+      );
+    case "rightCompany":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="52.104"
+          height="64.96"
+          viewBox="0 0 52.104 64.96"
+        >
+          <g
+            id="Group_23894"
+            data-name="Group 23894"
+            transform="translate(0 -0.001)"
+          >
+            <path
+              id="Path_15828"
+              data-name="Path 15828"
+              d="M24.482,64.642V23.528c-2.483.858-4.766,1.64-7.044,2.436-4.063,1.421-8.11,2.89-12.192,4.253a1.666,1.666,0,0,0-1.343,1.9c.041,10.316.024,20.633.024,30.95V64.96H.09c-.021-.444-.064-.921-.064-1.4C.023,52.2.038,40.846,0,29.488a1.739,1.739,0,0,1,1.366-2.023c4.457-1.487,8.862-3.129,13.314-4.634a1.551,1.551,0,0,0,1.267-1.8c-.074-2.18.016-4.365-.041-6.546a1.68,1.68,0,0,1,1.1-1.827Q30.189,6.5,43.329.25A1.747,1.747,0,0,1,45.345.4c1.822,1.284,3.676,2.53,5.57,3.7a2.346,2.346,0,0,1,1.188,2.3q-.051,26.932-.024,53.864V64.7H40.5V5.945c-2.067.952-3.9,1.781-5.718,2.637-4.613,2.17-9.214,4.365-13.838,6.512a1.554,1.554,0,0,0-1.1,1.678c.073,1.323.019,2.653.019,4.225,2.538-.9,4.867-1.69,7.171-2.551a2.193,2.193,0,0,1,2.191.207c1.957,1.26,4.008,2.373,5.969,3.627a1.955,1.955,0,0,1,.862,1.337q.062,20.236.021,40.472a3.279,3.279,0,0,1-.117.552Z"
+            />
+            <path
+              id="Path_15829"
+              data-name="Path 15829"
+              d="M36.3,194.161v6.734H21.277v-5.757l15.024-.976"
+              transform="translate(-14.947 -136.395)"
+            />
+            <path
+              id="Path_15830"
+              data-name="Path 15830"
+              d="M36.244,160.692c0,1.99.032,3.912-.033,5.832a1.152,1.152,0,0,1-.707.853c-4.714.459-9.435.857-14.154,1.264-.035,0-.076-.05-.274-.19,0-1.552-.03-3.221.03-4.886a1.055,1.055,0,0,1,.642-.777c4.718-.761,9.445-1.471,14.171-2.189a1.5,1.5,0,0,1,.325.094"
+              transform="translate(-14.801 -112.816)"
+            />
+            <path
+              id="Path_15831"
+              data-name="Path 15831"
+              d="M21.065,104.279c0-1.906-.037-3.534.03-5.158a1.282,1.282,0,0,1,.638-.959c4.727-1.7,9.473-3.341,14.481-5.09,0,2.286.02,4.374-.031,6.461-.005.211-.412.52-.686.6-4.728,1.377-9.464,2.726-14.431,4.147"
+              transform="translate(-14.791 -65.381)"
+            />
+            <path
+              id="Path_15832"
+              data-name="Path 15832"
+              d="M36.208,126.429v6.9L21.119,136.2c0-1.924-.018-3.676.024-5.426a.846.846,0,0,1,.517-.6c4.81-1.259,9.627-2.488,14.548-3.75"
+              transform="translate(-14.834 -88.814)"
+            />
+          </g>
+        </svg>
+      );
+    case "realEstateLicense":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="90.468"
+          height="58.689"
+          viewBox="0 0 90.468 58.689"
+        >
+          <g
+            id="Group_23898"
+            data-name="Group 23898"
+            transform="translate(0 0)"
+          >
+            <path
+              id="Path_15889"
+              data-name="Path 15889"
+              d="M45.23,58.69H4.9A4.567,4.567,0,0,1,.005,53.827Q0,29.383,0,4.939C.005,1.86,1.9,0,4.99,0H85.659a4.554,4.554,0,0,1,4.8,4.781q.01,24.528,0,49.056a4.558,4.558,0,0,1-4.9,4.851H45.23M88.841,15.469H1.631v.825q0,18.7,0,37.4c0,2.209,1.145,3.355,3.353,3.355q40.169,0,80.339,0c2.435,0,3.516-1.087,3.517-3.529q0-18.576,0-37.151v-.9M73.807,8.934c-.636-1.158-1.256-2.211-1.8-3.3A.966.966,0,0,0,70.57,5.1c0,1.61.007,3.2,0,4.789,0,.39.071.726.529.6a.8.8,0,0,0,.444-.59c.045-1.085.021-2.173.021-3.3.617,1.119,1.253,2.2,1.811,3.315a.876.876,0,0,0,1.315.484V4.964l-.878.068ZM7.343,10.4V8.439l.236-.2a5.188,5.188,0,0,1,.886.68,4.178,4.178,0,0,1,.572,1.015c.293.648.736.715,1.366.429L9.222,8.252c.194-.146.47-.243.525-.413a3.829,3.829,0,0,0,.378-1.76A1.686,1.686,0,0,0,8.987,5.072a14.311,14.311,0,0,0-2.654-.046c0,1.6.032,3.15-.013,4.7-.023.784.287.919,1.024.673m9.322-1.339c1.482-.105,1.449-.087,2.117,1.1.137.244.623.292.948.43l.138-.227C19.329,8.707,18.8,7.044,18.23,5.4a.794.794,0,0,0-.593-.4c-.256-.016-.7.1-.759.261-.607,1.693-1.153,3.408-1.721,5.134,1.42.473,1.061-.812,1.508-1.333M80.674,5.013c0,1.738-.01,3.432.02,5.125,0,.127.283.35.44.355.97.033,1.942.017,2.946.017V9.592H81.761V8.029h1.851V7.171H81.729V5.846h2.228V5.013ZM43.65,10.391c-.565-1.735-1.088-3.4-1.672-5.052-.065-.184-.475-.347-.719-.338a.95.95,0,0,0-.682.4,6.214,6.214,0,0,0-.4,1.182c-.408,1.261-.819,2.523-1.232,3.794.681.251,1.1.162,1.172-.533s.471-.931,1.139-.838a5.547,5.547,0,0,0,.825.007c.479.579.131,1.854,1.571,1.375M26.468,4.969v5.493h3.316V9.625H27.511V8.042a14.554,14.554,0,0,0,1.483-.018c.153-.016.285-.241.428-.37-.147-.153-.28-.419-.443-.438a12.361,12.361,0,0,0-1.472-.021V5.832a16.881,16.881,0,0,0,1.734-.021c.192-.02.358-.279.535-.429-.161-.138-.319-.388-.486-.4-.915-.039-1.832-.019-2.821-.019m21.98.049v5.447h3.3V9.617H49.483v-1.6h1.953c-.238-1.417-1.452-.456-1.959-.965V5.834c.539,0,1.011-.016,1.482,0,.559.024.959-.063.688-.821ZM67.11,7.169V5.825H69.34V5.016H66.094v5.493c.957,0,1.9.023,2.835-.019.195-.009.379-.262.567-.4-.2-.151-.394-.41-.609-.432a17.3,17.3,0,0,0-1.76-.021V8.012h1.939c-.038-.328-.065-.558-.1-.843ZM14.656,9.617H12.4V8.044a12.176,12.176,0,0,0,1.457-.02c.173-.021.319-.264.476-.406-.159-.141-.305-.383-.478-.4A12.789,12.789,0,0,0,12.4,7.2V5.832c.514,0,.983,0,1.452,0,.861-.006.861-.008.727-.787H11.4v5.464c.957,0,1.846-.021,2.734.007.547.018.7-.208.523-.9m64.88-4.065a2.377,2.377,0,0,0-2.4-.585,1.5,1.5,0,0,0-1.161,1.289,1.4,1.4,0,0,0,.848,1.494,9.87,9.87,0,0,1,1.272.622,2.752,2.752,0,0,1,.535.81c-.285.176-.582.511-.855.492a7.469,7.469,0,0,1-1.579-.46l-.453.554a2.7,2.7,0,0,0,2.584.757A1.572,1.572,0,0,0,79.7,9.132a1.461,1.461,0,0,0-.93-1.609,9.3,9.3,0,0,1-1.214-.548,2.624,2.624,0,0,1-.531-.739c.291-.167.579-.464.874-.47a4.189,4.189,0,0,1,1.207.347l.431-.562M34.49,5.386a10.81,10.81,0,0,0-1.9-.507,1.639,1.639,0,0,0-1.753,1.246,1.573,1.573,0,0,0,1.082,1.767,6.119,6.119,0,0,1,1.055.5c.231.172.546.59.477.73a1.055,1.055,0,0,1-.778.552,8.055,8.055,0,0,1-1.634-.438l-.411.5a2.546,2.546,0,0,0,2.839.7,1.523,1.523,0,0,0,1.069-1.361,1.454,1.454,0,0,0-.919-1.538,11.015,11.015,0,0,1-1.289-.586c-.219-.14-.508-.558-.444-.675a1.034,1.034,0,0,1,.738-.5,5.434,5.434,0,0,1,1.327.342l.541-.721M65,5.589A2.2,2.2,0,0,0,62.1,5.248a3.236,3.236,0,0,0-.964,3.776,2.346,2.346,0,0,0,2.752,1.509,7.065,7.065,0,0,0,1.4-.686l-.574-.684c-1.144.7-1.77.685-2.313.052A2.743,2.743,0,0,1,62.363,6.3c.518-.662,1.124-.715,2.2-.164L65,5.589M43.358,5.011c0,.248-.046.629.007.643.487.131.99.2,1.574.3v4.561l.973-.055V5.923c1.59-.235,1.59-.235,1.477-.911ZM36.509,6.091v4.319c.788.253,1.023.011,1-.681-.039-1.274-.011-2.549-.011-3.807,1.586-.214,1.586-.214,1.434-.9H34.894c-.091,1.405,1.088.488,1.615,1.072M54.654,10.51c.9,0,1.732-.023,2.561.007.633.023.795-.233.565-.9H55.59v-4.6h-.936Zm-34.081-.064h3.177V9.612H21.493V4.975l-.92.047ZM59.785,5.04h-.919v5.42h.919Z"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15890"
+              data-name="Path 15890"
+              d="M36.44,52.152q0,5.829,0,11.657c0,1.448-.66,2.126-2.083,2.127q-8.889.01-17.778,0a1.876,1.876,0,0,1-2.116-2.114q-.009-11.7,0-23.4a1.89,1.89,0,0,1,2.062-2.112q8.931-.03,17.862,0c1.394,0,2.058.76,2.059,2.183q0,5.829,0,11.657Zm-1.169,12.29c-.01-.116-.021-.232-.031-.347-.975-.4-1.986-.727-2.915-1.212a22.621,22.621,0,0,1-3.474-2.106c-.976-.761-.814-1.8-.067-2.806a26.489,26.489,0,0,0,2-3.336c.277-.519.353-1.084.921-1.494a2.049,2.049,0,0,0,.668-1.449,7.2,7.2,0,0,1,.727-2.852,5.766,5.766,0,0,0-4.469-8.194,7.28,7.28,0,0,1-1.04-.279,7.175,7.175,0,0,0-6.857.836,4.584,4.584,0,0,0-2.121,4.285c.144,1.411.237,2.827.347,4.241a.757.757,0,0,1-.065.319,2.721,2.721,0,0,0,.736,3.386c.189.161.24.481.364.722a21.537,21.537,0,0,0,1.834,3.431c1.255,1.609,1.3,2.671-.416,3.81a29.756,29.756,0,0,1-3.644,1.83c-.685.329-1.387.62-2.082.929,0,.106,0,.212,0,.318a3.149,3.149,0,0,0,.907.295q8.882.025,17.765,0a3,3,0,0,0,.911-.32"
+              transform="translate(-6.777 -17.955)"
+              fill="#1a1818"
+            />
+            <rect
+              id="Rectangle_2794"
+              data-name="Rectangle 2794"
+              width="51.282"
+              height="3.121"
+              transform="translate(34.072 26.404)"
+              fill="#1a1818"
+            />
+            <rect
+              id="Rectangle_2795"
+              data-name="Rectangle 2795"
+              width="51.295"
+              height="3.13"
+              transform="translate(34.041 32.908)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15891"
+              data-name="Path 15891"
+              d="M139.1,87.308c0-1.491,0-2.907,0-4.323,0-1.218-.035-1.251-1.283-1.257-.475,0-.951.023-1.424-.006-.713-.045-1,.229-.974.972.045,1.5.013,3,.013,4.609-1.24,0-2.4.038-3.564-.015-.622-.029-.776-.512-.771-1.086.016-1.76.006-3.519.005-5.279v-.97c-.373,0-.695.007-1.016,0-.489-.013-1.064.132-1.3-.491-.225-.6.242-.911.624-1.239q2.161-1.856,4.318-3.715c.889-.765,1.8-1.508,2.659-2.3a1.051,1.051,0,0,1,1.657-.037c2.369,2.083,4.789,4.107,7.154,6.194a1.391,1.391,0,0,1,.422,1.108c-.046.22-.635.387-1,.466a6.6,6.6,0,0,1-1.264.017c0,1.108,0,2.132,0,3.155,0,1.089-.011,2.179,0,3.268.006.531-.21.9-.745.92-1.137.037-2.276.011-3.514.011"
+              transform="translate(-60.359 -33.656)"
+              fill="#1a1818"
+            />
+            <rect
+              id="Rectangle_2796"
+              data-name="Rectangle 2796"
+              width="28.951"
+              height="3.114"
+              transform="translate(34.041 39.424)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15892"
+              data-name="Path 15892"
+              d="M118.726,37.413H141v3.229h-.793c-6.87,0-13.74-.011-20.609.014-.7,0-.939-.19-.886-.889.056-.746.013-1.5.013-2.354"
+              transform="translate(-55.658 -17.541)"
+              fill="#1a1818"
+            />
+            <rect
+              id="Rectangle_2797"
+              data-name="Rectangle 2797"
+              width="22.222"
+              height="3.166"
+              transform="translate(34.053 19.875)"
+              fill="#1a1818"
+            />
+            <rect
+              id="Rectangle_2798"
+              data-name="Rectangle 2798"
+              width="22.268"
+              height="3.103"
+              transform="translate(34.023 45.945)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15893"
+              data-name="Path 15893"
+              d="M13.659,12.524c.394-.566-.5-1.492.661-1.666.9-.134,1.4.28,1.345.918-.053.671-.612.912-2.007.748"
+              transform="translate(-6.404 -5.08)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15894"
+              data-name="Path 15894"
+              d="M32.391,10.945l.654,2.333H31.763c.194-.722.38-1.413.628-2.333"
+              transform="translate(-14.893 -5.131)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15895"
+              data-name="Path 15895"
+              d="M76.491,13.293l.647-2.361.65,2.361Z"
+              transform="translate(-35.865 -5.125)"
+              fill="#1a1818"
+            />
+          </g>
+        </svg>
+      );
+    case "reraCertification":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="86.407"
+          height="59.43"
+          viewBox="0 0 86.407 59.43"
+        >
+          <g
+            id="Group_23896"
+            data-name="Group 23896"
+            transform="translate(0 0.74)"
+          >
+            <path
+              id="Path_15838"
+              data-name="Path 15838"
+              d="M58.444,43.657c-4.806.148-7.978.315-7.978.315s2.99-.645,7.978-1.343Z"
+              transform="translate(-37.334 -31.537)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15839"
+              data-name="Path 15839"
+              d="M114.868,39.949c-1.257.005-2.487.021-3.682.036V38.221c1.179-.112,2.409-.216,3.682-.312Z"
+              transform="translate(-82.256 -28.045)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15840"
+              data-name="Path 15840"
+              d="M169.861,38.832c-1.46-.07-2.951-.122-4.455-.161v-2.6c1.457-.021,2.943-.023,4.455,0Z"
+              transform="translate(-122.367 -26.674)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15841"
+              data-name="Path 15841"
+              d="M104.484,49.773c0,5.9-20.017,10.278-27.729,10.551-30.019,1.056-41.478-2.99-41.478-4.879,0-2.006,6.377-2.831,12.661-3.669,7.736-1.03,45.09.747,45.09-5.99,0-1.608-2.589-2.727-6.632-3.492V39.009c6.575.851,18.089,3.71,18.089,10.764"
+              transform="translate(-26.098 -28.859)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15842"
+              data-name="Path 15842"
+              d="M41.557,145.96a1.139,1.139,0,0,0-.71-.343s1.795-.5,1.795-1.527-1.687-1.481-2.546-1.481h-4.82v5.563h1.618v-2.407h3.052l1.546,2.407h1.655s-1.513-2.113-1.59-2.212m-1.046-1.111a.934.934,0,0,1-.664.273H36.939v-1.871h2.909a.937.937,0,0,1,.664,1.6"
+              transform="translate(-26.098 -105.502)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15843"
+              data-name="Path 15843"
+              d="M194.365,145.96a1.139,1.139,0,0,0-.71-.343s1.795-.5,1.795-1.527-1.687-1.481-2.546-1.481h-4.82v5.563H189.7v-2.407h3.052l1.546,2.407h1.655s-1.513-2.113-1.59-2.212m-1.046-1.111a.934.934,0,0,1-.664.273h-2.909v-1.871h2.909a.937.937,0,0,1,.664,1.6"
+              transform="translate(-139.145 -105.502)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15844"
+              data-name="Path 15844"
+              d="M119.691,142.609v.643h-4.784v1.641h4.383v.63h-4.383v2.034h4.784v.615h-6.359v-5.563Z"
+              transform="translate(-83.844 -105.502)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15845"
+              data-name="Path 15845"
+              d="M267.848,142.609h-1.605l-4.067,5.563h1.72l1.088-1.676h4.124l1.09,1.676h1.717Zm-2.422,3.172,1.52-2.292h.273l1.475,2.292Z"
+              transform="translate(-193.959 -105.502)"
+              fill="#1a1818"
+            />
+            <rect
+              id="Rectangle_2789"
+              data-name="Rectangle 2789"
+              width="7.82"
+              height="10.914"
+              rx="3.22"
+              transform="translate(21.109 4.514)"
+              fill="none"
+              stroke="#1a1818"
+              stroke-width="2"
+            />
+            <path
+              id="Rectangle_2790"
+              data-name="Rectangle 2790"
+              d="M3.22,0H7.207a3.22,3.22,0,0,1,3.22,3.22v8.207a3.221,3.221,0,0,1-3.221,3.221H3.221A3.221,3.221,0,0,1,0,11.427V3.22A3.22,3.22,0,0,1,3.22,0Z"
+              transform="translate(32.611 2.279)"
+              fill="none"
+              stroke="#1a1818"
+              stroke-width="2"
+            />
+            <rect
+              id="Rectangle_2791"
+              data-name="Rectangle 2791"
+              width="12.805"
+              height="17.918"
+              rx="3.22"
+              transform="translate(47.492 0.26)"
+              fill="none"
+              stroke="#1a1818"
+              stroke-width="2"
+            />
+            <path
+              id="Path_15846"
+              data-name="Path 15846"
+              d="M135.609,175.6a10.845,10.845,0,0,1,.218,3.074,5.459,5.459,0,0,1,0,.846.512.512,0,0,1-.578.532q-3.024-.02-6.048-.018-4.2,0-8.394.008-4.447,0-8.895,0H111.4a9.222,9.222,0,0,1,.193.959,5.055,5.055,0,0,1,0,1.111c-.015.117-.257.205-.476.366-.081-.554-.135-.966-.206-1.374-.035-.206-.124-.4-.15-.611a1.745,1.745,0,0,1,.243-1.34.2.2,0,0,0,.044-.14c-.122-.55.323-.822.619-1.107s.474.157.677.3c.347.238.645.547.975.812a.526.526,0,0,0,.307.1q3.217,0,6.433,0a.545.545,0,0,0,.114-.039,1.779,1.779,0,0,0-.032-.426c-.092-.294.04-.739.307-.816.3-.085.372.222.475.389.113.182.1.442.195.637a.522.522,0,0,0,.361.248,10.242,10.242,0,0,0,1.346,0,.381.381,0,0,0,.258-.269c-.025-.783-.1-1.564-.117-2.347a2.057,2.057,0,0,1,.2-.777c.024-.059.27-.1.348-.05a.857.857,0,0,1,.258.373,3.7,3.7,0,0,1,.144.5c-.3.566-.017,1.232-.168,1.937.187-.05.33-.045.4-.114a1.169,1.169,0,0,1,1.886.314.612.612,0,0,0,.74.45,5.787,5.787,0,0,1,.771-.006,1.508,1.508,0,0,1-.205-.41,2.365,2.365,0,0,1,.044-.526c0-.014.047-.019.063-.036.1-.107.192-.217.288-.326a2.6,2.6,0,0,1,.407.493,5.04,5.04,0,0,1,.238.787h1.267c0-.141,0-.287,0-.433,0-.077-.037-.163-.013-.228.076-.209.123-.524.273-.591.311-.138.288.266.415.418a6.453,6.453,0,0,1,.311.657.5.5,0,0,0,.362.192c1.284.013,2.568.006,3.852.006.3,0,.373-.1.315-.42-.123-.676-.164-1.367-.269-2.047a1.11,1.11,0,0,1,.258-.884c.079-.1.28-.1.463-.165"
+              transform="translate(-81.918 -129.912)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15847"
+              data-name="Path 15847"
+              d="M32.853,179.172H39.2c.015-.1.065-.2.035-.262-.264-.556-.015-.931.384-1.3.2-.188.417-.434.642-.239a1.309,1.309,0,0,1,.608.99c0,.077,0,.154,0,.231.007.224-.047.518.233.575s.618.124.813-.261a1.616,1.616,0,0,0-.354-.231c-.315-.1-.207-.356-.134-.5a1.162,1.162,0,0,1,1.523-.4.645.645,0,0,1,.345.935c-.108.284.029.464.39.468.745.009,1.49,0,2.235,0h2.164a2.823,2.823,0,0,0,.03-.412c-.057-.769-.129-1.536-.183-2.305-.032-.462.214-.792.576-.738.136.02.348.21.352.327.034,1.167.041,2.336.034,3.5,0,.427-.172.56-.608.56-1.567,0-3.134.012-4.7-.013-.245,0-.482-.205-.734-.258a3.28,3.28,0,0,0-.7-.012c-.048,0-.1.036-.144.039-.854.052-1.68.282-2.554.258-2.028-.055-4.058-.017-6.087-.011a1.385,1.385,0,0,1-1.123-.51,1.161,1.161,0,0,1-.219-.584c-.105-.931-.2-1.864-.26-2.8a.647.647,0,0,1,.236-.438c.24-.207.515-.064.537.257.055.824.1,1.649.165,2.473a4.638,4.638,0,0,0,.148.655"
+              transform="translate(-23.502 -129.977)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15848"
+              data-name="Path 15848"
+              d="M229.472,182.6c-.386.231-.014.3.123.477.285-.271.372-.864.981-.664l.044.626c.282-.023.472-.107.512-.413a.889.889,0,0,1,.132-.334c.146-.24.288-.231.426.018a.955.955,0,0,1,.132.259.549.549,0,0,0,.777.47.283.283,0,0,0,.157-.18c.088-.415.325-.572.769-.459a1.539,1.539,0,0,0,.024.326,1.914,1.914,0,0,0,.153.318c.118-.088.323-.162.34-.265.068-.43.346-.435.65-.408.223.182-.179.7.355.676a8.184,8.184,0,0,1,.375-.794c.123-.2.256-.188.427.015a1.265,1.265,0,0,1,.237.8c.047.558-.947,1.139-1.451.824a.654.654,0,0,0-.856.027c-.086.074-.315-.013-.477-.035s-.386-.141-.509-.077a4.584,4.584,0,0,1-2.1.15c-.218.009-.438-.151-.663-.179-.119-.015-.25.117-.382.132a2.391,2.391,0,0,1-.522-.022c-.11-.012-.223-.083-.324-.067a4.291,4.291,0,0,1-.591.156c-1.951.014-3.9.03-5.853-.007-.294-.006-.578-.293-.876-.428-.257-.116-.527-.2-.793-.3a3.443,3.443,0,0,1-.571-.2c-.175-.1-.314-.267-.167-.494.2-.313.415-.619.618-.932.121-.187.216-.393.354-.566.062-.078.242-.162.294-.129a.622.622,0,0,1,.275.347c.081.448.1.907.178,1.357.061.367.392.4.666.4,1.283.021,2.567.017,3.85.019.68,0,1.361,0,2.041,0,.205,0,.331-.021.406-.277.128-.436.489-.5.84-.178"
+              transform="translate(-162.674 -133.842)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15849"
+              data-name="Path 15849"
+              d="M177.683,206.239a2.106,2.106,0,0,1-.309-.5c-.026-.083.12-.3.219-.324.236-.052.531-.281.718.073a1.285,1.285,0,0,1,.143.523c.021.435.012.872.007,1.309,0,.236.05.43.32.465s.29-.157.394-.347c.429-.783.107-1.61.19-2.41.014-.137-.168-.305-.282-.442-.178-.214-.1-.423.1-.487a1.584,1.584,0,0,1,.772-.024c.073.015.126.3.128.47.006.834-.015,1.668-.011,2.5,0,.231-.1.487.206.661.155.088,0,.444-.21.449-.6.015-1.2.017-1.806,0-.1,0-.189-.183-.283-.182a4.95,4.95,0,0,0-.624.1,2.417,2.417,0,0,1-.807.073.9.9,0,0,1-.622-.927c0-.408,0-.816,0-1.212-.639-.14-.772-.02-.951.509-.078.23-.358.411-.58.566a2.227,2.227,0,0,1-.554.2l.016.105a4.7,4.7,0,0,0,.514,0,1.039,1.039,0,0,1,.882.326.892.892,0,0,1-.133,1.387,1.074,1.074,0,0,1-.869.324c-.052-.01-.121.058-.181.091s-.187.13-.208.112c-.365-.323-1.025-.132-1.232-.811-.082-.268-.148-.375.048-.577a.961.961,0,0,0,.162-.391,2.166,2.166,0,0,0,.12-.533.875.875,0,0,0-.1-.474.985.985,0,0,1,.258-1.238,1.179,1.179,0,0,1,1.043-.358,6.275,6.275,0,0,0,2.216.106c.293-.028.5.468.4.777a2.885,2.885,0,0,0-.122.975c.006.106.289.282.432.27a.778.778,0,0,0,.461-.322c.067-.089,0-.274.015-.412a2.887,2.887,0,0,1,.123-.409m-4.285,2.588c1.028.184,1.389,0,1.234-.646-.218,0-.447,0-.674,0-.617,0-.619,0-.56.646m.125-2.154c.49.06.819-.077.748-.3-.055-.173-.277-.415-.422-.413-.526,0-.241.432-.326.711"
+              transform="translate(-127.65 -150.949)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15850"
+              data-name="Path 15850"
+              d="M283.681,186.323a.936.936,0,0,1-.571-1.561.511.511,0,0,0,.045-.145c.128-.413.416-.528.742-.2.172.172.414.361.444.569.051.359.244.362.5.361q2.35,0,4.7,0c.616,0,1.236-.037,1.848.016a1.45,1.45,0,0,0,1.384-.806c.121-.174.273-.326.451-.536.3.281.6.532.859.811a4.32,4.32,0,0,1,.434.6.151.151,0,0,1-.021.145c-.22.187-.458.354-.67.548-.274.252-.484.093-.772-.007a2.772,2.772,0,0,0-1.1-.028c-.295.024-.583.173-.875.175-2.067.015-4.135.01-6.2,0-.277,0-.486.022-.618.316a1.734,1.734,0,0,1-.972.941,2.629,2.629,0,0,1-.5.221,1.4,1.4,0,0,1-1.271-.632.443.443,0,0,1-.1-.137c-.041-.123-.13-.324-.087-.362a.314.314,0,0,1,.476.008.98.98,0,0,0,1.513,0,2.6,2.6,0,0,1,.36-.29"
+              transform="translate(-208.123 -136.135)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15851"
+              data-name="Path 15851"
+              d="M86.684,204.291a.854.854,0,0,1,.149-.061c.8-.047,1.6-.116,2.4-.128a.659.659,0,0,1,.646.887c-.043.167-.386.284-.466.142-.33-.59-.855-.327-1.37-.384,0,.239,0,.427,0,.616,0,.443.291.622.675.408a4.239,4.239,0,0,1,.44-.282.324.324,0,0,1,.291.085,1.226,1.226,0,0,1-.244,1.2c-.228-.519-.67-.434-1.159-.372,0,.281-.015.572.01.859a.3.3,0,0,0,.217.188c.2.025.411-.017.614,0a.529.529,0,0,0,.662-.512c.094.008.245,0,.253.024.106.378.405.317.681.327.069,0,.182.046.2.094.133.443.47.268.8.271.01-.15.018-.295.024-.376a10.942,10.942,0,0,1-1.146-.544c-.309-.191-.244-.85.054-1.06.149-.1.255-.271.407-.369a1.063,1.063,0,0,1,1,.021c.381.153.255.54.217,1a4.739,4.739,0,0,0-.463-.313,1.946,1.946,0,0,0-.481-.165c-.021,0-.136.235-.112.257.118.107.273.257.407.249.513-.029.72.394,1.007.667.066.063-.083.4-.18.58a1.465,1.465,0,0,1-1.562.642.6.6,0,0,1-.456-.52,1.11,1.11,0,0,0-.155-.309c-.112.192-.187.32-.262.448-.222.377-.583.363-.953.353-.487-.014-.975,0-1.463-.009-.349-.008-.46-.234-.329-.558a1.68,1.68,0,0,0,.108-.594c.009-.667.01-1.335-.016-2a1.153,1.153,0,0,0-.209-.45,3.624,3.624,0,0,0-.224-.316"
+              transform="translate(-64.129 -150.996)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15852"
+              data-name="Path 15852"
+              d="M.149,203.164c.629,0,1.293.018,1.956-.007A9.088,9.088,0,0,0,3.373,203c.12-.022.208-.192.332-.236a1.014,1.014,0,0,1,.517-.069c.2.042.3.193.28.442-.033.406-.009.817-.009,1.254a4.724,4.724,0,0,1,.673-.145.833.833,0,0,1,.955.735c.08.484.087.979.142,1.468a2.752,2.752,0,0,0,.16.483,1.119,1.119,0,0,1-.388.221c-.309.052-.7-.416-.7-.8,0-.458,0-.915,0-1.364-.7-.1-.857.018-.832.649a7,7,0,0,0,.129,1.012c.067.356-.037.514-.4.509-.319,0-.682.107-.789-.168a3.685,3.685,0,0,0,.253-.832c.029-.808.014-1.618.012-2.427,0-.221.01-.465-.382-.378a1.948,1.948,0,0,1-.008.448,1.966,1.966,0,0,1-.2.4c-.138-.1-.37-.106-.339-.364,0-.033-.021-.069-.031-.1-.6-.093-.65-.053-.647.54,0,.578-.023,1.158.016,1.733a4.966,4.966,0,0,0,.264.938,3.841,3.841,0,0,1-.814.2.673.673,0,0,1-.516-.265c-.056-.088.119-.327.2-.495.033-.072.123-.136.121-.2-.016-.469-.06-.937-.073-1.407,0-.179.057-.359.07-.54.018-.246-.05-.475-.319-.527-.235-.046-.478-.043-.59.266-.024.068-.262.14-.294.107A.592.592,0,0,1,0,203.72a2.376,2.376,0,0,1,.149-.557"
+              transform="translate(0 -149.947)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15853"
+              data-name="Path 15853"
+              d="M288.639,211.238c-.135.355-.443.313-.741.3s-.33-.169-.3-.455a13.508,13.508,0,0,0,.01-1.652c0-.059-.18-.113-.359-.217,0,.267,0,.44,0,.612a.343.343,0,0,1-.386.4c-.4,0-.793,0-1.184,0-.063.348.038.495.412.526.218.018.445-.077.665-.063a1.754,1.754,0,0,1,.479.174c-.073.128-.115.317-.223.371a1.736,1.736,0,0,1-1.042.327,1.446,1.446,0,0,1-1.128-.93c-.055-.228-.113-.456-.146-.687-.085-.6.358-.894.761-1.155a1.086,1.086,0,0,1,1.24-.016c.163.108.3.248.49.4a.987.987,0,0,1,1.154-.41.427.427,0,0,0,.229-.007,1.036,1.036,0,0,1,1.476.388.578.578,0,0,1,.124.229c.018.256-.008.515.019.769a6.479,6.479,0,0,0,.165.956c.07.269-.008.432-.275.444a.768.768,0,0,1-.684-.652c0-.347.007-.693.007-1.04,0-.288-.1-.515-.421-.536a.456.456,0,0,0-.523.494c-.013.385.006.772.031,1.157.006.091.1.176.153.273m-2.268-1.569a1.887,1.887,0,0,0-.235-.456.306.306,0,0,0-.3-.011,2.173,2.173,0,0,0-.267.467Z"
+              transform="translate(-210.609 -154.311)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15854"
+              data-name="Path 15854"
+              d="M309.622,212.291c.341-.029.809.056.865-.431a2.892,2.892,0,0,0-.139-1.125,9.716,9.716,0,0,0-.535-1.25c-.1-.225-.252-.189-.378-.016-.23.316-.368.349-.543.046-.157-.273-.4-.195-.554-.14a.663.663,0,0,0-.36.418.8.8,0,0,0,.985,1.031c.193-.04.48-.061.444.241a.68.68,0,0,1-.359.487,1.481,1.481,0,0,1-1.554-.4,1.756,1.756,0,0,1-.422-.973,1.355,1.355,0,0,1,.57-1.1,1.612,1.612,0,0,1,1.354-.432c.357.031.712.1,1.069.125a.889.889,0,0,0,.311-.088c.234-.077.571.135.473.311-.217.392-.017.723.045,1.078.009.049.015.1.025.172.422.058.459-.273.5-.523a5.684,5.684,0,0,0,.011-.88,7,7,0,0,1,.738-.167.33.33,0,0,1,.276.127.372.372,0,0,1-.009.336,9.252,9.252,0,0,0-1.071,2.021c-.245.431-.379.927-.642,1.344a1.405,1.405,0,0,1-.694.509c-.262.092-.482-.315-.4-.729"
+              transform="translate(-227.168 -154.355)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15855"
+              data-name="Path 15855"
+              d="M236.084,210.359c.116-.281.217-.489.287-.707a.559.559,0,0,0-.019-.3c-.113-.417-.037-.511.395-.493.082,0,.171-.077.248-.064a.645.645,0,0,1,.368.14.339.339,0,0,1-.03.335,1.652,1.652,0,0,0-.523.884,5.418,5.418,0,0,1-.473.973c-.213.427-.438.849-.63,1.286a.812.812,0,0,1-.587.514.857.857,0,0,0-.255.17,1.824,1.824,0,0,1-.338-.209c-.067-.065-.145-.2-.119-.264.041-.1.162-.244.253-.246.33-.009.652-.135.71-.422a1.706,1.706,0,0,0-.175-1.349,4.559,4.559,0,0,1-.314-.695,1.011,1.011,0,0,0-.176-.344.435.435,0,0,0-.331-.075c-.149.028-.285.165-.429.169-.352.01-.517.155-.543.51a1.155,1.155,0,0,0,.263.942.369.369,0,0,1,.069.337.479.479,0,0,1-.351.2c-.359-.018-.779.144-1.049-.318a1.636,1.636,0,0,0,.383-1.369c-.027-.23.007-.446-.287-.558-.188-.071-.1-.42.117-.507a.4.4,0,0,1,.114-.011c.576-.045,1.151-.1,1.728-.129.169-.008.342.075.515.084.127.006.256-.059.385-.062a3.482,3.482,0,0,1,.436.038,1.872,1.872,0,0,0-.032.362c.039.378.086.755.154,1.129.006.033.18.036.238.046"
+              transform="translate(-171.877 -154.441)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15856"
+              data-name="Path 15856"
+              d="M112.338,207.814c-.079-.169-.12-.35-.173-.354a.792.792,0,0,0-.528.081c-.154.139-.257.268-.461.131-.271-.182-.066-.368.037-.5a1.118,1.118,0,0,1,1.705-.057,1.238,1.238,0,0,1,.3.876c0,.423.09.845.1,1.268a.579.579,0,0,1-.2.37c-.036.034-.2-.052-.3-.1-.245-.129-.468-.28-.732-.008a.48.48,0,0,1-.774-.054c-.251-.295-.567-.276-.886.052-.235.241-.5.173-.767-.033-.324-.25-.3-.547-.32-.884-.029-.448.177-.939-.2-1.338-.02-.021.02-.1.032-.151a3.01,3.01,0,0,1,.2-.723.748.748,0,0,1,.456-.324c.22-.047.359.109.319.355-.05.3.007.493.381.487.093,0,.189.185.283.285-.1.085-.184.23-.288.242-.338.04-.412.247-.41.529,0,.116.008.231.009.346,0,.606,0,.606.638.586a1.442,1.442,0,0,1,1.578-1.077m.095.557c-.146,0-.3-.045-.389.011a1.177,1.177,0,0,0-.291.36c0,.006.121.14.164.129.247-.064.5-.146.515-.5"
+              transform="translate(-80.74 -152.438)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15857"
+              data-name="Path 15857"
+              d="M151.881,208.134c-1.019-.21-1.357-1.181-2.062-1.791a1.586,1.586,0,0,0,.269,1.469c-.186.174-.289.551-.609.131-.041-.054-.254-.043-.337.013-.371.251-.444.244-.7-.189.513-.2.417-.642.41-1.064-.01-.565.009-1.13.013-1.695,0-.177.006-.329-.228-.416-.1-.037-.125-.283-.184-.435a4.1,4.1,0,0,1,.419-.08,6.09,6.09,0,0,0,1.123-.1,1.544,1.544,0,0,1,1.679.9,1.076,1.076,0,0,1-.622.976c-.286.077-.257.254-.166.386a6.047,6.047,0,0,0,.8.984.762.762,0,0,1,.192.9m-1.061-3.311a.932.932,0,0,1-.131-.026c-.059-.022-.116-.048-.173-.075-.512-.246-.755-.1-.75.45,0,.064,0,.128,0,.191,0,.284.163.372.419.35a.9.9,0,0,0,.634-.891"
+              transform="translate(-109.818 -150.881)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15858"
+              data-name="Path 15858"
+              d="M40.487,204.04c.186,0,.372.013.557,0a7.672,7.672,0,0,0,1.107-.126,1.56,1.56,0,0,1,1.638.945,1.107,1.107,0,0,1-.6.964c-.294.112-.451.141-.111.446a4.868,4.868,0,0,1,.853,1.1.71.71,0,0,1,.028.628c-.1.157-.324-.046-.494-.093-.545-.149-.679-.681-1.06-.968-.161-.122-.227-.363-.36-.532a1.543,1.543,0,0,0-.3-.235l-.151.106c.139.42.261.848.426,1.258a.4.4,0,0,1-.369.516,3.213,3.213,0,0,1-.806.007.39.39,0,0,1-.245-.244c-.022-.07.082-.183.135-.274.073-.126.213-.247.216-.373.021-.77.018-1.54,0-2.31,0-.092-.1-.186-.17-.271-.11-.141-.227-.274-.342-.411l.04-.126m1.342.584c-.012.238-.011.454-.037.667-.049.418.046.537.429.362a2.256,2.256,0,0,0,.651-.623c.032-.036-.038-.207-.1-.276-.271-.285-.6-.147-.94-.13"
+              transform="translate(-29.922 -150.836)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15859"
+              data-name="Path 15859"
+              d="M6.9,186.329a3.487,3.487,0,0,1-1.972.939c-.193.028-.384.2-.561.179a2.1,2.1,0,0,1-1.444-.8,2.187,2.187,0,0,1,.129-1.438.743.743,0,0,0,.084-.284c.085-.387.554-.773.869-.711.2.386-.167.6-.292.872a1,1,0,0,0,.421,1.431.453.453,0,0,0,.3,0c.19-.054.371-.139.558-.2s.395-.129.58-.189a4,4,0,0,1-.763-.346c-.208-.15-.245-.364-.108-.656A2.1,2.1,0,0,1,5.813,184c.2-.085.385-.221.588-.3a.622.622,0,0,1,.717.332c.078.275-.241.693-.545.634a1.214,1.214,0,0,0-1.1.35c.327.139.667.261.986.424.526.269.52.28.429.9Z"
+              transform="translate(-2.105 -135.879)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15860"
+              data-name="Path 15860"
+              d="M276.076,209.4c-.438-.055-.543.143-.534.512.008.343-.3.506-.554.636a3.76,3.76,0,0,1-.736.206l0,.108c.317,0,.635,0,.952,0a1.594,1.594,0,0,1,.848.689.842.842,0,0,1-.27.808,1.356,1.356,0,0,1-1.1.533c-.069,0-.133.081-.2.117s-.174.111-.216.087c-.45-.252-1.077-.3-1.209-.933-.032-.154.084-.343.145-.511.055-.148.143-.284.192-.434a1.44,1.44,0,0,0,.121-.559,4.509,4.509,0,0,0-.221-.592.984.984,0,0,1-.017-.467,1,1,0,0,1,.225-.368,1.206,1.206,0,0,1,1.532-.4,1.794,1.794,0,0,0,.61.021c.362-.015.464.176.434.544m-.84,2.346-.115-.1a7.974,7.974,0,0,0-.875.011.411.411,0,0,0-.291.231c-.032.107.039.353.094.362a2.452,2.452,0,0,0,.923.034c.123-.029.178-.348.264-.536m-.793-2.512a.521.521,0,0,0-.334.719c.033.1.252.232.294.205.123-.078.286-.237.276-.35a1.98,1.98,0,0,0-.236-.575"
+              transform="translate(-202.002 -154.416)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15861"
+              data-name="Path 15861"
+              d="M259.775,208.429a3.863,3.863,0,0,1,.06-.556c.127-.5-.043-.738-.553-.732-.18,0-.359,0-.539,0a.6.6,0,0,0-.509.871c.153.305.079.454-.261.417-.257-.027-.606.205-.76-.2a.453.453,0,0,1,0-.328,9.862,9.862,0,0,1,.758-1.358,7.757,7.757,0,0,0,.53-1.268,4.513,4.513,0,0,1,.326-.651c.085-.116.316-.257.4-.216a1,1,0,0,1,.409.436,8.6,8.6,0,0,1,.329.889c.185.505.349,1.02.571,1.508.088.194.332.313.458.5a.832.832,0,0,1,.152.487c-.021.3-.268.207-.46.2-.276-.008-.553,0-.9,0m-.532-1.842c.126-.643.033-.887-.334-.878l-.218.878Z"
+              transform="translate(-190.264 -151.219)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15862"
+              data-name="Path 15862"
+              d="M223.669,209.846c.163.785-.828,1.608-1.561,1.582-.519-.018-.787-.383-1.12-.631-.162-.12-.153-.515-.162-.787a1.518,1.518,0,0,1,1.441-1.612,1.4,1.4,0,0,1,.844.311c.58.546.556.571.558,1.138m-2.065-.038.057.02c0,.09-.033.2.006.266a4.767,4.767,0,0,0,.507.744c.041.047.315-.014.379-.1.167-.225.424-.438.289-.787a.866.866,0,0,1-.1-.391c.054-.4-.286-.437-.508-.53s-.366.067-.439.284c-.057.168-.129.33-.194.495"
+              transform="translate(-163.367 -154.172)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15863"
+              data-name="Path 15863"
+              d="M55.39,210.271a.973.973,0,0,0,1.288.414c.1-.033.253.111.382.173a.975.975,0,0,1-.167.308,1.342,1.342,0,0,1-.907.387,1.858,1.858,0,0,1-1.335-1.109,1.553,1.553,0,0,1,.051-.93,1.378,1.378,0,0,1,1.943-.749,1.729,1.729,0,0,1,.537.669c.174.388-.087.7-.6.766-.24.03-.486,0-.729.014-.144.006-.287.035-.464.058m.276-.51.6-.266c-.1-.073-.2-.193-.316-.21-.249-.038-.436.037-.286.476"
+              transform="translate(-40.396 -154.301)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15864"
+              data-name="Path 15864"
+              d="M163.269,210.232c0,.482.321.714.7.58a1.515,1.515,0,0,1,.412-.137c.1,0,.295.082.3.146.017.142-.01.378-.1.428-.281.155-.542.419-.912.326a1.935,1.935,0,0,1-1.133-.686,1.677,1.677,0,0,1-.177-1.366c.054-.582,1.247-1.086,1.806-.844a1.029,1.029,0,0,1,.688.892.529.529,0,0,1-.542.656c-.34.025-.683.005-1.044.005m.75-.536a1.772,1.772,0,0,0-.251-.477.344.344,0,0,0-.335.028,1.649,1.649,0,0,0-.24.449Z"
+              transform="translate(-120.07 -154.336)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15865"
+              data-name="Path 15865"
+              d="M66.46,209.867v-.387l-1.006.333-.119-.09c.081-.228.1-.585.257-.657a2.635,2.635,0,0,1,1.046-.175.915.915,0,0,1,.521.225c.471.375.195.927.3,1.393.036.166.055.335.082.5.038.233.108.482-.148.635-.088.052-.269.094-.314.049-.276-.278-.505-.236-.8-.013a.422.422,0,0,1-.62-.077c-.235-.258-.585-.42-.484-.847a.6.6,0,0,1,.211-.33c.317-.222.655-.416.985-.621l.1.059m-.542.826c.192.447.416.219.586.138.089-.042.118-.21.175-.321l-.116-.113-.645.3"
+              transform="translate(-48.199 -154.539)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15866"
+              data-name="Path 15866"
+              d="M203.76,209.54a.905.905,0,0,1,1.182-.912c.627.224.914.575.817,1.191a2.387,2.387,0,0,0,0,.692,7.839,7.839,0,0,0,.2.8c-.193.324-.194.3-.637.048a.71.71,0,0,0-.642.017.476.476,0,0,1-.762-.035,1.06,1.06,0,0,1-.435-.75.7.7,0,0,1,.38-.624,4.52,4.52,0,0,1,.941-.36l.068-.389-1.121.317m1.137.61-.623.358-.005.11c.125.034.276.13.371.091.18-.076.472-.138.257-.559"
+              transform="translate(-150.543 -154.309)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15867"
+              data-name="Path 15867"
+              d="M26.113,210.393c.239.124.475.256.72.367.066.029.161-.009.243-.014l.69-.04c.186.482-.3.5-.44.743-.1.172-.821.051-1-.091a3.026,3.026,0,0,0-.543-.342.707.707,0,0,1-.382-.694,2.736,2.736,0,0,0-.008-.46c-.123-.59.343-.842.688-1.1a1.188,1.188,0,0,1,1.388,0,1.028,1.028,0,0,1,.46.97c-.038.415-.489.4-.792.454a5.423,5.423,0,0,1-.974.013l-.048.2m.278-.665.616-.26c-.109-.112-.216-.315-.328-.317-.256-.006-.392.17-.288.577"
+              transform="translate(-18.77 -154.275)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15868"
+              data-name="Path 15868"
+              d="M132.979,209.33a1.613,1.613,0,0,0,.373-.234,1.27,1.27,0,0,1,1.28-.461,1.45,1.45,0,0,1,.885,1.1.626.626,0,0,1-.593.492h-.985c-.076.437.079.6.537.579.29-.012.579-.031.869-.047l.088.12a2.342,2.342,0,0,1-.269.33,1.077,1.077,0,0,1-.827.362,1.685,1.685,0,0,1-1.118-.631c-.448-.486-.2-1.077-.226-1.627l-.014.014m1.592.36c.04-.337-.09-.539-.377-.5a.32.32,0,0,0-.243.5Z"
+              transform="translate(-98.354 -154.324)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15869"
+              data-name="Path 15869"
+              d="M18.39,187.837c.228-.009.445-.1.643.16.147.19.628.069.833-.1.165-.14.375-.226.555-.35.4-.28.429-.542.1-.905-.253-.279-.186-.83.156-.936.117-.036.377.14.459.283a2.164,2.164,0,0,1,.126,1.868c-.205.611-.753.774-1.176,1.08a.655.655,0,0,1-.833-.094c-.207-.224-.47-.4-.681-.617a1.294,1.294,0,0,1-.174-.393l-.008.009"
+              transform="translate(-13.605 -137.379)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15870"
+              data-name="Path 15870"
+              d="M215.351,207.357a8.535,8.535,0,0,0-.139,1.048.465.465,0,0,0,.269.361.391.391,0,0,1,.347.4.41.41,0,0,1-.435.4.9.9,0,0,1-1-.942c-.025-.485-.142-.968-.137-1.452a3.137,3.137,0,0,1,.226-1.041.435.435,0,0,1,.618-.178.366.366,0,0,1,.174.535c-.028.053.1.269.153.271.247.008.482.049.421.339-.028.132-.269.218-.413.325l-.082-.066"
+              transform="translate(-158.506 -152.322)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15871"
+              data-name="Path 15871"
+              d="M74.866,207.738a.744.744,0,0,0,.551-.779,4.491,4.491,0,0,0-.1-.851.386.386,0,0,1-.005-.189,1.75,1.75,0,0,0-.161-1.508.362.362,0,0,1,.309-.519c.634-.07.766.038.746.685-.018.584-.114,1.168-.1,1.75a6.15,6.15,0,0,0,.239,1.268c.058.235-.046.452-.286.46a3.587,3.587,0,0,1-.763-.015c-.142-.026-.261-.175-.437-.3"
+              transform="translate(-55.387 -150.826)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15872"
+              data-name="Path 15872"
+              d="M209.9,175.877a17.922,17.922,0,0,1,.1,3.553c0,.191-.225.421-.4.564s-.488-.143-.493-.432q-.02-1.193-.035-2.387a4.287,4.287,0,0,1,.016-.743.668.668,0,0,1,.812-.555"
+              transform="translate(-154.668 -130.109)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15873"
+              data-name="Path 15873"
+              d="M100.5,177.758c0,.5-.018.89.005,1.273a.7.7,0,0,1-.35.749.778.778,0,0,1-.433.094c-.063-.009-.144-.2-.145-.3-.012-1.05-.025-2.1.005-3.151a1.151,1.151,0,0,1,.318-.556c.175-.221.243-.2.407.087.367.636.05,1.3.192,1.808"
+              transform="translate(-73.658 -129.994)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15874"
+              data-name="Path 15874"
+              d="M128.364,207.412c-.675.018-.7.047-.7.718,0,.228,0,.456,0,.709l.509.063c.086.534-.229.89-.706.731a.831.831,0,0,1-.573-.658c-.035-.291.017-.591-.013-.883s-.114-.6-.188-.975c.048-.178.117-.462.2-.741.112-.373.4-.373.752-.324a1.7,1.7,0,0,1,.023.366c-.044.3.044.434.374.468.271.028.3.3.312.54l.014-.014"
+              transform="translate(-93.725 -152.42)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15875"
+              data-name="Path 15875"
+              d="M220.432,176.122c-.185-.63-.178-.826.641-.864.353-.016.773-.162.99.3.049.1.134.284.1.314a1.688,1.688,0,0,1-.535.346,1.349,1.349,0,0,1-.568.041,5.058,5.058,0,0,1-.629-.136"
+              transform="translate(-163.004 -129.631)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15876"
+              data-name="Path 15876"
+              d="M179.971,179.3c.474,0,.934-.029,1.388.011a.427.427,0,0,1,.423.528.463.463,0,0,1-.509.394,4.233,4.233,0,0,0-.536,0,.764.764,0,0,1-.766-.93"
+              transform="translate(-133.137 -132.639)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15877"
+              data-name="Path 15877"
+              d="M61,178.176a6.823,6.823,0,0,1-1.306-.022c-.229-.049-.43-.3-.6-.5-.026-.03.206-.4.3-.391.478.041,1.055-.26,1.4.313a3.1,3.1,0,0,1,.2.6"
+              transform="translate(-43.715 -131.109)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15878"
+              data-name="Path 15878"
+              d="M283.337,176.769c.181-.229.345-.43.5-.636.249-.33.4-.32.587.035a2.3,2.3,0,0,0,.286.418c.233.267-.033.422-.155.554a1.042,1.042,0,0,1-.5.2c-.26.066-.507.092-.521-.305,0-.088-.124-.173-.2-.268"
+              transform="translate(-209.613 -130.125)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15879"
+              data-name="Path 15879"
+              d="M5.64,199.056a6.653,6.653,0,0,0,.684-.1.688.688,0,0,1,.7.227c.152.158.243.358.042.557-.05.049-.111.121-.169.123-.348.015-.7.007-1.046.02a.427.427,0,0,1-.443-.4,1.468,1.468,0,0,1,.123-.551l.112.12"
+              transform="translate(-3.994 -147.174)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15880"
+              data-name="Path 15880"
+              d="M144.7,194.393a1.79,1.79,0,0,1-.5-.01c-.15-.045-.348-.147-.391-.271a.573.573,0,0,1,.089-.5c.093-.1.32-.077.49-.09a1.455,1.455,0,0,1,.392.022,1.634,1.634,0,0,1,.609.179.47.47,0,0,1,.12.449c-.08.123-.3.169-.468.217a1.284,1.284,0,0,1-.344.006Z"
+              transform="translate(-106.379 -143.166)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15881"
+              data-name="Path 15881"
+              d="M163.443,179.924c-.206-.18-.494-.323-.6-.549s.26-.6.5-.593a.822.822,0,0,1,.683.608c0,.232-.275.475-.583.534"
+              transform="translate(-120.461 -132.264)"
+              fill="#1a1818"
+            />
+            <path
+              id="Path_15882"
+              data-name="Path 15882"
+              d="M173.024,178.549c-.012.447-.164.553-.442.417a1.161,1.161,0,0,1-.5-.34c-.149-.246.114-.406.263-.562.022-.023.206.089.3.16.155.119.3.256.376.325"
+              transform="translate(-127.275 -131.73)"
+              fill="#1a1818"
+            />
+          </g>
+        </svg>
+      );
+    case "bulletMarkerValcom":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20.452"
+          height="20.452"
+          viewBox="0 0 20.452 20.452"
+        >
+          <g
+            id="Group_20324"
+            data-name="Group 20324"
+            transform="translate(20534.547 6194.553)"
+          >
+            <path
+              id="Path_15487"
+              data-name="Path 15487"
+              d="M9.726,0A9.726,9.726,0,1,1,0,9.726,9.726,9.726,0,0,1,9.726,0Z"
+              transform="translate(-20534.047 -6194.053)"
+              stroke="rgba(0,0,0,0)"
+              stroke-width="1"
+            />
+            <g
+              id="Group_20313"
+              data-name="Group 20313"
+              transform="translate(-20534.047 -6194.065)"
+            >
+              <path
+                id="Path_178"
+                data-name="Path 178"
+                d="M736.126,86.691v-.778a6.67,6.67,0,0,0-6.106,5.618l-3.185.986h3.913A5.877,5.877,0,0,1,736.126,86.691Z"
+                transform="translate(-726.835 -82.781)"
+                fill="#fff"
+              />
+              <path
+                id="Path_179"
+                data-name="Path 179"
+                d="M784.69,214.677H783.9a6.641,6.641,0,0,0,1.62,3.933l-.012.018a6.672,6.672,0,0,0,4.04,2.218l.984,3.179v-3.12h0v-.793A5.877,5.877,0,0,1,784.69,214.677Z"
+                transform="translate(-780.76 -204.547)"
+                fill="#fff"
+              />
+              <path
+                id="Path_180"
+                data-name="Path 180"
+                d="M919.138,205.908h-.551c0,.013,0,.027,0,.04a5.877,5.877,0,0,1-5.43,5.86v.795a6.639,6.639,0,0,0,6.139-5.7l3.2-.994Z"
+                transform="translate(-902.921 -196.235)"
+                fill="#fff"
+              />
+              <path
+                id="Path_181"
+                data-name="Path 181"
+                d="M910.368,37.751h.776a6.67,6.67,0,0,0-5.664-6.072l-1-3.21v3.913h.029A5.877,5.877,0,0,1,910.368,37.751Z"
+                transform="translate(-894.724 -28.468)"
+                fill="#fff"
+              />
+              <path
+                id="Path_182"
+                data-name="Path 182"
+                d="M808.686,115.981h.761a4.532,4.532,0,0,1,4.033-4.475v-.765A5.293,5.293,0,0,0,808.686,115.981Z"
+                transform="translate(-804.189 -106.252)"
+                fill="#fff"
+              />
+              <path
+                id="Path_183"
+                data-name="Path 183"
+                d="M917.243,205.978a4.533,4.533,0,0,1-4.086,4.511v.764A5.293,5.293,0,0,0,918,205.978c0-.012,0-.024,0-.037h0l0,0h-.761C917.242,205.951,917.243,205.964,917.243,205.978Z"
+                transform="translate(-902.921 -196.256)"
+                fill="#fff"
+              />
+              <path
+                id="Path_184"
+                data-name="Path 184"
+                d="M809.777,214.677h-.764a5.293,5.293,0,0,0,5.251,4.853v-.761A4.532,4.532,0,0,1,809.777,214.677Z"
+                transform="translate(-804.498 -204.516)"
+                fill="#fff"
+              />
+              <path
+                id="Path_185"
+                data-name="Path 185"
+                d="M904.513,101.042a4.533,4.533,0,0,1,4.5,4.026h.765a5.294,5.294,0,0,0-5.269-4.787h-.029V99.7h0v1.344Z"
+                transform="translate(-894.724 -95.814)"
+                fill="#fff"
+              />
+              <path
+                id="Path_186"
+                data-name="Path 186"
+                d="M803.445,100.665v-.586a5.877,5.877,0,0,0-5.378,5.826h.583A5.293,5.293,0,0,1,803.445,100.665Z"
+                transform="translate(-794.154 -96.173)"
+                fill="#fff"
+              />
+              <path
+                id="Path_187"
+                data-name="Path 187"
+                d="M803.445,100.665v-.586a5.877,5.877,0,0,0-5.378,5.826h.583A5.293,5.293,0,0,1,803.445,100.665Z"
+                transform="translate(-794.154 -96.173)"
+                fill="#fff"
+              />
+              <path
+                id="Path_188"
+                data-name="Path 188"
+                d="M798.943,214.677h-.585a5.877,5.877,0,0,0,5.837,5.436v-.583A5.293,5.293,0,0,1,798.943,214.677Z"
+                transform="translate(-794.43 -204.52)"
+                fill="#fff"
+              />
+              <path
+                id="Path_189"
+                data-name="Path 189"
+                d="M798.943,214.677h-.585a5.877,5.877,0,0,0,5.837,5.436v-.583A5.293,5.293,0,0,1,798.943,214.677Z"
+                transform="translate(-794.43 -204.52)"
+                fill="#fff"
+              />
+              <path
+                id="Path_190"
+                data-name="Path 190"
+                d="M918.007,205.941h0c0,.012,0,.024,0,.037a5.293,5.293,0,0,1-4.847,5.274v.586a5.877,5.877,0,0,0,5.43-5.86c0-.013,0-.027,0-.04H918Z"
+                transform="translate(-902.921 -196.259)"
+                fill="#fff"
+              />
+              <path
+                id="Path_191"
+                data-name="Path 191"
+                d="M918.007,205.941h0c0,.012,0,.024,0,.037a5.293,5.293,0,0,1-4.847,5.274v.586a5.877,5.877,0,0,0,5.43-5.86c0-.013,0-.027,0-.04H918Z"
+                transform="translate(-902.921 -196.259)"
+                fill="#fff"
+              />
+              <path
+                id="Path_192"
+                data-name="Path 192"
+                d="M904.537,100.275a5.294,5.294,0,0,1,5.269,4.787h.586a5.877,5.877,0,0,0-5.854-5.37h-.029v.583Z"
+                transform="translate(-894.747 -95.806)"
+                fill="#fff"
+              />
+              <path
+                id="Path_193"
+                data-name="Path 193"
+                d="M904.537,100.275a5.294,5.294,0,0,1,5.269,4.787h.586a5.877,5.877,0,0,0-5.854-5.37h-.029v.583Z"
+                transform="translate(-894.747 -95.806)"
+                fill="#fff"
+              />
+              <path
+                id="Path_194"
+                data-name="Path 194"
+                d="M846.157,168.2q1.1.379,2.193.757a.124.124,0,0,1,.088.086q.376,1.094.756,2.186c.006.019.014.038.028.073L851.4,166l-5.306,2.177Zm4.737-1.718.008.012-.09.09q-1.073,1.073-2.146,2.148a.094.094,0,0,1-.115.028c-.548-.192-1.1-.381-1.645-.571l-.09-.033Z"
+                transform="translate(-839.54 -158.493)"
+                fill="#fff"
+              />
+              <path
+                id="Path_195"
+                data-name="Path 195"
+                d="M1012.1,205.937h0Z"
+                transform="translate(-996.327 -196.238)"
+                fill="#fff"
+              />
+            </g>
+          </g>
+        </svg>
+      );
+    case "comingSoonTimer":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="79.378"
+          height="93.128"
+          viewBox="0 0 79.378 93.128"
+        >
+          <g id="Group_24197" data-name="Group 24197" opacity="0.15">
+            <path
+              id="Path_18238"
+              data-name="Path 18238"
+              d="M34.849,13.82V9.133H25.9V0h27.55V8.98H44.717c-1.073,4.555-.926,4.5,3.1,5.709,4.152,1.249,8.17,2.943,12.895,4.681l3.343-4.477,12.9,13.866s-3.954,2.144-.942,9.485c6.2,15.11,3.85,29.375-7.04,41.505-10.985,12.235-25.1,16.173-40.814,11.42-40.969-12.707-35.925-70.612,6.7-77.351M9.655,53.272C8.626,69.084,23.211,83.551,39.687,83.519c17.58-.034,31.1-14.748,30.069-32.725-.872-15.2-15.929-29.029-30.183-27.42v29.9Z"
+              transform="translate(0)"
+              fill="#fff"
+            />
+          </g>
+        </svg>
+      );
+    case "saveIcon":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14.099"
+          height="16.128"
+          viewBox="0 0 14.099 16.128"
+        >
+          <g
+            id="Group_23887"
+            data-name="Group 23887"
+            transform="translate(0 0)"
+          >
+            <path
+              id="Path_15901"
+              data-name="Path 15901"
+              d="M.008,7.65c0-2-.022-3.916.009-5.828A1.9,1.9,0,0,1,1.855.016C4.77,0,7.687-.012,10.6.031a2.105,2.105,0,0,1,1.2.511A23.48,23.48,0,0,1,13.556,2.27,1.9,1.9,0,0,1,14.1,3.65c0,2.811.005,5.622,0,8.433A1.958,1.958,0,0,1,12.086,14.1c-.762.01-1.526-.023-2.287.013a1.164,1.164,0,0,1-1.048-.439,3.211,3.211,0,0,0-.516-.419c.026-.043.051-.087.076-.13h2.8V11.784c0-1,0-2,0-3.005,0-.557-.162-.712-.725-.714-.853,0-1.706-.025-2.557.009a.84.84,0,0,1-.82-.393,6.715,6.715,0,0,0-.533-.6H7.6c.957,0,1.914,0,2.871,0A1.479,1.479,0,0,1,12.088,8.7c.011,1.3,0,2.6,0,3.9v.486a.959.959,0,0,0,1.02-1.039c.007-1.421,0-2.842,0-4.262,0-1.331-.009-2.662.006-3.993A1.286,1.286,0,0,0,12.7,2.8c-.461-.447-.922-.9-1.362-1.364a1.253,1.253,0,0,0-1.277-.4c0,.6-.038,1.226.007,1.843C10.2,4.679,9.256,5.114,7.9,5.042c-1.074-.057-2.153-.008-3.23-.013a1.5,1.5,0,0,1-1.631-1.61c-.009-.789,0-1.579,0-2.417A11.428,11.428,0,0,0,1.8,1.011.977.977,0,0,0,.99,2.041C.984,3.432.977,4.822.994,6.213c0,.381-.025.691-.4.9a3.621,3.621,0,0,0-.582.536m4.02-6.637c0,.869-.027,1.716.023,2.559a.682.682,0,0,0,.492.446c1.342.038,2.685.036,4.027,0A.654.654,0,0,0,9.044,3.6c.046-.857.022-1.718.022-2.585Z"
+              fill="#fff"
+            />
+            <path
+              id="Path_15902"
+              data-name="Path 15902"
+              d="M6.341,12.737,8.582,14.95c.1.1.191.19.284.287.229.239.29.5.032.744a.492.492,0,0,1-.75-.065C7.43,15.2,6.708,14.483,6,13.759a2.415,2.415,0,0,1-.26-.385,3.617,3.617,0,0,1-5.087-.735,3.559,3.559,0,0,1,.381-4.55,3.551,3.551,0,0,1,4.625-.306,3.6,3.6,0,0,1,.686,4.954M3.514,8.065a2.525,2.525,0,1,0,2.523,2.519A2.488,2.488,0,0,0,3.514,8.065"
+              fill="#fff"
+            />
+          </g>
+        </svg>
+      );
+    case "moreIcon":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="11.342"
+          height="11.341"
+          viewBox="0 0 11.342 11.341"
+        >
+          <g
+            id="Group_24209"
+            data-name="Group 24209"
+            transform="translate(-894.793 -2482.547)"
+          >
+            <g id="dropdown" transform="translate(895.793 2483.547)">
+              <path
+                id="Path_18241"
+                data-name="Path 18241"
+                d="M7.885,1.473l-6.5,6.706"
+                transform="translate(-2.017 4.534) rotate(-45)"
+                fill="none"
+                stroke="#000"
+                strokelinecap-="round"
+                strokeWidth="1"
+              />
+              <path
+                id="Path_18242"
+                data-name="Path 18242"
+                d="M7.885,1.473l-6.5,6.706"
+                transform="translate(4.534 11.359) rotate(-135)"
+                fill="none"
+                stroke="#000"
+                strokelinecap-="round"
+                strokeWidth="1"
+              />
+            </g>
           </g>
         </svg>
       );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Grid, Typography } from "@mui/material";
 import InputWithChangeBtn from "../../../Components/InputWithChangeBtn/InputWithChangeBtn";
 import DOBInput from "./DOBInput/DOBInput";
@@ -6,53 +6,111 @@ import NationalitySelect from "./NationalitySelect/NationalitySelect";
 import CustomButton from "../../../Components/Button/CustomButton";
 import "../../../Styles/profile.css";
 import ProfileNumInput from "./ProfileNumInput/ProfileNumInput";
+import AppContext from "../../../context/AppContext";
+import { updateAccountDetails } from "../../../network/apiServices";
 
 const MySettings = () => {
-  const [selectedNationality, setSelectedNationality] = useState("Pakistani");
-  const [selectedDate, setSelectedDate] = useState("19/02/1997");
+  const context = useContext(AppContext);
+
+  const { userPreferences } = context;
+
+  const userDetails = userPreferences?.userDetails;
+
+  const [firstName, setFirstName] = useState(userDetails?.firstName);
+  const [lastName, setLastName] = useState(userDetails?.lastName);
+
+  const [mobile, setMobile] = useState(userDetails?.mobileNumber);
+  const [verifyBtnCheck, setVerifyBtnCheck] = useState(true);
+
+  const [selectedNationality, setSelectedNationality] = useState(
+    userDetails?.nationality
+  );
+  const [selectedDate, setSelectedDate] = useState(userDetails?.dateOfBirth);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [validationError, setValidationError] = useState("");
 
   const handleFirstName = (value) => {
-    console.log("handleFirstName value:", value);
+    setFirstName(value);
   };
   const handleLastName = (value) => {
-    console.log("handleLastName value:", value);
+    setLastName(value);
+  };
+
+  const handleSubmit = () => {
+    setValidationError("");
+
+    if (!firstName.trim()) {
+      setValidationError("Please enter a valid first name.");
+    } else if (!lastName.trim()) {
+      setValidationError("Please enter a valid last name.");
+    } else if (!mobile.trim()) {
+      setValidationError("Please enter a valid mobile number.");
+    } else if (!verifyBtnCheck) {
+      setValidationError("Please verify mobile number first.");
+    } else {
+      const payload = {
+        email: userDetails?.email,
+        firstName: firstName,
+        lastName: lastName,
+        currentMobileNumber: userDetails?.mobileNumber,
+        newMobileNumber: mobile,
+        nationality: selectedNationality,
+        dateOfBirth: selectedDate ? selectedDate : "",
+      };
+
+      updateAccountDetails(payload)
+        .then((res) => {
+          if (res.data.status === "INVALID") {
+            setValidationError(res.data.message);
+          } else {
+            setSuccessMessage(res.data.message);
+          }
+        })
+        .catch((err) => {});
+    }
   };
 
   return (
     <div>
       <Typography variant="GothamBlack24Bold">Settings</Typography>
-      <Grid container spacing={1} mt={1}>
-        <Grid item xs={12} sm={5}>
+      <Grid container spacing={2} mt={1}>
+        <Grid item xs={12} sm={6}>
           <InputWithChangeBtn
-            initialValue="Ahmed"
+            initialValue={firstName}
             onValueChange={handleFirstName}
             type={"text"}
           />
         </Grid>
-        <Grid item xs={12} sm={5}>
+        <Grid item xs={12} sm={6}>
           <InputWithChangeBtn
-            initialValue="Ali"
+            initialValue={lastName}
             onValueChange={handleLastName}
             type={"text"}
           />
         </Grid>
-        <Grid item xs={12} sm={5}>
+        <Grid item xs={12} lg={6}>
           <input
             type="text"
-            value="ahmedali@valcom.ae"
+            value={userDetails?.email}
             className="disableEmailInput"
+            disabled
           />
         </Grid>
-        <Grid item xs={12} sm={5} className="mt10px">
-          <ProfileNumInput />
+        <Grid item xs={12} lg={6} className="mt10px">
+          <ProfileNumInput
+            mobile={mobile}
+            setMobile={setMobile}
+            verifyBtnCheck={verifyBtnCheck}
+            setVerifyBtnCheck={setVerifyBtnCheck}
+          />
         </Grid>
-        <Grid item xs={12} sm={5} className="datePickerContainer">
+        <Grid item xs={12} sm={6} className="datePickerContainer">
           <DOBInput
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
           />
         </Grid>
-        <Grid item xs={12} sm={5} className="mt10px">
+        <Grid item xs={12} sm={6} className="mt10px">
           <NationalitySelect
             selectedNationality={selectedNationality}
             setSelectedNationality={setSelectedNationality}
@@ -60,7 +118,14 @@ const MySettings = () => {
         </Grid>
       </Grid>
 
-      <CustomButton text="Save" customClassName="profileSaveBtn" />
+      <CustomButton
+        text="Save"
+        customClassName="profileSaveBtn"
+        onClick={handleSubmit}
+      />
+
+      {validationError && <p className="red">{validationError}</p>}
+      {successMessage && <p className="green">✓ {successMessage}</p>}
     </div>
   );
 };

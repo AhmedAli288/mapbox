@@ -22,10 +22,12 @@ function PasswordUpdated({ head, description }) {
               {description}
             </Typography>
           </Grid>
-          <Grid item>
-            <Link to="/login">
-              <CustomButton customClassName="passwordUpdatedRedirectBtn" dark={true} text={"Login "} rightIcon={<ListingCardIcon shape={"arrowRight"} />} fullWidth={true} />
-            </Link>
+          <Grid container item justifyContent={"center"}>
+            <Grid item xs={6}>
+              <Link to="/login">
+                <CustomButton customClassName="passwordUpdatedRedirectBtn" dark={true} text={"Login "} rightIcon={<ListingCardIcon shape={"arrowRight"} />} fullWidth={true} />
+              </Link>
+            </Grid>
           </Grid>
         </Grid>
       </div>

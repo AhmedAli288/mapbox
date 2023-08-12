@@ -1,18 +1,25 @@
 import CountryFlagsSvg from "../Assets/SVG/Flags/CountryFlagsSvg/CountryFlagsSvg";
-
+const CDNPath = "https://ik.imagekit.io/valcom123/images/manseel";
 export const isMediumScreens = "(max-width:1023px)";
+export const isSmallScreens = "(max-width:768px)";
+export const isExtraSmallScreens = "(max-width:540px)";
+
 export const zIndexMediumScreens = "(max-width:960px)";
 export const defaultCurrency = "AED د.إ";
 export const defaultCountry = "United Arab Emirates";
-export const defaultBuyOrRent = "rent";
+
 export const agentsMenuItems = [
-  { title: "Find an Agent", link: "/buy" },
-  { title: "Become an Agent", link: "/BecomeAnAgent" },
+  {
+    title: "Find an Agent",
+    link: "/find-an-agent",
+  },
+  {
+    title: "Become an Agent",
+    link: "/become-an-agent",
+  },
 ];
-export const profileMenuItems = [
-  { title: "My Profile", link: "/profile" },
-  { title: "Sign out", link: "" },
-];
+
+export const profileMenuItems = [{ title: "My Profile", link: "/profile" }];
 export const HomeMarkerIcon = "/images/homeMarker.png";
 export const PriceMarkerOneIcon = "/images/markerWithPrice1.png";
 export const PriceMarkerTwoIcon = "/images/markerWithPrice2.png";
@@ -27,41 +34,100 @@ export const authTokenPayload = {
 
 export const AuthURL = "/api/auth/token";
 export const RefreshTokenURL = "/api/auth/refresh-token";
-export const AllListingsURL = "/api/listings/all";
 export const UserLoginURL = "/api/users/login";
+export const UserLogoutURL = "/api/users/logout";
+export const UserDetailURL = "/api/users/account/details";
 export const ResetUserPasswordURL = "/api/email/otp/reset-password";
-export const UpdateUserPasswordURL = "/api/users/update-password";
 export const smsOtpURL = "/api/sms/otp/send";
 export const emailOtpURL = "/api/email/otp/send";
 export const validateSmsOtpURL = "/api/sms/otp/validate";
 export const validateEmailOtpURL = "/api/email/otp/validate";
 export const signUpURL = "/api/users/signup";
+export const contactAgentEmail = "/api/email/agents/contact";
+export const exclusiveListingsURL = "api/listings/exclusive";
+export const buildingDetailsURL = "api/building/details";
+export const agentDetailsURL = "api/agents/details";
+export const contactAgentEmailURL = "/api/email/agents/contact";
+export const agentListingsURL = "/api/listings/agent-listings";
+export const updateUserPasswordURL = "/api/users/update-password";
+export const updateAccountDetailsURL = "/api/users/account/updates";
+export const AllListingsURL = "/api/listings/all";
+export const SavedPropertyURL = "/api/saved/properties";
+export const SavedBuildingURL = "/api/saved/buildings";
+export const SavedSearchesgURL = "/api/saved/searches";
+export const SavedAgentsgURL = "/api/saved/agents";
+export const listingsByBuildingURL = "/api/listings/building";
+export const similarBuildingsURL = "/api/building/similar/details";
+export const allDataSearchURL = "/api/search/listings/all-search-data";
+export const similarHomesURL = "/api/listings/similar";
+export const filterSearchURL = "/api/listings/filter";
+export const subscribeURL = "/api/saved/subscription";
 
+export const defaultAgentContactNumber = "+971 4 492 7000";
+export const defaultAgentContactEmail = "hello@valcom.ae";
 export const mapAllListingsPayload = {
   countryName: "United Arab Emirates",
-  portal: "Propertyfinder",
+  // portal: "Propertyfinder",
 };
 
 export const exploreMenuItems = [
-  { title: "New Developments", link: "" },
-  { title: "Building Guides", link: "" },
-  { title: "Area Guides", link: "" },
-  { title: "Property Management", link: "" },
-  { title: "Blog", link: "" },
-  { title: "Mortgages", link: "" },
-  { title: "MANSEEL institute", link: "" },
-  { title: "Citizenship Services", link: "" },
-  { title: "International Properties", link: "" },
-  { title: "Building Classification", link: "" },
+  {
+    title: "New Developments",
+    link: "/new-developments",
+  },
+  {
+    title: "City Guides",
+    link: "/city-guides",
+  },
+  {
+    title: "Area Guides",
+    link: "/city-guides",
+  },
+  {
+    title: "Building Guides",
+    link: "/building-guides",
+  },
+
+  {
+    title: "Property Management",
+    link: "/property-management",
+  },
+  {
+    title: "Blog",
+    link: "/blog",
+  },
+  {
+    title: "Mortgages",
+    link: "/mortgages",
+  },
+  {
+    title: "AREICO Institute",
+    link: "/AREICO-institute",
+  },
+  {
+    title: "Citizenship Services",
+    link: "/citizenship-services",
+  },
+  {
+    title: "International Properties",
+    link: "/international-properties",
+  },
+  {
+    title: "Building Classification",
+    link: "/building-classification",
+  },
 ];
 
 export const languageMenuItems = [
-  { language: "العربية" },
+  // { language: "العربية" },
   { language: "English" },
-  { language: "中文" },
-  { language: "Français" },
-  { language: "Español" },
-  { language: "Português" },
+  // { language: "中文" },
+  // { language: "Русский" },
+  // { language: "Deutsch" },
+  // { language: "Français" },
+  // { language: "Español" },
+  // { language: "Português" },
+  // German
 ];
 
 export const buildingTypes = [
@@ -73,74 +139,6 @@ export const buildingTypes = [
     smallHighRise: ["10 - 16", "30 - 50"],
     highRise: ["17 - 40", "50 - 100"],
     ultra: [">40", ">100"],
-  },
-];
-
-export const SearchDataProperties = [
-  {
-    neighbourhood: [
-      "Downtown Dubai",
-      "Dubai Marina",
-      "Jumeirah Lakes Towers",
-      "Palm Jumeirah",
-      "Jumeirah Beach Residence",
-      "Jumeirah",
-    ],
-    community: ["", " ", " "],
-    place: ["", " ", " "],
-    building: ["", " ", " "],
-    school: ["", " ", " "],
-    agent: ["", " ", " "],
-  },
-  {
-    agent: ["John Smith", "Jane Doe", "Mike Johnson", "Akhtar Madubney"],
-    neighbourhood: ["", " ", " "],
-    place: ["", " ", " "],
-    community: ["", " ", " "],
-    building: ["", " ", " "],
-    school: ["", " ", " "],
-  },
-  {
-    community: [
-      "Dubai Hills Estate",
-      "Arabian Ranches",
-      "The Springs",
-      "The Meadows",
-    ],
-    neighbourhood: ["", " ", " "],
-    place: [" ", " "],
-    building: ["", " ", " "],
-    school: ["", " ", " "],
-    agent: ["", " ", " "],
-  },
-  {
-    building: [
-      "Marina Crown",
-      "Al Seef Tower",
-      "The Address Dubai Mall",
-      "Dubai Tower",
-    ],
-    neighbourhood: ["", " ", " "],
-    place: ["", " ", " "],
-    community: ["", " ", " "],
-    school: ["", " ", " "],
-    agent: ["", " ", " "],
-  },
-  {
-    school: ["Dubai American Academy", "GEMS Wellington International School"],
-    neighbourhood: ["", " ", " "],
-    place: ["", " ", " "],
-    community: ["", " ", " "],
-    building: ["", " ", " "],
-    agent: ["", " ", " "],
-  },
-  {
-    place: ["Sharjah", "Dubai"],
-    neighbourhood: ["", " ", " "],
-    community: ["", " ", " "],
-    building: ["", " ", " "],
-    school: ["", " ", " "],
-    agent: ["", " ", " "],
   },
 ];
 
@@ -184,2569 +182,6 @@ export const mortgage = {
   ],
 };
 
-export const exclusives = [
-  {
-    images: [
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998540/listingImages/listing_w_watermark_2x_jwcxvc.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998491/listingImages/listing_w_watermark_2x_woblva.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998483/listingImages/listing_w_watermark_2x_f8p16j.jpg",
-      },
-    ],
-    buildingData: {
-      id: 99887876,
-      buildingType: "High-rise",
-      buildingZoning: "Freehold",
-      buildingOwner: "Multiple Owners",
-      Architect: "Mimar Emirates Engineering Consultant",
-      developer: "Arthur ^ Hardman Real Estate Development",
-      contractor: "Becon Construction",
-      yearLaunched: "2016",
-      petPolicy: "Allowed",
-      hourSecurity: "Yes",
-      fireFightSystem: "Installed",
-      buildingNeighborhoodDescription:
-        "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers. According to VALCOM's Dubai Annual 2020 Market Report, Jumeirah Village Circle is one of the most popular areas in Dubai to buy or rent properties.",
-      buildingCommunity: "Jumeirah Village Circle",
-      referenceNo: "BR-625419",
-      BuildingAmenities: [
-        "Barbecue Area",
-        "Retail in Building",
-        "View of water",
-        "Central A/C",
-        "24 Hour Security",
-        "View of landmark",
-        "Covered Parking",
-        "Children Play Area",
-        "Concierge",
-        "Pool",
-        "Private Garden",
-        "Roof Deck",
-        "Elevators",
-        "Gym",
-        "Children Play Area",
-      ],
-      buildingDescription:
-        "Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018. Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018.",
-      floorPlanImages: [
-        {
-          imgLabel: "Ground Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-12-870x580.jpg",
-          area: 123,
-        },
-        {
-          imgLabel: "1st Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-13-870x580.jpg",
-          area: 231,
-        },
-        {
-          imgLabel: "2nd Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-14-870x580.jpg",
-          area: 431,
-        },
-      ],
-      buildingName: "Milano Boutique Residences",
-      yearBuilt: 2022,
-      developer: "Example Developer",
-      masterCommunity: "Jumeirah Village Circle (JVC)",
-      district: "District 12",
-      buildingMasterDeveloper: "Nakheel",
-      buildingUnits: 117,
-      buildingUnitsType: "Beds-8, Apartments, Duplex",
-      buildingStories: 18,
-      buildingListings: 1000,
-      buildingHeight: "58 metres",
-      buildingYearCompleted: "2018",
-      buildingElevators: "2018",
-      buildingServiceElevators: "2",
-      buildingParking: 150,
-      buildingServiceLevel: "Hours Concierge 12",
-      buildingPublicParking: "Available",
-      buildingServiceChargeSqM: "190 AED",
-      buildingNeighborhoodImage:
-        "https://res.cloudinary.com/davfxaivc/image/upload/v1686314044/Optimized-Business_Bay_Canal_Marina_21_2x_sts62a.jpg",
-      buildingServiceChargeSqft: "19 AED",
-      community: "Jumeirah Village Circle",
-      priceM2: "AED, 9300",
-      PriceSqFt: "AED 200000",
-      rentSale: "Sale",
-      status: "Under Offer",
-      beds: "12",
-      baths: "12",
-      listingRefNo: "BR-625419",
-      FloorPlan: "floorplan",
-      stories: 10,
-      nearbyNeighborhoods: [
-        { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-        {
-          name: "Downtown Dubai",
-          imgPath: "/images/Downtown01.jpg",
-        },
-        {
-          name: "Business Bay",
-          imgPath: "/images/BusinessBay01.jpg",
-        },
-      ],
-      buildingImages: [
-        {
-          imgLabel: "Dubai",
-          imgPath:
-            "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Dubai",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-      ],
-    },
-    id: 123,
-    name: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-    price: "AED 1,543,000",
-    community: "Jumeirah Village Circle",
-    building: "Milano Boutique Residences",
-    bedroom: "3",
-    washroom: "14",
-    sizeMsqr: "2,555",
-    sizeSqFt: "27150",
-    developer: "Example Developer",
-    stories: 10,
-    unitType: "Apartment",
-    yearBuilt: 2022,
-    priceM2: "AED, 9000",
-    PriceSqFt: "AED 900000",
-    rentSale: "Rent",
-    status: "Active",
-    beds: "12",
-    baths: "12",
-    listingRefNo: "BR-655419",
-    FloorPlan: "floorplan",
-    nearbyNeighborhoods: [
-      { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-      {
-        name: "Downtown Dubai",
-        imgPath: "/images/Downtown01.jpg",
-      },
-      {
-        name: "Business Bay",
-        imgPath: "/images/BusinessBay01.jpg",
-      },
-    ],
-    neighborhoodDescription:
-      "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers.",
-    neighborhoodImage:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-  },
-  {
-    images: [
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998483/listingImages/listing_w_watermark_2x_f8p16j.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-      },
-    ],
-    buildingData: {
-      id: 1087778,
-      buildingType: "High-rise",
-      buildingZoning: "Freehold",
-      buildingOwner: "Multiple Owners",
-      Architect: "Mimar Emirates Engineering Consultant",
-      developer: "Arthur ^ Hardman Real Estate Development",
-      contractor: "Becon Construction",
-      yearLaunched: "2016",
-      petPolicy: "Allowed",
-      hourSecurity: "Yes",
-      fireFightSystem: "Installed",
-      buildingNeighborhoodDescription:
-        "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers. According to VALCOM's Dubai Annual 2020 Market Report, Jumeirah Village Circle is one of the most popular areas in Dubai to buy or rent properties.",
-      buildingCommunity: "Jumeirah Village Circle",
-      referenceNo: "BR-625419",
-      BuildingAmenities: [
-        "Barbecue Area",
-        "Retail in Building",
-        "View of water",
-        "Central A/C",
-        "24 Hour Security",
-        "View of landmark",
-        "Covered Parking",
-        "Children Play Area",
-        "Concierge",
-        "Pool",
-        "Private Garden",
-        "Roof Deck",
-        "Elevators",
-        "Gym",
-        "Children Play Area",
-      ],
-      buildingDescription:
-        "Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018. Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018.",
-      floorPlanImages: [
-        {
-          imgLabel: "Ground Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-12-870x580.jpg",
-          area: 123,
-        },
-        {
-          imgLabel: "1st Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-13-870x580.jpg",
-          area: 231,
-        },
-        {
-          imgLabel: "2nd Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-14-870x580.jpg",
-          area: 431,
-        },
-      ],
-      buildingName: "Milano Boutique Residences",
-      yearBuilt: 2022,
-      developer: "Example Developer",
-      masterCommunity: "Jumeirah Village Circle (JVC)",
-      district: "District 12",
-      buildingMasterDeveloper: "Nakheel",
-      buildingUnits: 117,
-      buildingUnitsType: "Beds-8, Apartments, Duplex",
-      buildingStories: 18,
-      buildingListings: 1000,
-      buildingHeight: "58 metres",
-      buildingYearCompleted: "2018",
-      buildingElevators: "2018",
-      buildingServiceElevators: "2",
-      buildingParking: 150,
-      buildingServiceLevel: "Hours Concierge 12",
-      buildingPublicParking: "Available",
-      buildingServiceChargeSqM: "190 AED",
-      buildingNeighborhoodImage:
-        "https://res.cloudinary.com/davfxaivc/image/upload/v1686314044/Optimized-Business_Bay_Canal_Marina_21_2x_sts62a.jpg",
-      buildingServiceChargeSqft: "19 AED",
-      community: "Jumeirah Village Circle",
-      stories: 10,
-      nearbyNeighborhoods: [
-        { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-        {
-          name: "Downtown Dubai",
-          imgPath: "/images/Downtown01.jpg",
-        },
-        {
-          name: "Business Bay",
-          imgPath: "/images/BusinessBay01.jpg",
-        },
-      ],
-      buildingImages: [
-        {
-          imgLabel: "Dubai",
-          imgPath:
-            "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Dubai",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-      ],
-    },
-    id: 2,
-    name: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-    price: "AED 1,543,000",
-    community: "Jumeirah Village Circle",
-    building: "Milano Boutique Residences",
-    bedroom: "5",
-    washroom: "14",
-    sizeMsqr: "2,555",
-    sizeSqFt: "27150",
-    developer: "Example Developer",
-    stories: 10,
-    unitType: "Apartment",
-    yearBuilt: 2022,
-    nearbyNeighborhoods: [
-      { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-      {
-        name: "Downtown Dubai",
-        imgPath: "/images/Downtown01.jpg",
-      },
-      {
-        name: "Business Bay",
-        imgPath: "/images/BusinessBay01.jpg",
-      },
-    ],
-    neighborhoodDescription:
-      "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers.",
-    units: 2,
-    propertyUse: "Residential",
-    neighborhoodImage:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-  },
-  {
-    images: [
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998483/listingImages/listing_w_watermark_2x_f8p16j.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998459/listingImages/listing_w_watermark_2x_1_vovmmm.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998540/listingImages/listing_w_watermark_2x_jwcxvc.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998491/listingImages/listing_w_watermark_2x_woblva.jpg",
-      },
-    ],
-    buildingData: {
-      id: 1087758,
-      buildingType: "High-rise",
-      buildingZoning: "Freehold",
-      buildingOwner: "Multiple Owners",
-      Architect: "Mimar Emirates Engineering Consultant",
-      developer: "Arthur ^ Hardman Real Estate Development",
-      contractor: "Becon Construction",
-      yearLaunched: "2016",
-      petPolicy: "Allowed",
-      hourSecurity: "Yes",
-      fireFightSystem: "Installed",
-      buildingNeighborhoodDescription:
-        "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers. According to VALCOM's Dubai Annual 2020 Market Report, Jumeirah Village Circle is one of the most popular areas in Dubai to buy or rent properties.",
-      buildingCommunity: "Jumeirah Village Circle",
-      referenceNo: "BR-625419",
-      BuildingAmenities: [
-        "Barbecue Area",
-        "Retail in Building",
-        "View of water",
-        "Central A/C",
-        "24 Hour Security",
-        "View of landmark",
-        "Covered Parking",
-        "Children Play Area",
-        "Concierge",
-        "Pool",
-        "Private Garden",
-        "Roof Deck",
-        "Elevators",
-        "Gym",
-        "Children Play Area",
-      ],
-      buildingDescription:
-        "Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018. Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018.",
-      floorPlanImages: [
-        {
-          imgLabel: "Ground Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-12-870x580.jpg",
-          area: 123,
-        },
-        {
-          imgLabel: "1st Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-13-870x580.jpg",
-          area: 231,
-        },
-        {
-          imgLabel: "2nd Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-14-870x580.jpg",
-          area: 431,
-        },
-      ],
-      buildingName: "Milano Boutique Residences",
-      yearBuilt: 2022,
-      developer: "Example Developer",
-      masterCommunity: "Jumeirah Village Circle (JVC)",
-      district: "District 12",
-      buildingMasterDeveloper: "Nakheel",
-      buildingUnits: 117,
-      buildingUnitsType: "Beds-8, Apartments, Duplex",
-      buildingStories: 18,
-      buildingListings: 1000,
-      buildingHeight: "58 metres",
-      buildingYearCompleted: "2018",
-      buildingElevators: "2018",
-      buildingServiceElevators: "2",
-      buildingParking: 150,
-      buildingServiceLevel: "Hours Concierge 12",
-      buildingPublicParking: "Available",
-      buildingServiceChargeSqM: "190 AED",
-      buildingNeighborhoodImage:
-        "https://res.cloudinary.com/davfxaivc/image/upload/v1686314044/Optimized-Business_Bay_Canal_Marina_21_2x_sts62a.jpg",
-      buildingServiceChargeSqft: "19 AED",
-      community: "Jumeirah Village Circle",
-      stories: 10,
-      nearbyNeighborhoods: [
-        { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-        {
-          name: "Downtown Dubai",
-          imgPath: "/images/Downtown01.jpg",
-        },
-        {
-          name: "Business Bay",
-          imgPath: "/images/BusinessBay01.jpg",
-        },
-      ],
-      buildingImages: [
-        {
-          imgLabel: "Dubai",
-          imgPath:
-            "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Dubai",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-      ],
-    },
-    id: 3,
-    name: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-    price: "AED 1,543,000",
-    community: "Jumeirah Village Circle",
-    building: "Milano Boutique Residences",
-    bedroom: "5",
-    washroom: "14",
-    sizeMsqr: "2,555",
-    sizeSqFt: "27150",
-    developer: "Example Developer",
-    stories: 10,
-    unitType: "Apartment",
-    yearBuilt: 2022,
-    nearbyNeighborhoods: [
-      { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-      {
-        name: "Downtown Dubai",
-        imgPath: "/images/Downtown01.jpg",
-      },
-      {
-        name: "Business Bay",
-        imgPath: "/images/BusinessBay01.jpg",
-      },
-    ],
-    neighborhoodDescription:
-      "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers.",
-    units: 2,
-    propertyUse: "Residential",
-    neighborhoodImage:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-  },
-  {
-    images: [
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998540/listingImages/listing_w_watermark_2x_jwcxvc.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998491/listingImages/listing_w_watermark_2x_woblva.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998483/listingImages/listing_w_watermark_2x_f8p16j.jpg",
-      },
-    ],
-    buildingData: {
-      id: 7778,
-      buildingType: "High-rise",
-      buildingZoning: "Freehold",
-      buildingOwner: "Multiple Owners",
-      Architect: "Mimar Emirates Engineering Consultant",
-      developer: "Arthur ^ Hardman Real Estate Development",
-      contractor: "Becon Construction",
-      yearLaunched: "2016",
-      petPolicy: "Allowed",
-      hourSecurity: "Yes",
-      fireFightSystem: "Installed",
-      buildingNeighborhoodDescription:
-        "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers. According to VALCOM's Dubai Annual 2020 Market Report, Jumeirah Village Circle is one of the most popular areas in Dubai to buy or rent properties.",
-      buildingCommunity: "Jumeirah Village Circle",
-      referenceNo: "BR-625419",
-      BuildingAmenities: [
-        "Barbecue Area",
-        "Retail in Building",
-        "View of water",
-        "Central A/C",
-        "24 Hour Security",
-        "View of landmark",
-        "Covered Parking",
-        "Children Play Area",
-        "Concierge",
-        "Pool",
-        "Private Garden",
-        "Roof Deck",
-        "Elevators",
-        "Gym",
-        "Children Play Area",
-      ],
-      buildingDescription:
-        "Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018. Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018.",
-      floorPlanImages: [
-        {
-          imgLabel: "Ground Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-12-870x580.jpg",
-          area: 123,
-        },
-        {
-          imgLabel: "1st Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-13-870x580.jpg",
-          area: 231,
-        },
-        {
-          imgLabel: "2nd Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-14-870x580.jpg",
-          area: 431,
-        },
-      ],
-      buildingName: "Milano Boutique Residences",
-      yearBuilt: 2022,
-      developer: "Example Developer",
-      masterCommunity: "Jumeirah Village Circle (JVC)",
-      district: "District 12",
-      buildingMasterDeveloper: "Nakheel",
-      buildingUnits: 117,
-      buildingUnitsType: "Beds-8, Apartments, Duplex",
-      buildingStories: 18,
-      buildingListings: 1000,
-      buildingHeight: "58 metres",
-      buildingYearCompleted: "2018",
-      buildingElevators: "2018",
-      buildingServiceElevators: "2",
-      buildingParking: 150,
-      buildingServiceLevel: "Hours Concierge 12",
-      buildingPublicParking: "Available",
-      buildingServiceChargeSqM: "190 AED",
-      buildingNeighborhoodImage:
-        "https://res.cloudinary.com/davfxaivc/image/upload/v1686314044/Optimized-Business_Bay_Canal_Marina_21_2x_sts62a.jpg",
-      buildingServiceChargeSqft: "19 AED",
-      community: "Jumeirah Village Circle",
-      stories: 10,
-      nearbyNeighborhoods: [
-        { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-        {
-          name: "Downtown Dubai",
-          imgPath: "/images/Downtown01.jpg",
-        },
-        {
-          name: "Business Bay",
-          imgPath: "/images/BusinessBay01.jpg",
-        },
-      ],
-      buildingImages: [
-        {
-          imgLabel: "Dubai",
-          imgPath:
-            "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Dubai",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-      ],
-    },
-    id: 4,
-    name: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-    price: "AED 1,543,000",
-    community: "Jumeirah Village Circle",
-    building: "Milano Boutique Residences",
-    bedroom: "5",
-    washroom: "14",
-    sizeMsqr: "2,555",
-    sizeSqFt: "27150",
-    developer: "Example Developer",
-    stories: 10,
-    unitType: "Apartment",
-    yearBuilt: 2022,
-    nearbyNeighborhoods: [
-      { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-      {
-        name: "Downtown Dubai",
-        imgPath: "/images/Downtown01.jpg",
-      },
-      {
-        name: "Business Bay",
-        imgPath: "/images/BusinessBay01.jpg",
-      },
-    ],
-    neighborhoodDescription:
-      "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers.",
-    units: 2,
-    propertyUse: "Residential",
-    neighborhoodImage:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-  },
-  {
-    images: [
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998483/listingImages/listing_w_watermark_2x_f8p16j.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-      },
-    ],
-    buildingData: {
-      id: 1009876578,
-      buildingType: "High-rise",
-      buildingZoning: "Freehold",
-      buildingOwner: "Multiple Owners",
-      Architect: "Mimar Emirates Engineering Consultant",
-      developer: "Arthur ^ Hardman Real Estate Development",
-      contractor: "Becon Construction",
-      yearLaunched: "2016",
-      petPolicy: "Allowed",
-      hourSecurity: "Yes",
-      fireFightSystem: "Installed",
-      buildingNeighborhoodDescription:
-        "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers. According to VALCOM's Dubai Annual 2020 Market Report, Jumeirah Village Circle is one of the most popular areas in Dubai to buy or rent properties.",
-      buildingCommunity: "Jumeirah Village Circle",
-      referenceNo: "BR-625419",
-      BuildingAmenities: [
-        "Barbecue Area",
-        "Retail in Building",
-        "View of water",
-        "Central A/C",
-        "24 Hour Security",
-        "View of landmark",
-        "Covered Parking",
-        "Children Play Area",
-        "Concierge",
-        "Pool",
-        "Private Garden",
-        "Roof Deck",
-        "Elevators",
-        "Gym",
-        "Children Play Area",
-      ],
-      buildingDescription:
-        "Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018. Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018.",
-      floorPlanImages: [
-        {
-          imgLabel: "Ground Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-12-870x580.jpg",
-          area: 123,
-        },
-        {
-          imgLabel: "1st Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-13-870x580.jpg",
-          area: 231,
-        },
-        {
-          imgLabel: "2nd Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-14-870x580.jpg",
-          area: 431,
-        },
-      ],
-      buildingName: "Milano Boutique Residences",
-      yearBuilt: 2022,
-      developer: "Example Developer",
-      masterCommunity: "Jumeirah Village Circle (JVC)",
-      district: "District 12",
-      buildingMasterDeveloper: "Nakheel",
-      buildingUnits: 117,
-      buildingUnitsType: "Beds-8, Apartments, Duplex",
-      buildingStories: 18,
-      buildingListings: 1000,
-      buildingHeight: "58 metres",
-      buildingYearCompleted: "2018",
-      buildingElevators: "2018",
-      buildingServiceElevators: "2",
-      buildingParking: 150,
-      buildingServiceLevel: "Hours Concierge 12",
-      buildingPublicParking: "Available",
-      buildingServiceChargeSqM: "190 AED",
-      buildingNeighborhoodImage:
-        "https://res.cloudinary.com/davfxaivc/image/upload/v1686314044/Optimized-Business_Bay_Canal_Marina_21_2x_sts62a.jpg",
-      buildingServiceChargeSqft: "19 AED",
-      community: "Jumeirah Village Circle",
-      stories: 10,
-      nearbyNeighborhoods: [
-        { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-        {
-          name: "Downtown Dubai",
-          imgPath: "/images/Downtown01.jpg",
-        },
-        {
-          name: "Business Bay",
-          imgPath: "/images/BusinessBay01.jpg",
-        },
-      ],
-      buildingImages: [
-        {
-          imgLabel: "Dubai",
-          imgPath:
-            "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Dubai",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-      ],
-    },
-    id: 5,
-    name: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-    price: "AED 1,543,000",
-    community: "Jumeirah Village Circle",
-    building: "Milano Boutique Residences",
-    bedroom: "5",
-    washroom: "14",
-    sizeMsqr: "2,555",
-    sizeSqFt: "27150",
-    developer: "Example Developer",
-    stories: 10,
-    unitType: "Apartment",
-    yearBuilt: 2022,
-    nearbyNeighborhoods: [
-      { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-      {
-        name: "Downtown Dubai",
-        imgPath: "/images/Downtown01.jpg",
-      },
-      {
-        name: "Business Bay",
-        imgPath: "/images/BusinessBay01.jpg",
-      },
-    ],
-    neighborhoodDescription:
-      "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers.",
-    units: 2,
-    propertyUse: "Residential",
-    neighborhoodImage:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-  },
-  {
-    images: [
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998483/listingImages/listing_w_watermark_2x_f8p16j.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998459/listingImages/listing_w_watermark_2x_1_vovmmm.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998540/listingImages/listing_w_watermark_2x_jwcxvc.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998491/listingImages/listing_w_watermark_2x_woblva.jpg",
-      },
-    ],
-    buildingData: {
-      id: 987778,
-      buildingType: "High-rise",
-      buildingZoning: "Freehold",
-      buildingOwner: "Multiple Owners",
-      Architect: "Mimar Emirates Engineering Consultant",
-      developer: "Arthur ^ Hardman Real Estate Development",
-      contractor: "Becon Construction",
-      yearLaunched: "2016",
-      petPolicy: "Allowed",
-      hourSecurity: "Yes",
-      fireFightSystem: "Installed",
-      buildingNeighborhoodDescription:
-        "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers. According to VALCOM's Dubai Annual 2020 Market Report, Jumeirah Village Circle is one of the most popular areas in Dubai to buy or rent properties.",
-      buildingCommunity: "Jumeirah Village Circle",
-      referenceNo: "BR-625419",
-      BuildingAmenities: [
-        "Barbecue Area",
-        "Retail in Building",
-        "View of water",
-        "Central A/C",
-        "24 Hour Security",
-        "View of landmark",
-        "Covered Parking",
-        "Children Play Area",
-        "Concierge",
-        "Pool",
-        "Private Garden",
-        "Roof Deck",
-        "Elevators",
-        "Gym",
-        "Children Play Area",
-      ],
-      buildingDescription:
-        "Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018. Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018.",
-      floorPlanImages: [
-        {
-          imgLabel: "Ground Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-12-870x580.jpg",
-          area: 123,
-        },
-        {
-          imgLabel: "1st Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-13-870x580.jpg",
-          area: 231,
-        },
-        {
-          imgLabel: "2nd Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-14-870x580.jpg",
-          area: 431,
-        },
-      ],
-      buildingName: "Milano Boutique Residences",
-      yearBuilt: 2022,
-      developer: "Example Developer",
-      masterCommunity: "Jumeirah Village Circle (JVC)",
-      district: "District 12",
-      buildingMasterDeveloper: "Nakheel",
-      buildingUnits: 117,
-      buildingUnitsType: "Beds-8, Apartments, Duplex",
-      buildingStories: 18,
-      buildingListings: 1000,
-      buildingHeight: "58 metres",
-      buildingYearCompleted: "2018",
-      buildingElevators: "2018",
-      buildingServiceElevators: "2",
-      buildingParking: 150,
-      buildingServiceLevel: "Hours Concierge 12",
-      buildingPublicParking: "Available",
-      buildingServiceChargeSqM: "190 AED",
-      buildingNeighborhoodImage:
-        "https://res.cloudinary.com/davfxaivc/image/upload/v1686314044/Optimized-Business_Bay_Canal_Marina_21_2x_sts62a.jpg",
-      buildingServiceChargeSqft: "19 AED",
-      community: "Jumeirah Village Circle",
-      stories: 10,
-      nearbyNeighborhoods: [
-        { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-        {
-          name: "Downtown Dubai",
-          imgPath: "/images/Downtown01.jpg",
-        },
-        {
-          name: "Business Bay",
-          imgPath: "/images/BusinessBay01.jpg",
-        },
-      ],
-    },
-    id: 7,
-    name: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-    price: "AED 1,543,000",
-    community: "Jumeirah Village Circle",
-    building: "Milano Boutique Residences",
-    bedroom: "5",
-    washroom: "14",
-    sizeMsqr: "2,555",
-    sizeSqFt: "27150",
-    developer: "Example Developer",
-    stories: 10,
-    unitType: "Apartment",
-    yearBuilt: 2022,
-    nearbyNeighborhoods: [
-      { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-      {
-        name: "Downtown Dubai",
-        imgPath: "/images/Downtown01.jpg",
-      },
-      {
-        name: "Business Bay",
-        imgPath: "/images/BusinessBay01.jpg",
-      },
-    ],
-    neighborhoodDescription:
-      "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers.",
-    neighborhoodImage:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-  },
-  {
-    images: [
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998540/listingImages/listing_w_watermark_2x_jwcxvc.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998491/listingImages/listing_w_watermark_2x_woblva.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998483/listingImages/listing_w_watermark_2x_f8p16j.jpg",
-      },
-    ],
-    buildingData: {
-      id: 98765654545363637,
-      buildingType: "High-rise",
-      buildingZoning: "Freehold",
-      buildingOwner: "Multiple Owners",
-      Architect: "Mimar Emirates Engineering Consultant",
-      developer: "Arthur ^ Hardman Real Estate Development",
-      contractor: "Becon Construction",
-      yearLaunched: "2016",
-      petPolicy: "Allowed",
-      hourSecurity: "Yes",
-      fireFightSystem: "Installed",
-      buildingNeighborhoodDescription:
-        "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers. According to VALCOM's Dubai Annual 2020 Market Report, Jumeirah Village Circle is one of the most popular areas in Dubai to buy or rent properties.",
-      buildingCommunity: "Jumeirah Village Circle",
-      referenceNo: "BR-625419",
-      BuildingAmenities: [
-        "Barbecue Area",
-        "Retail in Building",
-        "View of water",
-        "Central A/C",
-        "24 Hour Security",
-        "View of landmark",
-        "Covered Parking",
-        "Children Play Area",
-        "Concierge",
-        "Pool",
-        "Private Garden",
-        "Roof Deck",
-        "Elevators",
-        "Gym",
-        "Children Play Area",
-      ],
-      buildingDescription:
-        "Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018. Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018.",
-      floorPlanImages: [
-        {
-          imgLabel: "Ground Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-12-870x580.jpg",
-          area: 123,
-        },
-        {
-          imgLabel: "1st Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-13-870x580.jpg",
-          area: 231,
-        },
-        {
-          imgLabel: "2nd Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-14-870x580.jpg",
-          area: 431,
-        },
-      ],
-      buildingName: "Milano Boutique Residences",
-      yearBuilt: 2022,
-      developer: "Example Developer",
-      masterCommunity: "Jumeirah Village Circle (JVC)",
-      district: "District 12",
-      buildingMasterDeveloper: "Nakheel",
-      buildingUnits: 117,
-      buildingUnitsType: "Beds-8, Apartments, Duplex",
-      buildingStories: 18,
-      buildingListings: 1000,
-      buildingHeight: "58 metres",
-      buildingYearCompleted: "2018",
-      buildingElevators: "2018",
-      buildingServiceElevators: "2",
-      buildingParking: 150,
-      buildingServiceLevel: "Hours Concierge 12",
-      buildingPublicParking: "Available",
-      buildingServiceChargeSqM: "190 AED",
-      buildingNeighborhoodImage:
-        "https://res.cloudinary.com/davfxaivc/image/upload/v1686314044/Optimized-Business_Bay_Canal_Marina_21_2x_sts62a.jpg",
-      buildingServiceChargeSqft: "19 AED",
-      community: "Jumeirah Village Circle",
-      stories: 10,
-      nearbyNeighborhoods: [
-        { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-        {
-          name: "Downtown Dubai",
-          imgPath: "/images/Downtown01.jpg",
-        },
-        {
-          name: "Business Bay",
-          imgPath: "/images/BusinessBay01.jpg",
-        },
-      ],
-      buildingImages: [
-        {
-          imgLabel: "Dubai",
-          imgPath:
-            "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Dubai",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-      ],
-    },
-    id: 10,
-    name: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-    price: "AED 1,543,000",
-    community: "Jumeirah Village Circle",
-    building: "Milano Boutique Residences",
-    bedroom: "5",
-    washroom: "14",
-    sizeMsqr: "2,555",
-    sizeSqFt: "27150",
-    developer: "Example Developer",
-    stories: 10,
-    unitType: "Apartment",
-    yearBuilt: 2022,
-    nearbyNeighborhoods: [
-      { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-      {
-        name: "Downtown Dubai",
-        imgPath: "/images/Downtown01.jpg",
-      },
-      {
-        name: "Business Bay",
-        imgPath: "/images/BusinessBay01.jpg",
-      },
-    ],
-    neighborhoodDescription:
-      "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers.",
-    units: 2,
-    propertyUse: "Residential",
-    neighborhoodImage:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-  },
-  {
-    images: [
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998483/listingImages/listing_w_watermark_2x_f8p16j.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-      },
-    ],
-    buildingData: {
-      id: 1087778,
-      buildingType: "High-rise",
-      buildingZoning: "Freehold",
-      buildingOwner: "Multiple Owners",
-      Architect: "Mimar Emirates Engineering Consultant",
-      developer: "Arthur ^ Hardman Real Estate Development",
-      contractor: "Becon Construction",
-      yearLaunched: "2016",
-      petPolicy: "Allowed",
-      hourSecurity: "Yes",
-      fireFightSystem: "Installed",
-      buildingNeighborhoodDescription:
-        "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers. According to VALCOM's Dubai Annual 2020 Market Report, Jumeirah Village Circle is one of the most popular areas in Dubai to buy or rent properties.",
-      buildingCommunity: "Jumeirah Village Circle",
-      referenceNo: "BR-625419",
-      BuildingAmenities: [
-        "Barbecue Area",
-        "Retail in Building",
-        "View of water",
-        "Central A/C",
-        "24 Hour Security",
-        "View of landmark",
-        "Covered Parking",
-        "Children Play Area",
-        "Concierge",
-        "Pool",
-        "Private Garden",
-        "Roof Deck",
-        "Elevators",
-        "Gym",
-        "Children Play Area",
-      ],
-      buildingDescription:
-        "Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018. Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018.",
-      floorPlanImages: [
-        {
-          imgLabel: "Ground Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-12-870x580.jpg",
-          area: 123,
-        },
-        {
-          imgLabel: "1st Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-13-870x580.jpg",
-          area: 231,
-        },
-        {
-          imgLabel: "2nd Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-14-870x580.jpg",
-          area: 431,
-        },
-      ],
-      buildingName: "Milano Boutique Residences",
-      yearBuilt: 2022,
-      developer: "Example Developer",
-      masterCommunity: "Jumeirah Village Circle (JVC)",
-      district: "District 12",
-      buildingMasterDeveloper: "Nakheel",
-      buildingUnits: 117,
-      buildingUnitsType: "Beds-8, Apartments, Duplex",
-      buildingStories: 18,
-      buildingListings: 1000,
-      buildingHeight: "58 metres",
-      buildingYearCompleted: "2018",
-      buildingElevators: "2018",
-      buildingServiceElevators: "2",
-      buildingParking: 150,
-      buildingServiceLevel: "Hours Concierge 12",
-      buildingPublicParking: "Available",
-      buildingServiceChargeSqM: "190 AED",
-      buildingNeighborhoodImage:
-        "https://res.cloudinary.com/davfxaivc/image/upload/v1686314044/Optimized-Business_Bay_Canal_Marina_21_2x_sts62a.jpg",
-      buildingServiceChargeSqft: "19 AED",
-      community: "Jumeirah Village Circle",
-      stories: 10,
-      nearbyNeighborhoods: [
-        { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-        {
-          name: "Downtown Dubai",
-          imgPath: "/images/Downtown01.jpg",
-        },
-        {
-          name: "Business Bay",
-          imgPath: "/images/BusinessBay01.jpg",
-        },
-      ],
-      buildingImages: [
-        {
-          imgLabel: "Dubai",
-          imgPath:
-            "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Dubai",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-      ],
-    },
-    id: 11,
-    name: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-    price: "1000",
-    community: "Jumeirah Village Circle",
-    building: "Milano Boutique Residences",
-    bedroom: "5",
-    washroom: "14",
-    sizeMsqr: "2,555",
-    sizeSqFt: "27150",
-    developer: "Example Developer",
-    stories: 10,
-    unitType: "Apartment",
-    yearBuilt: 2022,
-    nearbyNeighborhoods: [
-      { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-      {
-        name: "Downtown Dubai",
-        imgPath: "/images/Downtown01.jpg",
-      },
-      {
-        name: "Business Bay",
-        imgPath: "/images/BusinessBay01.jpg",
-      },
-    ],
-    neighborhoodDescription:
-      "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers.",
-    neighborhoodImage:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-  },
-  {
-    images: [
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998483/listingImages/listing_w_watermark_2x_f8p16j.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998459/listingImages/listing_w_watermark_2x_1_vovmmm.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998540/listingImages/listing_w_watermark_2x_jwcxvc.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998491/listingImages/listing_w_watermark_2x_woblva.jpg",
-      },
-    ],
-    buildingData: {
-      id: 989877686,
-      buildingType: "High-rise",
-      buildingZoning: "Freehold",
-      buildingOwner: "Multiple Owners",
-      Architect: "Mimar Emirates Engineering Consultant",
-      developer: "Arthur ^ Hardman Real Estate Development",
-      contractor: "Becon Construction",
-      yearLaunched: "2016",
-      petPolicy: "Allowed",
-      hourSecurity: "Yes",
-      fireFightSystem: "Installed",
-      buildingNeighborhoodDescription:
-        "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers. According to VALCOM's Dubai Annual 2020 Market Report, Jumeirah Village Circle is one of the most popular areas in Dubai to buy or rent properties.",
-      buildingCommunity: "Jumeirah Village Circle",
-      referenceNo: "BR-625419",
-      BuildingAmenities: [
-        "Barbecue Area",
-        "Retail in Building",
-        "View of water",
-        "Central A/C",
-        "24 Hour Security",
-        "View of landmark",
-        "Covered Parking",
-        "Children Play Area",
-        "Concierge",
-        "Pool",
-        "Private Garden",
-        "Roof Deck",
-        "Elevators",
-        "Gym",
-        "Children Play Area",
-      ],
-      buildingDescription:
-        "Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018. Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018.",
-      floorPlanImages: [
-        {
-          imgLabel: "Ground Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-12-870x580.jpg",
-          area: 123,
-        },
-        {
-          imgLabel: "1st Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-13-870x580.jpg",
-          area: 231,
-        },
-        {
-          imgLabel: "2nd Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-14-870x580.jpg",
-          area: 431,
-        },
-      ],
-      buildingName: "Milano Boutique Residences",
-      yearBuilt: 2022,
-      developer: "Example Developer",
-      masterCommunity: "Jumeirah Village Circle (JVC)",
-      district: "District 12",
-      buildingMasterDeveloper: "Nakheel",
-      buildingUnits: 117,
-      buildingUnitsType: "Beds-8, Apartments, Duplex",
-      buildingStories: 18,
-      buildingListings: 1000,
-      buildingHeight: "58 metres",
-      buildingYearCompleted: "2018",
-      buildingElevators: "2018",
-      buildingServiceElevators: "2",
-      buildingParking: 150,
-      buildingServiceLevel: "Hours Concierge 12",
-      buildingPublicParking: "Available",
-      buildingServiceChargeSqM: "190 AED",
-      buildingNeighborhoodImage:
-        "https://res.cloudinary.com/davfxaivc/image/upload/v1686314044/Optimized-Business_Bay_Canal_Marina_21_2x_sts62a.jpg",
-      buildingServiceChargeSqft: "19 AED",
-      community: "Jumeirah Village Circle",
-      priceM2: "AED, 8000",
-      PriceSqFt: "AED 800000",
-      rentSale: "Rent",
-      status: "Contract signed",
-      beds: "11",
-      baths: "12",
-      listingRefNo: "BR-625409",
-      FloorPlan: "floorplan23",
-      stories: 10,
-      nearbyNeighborhoods: [
-        { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-        {
-          name: "Downtown Dubai",
-          imgPath: "/images/Downtown01.jpg",
-        },
-        {
-          name: "Business Bay",
-          imgPath: "/images/BusinessBay01.jpg",
-        },
-      ],
-      buildingImages: [
-        {
-          imgLabel: "Dubai",
-          imgPath:
-            "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Dubai",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-      ],
-    },
-    id: 12,
-    name: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-    price: "1000",
-    community: "Jumeirah Village Circle",
-    building: "Milano Boutique Residences",
-    bedroom: "5",
-    washroom: "14",
-    sizeMsqr: "2,555",
-    sizeSqFt: "27150",
-    developer: "Example Developer",
-    stories: 10,
-    unitType: "Apartment",
-    priceM2: "AED, 9000",
-    PriceSqFt: "AED 900000",
-    rentSale: "Sale",
-    status: "Active",
-    beds: "12",
-    baths: "12",
-    listingRefNo: "BR-625419",
-    FloorPlan: "floorplan",
-    yearBuilt: 2022,
-    nearbyNeighborhoods: [
-      { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-      {
-        name: "Downtown Dubai",
-        imgPath: "/images/Downtown01.jpg",
-      },
-      {
-        name: "Business Bay",
-        imgPath: "/images/BusinessBay01.jpg",
-      },
-    ],
-    neighborhoodDescription:
-      "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers.",
-    neighborhoodImage:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-  },
-  {
-    images: [
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998540/listingImages/listing_w_watermark_2x_jwcxvc.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998491/listingImages/listing_w_watermark_2x_woblva.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998483/listingImages/listing_w_watermark_2x_f8p16j.jpg",
-      },
-    ],
-    buildingData: {
-      id: 99887876,
-      buildingType: "High-rise",
-      buildingZoning: "Freehold",
-      buildingOwner: "Multiple Owners",
-      Architect: "Mimar Emirates Engineering Consultant",
-      developer: "Arthur ^ Hardman Real Estate Development",
-      contractor: "Becon Construction",
-      yearLaunched: "2016",
-      petPolicy: "Allowed",
-      hourSecurity: "Yes",
-      fireFightSystem: "Installed",
-      buildingNeighborhoodDescription:
-        "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers. According to VALCOM's Dubai Annual 2020 Market Report, Jumeirah Village Circle is one of the most popular areas in Dubai to buy or rent properties.",
-      buildingCommunity: "Jumeirah Village Circle",
-      referenceNo: "BR-625419",
-      BuildingAmenities: [
-        "Barbecue Area",
-        "Retail in Building",
-        "View of water",
-        "Central A/C",
-        "24 Hour Security",
-        "View of landmark",
-        "Covered Parking",
-        "Children Play Area",
-        "Concierge",
-        "Pool",
-        "Private Garden",
-        "Roof Deck",
-        "Elevators",
-        "Gym",
-        "Children Play Area",
-      ],
-      buildingDescription:
-        "Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018. Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018.",
-      floorPlanImages: [
-        {
-          imgLabel: "Ground Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-12-870x580.jpg",
-          area: 123,
-        },
-        {
-          imgLabel: "1st Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-13-870x580.jpg",
-          area: 231,
-        },
-        {
-          imgLabel: "2nd Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-14-870x580.jpg",
-          area: 431,
-        },
-      ],
-      buildingName: "Milano Boutique Residences",
-      yearBuilt: 2022,
-      developer: "Example Developer",
-      masterCommunity: "Jumeirah Village Circle (JVC)",
-      district: "District 12",
-      buildingMasterDeveloper: "Nakheel",
-      buildingUnits: 117,
-      buildingUnitsType: "Beds-8, Apartments, Duplex",
-      buildingStories: 18,
-      buildingListings: 1000,
-      buildingHeight: "58 metres",
-      buildingYearCompleted: "2018",
-      buildingElevators: "2018",
-      buildingServiceElevators: "2",
-      buildingParking: 150,
-      buildingServiceLevel: "Hours Concierge 12",
-      buildingPublicParking: "Available",
-      buildingServiceChargeSqM: "190 AED",
-      buildingNeighborhoodImage:
-        "https://res.cloudinary.com/davfxaivc/image/upload/v1686314044/Optimized-Business_Bay_Canal_Marina_21_2x_sts62a.jpg",
-      buildingServiceChargeSqft: "19 AED",
-      community: "Jumeirah Village Circle",
-      priceM2: "AED, 9300",
-      PriceSqFt: "AED 200000",
-      rentSale: "Sale",
-      status: "Under Offer",
-      beds: "12",
-      baths: "12",
-      listingRefNo: "BR-625419",
-      FloorPlan: "floorplan",
-      stories: 10,
-      nearbyNeighborhoods: [
-        { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-        {
-          name: "Downtown Dubai",
-          imgPath: "/images/Downtown01.jpg",
-        },
-        {
-          name: "Business Bay",
-          imgPath: "/images/BusinessBay01.jpg",
-        },
-      ],
-      buildingImages: [
-        {
-          imgLabel: "Dubai",
-          imgPath:
-            "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Dubai",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-      ],
-    },
-    id: 123,
-    name: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-    price: "AED 1,543,000",
-    community: "Jumeirah Village Circle",
-    building: "Milano Boutique Residences",
-    bedroom: "3",
-    washroom: "14",
-    sizeMsqr: "2,555",
-    sizeSqFt: "27150",
-    developer: "Example Developer",
-    stories: 10,
-    unitType: "Apartment",
-    yearBuilt: 2022,
-    priceM2: "AED, 9000",
-    PriceSqFt: "AED 900000",
-    rentSale: "Rent",
-    status: "Active",
-    beds: "12",
-    baths: "12",
-    listingRefNo: "BR-655419",
-    FloorPlan: "floorplan",
-    nearbyNeighborhoods: [
-      { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-      {
-        name: "Downtown Dubai",
-        imgPath: "/images/Downtown01.jpg",
-      },
-      {
-        name: "Business Bay",
-        imgPath: "/images/BusinessBay01.jpg",
-      },
-    ],
-    neighborhoodDescription:
-      "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers.",
-    neighborhoodImage:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-  },
-  {
-    images: [
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998483/listingImages/listing_w_watermark_2x_f8p16j.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-      },
-    ],
-    buildingData: {
-      id: 1087778,
-      buildingType: "High-rise",
-      buildingZoning: "Freehold",
-      buildingOwner: "Multiple Owners",
-      Architect: "Mimar Emirates Engineering Consultant",
-      developer: "Arthur ^ Hardman Real Estate Development",
-      contractor: "Becon Construction",
-      yearLaunched: "2016",
-      petPolicy: "Allowed",
-      hourSecurity: "Yes",
-      fireFightSystem: "Installed",
-      buildingNeighborhoodDescription:
-        "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers. According to VALCOM's Dubai Annual 2020 Market Report, Jumeirah Village Circle is one of the most popular areas in Dubai to buy or rent properties.",
-      buildingCommunity: "Jumeirah Village Circle",
-      referenceNo: "BR-625419",
-      BuildingAmenities: [
-        "Barbecue Area",
-        "Retail in Building",
-        "View of water",
-        "Central A/C",
-        "24 Hour Security",
-        "View of landmark",
-        "Covered Parking",
-        "Children Play Area",
-        "Concierge",
-        "Pool",
-        "Private Garden",
-        "Roof Deck",
-        "Elevators",
-        "Gym",
-        "Children Play Area",
-      ],
-      buildingDescription:
-        "Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018. Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018.",
-      floorPlanImages: [
-        {
-          imgLabel: "Ground Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-12-870x580.jpg",
-          area: 123,
-        },
-        {
-          imgLabel: "1st Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-13-870x580.jpg",
-          area: 231,
-        },
-        {
-          imgLabel: "2nd Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-14-870x580.jpg",
-          area: 431,
-        },
-      ],
-      buildingName: "Milano Boutique Residences",
-      yearBuilt: 2022,
-      developer: "Example Developer",
-      masterCommunity: "Jumeirah Village Circle (JVC)",
-      district: "District 12",
-      buildingMasterDeveloper: "Nakheel",
-      buildingUnits: 117,
-      buildingUnitsType: "Beds-8, Apartments, Duplex",
-      buildingStories: 18,
-      buildingListings: 1000,
-      buildingHeight: "58 metres",
-      buildingYearCompleted: "2018",
-      buildingElevators: "2018",
-      buildingServiceElevators: "2",
-      buildingParking: 150,
-      buildingServiceLevel: "Hours Concierge 12",
-      buildingPublicParking: "Available",
-      buildingServiceChargeSqM: "190 AED",
-      buildingNeighborhoodImage:
-        "https://res.cloudinary.com/davfxaivc/image/upload/v1686314044/Optimized-Business_Bay_Canal_Marina_21_2x_sts62a.jpg",
-      buildingServiceChargeSqft: "19 AED",
-      community: "Jumeirah Village Circle",
-      stories: 10,
-      priceM2: "AED, 8000",
-      PriceSqFt: "AED 800000",
-      rentSale: "Rent",
-      status: "Contract signed",
-      beds: "11",
-      baths: "12",
-      listingRefNo: "BR-625409",
-      FloorPlan: "floorplan23",
-      nearbyNeighborhoods: [
-        { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-        {
-          name: "Downtown Dubai",
-          imgPath: "/images/Downtown01.jpg",
-        },
-        {
-          name: "Business Bay",
-          imgPath: "/images/BusinessBay01.jpg",
-        },
-      ],
-      buildingImages: [
-        {
-          imgLabel: "Dubai",
-          imgPath:
-            "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Dubai",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-      ],
-    },
-    id: 124,
-    name: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-    price: "AED 1,543,000",
-    community: "Jumeirah Village Circlebuilding",
-    building: "Milano Boutique Residences",
-    bedroom: "3",
-    washroom: "14",
-    sizeMsqr: "2,555",
-    sizeSqFt: "27150",
-    developer: "Example Developer",
-    stories: 10,
-    unitType: "Apartment",
-    yearBuilt: 2022,
-    priceM2: "AED, 8000",
-    PriceSqFt: "AED 800000",
-    rentSale: "Rent",
-    status: "Contract signed",
-    beds: "11",
-    baths: "12",
-    listingRefNo: "BR-625409",
-    FloorPlan: "floorplan23",
-    nearbyNeighborhoods: [
-      { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-      {
-        name: "Downtown Dubai",
-        imgPath: "/images/Downtown01.jpg",
-      },
-      {
-        name: "Business Bay",
-        imgPath: "/images/BusinessBay01.jpg",
-      },
-    ],
-    neighborhoodDescription:
-      "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers.",
-    neighborhoodImage:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-  },
-  {
-    images: [
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998483/listingImages/listing_w_watermark_2x_f8p16j.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998459/listingImages/listing_w_watermark_2x_1_vovmmm.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998540/listingImages/listing_w_watermark_2x_jwcxvc.jpg",
-      },
-      {
-        label: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-        imgPath:
-          "https://res.cloudinary.com/davfxaivc/image/upload/v1684998491/listingImages/listing_w_watermark_2x_woblva.jpg",
-      },
-    ],
-    buildingData: {
-      id: 6539989787,
-      buildingType: "High-rise",
-      buildingZoning: "Freehold",
-      buildingOwner: "Multiple Owners",
-      Architect: "Mimar Emirates Engineering Consultant",
-      developer: "Arthur ^ Hardman Real Estate Development",
-      contractor: "Becon Construction",
-      yearLaunched: "2016",
-      petPolicy: "Allowed",
-      hourSecurity: "Yes",
-      fireFightSystem: "Installed",
-      buildingNeighborhoodDescription:
-        "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers. According to VALCOM's Dubai Annual 2020 Market Report, Jumeirah Village Circle is one of the most popular areas in Dubai to buy or rent properties.",
-      buildingCommunity: "Jumeirah Village Circle",
-      referenceNo: "BR-625419",
-      BuildingAmenities: [
-        "Barbecue Area",
-        "Retail in Building",
-        "View of water",
-        "Central A/C",
-        "24 Hour Security",
-        "View of landmark",
-        "Covered Parking",
-        "Children Play Area",
-        "Concierge",
-        "Pool",
-        "Private Garden",
-        "Roof Deck",
-        "Elevators",
-        "Gym",
-        "Children Play Area",
-      ],
-      buildingDescription:
-        "Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018. Milano Giovanni Boutique Suites is a 14-storey, four-star serviced apartment building in Jumeirah Village Circle. Currently it is under construction and expected completion is June 2018.",
-      floorPlanImages: [
-        {
-          imgLabel: "Ground Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-12-870x580.jpg",
-          area: 123,
-        },
-        {
-          imgLabel: "1st Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-13-870x580.jpg",
-          area: 231,
-        },
-        {
-          imgLabel: "2nd Floor",
-          imgPath:
-            "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-14-870x580.jpg",
-          area: 431,
-        },
-      ],
-      buildingName: "Milano Boutique Residences",
-      yearBuilt: 2022,
-      developer: "Example Developer",
-      masterCommunity: "Jumeirah Village Circle (JVC)",
-      district: "District 12",
-      buildingMasterDeveloper: "Nakheel",
-      buildingUnits: 117,
-      buildingUnitsType: "Beds-8, Apartments, Duplex",
-      buildingStories: 18,
-      buildingListings: 1000,
-      buildingHeight: "58 metres",
-      buildingYearCompleted: "2018",
-      buildingElevators: "2018",
-      buildingServiceElevators: "2",
-      buildingParking: 150,
-      buildingServiceLevel: "Hours Concierge 12",
-      buildingPublicParking: "Available",
-      buildingServiceChargeSqM: "190 AED",
-      buildingNeighborhoodImage:
-        "https://res.cloudinary.com/davfxaivc/image/upload/v1686314044/Optimized-Business_Bay_Canal_Marina_21_2x_sts62a.jpg",
-      buildingServiceChargeSqft: "19 AED",
-      community: "Jumeirah Village Circle",
-      stories: 10,
-      priceM2: "AED, 7000",
-      PriceSqFt: "AED 890000",
-      rentSale: "Rent",
-      status: "Under Offer",
-      beds: "11",
-      baths: "12",
-      listingRefNo: "BR-625409",
-      FloorPlan: "floorplan23",
-      nearbyNeighborhoods: [
-        { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-        {
-          name: "Downtown Dubai",
-          imgPath: "/images/Downtown01.jpg",
-        },
-        {
-          name: "Business Bay",
-          imgPath: "/images/BusinessBay01.jpg",
-        },
-      ],
-      buildingImages: [
-        {
-          imgLabel: "Dubai",
-          imgPath:
-            "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Dubai",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-        {
-          imgLabel: "Bern",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "Bern",
-          country: "Switzerland",
-          countryFlag: <CountryFlagsSvg countryCode="CH" />,
-        },
-        {
-          imgLabel: "Abu Dhabi",
-          imgPath:
-            "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Abu Dhabi",
-          country: "UAE",
-          countryFlag: <CountryFlagsSvg countryCode="AE" />,
-        },
-        {
-          imgLabel: "Costa Careyes",
-          imgPath:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-          city: "Costa Careyes",
-          country: "Mexico",
-          countryFlag: <CountryFlagsSvg countryCode="MX" />,
-        },
-        {
-          imgLabel: "New York",
-          imgPath:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-          city: "New York",
-          country: "USA",
-          countryFlag: <CountryFlagsSvg countryCode="US" />,
-        },
-      ],
-    },
-    id: 1234,
-    name: "Marina View | Smart home | 24 hour maintenance | Brandnew",
-    price: "AED 1,543,000",
-    community: "Jumeirah Village Circle",
-    building: "Milano Boutique Residences",
-    bedroom: "3",
-    washroom: "14",
-    sizeMsqr: "2,555",
-    sizeSqFt: "27150",
-    developer: "Example Developer",
-    stories: 10,
-    unitType: "Apartment",
-    yearBuilt: 2022,
-    nearbyNeighborhoods: [
-      { name: "Dubai Marina", imgPath: "/images/Marina01.png" },
-      {
-        name: "Downtown Dubai",
-        imgPath: "/images/Downtown01.jpg",
-      },
-      {
-        name: "Business Bay",
-        imgPath: "/images/BusinessBay01.jpg",
-      },
-    ],
-    neighborhoodDescription:
-      "Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers.",
-    neighborhoodImage:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998496/listingImages/listing_w_watermark_2x_icsqih.jpg",
-  },
-];
-
 export const detailItems = [
   "Building",
   "Developer",
@@ -2770,216 +205,490 @@ export const devlopmentImages = [
   {
     imgLabel: "Regalia",
     imgPath:
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      "https://ik.imagekit.io/valcom123/images/manseel/newdevelopments/regalia.jpg",
     price: "AED 627K",
     community: "Regalia",
     sizes: "Studio, 1, 2, 3",
   },
   {
-    imgLabel: "JBR",
+    imgLabel: "Nara - The Valley",
     imgPath:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-    price: "AED 143K",
-    community: "JBR",
-    sizes: "Studio, 1, 3",
+      "https://ik.imagekit.io/valcom123/images/manseel/newdevelopments/nara.jpg",
+    price: "AED 1,34M",
+    community: "Nara - The Valley",
+    sizes: "3 & 4 Bedroom Townhouses",
   },
   {
-    imgLabel: "Marina View",
+    imgLabel: "La Sirene – Port de La Mer",
     imgPath:
-      "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-    price: "AED 543K",
-    community: "Marina View",
-    sizes: "Studio, 2, 3",
-  },
-  {
-    imgLabel: "Arjan",
-    imgPath:
-      "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    price: "AED 373K",
-    community: "Arjan",
-    sizes: "Studio, 3",
-  },
-  {
-    imgLabel: "JVC",
-    imgPath:
-      "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-    price: "AED 475K",
-    community: "JVC",
-    sizes: "Studio, 1, 2",
+      "https://ik.imagekit.io/valcom123/images/manseel/newdevelopments/laSirene.jpg",
+    price: "AED 1,29M",
+    community: "La Sirene – Port de La Mer",
+    sizes: "1, 2, 3, 4, 6 Bedroom Apartments",
   },
 ];
 
 export const citiesImages = [
   {
-    imgLabel: "Dubai",
-    imgPath:
-      "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-    city: "Dubai",
-    country: "UAE",
-    countryFlag: <CountryFlagsSvg countryCode="AE" />,
-  },
-  {
-    imgLabel: "Bern",
-    imgPath:
-      "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-    city: "Bern",
-    country: "Switzerland",
-    countryFlag: <CountryFlagsSvg countryCode="CH" />,
-  },
-  {
-    imgLabel: "Abu Dhabi",
-    imgPath:
-      "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    city: "Abu Dhabi",
-    country: "UAE",
-    countryFlag: <CountryFlagsSvg countryCode="AE" />,
-  },
-  {
     imgLabel: "Costa Careyes",
     imgPath:
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      "https://ik.imagekit.io/valcom123/images/manseel/international/costaCareyes.jpg",
     city: "Costa Careyes",
     country: "Mexico",
     countryFlag: <CountryFlagsSvg countryCode="MX" />,
   },
   {
-    imgLabel: "New York",
+    imgLabel: "Saanen, Bern",
     imgPath:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-    city: "New York",
-    country: "USA",
-    countryFlag: <CountryFlagsSvg countryCode="US" />,
-  },
-  {
-    imgLabel: "Bern",
-    imgPath:
-      "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-    city: "Bern",
+      "https://ik.imagekit.io/valcom123/images/manseel/international/saanen.jpg",
+    city: "Saanen, Bern",
     country: "Switzerland",
     countryFlag: <CountryFlagsSvg countryCode="CH" />,
   },
   {
-    imgLabel: "Abu Dhabi",
+    imgLabel: "Chatellerault, Nouvelle Aquitaine",
     imgPath:
-      "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    city: "Abu Dhabi",
-    country: "UAE",
-    countryFlag: <CountryFlagsSvg countryCode="AE" />,
+      "https://ik.imagekit.io/valcom123/images/manseel/international/chatellerault.jpg",
+    city: "Chatellerault, Nouvelle Aquitaine",
+    country: "France",
+    countryFlag: <CountryFlagsSvg countryCode="FR" />,
   },
   {
-    imgLabel: "Costa Careyes",
+    imgLabel: "Beverly Hills, California",
     imgPath:
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    city: "Costa Careyes",
-    country: "Mexico",
-    countryFlag: <CountryFlagsSvg countryCode="MX" />,
-  },
-  {
-    imgLabel: "New York",
-    imgPath:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-    city: "New York",
+      "https://ik.imagekit.io/valcom123/images/manseel/international/beverlyHills.jpg",
+    city: "Beverly Hills, California",
     country: "USA",
     countryFlag: <CountryFlagsSvg countryCode="US" />,
+  },
+  {
+    imgLabel: "Caldes de Malavella, Girona",
+    imgPath:
+      "https://ik.imagekit.io/valcom123/images/manseel/international/caldes.jpg",
+    city: "Caldes de Malavella, Girona",
+    country: "Spain",
+    countryFlag: <CountryFlagsSvg countryCode="SP" />,
   },
 ];
 
 export const findArea = [
   {
     imgLabel: "Dubai Marina",
-    imgPath: "/images/Marina01.png",
+    imgPath:`${CDNPath}/assets/Marina01.png`,
     link: "/specificneighbourhood/Dubai Marina",
   },
+
   {
     imgLabel: "Downtown Dubai",
-    imgPath: "/images/Downtown01.jpg",
+    imgPath: `${CDNPath}/assets/Downtown01.jpg`,
     link: "/specificneighbourhood/Downtown Dubai",
   },
+  
   {
     imgLabel: "Business Bay",
-    imgPath: "/images/BusinessBay01.jpg",
+    imgPath: `${CDNPath}/assets/BusinessBay01.jpg`,
     link: "/specificneighbourhood/Business Bay",
   },
   {
     imgLabel: "Meydan",
-    imgPath: "/images/Meydan01.jpg",
+    imgPath: `${CDNPath}/assets/Meydan01.jpg`,
     link: "/",
   },
   {
     imgLabel: "Palm Jumeirah",
-    imgPath: "/images/PalmJumeirah01.jpg",
+    imgPath:`${CDNPath}/assets/PalmJumeirah01.jpg`,
     link: "/",
   },
   {
     imgLabel: "Jumeirah Village Circle",
-    imgPath: "/images/JumeirahVillageCircle01.jpg",
+    imgPath: `${CDNPath}/assets/JumeirahVillageCircle01.jpg`,
     link: "/",
   },
   {
     imgLabel: "The Greens and Views",
-    imgPath: "/images/GreensAndViews01.jpg",
+    imgPath:`${CDNPath}/assets/GreensAndViews01.jpg`,
     link: "/",
   },
   {
     imgLabel: "Arabian Residences",
-    imgPath: "/images/ArabianResidences01.jpg",
+    imgPath: `${CDNPath}/assets/ArabianResidences01.jpg`,
     link: "/",
   },
   {
-    imgLabel: "Dubai Internation City Center (DIFC)",
-    imgPath: "/images/DubaiInternationCityCenter01.jpg",
-    link: "/",
+    imgLabel: "Dubai International Financial Center (DIFC)",
+    imgPath:`${CDNPath}/assets/DubaiInternationCityCenter01.jpg`,
+    link: "/specificneighbourhood/Dubai International City Center",
   },
 ];
 
 export const popularAreasLinks = [
-  { name: "Business Bay Real Estate", link: "#" },
-  { name: "Downtown Dubai Real Estate", link: "#" },
-  { name: "Dubai Marina Real Estate", link: "#" },
-  { name: "Palm Jumeirah Real Estate", link: "#" },
-  { name: "Dubai International Financial Center (DIFC)", link: "#" },
-  { name: "Al Barari Real Estate", link: "#" },
-  { name: "Jumeirah Village Circle Real Estate", link: "#" },
+  {
+    name: "Business Bay Real Estate",
+    link: "#",
+    searchFilterObj: {
+      value: "Business Bay",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Downtown Dubai Real Estate",
+    link: "#",
+    searchFilterObj: {
+      value: "Downtown Dubai",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Dubai Marina Real Estate",
+    link: "#",
+    searchFilterObj: {
+      value: "Dubai Marina",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Palm Jumeirah Real Estate",
+    link: "#",
+    searchFilterObj: {
+      value: "Palm Jumeirah",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Dubai International Financial Center (DIFC)",
+    link: "#",
+    searchFilterObj: {
+      value: "Dubai International Financial Center (DIFC)",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Al Barari Real Estate",
+    link: "#",
+    searchFilterObj: {
+      value: "Al Barari",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Jumeirah Village Circle Real Estate",
+    link: "#",
+    searchFilterObj: {
+      value: "Jumeirah Village Circle",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
 
-  { name: "Dubai Hills", link: "#" },
-  { name: "Emirates Hills", link: "#" },
-  { name: "Jumeirah Golf Estates", link: "#" },
-  { name: "Arabian Ranches", link: "#" },
-  { name: "Dubai Creek Harbor", link: "#" },
-  { name: "Dubai South", link: "#" },
-  { name: "Meydan", link: "#" },
+  {
+    name: "Dubai Hills",
+    link: "#",
+    searchFilterObj: {
+      value: "Dubai Hills Estate",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Emirates Hills",
+    link: "#",
+    searchFilterObj: {
+      value: "Emirates Hills",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Jumeirah Golf Estates",
+    link: "#",
+    searchFilterObj: {
+      value: "Jumeirah Golf Estates",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Arabian Ranches",
+    link: "#",
+    searchFilterObj: {
+      value: "Arabian Ranches",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Dubai Creek Harbor",
+    link: "#",
+    searchFilterObj: {
+      value: "Dubai Creek Harbour",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Dubai South",
+    link: "#",
+    searchFilterObj: {
+      value: "Dubai South",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Meydan",
+    link: "#",
+    searchFilterObj: {
+      value: "Al Meydan",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
 
-  { name: "Dubai Harbor", link: "#" },
-  { name: "Jumeirah", link: "#" },
-  { name: "Jumeirah Beach Residence", link: "#" },
-  { name: "Culture Village", link: "#" },
-  { name: "Blue Waters Island", link: "#" },
-  { name: "Greens & Views", link: "#" },
-  { name: "Mohammed Bin Rashid City", link: "#" },
+  {
+    name: "Dubai Harbour",
+    link: "#",
+    searchFilterObj: {
+      value: "Dubai Harbour",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Jumeirah",
+    link: "#",
+    searchFilterObj: {
+      value: "Jumeirah",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Jumeirah Beach Residence",
+    link: "#",
+    searchFilterObj: {
+      value: "Jumeirah Beach Residence",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Culture Village",
+    link: "#",
+    searchFilterObj: {
+      value: "Culture Village",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Blue Waters Island",
+    link: "#",
+    searchFilterObj: {
+      value: "Blue Waters Island",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Greens & Views",
+    link: "#",
+    searchFilterObj: {
+      value: "Greens & Views",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Mohammed Bin Rashid City",
+    link: "#",
+    searchFilterObj: {
+      value: "Mohammed Bin Rashid City",
+      key: "Area",
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
 ];
 
 export const popularCitiesLinks = [
-  { name: "Dubai", link: "#" },
-  { name: "Abu Dhabi", link: "#" },
-  { name: "Sharjah", link: "#" },
+  {
+    name: "Dubai",
+    link: "#",
+    searchFilterObj: {
+      value: null,
+      key: null,
+      city: "Dubai",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Abu Dhabi",
+    link: "#",
+    searchFilterObj: {
+      value: null,
+      key: null,
+      city: "Abu Dhabi",
+      state: "Abu Dhabi",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Sharjah",
+    link: "#",
+    searchFilterObj: {
+      value: null,
+      key: null,
+      city: "Sharjah",
+      state: "Sharjah",
+      country: "",
+      buyOrRent: "",
+    },
+  },
 
-  { name: "Ajman", link: "#" },
-  { name: "Ras Al Khaimah", link: "#" },
-  { name: "Fujairah", link: "#" },
+  {
+    name: "Ajman",
+    link: "#",
+    searchFilterObj: {
+      value: null,
+      key: null,
+      city: "Ajman",
+      state: "Ajman",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Ras Al Khaimah",
+    link: "#",
+    searchFilterObj: {
+      value: null,
+      key: null,
+      city: "RAK City",
+      state: "Ras Al Khaimah",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Fujairah",
+    link: "#",
+    searchFilterObj: {
+      value: null,
+      key: null,
+      city: "Fujairah",
+      state: "Fujairah",
+      country: "",
+      buyOrRent: "",
+    },
+  },
 
-  { name: "Umm Al Quwain", link: "#" },
-  { name: "Al Ain", link: "#" },
-  { name: "Hatta", link: "#" },
-];
-
-export const UAEStates = [
-  "Abu Dhabi",
-  "Dubai",
-  "Sharjah",
-  "Umm Al Qaiwain",
-  "Fujairah",
-  "Ajman",
-  "Ras Al Khaimah",
+  {
+    name: "Umm Al Quwain",
+    link: "#",
+    searchFilterObj: {
+      value: null,
+      key: null,
+      city: "Umm al-Quwain",
+      state: "Umm Al Quwain",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Al Ain",
+    link: "#",
+    searchFilterObj: {
+      value: null,
+      key: null,
+      city: "Al Ain",
+      state: "Abu Dhabi",
+      country: "",
+      buyOrRent: "",
+    },
+  },
+  {
+    name: "Hatta",
+    link: "#",
+    searchFilterObj: {
+      value: null,
+      key: null,
+      city: "Hatta",
+      state: "Dubai",
+      country: "",
+      buyOrRent: "",
+    },
+  },
 ];
 
 export const floorPlanImages = [
@@ -3025,93 +734,6 @@ export const BuildingAmenities = [
   "Terrace",
   "Pets Allowed",
   "Maids Room",
-];
-
-export const listingAgents = [
-  {
-    imgLabel: "Agent picture",
-    imgPath:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1686209006/listing_Virtual_tour_2x_4_wnnwtw.png",
-    fullname: "Mary Steinberg",
-    designation: "Senior Property Consultant",
-    certification: ["agentBadgeLvl1", "agentBadgeLvl2"],
-    rera: "123456",
-    spokenLanguages: ["English", "Swedish", "Italian", "Spanish"],
-    area: "Business Bay",
-    specialization: "Executive Towers",
-    email: "david.steinberg@valcom.ae",
-    phone: "+971564208900",
-  },
-  {
-    imgLabel: "Agent picture",
-    imgPath:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1685710038/listing_Virtual_tour_2x_vfimkl.png",
-    fullname: "Joe Steinberg",
-    designation: "Senior Property Consultant",
-    certification: ["agentBadgeLvl1", "agentBadgeLvl2"],
-    rera: "123456",
-    spokenLanguages: ["English", "Swedish", "Italian", "Spanish"],
-    area: "Business Bay",
-    specialization: "Executive Towers",
-    email: "david.steinberg@valcom.ae",
-    phone: "+971564208900",
-  },
-  {
-    imgLabel: "Agent picture",
-    imgPath:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1686208913/listing_Virtual_tour_2x_2_mfemm0.png",
-    fullname: "Fred Steinberg",
-    designation: "Senior Property Consultant",
-    certification: ["agentBadgeLvl1", "agentBadgeLvl2"],
-    rera: "123456",
-    spokenLanguages: ["English", "Swedish", "Italian", "Spanish"],
-    area: "Business Bay",
-    specialization: "Executive Towers",
-    email: "david.steinberg@valcom.ae",
-    phone: "+971564208900",
-  },
-  {
-    imgLabel: "Agent picture",
-    imgPath:
-      "https://res.cloudinary.com/davfxaivc/image/upload/v1686208969/listing_Virtual_tour_2x_3_wr5arh.png",
-    fullname: "David Steinberg",
-    designation: "Senior Property Consultant",
-    certification: ["agentBadgeLvl1"],
-    rera: "123456",
-    spokenLanguages: ["English", "Swedish", "Italian", "Spanish"],
-    area: "Business Bay",
-    specialization: "Executive Towers",
-    email: "david.steinberg@valcom.ae",
-    phone: "+971564208900",
-  },
-  {
-    imgLabel: "Agent picture",
-    imgPath:
-      "https://images.unsplash.com/photo-1627161683077-e34782c24d81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWdlbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-    fullname: "Angel Steinberg",
-    designation: "Senior Property Consultant",
-    certification: ["agentBadgeLvl1"],
-    rera: "123456",
-    spokenLanguages: ["English", "Swedish", "Italian", "Spanish"],
-    area: "Business Bay",
-    specialization: "Executive Towers",
-    email: "david.steinberg@valcom.ae",
-    phone: "+971564208900",
-  },
-  {
-    imgLabel: "Agent picture",
-    imgPath:
-      "https://images.unsplash.com/photo-1627161683077-e34782c24d81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWdlbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-    fullname: "Angie Steinberg",
-    designation: "Senior Property Consultant",
-    certification: ["agentBadgeLvl1"],
-    rera: "123456",
-    spokenLanguages: ["English", "Swedish", "Italian", "Spanish"],
-    area: "Business Bay",
-    specialization: "Executive Towers",
-    email: "david.steinberg@valcom.ae",
-    phone: "+971564208900",
-  },
 ];
 
 export const listingProperties = [
@@ -3182,9 +804,10 @@ export const listingProperties = [
 export const agentSectionTypes = {
   agentSection: "agentSection",
   otherAgents: "otherAgents",
+  savedAgents: "savedAgents",
 };
 
-export const otherAgentHeadings = {
+export const agentSectionHeadings = {
   listingAgents: "Listing Agents",
   buildingExpert: "Get in touch with a Building Expert",
 };
@@ -3590,23 +1213,58 @@ export const NearbyRestaurantsData = {
   endIconColor: "white",
 };
 
-export const similarBuildingsData = {
-  title: "Similar Buildings",
-  defaultItems: 4,
-  imgHeight: "268px",
-  imgWidth: "267px",
-  metaDataFields: { floors: "Floors", units: "Units", listings: "Listings" },
-  dropDownText: {
-    collapsed: "View More",
-    expanded: "View Less",
+export const similarBuildingsData = [
+  {
+    imgPath:
+      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998540/listingImages/listing_w_watermark_2x_jwcxvc.jpg",
+    buildingName: "Milano Boutique Residences",
+    community: "Jumeirah Village Circle",
+    floors: "18",
+    units: "117",
+    listings: "1000",
   },
-  dropDownIcons: {
-    collapsed: "arrowDown",
-    expanded: "arrowRight",
+  {
+    imgPath:
+      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998540/listingImages/listing_w_watermark_2x_jwcxvc.jpg",
+    buildingName: "Milano Boutique Residences",
+    community: "Jumeirah Village Circle",
+    floors: "18",
+    units: "117",
+    listings: "1000",
   },
-  iconColor: "#fff",
-  iconWidth: "15",
-  iconHeight: "12",
+  {
+    imgPath:
+      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998540/listingImages/listing_w_watermark_2x_jwcxvc.jpg",
+    buildingName: "Milano Boutique Residences",
+    community: "Jumeirah Village Circle",
+    floors: "18",
+    units: "117",
+    listings: "1000",
+  },
+  {
+    imgPath:
+      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998540/listingImages/listing_w_watermark_2x_jwcxvc.jpg",
+    buildingName: "Milano Boutique Residences",
+    community: "Jumeirah Village Circle",
+    floors: "18",
+    units: "117",
+    listings: "1000",
+  },
+  {
+    imgPath:
+      "https://res.cloudinary.com/davfxaivc/image/upload/v1684998540/listingImages/listing_w_watermark_2x_jwcxvc.jpg",
+    buildingName: "Milano Boutique Residences",
+    community: "Jumeirah Village Circle",
+    floors: "18",
+    units: "117",
+    listings: "1000",
+  },
+];
+
+export const similarBuildingsMetaDataFields = {
+  floors: "Floors",
+  units: "Units",
+  listings: "Listings",
 };
 
 export const NearbySupermarketsData = {
@@ -4175,4 +1833,466 @@ export const areaLevelLayers = [
   "single-listing-cluster-count",
   "single-listing-unclustered",
   "single-listing-unclustered-price",
+];
+export const buildingGuideSearchOptions = [
+  { title: "Burj Khalifa", category: "Dubai" },
+  { title: "Marina Bay Sands", category: "Dubai" },
+  { title: "Sharjah Museum of Islamic Civilization", category: "Sharjah" },
+  { title: "Sheikh Zayed Grand Mosque", category: "Abu Dhabi" },
+  { title: "Sharjah Art Museum", category: "Sharjah" },
+
+  { title: "The Palm Jumeirah", category: "Dubai" },
+  { title: "Al Qasba", category: "Sharjah" },
+  { title: "Louvre Abu Dhabi", category: "Abu Dhabi" },
+  { title: "Burj Al Arab", category: "Dubai" },
+];
+
+export const citiesSearchOPtions = [
+  { title: "Abu Dhabi City", category: "Abu Dhabi" },
+  { title: "Abu al Abyad", category: "Abu Dhabi" },
+  { title: "Al-Aryam Island", category: "Abu Dhabi" },
+  { title: "Al-Bahiyah", category: "Abu Dhabi" },
+  { title: "Al-Shahamah", category: "Abu Dhabi" },
+  { title: "Al-Wathbah", category: "Abu Dhabi" },
+  { title: "Bani Yas City", category: "Abu Dhabi" },
+  { title: "Ghantoot", category: "Abu Dhabi" },
+  { title: "Halat al Bahrani", category: "Abu Dhabi" },
+  { title: "Jubail Island", category: "Abu Dhabi" },
+  { title: "Khalifa Port", category: "Abu Dhabi" },
+  { title: "Masdar City", category: "Abu Dhabi" },
+  { title: "Mina' Zayed", category: "Abu Dhabi" },
+  { title: "Mussafah", category: "Abu Dhabi" },
+  { title: "Saadiyat Island", category: "Abu Dhabi" },
+  { title: "Yas Island", category: "Abu Dhabi" },
+  { title: "Madinat Zayed", category: "Abu Dhabi" },
+  { title: "Ghayathi", category: "Abu Dhabi" },
+  { title: "Ghuwaifat", category: "Abu Dhabi" },
+  { title: "Habshan", category: "Abu Dhabi" },
+  { title: "Liwa Oasis", category: "Abu Dhabi" },
+  { title: "Marawah Island", category: "Abu Dhabi" },
+  { title: "Ruwais", category: "Abu Dhabi" },
+  { title: "Sila", category: "Abu Dhabi" },
+  { title: "Sir Bani Yas", category: "Abu Dhabi" },
+  { title: "Tarif", category: "Abu Dhabi" },
+  { title: "Al Ain City", category: "Abu Dhabi" },
+  { title: "Al-Faqa'", category: "Abu Dhabi" },
+  { title: "Al-Hayer", category: "Abu Dhabi" },
+  { title: "Al-Qu'a", category: "Abu Dhabi" },
+  { title: "Al-Shwaib", category: "Abu Dhabi" },
+  { title: "Al-Wagan", category: "Abu Dhabi" },
+  { title: "Al-Yahar", category: "Abu Dhabi" },
+  { title: "Mezyad", category: "Abu Dhabi" },
+  { title: "Nahil", category: "Abu Dhabi" },
+  { title: "Remah", category: "Abu Dhabi" },
+  { title: "Sa'ah", category: "Abu Dhabi" },
+  { title: "Sweihan", category: "Abu Dhabi" },
+  { title: "Dubai", category: "Dubai" },
+  { title: "Jebel Ali", category: "Dubai" },
+  { title: "Hatta", category: "Dubai" },
+  { title: "Sharjah", category: "Sharjah" },
+  { title: "Khor Fakkan", category: "Sharjah" },
+  { title: "Kalba", category: "Sharjah" },
+  { title: "Dhaid", category: "Sharjah" },
+  { title: "Dibba Al-Hisn", category: "Sharjah" },
+  { title: "Al Madam", category: "Sharjah" },
+  { title: "Fujairah", category: "Fujairah" },
+  { title: "Dibba Al-Fujairah", category: "Fujairah" },
+  { title: "Umm al-Quwain", category: "Umm al-Quwain" },
+  { title: "Ajman", category: "Ajman" },
+  { title: "RAK City", category: "Ras Al Khaima" },
+  { title: "Ras Al Khaima", category: "Ras Al Khaima" },
+];
+export const becomeAnAgentStepsSectionData = [
+  {
+    headingIcon: "skillSet",
+    heading: "Assess your skill set",
+    stepHeading: "Step 1",
+    subHeading:
+      "If you possess all or most of the following skills your success is inevitable",
+  },
+  {
+    headingIcon: "rightCompany",
+    heading: "Choose the right company",
+    stepHeading: "Step 2",
+    subHeading: "The company you choose must have the following qualities:",
+  },
+  {
+    headingIcon: "visaProcess",
+    heading: "Visa Process",
+    stepHeading: "Step 3",
+    subHeading: "",
+  },
+  {
+    headingIcon: "reraCertification",
+    heading: "RERA Certification",
+    stepHeading: "Step 4",
+    subHeading: "",
+  },
+  {
+    headingIcon: "exam",
+    heading: "The Exam",
+    stepHeading: "Step 5",
+    subHeading: "",
+  },
+  {
+    headingIcon: "realEstateLicense",
+    heading: "Get your license",
+    stepHeading: "Step 6",
+    subHeading: "",
+  },
+  {
+    headingIcon: "startCareer",
+    heading: "Start your career",
+    stepHeading: "Step 7",
+    subHeading: "",
+  },
+];
+export const floorImages = [
+  {
+    imgLabel: "Ground Floor",
+    imgPath:
+      "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-12-870x580.jpg",
+    area: 123,
+  },
+  {
+    imgLabel: "1st Floor",
+    imgPath:
+      "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-13-870x580.jpg",
+    area: 231,
+  },
+  {
+    imgLabel: "2nd Floor",
+    imgPath:
+      "https://www.arx.pt/wp-content/uploads/2016/08/Gr%C3%A2ndola-14-870x580.jpg",
+    area: 431,
+  },
+];
+
+export const defaultBuildingImageImages = {
+  images: [
+    {
+      label: "title",
+      imgPath:
+        "https://ik.imagekit.io/valcom123/images/manseel/holder/defaultBuilding.jpg?updatedAt=1690551036853",
+    },
+  ],
+};
+
+export const propertyAmenitiesArray = [
+  "Study Room",
+  "Sea View",
+  "Private Garage",
+  "Community View",
+  "Pets Allowed",
+  "Drivers Room",
+  "Marble Floor",
+  "Built In Wardobes",
+  "Private Sauna",
+  "Garden View",
+  "On Mid Floor",
+  "Broadband Ready",
+  "On High Floor",
+  "Basement Parking",
+  "Private Jacuzzi",
+  "Balcony",
+  "Golf Course View",
+  "Private Steam Room",
+  "Maids Room",
+  "Solid Wood Floors",
+  "Kitchen White Goods",
+  "Private Garden",
+  "Fully Furnished",
+  "Partly Furnished",
+  "Park View",
+  "Landscaped Garden",
+  "Fully Fitted Kitchen",
+  "Private Swimming Pool",
+  "Outdoor Entertaining Area",
+  "Covered Parking",
+];
+
+export const notAvailable = "Not Available";
+
+export const comingSoonURL = "/comingsoon";
+
+
+
+export const desirableNeighborhoods = [
+
+  {
+    imageUrl:`${CDNPath}/assets//DowntownDubai.jpg`,
+    title: "Downtown Dubai",
+    buildingRefNumber: 99887465,
+    buildingName: "Downtown Dubai",
+    comingSoon: false,
+    link: "/specificneighbourhood/Downtown Dubai",
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/JumeirahVillageCircle.jpg`,
+    title: "Jumeirah Village Circle",
+    buildingRefNumber: 99887876,
+    buildingName: "Jumeirah Village Circle",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/BusinessBay.jpg`,
+    title: "Business Bay",
+    buildingRefNumber: 99887876,
+    buildingName: "Business Bay",
+    comingSoon: false,
+    link: "/specificneighbourhood/Business Bay",
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/TheGreensViews.jpg`,
+    title: "The Greens & Views",
+    buildingRefNumber: 99887876,
+    buildingName: "The Greens & Views",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/mag/dm/hero/1.jpg`,
+    title: "Dubai Marina",
+    buildingRefNumber: 99887876,
+    buildingName: "Dubai Marina",
+    comingSoon: false,
+    link: "/specificneighbourhood/Dubai Marina",
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/DubaiInternationalFinancialCenter(DIFC).jpg`,
+    title: "Dubai International Financial Center (DIFC)",
+    buildingRefNumber: 99887876,
+    buildingName: "Dubai International Financial Center (DIFC)",
+    comingSoon: false,
+    link: "/specificneighbourhood/Dubai International City Center",
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/SheikhZayedRoad.jpg`,
+    title: "Sheikh Zayed Road",
+    buildingRefNumber: 99887876,
+    buildingName: "Sheikh Zayed Road",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/DubaiHills.jpg`,
+    title: "Dubai Hills",
+    buildingRefNumber: 99887876,
+    buildingName: "Dubai Hills",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/SustainableCity.jpg`,
+    title: "Sustainable City",
+    buildingRefNumber: 9988787687876,
+    buildingName: "Sustainable City",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/JumeirahVillageTriangle.jpg`,
+    title: "Jumeirah Village Triangle",
+    buildingRefNumber: 99887876,
+    buildingName: "Jumeirah Village Triangle",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/DistrictOne.jpg`,
+    title: "District One",
+    buildingRefNumber: 99887876,
+    buildingName: "District One",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/PalmJumeirah.jpg`,
+    title: "Palm Jumeirah",
+    buildingRefNumber: 99887876,
+    buildingName: "Palm Jumeirah",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/JumeirahLakeTowers.jpg`,
+    title: "Jumeirah Lake Towers",
+    buildingRefNumber: 99887876,
+    buildingName: "Jumeirah Lake Towers",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/DubaiCreekHarbour.jpg`,
+    title: "Dubai Creek Harbour",
+    buildingRefNumber: 99887465,
+    buildingName: "Dubai Creek Harbour",
+    comingSoon: false,
+    link: comingSoonURL,
+  },
+
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/NshamaTownsquare.jpg`,
+    title: "Nshama Townsquare",
+    buildingRefNumber: 99887876,
+    buildingName: "Nshama Townsquare",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/LayanCommunity.jpg`,
+    title: "Layan Community",
+    buildingRefNumber: 99887876,
+    buildingName: "Layan Community",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/Arjan.jpg`,
+    title: "Arjan",
+    buildingRefNumber: 99887876,
+    buildingName: "Arjan",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/SheikhZayedRoad.jpg`,
+    title: "Sheikh Zayed Road",
+    buildingRefNumber: 99887876,
+    buildingName: "Sheikh Zayed Road",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/Jumeirah1.jpg`,
+    title: "Jumeirah 1",
+    buildingRefNumber: 99887876,
+    buildingName: "Jumeirah 1",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/JumeirahPark.jpg`,
+    title: "Jumeirah Park",
+    buildingRefNumber: 9988787687876,
+    buildingName: "Jumeirah Park",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/AlJaddaf.jpg`,
+    title: "Al Jaddaf",
+    buildingRefNumber: 99887876,
+    buildingName: "Al Jaddaf",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/ArabianRanchesI.jpg`,
+    title: "Arabian Ranches I",
+    buildingRefNumber: 99887876,
+    buildingName: "Arabian Ranches I",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/ArabianRanchesII.jpg`,
+    title: "Arabian Ranches II",
+    buildingRefNumber: 99887876,
+    buildingName: "Arabian Ranches II",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/ArabianRanchesIII.jpg`,
+    title: "Arabian Ranches III",
+    buildingRefNumber: 9988787687876,
+    buildingName: "Arabian Ranches III",
+    comingSoon: true,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/BluewatersIsland.jpg`,
+    title: "Bluewaters Island",
+    buildingRefNumber: 99887876,
+    buildingName: "Bluewaters Island",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/JumeirahBeachResidences(JBR).jpg`,
+    title: "Jumeirah Beach Residences (JBR)",
+    buildingRefNumber: 99887876,
+    buildingName: "Jumeirah Beach Residences (JBR)",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/Meydan.jpg`,
+    title: "Meydan",
+    buildingRefNumber: 99887876,
+    buildingName: "Meydan",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/EmiratesHills.jpg`,
+    title: "Emirates Hills",
+    buildingRefNumber: 9988787687876,
+    buildingName: "Emirates Hills",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/MotorCity.jpg`,
+    title: "Motor City",
+    buildingRefNumber: 99887876,
+    buildingName: "Motor City",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/UmmSuqeim.jpg`,
+    title: "Umm Suqeim",
+    buildingRefNumber: 99887876,
+    buildingName: "Umm Suqeim",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/AlBarari.jpg`,
+    title: "Al Barari",
+    buildingRefNumber: 99887876,
+    buildingName: "Al Barari",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/TheMeadows.jpg`,
+    title: "The Meadows",
+    buildingRefNumber: 99887876,
+    buildingName: "The Meadows",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/MotorCity.jpg`,
+    title: "Motor City",
+    buildingRefNumber: 99887876,
+    buildingName: "Motor City",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+  {
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/TheSprings.jpg`,
+    title: "The Springs",
+    buildingRefNumber: 99887876,
+    buildingName: "The Springs",
+    comingSoon: true,
+    link: comingSoonURL,
+  },
+
+  // Add more image objects here
 ];

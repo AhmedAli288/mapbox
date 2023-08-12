@@ -2,12 +2,12 @@
 // mapUtils.js
 //
 import {
-  UAEStates,
   areaLevelLayers,
   cityLevelLayers,
   stateLevelLayers,
   countryLevelLayers,
 } from "../../../Constants/ConstantValues";
+import { UAEStates } from "../../../Constants/UAEStatesConstants";
 import MapPopupCard from "../../Cards/MapPopupCard";
 import { renderToString } from "react-dom/server";
 
@@ -58,10 +58,11 @@ export const fetchCoordinates = async (place, accessToken) => {
 };
 
 export const generateGeoJSON = (listings) => {
-  const features = listings.map((listing) => ({
+  const features = listings?.map((listing) => ({
     type: "Feature",
     properties: {
       id: listing.referenceNumber,
+      image: listing.images[0]?.imgPath,
       building: listing.building,
       sale_or_rent: listing.saleOrRent,
       purchase_price: listing.purchasePrice,
@@ -369,6 +370,7 @@ export const stateLevel = (
     const features = map.queryRenderedFeatures(e.point, {
       layers: ["state-cluster-1"],
     });
+    // console.log("clusters features", features);
 
     map.easeTo({
       center: features[0].geometry.coordinates,
@@ -524,7 +526,6 @@ function unclusterOnClick(e, popup, mapboxgl, map) {
   const uniqueFeatures = Array.from(
     new Set(e.features.map(JSON.stringify))
   ).map(JSON.parse);
-
   const coordinates = uniqueFeatures[0].geometry.coordinates.slice();
   let popupOffset = [0, 10];
 
@@ -543,7 +544,10 @@ function unclusterOnClick(e, popup, mapboxgl, map) {
     popupOffset = [0, 25];
   }
 
-  popup = new mapboxgl.Popup()
+  popup = new mapboxgl.Popup({
+    closeButton: true,
+    closeOnClick: true,
+  })
     .setLngLat(coordinates)
     .setHTML(popUpHtmlString)
     .addTo(map)
@@ -558,13 +562,20 @@ export const areaLevel = (
   geoJSON,
   startRange = 11,
   endRange = 15.99,
+  sync,
+  setSyncedData,
   radius = 50
 ) => {
   const nextLevel = incrementAndFormat(endRange);
 
+  // map.on("zoom", () => {
+  //   const currentZoom = map.getZoom();
+  //   console.log("Current Zoom Level:", currentZoom);
+  // });
+
   //for same coordinates
   const listingCounts = {};
-  geoJSON.features.forEach((feature) => {
+  geoJSON.features?.forEach((feature) => {
     const coordinates = feature.geometry.coordinates.toString();
     if (!listingCounts[coordinates]) {
       listingCounts[coordinates] = 1;
@@ -574,7 +585,7 @@ export const areaLevel = (
   });
 
   // Update properties with listing_count
-  geoJSON.features.forEach((feature) => {
+  geoJSON.features?.forEach((feature) => {
     const coordinates = feature.geometry.coordinates.toString();
     feature.properties.listing_count = listingCounts[coordinates];
   });
@@ -744,8 +755,26 @@ export const areaLevel = (
       "text-field": [
         "case",
         ["==", ["get", "sale_or_rent"], "For Rent"],
-        ["concat", "AED ", ["get", "rent_price"]],
-        ["concat", "AED ", ["get", "purchase_price"]],
+        [
+          "number-format",
+          ["to-number", ["get", "rent_price"]],
+          {
+            locale: "en-US",
+            currency: "AED",
+            "min-fraction-digits": 0,
+            "max-fraction-digits": 0,
+          },
+        ],
+        [
+          "number-format",
+          ["to-number", ["get", "purchase_price"]],
+          {
+            locale: "en-US",
+            currency: "AED",
+            "min-fraction-digits": 0,
+            "max-fraction-digits": 0,
+          },
+        ],
       ],
       "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
       "text-size": 20,
@@ -777,8 +806,8 @@ export const areaLevel = (
   //
   // Unclustered Level Ranges
   // map.setLayerZoomRange("multiple-listings-unclustered", 16, 24);
-  map.setLayerZoomRange("single-listing-cluster", 10, 18);
-  map.setLayerZoomRange("single-listing-cluster-count", 10, 18);
+  map.setLayerZoomRange("single-listing-cluster", startRange, 18);
+  map.setLayerZoomRange("single-listing-cluster-count", startRange, 18);
   map.setLayerZoomRange("single-listing-unclustered", 18, 24);
   map.setLayerZoomRange("single-listing-unclustered-price", 18, 24);
   // Unclustered Level Ranges
@@ -790,23 +819,34 @@ export const areaLevel = (
       layers: ["clusters"],
     });
 
+    // console.log("clusters features", features);
     const clusterId = features[0].properties.cluster_id;
 
-    console.log("clusters features", features);
+    const clusterSource = map.getSource("clusters");
 
-    map
-      .getSource("clusters")
-      .getClusterExpansionZoom(clusterId, (err, zoom) => {
-        if (err) return;
+    if (sync) {
+      clusterSource.getClusterLeaves(
+        clusterId,
+        Infinity,
+        0,
+        (err, features) => {
+          if (err) return;
+          setSyncedData(features);
+        }
+      );
+    }
 
-        map.easeTo({
-          center: [
-            features[0].geometry.coordinates[0],
-            features[0].geometry.coordinates[1] - 0.00023,
-          ],
-          zoom: zoom,
-        });
+    clusterSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
+      if (err) return;
+
+      map.easeTo({
+        center: [
+          features[0].geometry.coordinates[0],
+          features[0].geometry.coordinates[1] - 0.00023,
+        ],
+        zoom: zoom,
       });
+    });
   });
 
   map.on("mouseenter", "clusters", () => {
@@ -825,7 +865,10 @@ export const areaLevel = (
       layers: ["single-listing-cluster-count"],
     });
 
-    console.log("single-listing clusters features", features);
+    if (sync) {
+      // console.log("single-listing clusters features", features);
+      setSyncedData(features);
+    }
 
     map.easeTo({
       center: [

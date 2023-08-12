@@ -4,13 +4,7 @@ import { Grid, Typography } from "@mui/material";
 
 const VirtualTour = ({ title, videoUrl, height }) => {
   return (
-    <Grid
-      className="virtualTourContainer"
-      container
-      rowSpacing={2}
-      px={2}
-      py={5}
-    >
+    <Grid className="virtualTourContainer" container rowSpacing={2} px={2} py={5}>
       <Grid item xs={12}>
         <Typography variant="DubaiRegular24Bold">{title}</Typography>
       </Grid>

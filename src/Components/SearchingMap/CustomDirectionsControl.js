@@ -21,6 +21,7 @@ const CustomDirectionsControl = ({ onSetDestination }) => {
       if (destination) {
         onSetDestination(destination);
         setSuggestions([]); // Clear suggestions after pressing Enter
+        setInputValue("");
       }
     }
   };
@@ -59,7 +60,7 @@ const CustomDirectionsControl = ({ onSetDestination }) => {
   };
 
   const handleSuggestionClick = (suggestion) => {
-    setInputValue(suggestion.place_name);
+    setInputValue("");
     setSuggestions([]); // Clear suggestions when a suggestion is selected
     inputRef.current.blur(); // Remove focus from the input box after selecting a suggestion
     onSetDestination(suggestion.place_name);

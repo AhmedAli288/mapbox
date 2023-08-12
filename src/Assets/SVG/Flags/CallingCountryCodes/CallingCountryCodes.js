@@ -49,8 +49,8 @@ export const CallingCountryCodes = [
     name: "Germany",
     currency: "EUR",
     currencySymbol: "€",
-    flag: <CountryFlagsSvg countryCode="DE" />,
-    validMobileNumber: "15593089134",
+    flag: <CurrencyFlagsSvg countryCode="DE" />,
+    validMobileNumber: "15593089134 / 1386402671",
   },
   {
     countryCode: "FR",
@@ -69,7 +69,7 @@ export const CallingCountryCodes = [
     name: "Italy",
     currency: "EUR",
     currencySymbol: "€",
-    flag: <CountryFlagsSvg countryCode="IT" />,
+    flag: <CurrencyFlagsSvg countryCode="IT" />,
     validMobileNumber: "3123456789",
   },
   {
@@ -89,7 +89,7 @@ export const CallingCountryCodes = [
     name: "Egypt",
     currency: "EGP",
     currencySymbol: "E£",
-    flag: <CountryFlagsSvg countryCode="EG" />,
+    flag: <CurrencyFlagsSvg countryCode="EG" />,
     validMobileNumber: "10123456789",
   },
   {
@@ -99,8 +99,8 @@ export const CallingCountryCodes = [
     name: "Turkey",
     currency: "TRY",
     currencySymbol: "₺",
-    flag: <CountryFlagsSvg countryCode="TR" />,
-    validMobileNumber: "5578525905",
+    flag: <CurrencyFlagsSvg countryCode="TR" />,
+    validMobileNumber: "2xxxxxxxxx / 3xxxxxxxxx / 4xxxxxxxxx / 5xxxxxxxxx",
   },
   {
     countryCode: "RU",
@@ -110,6 +110,6 @@ export const CallingCountryCodes = [
     currency: "RUB",
     currencySymbol: "₽",
     flag: <CurrencyFlagsSvg countryCode="RU" />,
-    validMobileNumber: "1234567890",}
+    validMobileNumber: "911123456",}
   ]
   

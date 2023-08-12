@@ -9,7 +9,7 @@ import SearchAndRecents from "./SearchAndRecents";
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
-const SearchMap = () => {
+const SearchMap = ({ property }) => {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
   const directionsRef = useRef(null);
@@ -18,11 +18,11 @@ const SearchMap = () => {
   const originMarkerRef = useRef(null);
   const [drivingDuration, setDrivingDuration] = useState(null);
   const [walkingDuration, setWalkingDuration] = useState(null);
+  const [tempDestination, setTempDestination] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
+  const [origin, setOrigin] = useState([55.32759217693615, 25.27477288473898]);
 
   const handleSetDestination = (destination) => {
-    const origin = [55.32759217693615, 25.27477288473898];
-
     // Check if the address already exists in searchResults
     const isAddressExists = searchResults.some(
       (result) => result.address === destination
@@ -31,19 +31,7 @@ const SearchMap = () => {
     if (!isAddressExists) {
       directionsRef.current.setOrigin(origin);
       directionsRef.current.setDestination(destination);
-      const newSearchResult = {
-        address: destination,
-        walking: null,
-        driving: null,
-      };
-
-      setSearchResults((prevSearchResults) => {
-        const updatedSearchResults = [...prevSearchResults, newSearchResult];
-        if (updatedSearchResults.length > 3) {
-          updatedSearchResults.shift(); // Remove the first (oldest) search result
-        }
-        return updatedSearchResults;
-      });
+      setTempDestination(destination);
     }
   };
 
@@ -56,6 +44,7 @@ const SearchMap = () => {
       .then((data) => {
         // Retrieve the duration based on the selected profile
         const duration = data.routes[0].duration;
+
         if (profile === "driving") {
           setDrivingDuration(duration);
         } else {
@@ -65,24 +54,68 @@ const SearchMap = () => {
       .catch((error) => {});
   };
 
-  useEffect(() => {
-    const lastIndex = searchResults.length - 1;
+  let count = 1;
 
-    if (lastIndex >= 0) {
-      const updatedSearchResults = [...searchResults];
-      const lastSearchResult = updatedSearchResults[lastIndex];
-      lastSearchResult.walking = walkingDuration;
-      lastSearchResult.driving = drivingDuration;
-      setSearchResults(updatedSearchResults);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    count += 1;
+    if (tempDestination && walkingDuration && drivingDuration && count > 1) {
+      const newSearchResult = {
+        address: tempDestination,
+        walking: walkingDuration,
+        driving: drivingDuration,
+      };
+
+      setSearchResults((prevSearchResults) => {
+        const updatedSearchResults = [...prevSearchResults, newSearchResult];
+        if (updatedSearchResults.length > 3) {
+          updatedSearchResults.shift(); // Remove the first (oldest) search result
+        }
+        return updatedSearchResults;
+      });
+      setTempDestination(null);
+      setWalkingDuration(null);
+      setDrivingDuration(null);
     }
   }, [walkingDuration, drivingDuration]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSearchResults((prevSearchResults) => {
+        const filteredSearchResults = prevSearchResults.filter(
+          (result) => result.walking !== null || result.driving !== null
+        );
+        return filteredSearchResults;
+      });
+    }, 5000);
+  }, [searchResults]);
+
+  useEffect(() => {
+    setSearchResults([]);
+    if (
+      property.longitude &&
+      property.latitude &&
+      !isNaN(property.longitude) &&
+      !isNaN(property.latitude) &&
+      property.longitude <= 90 &&
+      property.longitude >= -90 &&
+      property.latitude <= 90 &&
+      property.latitude >= -90
+    ) {
+      const coords = [
+        parseFloat(property.longitude),
+        parseFloat(property.latitude),
+      ];
+      setOrigin(coords);
+    }
+  }, [property]);
 
   useEffect(() => {
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v11",
-      center: [55.32759217693615, 25.27477288473898],
-      zoom: 12,
+      center: origin,
+      zoom: 13,
     });
 
     directionsRef.current = new MapboxDirections({
@@ -98,60 +131,46 @@ const SearchMap = () => {
     mapRef.current.addControl(directionsRef.current, "top-right");
 
     directionsRef.current.on("route", ({ route }) => {
-      const existingLayerId = layerIdRef.current;
-      const existingSourceId = sourceIdRef.current;
+      if (route && route.length > 0) {
+        const existingLayerId = layerIdRef.current;
+        const existingSourceId = sourceIdRef.current;
 
-      const origin = [55.32759217693615, 25.27477288473898];
-      const polylineString = route[0].geometry;
-      const coordinates = polyline.decode(polylineString);
+        const polylineString = route[0].geometry;
+        const coordinates = polyline.decode(polylineString);
 
-      let coords = coordinates.at(-1);
-      getDurationByProfile("walking", origin, coords);
-      getDurationByProfile("driving", origin, coords);
+        let coords = coordinates.at(-1);
 
-      if (existingLayerId && mapRef.current.getLayer(existingLayerId)) {
-        mapRef.current.removeLayer(existingLayerId);
+        getDurationByProfile("driving", origin, coords);
+        getDurationByProfile("walking", origin, coords);
+        try {
+          if (searchResults.length > 0) {
+            if (existingLayerId && mapRef.current.getLayer(existingLayerId)) {
+              mapRef.current.removeLayer(existingLayerId);
+            }
+
+            if (
+              existingSourceId &&
+              mapRef.current.getSource(existingSourceId)
+            ) {
+              mapRef.current.removeSource(existingSourceId);
+            }
+          }
+        } catch (e) {}
+        const newLayerId = `directions-layer-${Date.now()}`;
+        const newSourceId = `directions-source-${Date.now()}`;
+
+        layerIdRef.current = newLayerId;
+        sourceIdRef.current = newSourceId;
       }
-
-      if (existingSourceId && mapRef.current.getSource(existingSourceId)) {
-        mapRef.current.removeSource(existingSourceId);
-      }
-
-      const newLayerId = `directions-layer-${Date.now()}`;
-      const newSourceId = `directions-source-${Date.now()}`;
-
-      // mapRef.current.addLayer({
-      //   id: newLayerId,
-      //   type: "line",
-      //   source: {
-      //     type: "geojson",
-      //     data: {
-      //       type: "Feature",
-      //       properties: {},
-      //       geometry: {
-      //         type: "LineString",
-      //         coordinates: route[0].geometry.coordinates,
-      //       },
-      //     },
-      //   },
-      //   layout: {
-      //     "line-join": "round",
-      //     "line-cap": "round",
-      //   },
-      //   paint: {
-      //     "line-color": "#888",
-      //     "line-width": 8,
-      //   },
-      // });
-
-      layerIdRef.current = newLayerId;
-      sourceIdRef.current = newSourceId;
     });
 
     return () => {
       mapRef.current.remove();
+      setSearchResults([]);
     };
-  }, []);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [origin]);
 
   useEffect(() => {
     if (originMarkerRef.current) {
@@ -162,10 +181,10 @@ const SearchMap = () => {
       originMarkerRef.current = new mapboxgl.Marker({
         element: createCustomMarkerElement("A"),
       })
-        .setLngLat([55.32759217693615, 25.27477288473898])
+        .setLngLat(origin)
         .addTo(mapRef.current);
     }
-  }, []);
+  }, [origin]);
 
   const createCustomMarkerElement = (label) => {
     const marker = document.createElement("div");
@@ -175,7 +194,13 @@ const SearchMap = () => {
   };
 
   return (
-    <Grid container spacing={2} my={5}>
+    <Grid
+      id="mapSection"
+      container
+      spacing={2}
+      my={5}
+      className="paddingPageWidth"
+    >
       <Grid item xs={12} md={7}>
         <Box className="mapTransitHeading">
           <Typography

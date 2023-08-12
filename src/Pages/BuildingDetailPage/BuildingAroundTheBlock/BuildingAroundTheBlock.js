@@ -1,23 +1,19 @@
 import React, { useState } from "react";
-// import TreeView from "@mui/lab/TreeView";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-// import TreeItem from "@mui/lab/TreeItem";
 import { Typography, Box } from "@mui/material";
 import TableComponent from "../../../Components/Table/InfoToggleTableComponent";
 import {
   NearbySchoolsData,
-
   NearbyRestaurantsData,
   NearbySupermarketsData,
-  NearbyAttractionsData,nearbyAroundCornerHeadingInfoData
+  NearbyAttractionsData,
+  nearbyAroundCornerHeadingInfoData,
 } from "../../../Constants/ConstantValues";
 
 import InfoIconDescription from "../../../Components/InfoIconDescription/InfoIconDescription";
 
-function BuildingAroundTheBlock({ listingObject }) {
-  const buildingObject = listingObject.buildingData;
-  //   console.log(buildingObject);
+function BuildingAroundTheBlock({ buildingObject }) {
   const TreeView = ({ label, tableComponent }) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -27,14 +23,13 @@ function BuildingAroundTheBlock({ listingObject }) {
 
     return (
       <div>
-        <Box className='aroundTheBlockHeaderWrapper' onClick={handleToggle}>
+        <Box className="aroundTheBlockHeaderWrapper" onClick={handleToggle}>
           <Typography variant="DubaiRegular24Bold">
             {isOpen ? <RemoveIcon /> : <AddIcon />} {label}
           </Typography>
         </Box>
-        
-          {isOpen && tableComponent}
-    
+
+        {isOpen && tableComponent}
       </div>
     );
   };
@@ -98,21 +93,22 @@ function BuildingAroundTheBlock({ listingObject }) {
       ),
     },
   ];
+
   return (
     <Box className="aroundTheBlockWrapper">
       <Box className="aroundTheBlockTableWrapper">
-      <Box >
-        <Typography variant="DubaiRegular24Bold">Around the Block</Typography>
-      </Box>
-      <div>
-        {treeViewData.map((data, index) => (
-          <TreeView
-            key={index}
-            label={data.label}
-            tableComponent={data.tableComponent}
-          />
-        ))}
-      </div>
+        <Box>
+          <Typography variant="DubaiRegular24Bold">Around the Block</Typography>
+        </Box>
+        <div>
+          {treeViewData.map((data, index) => (
+            <TreeView
+              key={index}
+              label={data.label}
+              tableComponent={data.tableComponent}
+            />
+          ))}
+        </div>
       </Box>
     </Box>
   );

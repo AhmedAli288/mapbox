@@ -1,18 +1,19 @@
-import React,{useState} from 'react'
+import React,{useContext} from 'react'
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { defaultBuyOrRent } from '../../../../Constants/ConstantValues';
+
 import { Typography } from '@mui/material';
+import AppContext from '../../../../context/AppContext';
 
 function BuyOrRentToggleButtom() {
-    const [buyOrRent, setBuyOrRent] = useState(defaultBuyOrRent);
+    const {buyOrRent, setBuyOrRent} = useContext(AppContext)
 
   const handleBuyOrRentValue = (event, buyOrRent) => {
     if (buyOrRent !== null) {
       setBuyOrRent(buyOrRent);
     }
   };
-
+// console.log(buyOrRent)
 
   return (
     <ToggleButtonGroup

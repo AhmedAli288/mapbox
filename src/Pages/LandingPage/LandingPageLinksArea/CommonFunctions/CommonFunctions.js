@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Grid, Typography, Link } from "@mui/material";
 import _ from "lodash";
+import AppContext from "../../../../context/AppContext";
 
-export const arrangeRowsCols = (linksArr, colSize) => {
+export const ArrangeRowsCols = (linksArr, colSize, clickHandler) => {
+  const { selectedCountry, buyOrRent } = useContext(AppContext);
+
   let size = colSize;
 
   const linkColumns = [];
@@ -23,7 +26,18 @@ export const arrangeRowsCols = (linksArr, colSize) => {
         <Box className="boxColAlign">
           {columnLinks.map((item, id) => {
             return (
-              <Link key={id} href={item.link}>
+              // link now runs click handler, if you want behaviour such as navigate, execute it in the handler passed
+              <Link
+                key={id}
+                // href={"/"}
+                className="seoLinksUnderline"
+                onClick={() => {
+                  //build data to be passed
+                  item.searchFilterObj.country = selectedCountry;
+                  item.searchFilterObj.buyOrRent = buyOrRent;
+                  clickHandler(item.searchFilterObj);
+                }}
+              >
                 <Typography color="white" variant="DubaiRegular20">
                   {item.name}
                 </Typography>

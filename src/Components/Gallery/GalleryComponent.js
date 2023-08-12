@@ -1,8 +1,12 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-
-const GalleryComponent = ({ images }) => {
+const GalleryComponent = ({
+  images,
+  card = false,
+  width = 768,
+  height = 480,
+}) => {
   const getColumnCount = (totalImages) => {
     if (totalImages < 3) {
       return [12];
@@ -44,14 +48,21 @@ const GalleryComponent = ({ images }) => {
     columns = decimalToColumnMap[decimalKey];
   }
 
+  const getImageUrlWithTrParam = (imageUrl, width, height) => {
+    const trParameter = `tr=w-${width},h-${height}`;
+    return imageUrl.includes("ver=")
+      ? `${imageUrl}&${trParameter}`
+      : `${imageUrl}?${trParameter}`;
+  };
+
   return (
     <div>
       {imageSets.map((imageSet, setIndex) => (
-        <Grid container flexDirection="column" spacing={2} key={setIndex}>
+        <Grid container  spacing={2} key={setIndex}>
           {/* First Column */}
-          <Grid item xs={12} mt={1}>
+          <Grid item mt={1} xs={12}>
             <LazyLoadImage
-              src={imageSet[0]}
+              src={getImageUrlWithTrParam(imageSet[0].imageUrl, width, height)}
               className="borderRadius10 width100 fitImage"
             />
           </Grid>
@@ -62,13 +73,21 @@ const GalleryComponent = ({ images }) => {
               <Grid container spacing={2}>
                 <Grid item xs={6}>
                   <LazyLoadImage
-                    src={imageSet[1]}
+                    src={getImageUrlWithTrParam(
+                      imageSet[1].imageUrl,
+                      width,
+                      height
+                    )}
                     className="borderRadius10 width100 fitImage"
                   />
                 </Grid>
                 <Grid item xs={6}>
                   <LazyLoadImage
-                    src={imageSet[2]}
+                    src={getImageUrlWithTrParam(
+                      imageSet[2].imageUrl,
+                      width,
+                      height
+                    )}
                     className="borderRadius10 width100 fitImage"
                   />
                 </Grid>
@@ -83,7 +102,11 @@ const GalleryComponent = ({ images }) => {
                 {imageSet.slice(3).map((image, index) => (
                   <Grid item xs={4} key={index}>
                     <LazyLoadImage
-                      src={image}
+                      src={getImageUrlWithTrParam(
+                        image.imageUrl,
+                        width,
+                        height
+                      )}
                       className="borderRadius10 width100 fitImage"
                     />
                   </Grid>
@@ -109,8 +132,8 @@ const GalleryComponent = ({ images }) => {
               {images.slice(startIndex, endIndex).map((image, index) => (
                 <Grid item xs={column} key={index}>
                   <LazyLoadImage
-                    src={image}
-                    className="borderRadius10 width100 "
+                    src={getImageUrlWithTrParam(image.imageUrl, width, height)}
+                    className="borderRadius10 width100 fitImage"
                   />
                 </Grid>
               ))}
@@ -118,6 +141,7 @@ const GalleryComponent = ({ images }) => {
           </React.Fragment>
         );
       })}
+      {/* ... */}
     </div>
   );
 };

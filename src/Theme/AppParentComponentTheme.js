@@ -13,11 +13,13 @@ let customTheme = createTheme({
     // Name of the component
 
     MuiTypography: {
+      fontFamily: 'sans-serif', 
       styleOverrides: {
-        h1: {
-          fontFamily: "Gotham-Black",
-          fontSize: "60px",
-        },
+        fontFamily: 'sans-serif', 
+        // h1: {
+        //   fontFamily: "Gotham-Black",
+        //   fontSize: "60px",
+        // },
         h2: {
           fontFamily: "Gotham-Black",
           fontSize: "40px",
@@ -30,40 +32,73 @@ let customTheme = createTheme({
         p2: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "20px",
+          fontDisplay: 'fallback',
         },
         p3: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "14px",
+          fontDisplay: 'fallback',
         },
         body1: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "25px",
+          fontDisplay: 'fallback',
         },
         body2: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "20px",
+          fontDisplay: 'fallback',
         },
         body3: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "14px",
+          fontDisplay: 'fallback',
         },
         body4: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "20px",
+          fontDisplay: 'fallback',
         },
         GothamBlack13: {
           fontFamily: "Gotham-Black",
           fontSize: "13px",
           "@media (max-width: 680px)": {
             fontSize: "11px",
+            fontDisplay: 'fallback',
           },
         },
         GothamBlack18: {
           fontFamily: "Gotham-Black",
           fontSize: "18px",
           "@media (max-width: 680px)": {
-            fontSize: "14px",
+            fontSize: "15px",
           },
+          fontDisplay: 'fallback',
+        },
+        GothamBlack21: {
+          fontFamily: "Gotham-Black",
+          fontSize: "21px",
+          "@media (max-width: 680px)": {
+            fontSize: "18px",
+          },
+          fontDisplay: 'fallback',
+        },
+        GothamBlack20Bold: {
+          fontFamily: "Gotham-Black",
+          fontSize: "20px",
+          fontWeight: "900",
+          "@media (max-width: 680px)": {
+            fontSize: "16px",
+          },
+          fontDisplay: 'fallback',
+        },
+        GothamBlack22: {
+          fontFamily: "Gotham-Black",
+          fontSize: "22px",
+          "@media (max-width: 680px)": {
+            fontSize: "18px",
+          },
+          fontDisplay: 'fallback',
         },
 
         GothamBlack24: {
@@ -72,6 +107,7 @@ let customTheme = createTheme({
           "@media (max-width: 680px)": {
             fontSize: "20px",
           },
+          fontDisplay: 'fallback',
         },
         GothamBlack24Bold: {
           fontFamily: "Gotham-Black",
@@ -80,6 +116,15 @@ let customTheme = createTheme({
           "@media (max-width: 680px)": {
             fontSize: "20px",
           },
+          fontDisplay: 'fallback',
+        },
+        GothamBlack25: {
+          fontFamily: "Gotham-Black",
+          fontSize: "25px",
+          "@media (max-width: 680px)": {
+            fontSize: "20px",
+          },
+          fontDisplay: 'fallback',
         },
         GothamBlack26: {
           fontFamily: "Gotham-Black",
@@ -87,6 +132,7 @@ let customTheme = createTheme({
           "@media (max-width: 680px)": {
             fontSize: "20px",
           },
+          fontDisplay: 'fallback',
         },
         GothamBlack27: {
           fontFamily: "Gotham-Black",
@@ -94,27 +140,89 @@ let customTheme = createTheme({
           "@media (max-width: 680px)": {
             fontSize: "21px",
           },
+          fontDisplay: 'fallback',
         },
         GothamBlack30: {
           fontFamily: "Gotham-Black",
           fontSize: "30px",
           "@media (max-width: 680px)": {
+            fontSize: "26px",
+          },
+          fontDisplay: 'fallback',
+        },
+        GothamBlack32: {
+          fontFamily: "Gotham-Black",
+          fontSize: "32px",
+          "@media (max-width: 680px)": {
             fontSize: "27px",
           },
+          fontDisplay: 'fallback',
         },
         GothamBlack36: {
           fontFamily: "Gotham-Black",
           fontSize: "36px",
           "@media (max-width: 680px)": {
+            fontSize: "28px",
+          },
+          "@media (max-width: 576px)": {
+            fontSize: "22px",
+          },
+          fontDisplay: 'fallback',
+        },
+        GothamBlack40: {
+          fontFamily: "Gotham-Black",
+          fontSize: "40px",
+          "@media (max-width: 680px)": {
             fontSize: "24px",
           },
+          fontDisplay: 'fallback',
         },
         GothamBlack45: {
           fontFamily: "Gotham-Black",
           fontSize: "45px",
-          "@media (max-width: 680px)": {
-            fontSize: "27px",
+          "@media (max-width: 780px)": {
+            fontSize: "30px",
           },
+          "@media (max-width: 475px)": {
+            fontSize: "22px",
+          },
+          fontDisplay: 'fallback',
+        },
+        GothamBlack60: {
+          fontFamily: "Gotham-Black",
+          fontSize: "60px",
+          "@media (max-width: 1200px)": {
+            fontSize: "40px",
+          },
+          "@media (max-width: 680px)": {
+            fontSize: "20px",
+          },
+          fontDisplay: 'fallback',
+        },
+     
+        AlwynNewRoundedRegular12: {
+          fontFamily: "AlwynNewRounded-Regular",
+          fontSize: "12px",
+          fontDisplay: 'fallback',
+        },
+        
+    
+        AlwynNewRoundedRegular12Bold: {
+          fontFamily: "AlwynNewRounded-Regular",
+          fontSize: "12px",
+          fontWeight: "bold",
+          fontDisplay: 'fallback',
+        },
+        AlwynNewRoundedRegular13: {
+          fontFamily: "AlwynNewRounded-Regular",
+          fontSize: "13px",
+          fontDisplay: 'fallback',
+        },
+        AlwynNewRoundedRegular13Bold: {
+          fontFamily: "AlwynNewRounded-Regular",
+          fontSize: "13px",
+          fontWeight: "bold",
+          fontDisplay: 'fallback',
         },
         AlwynNewRoundedRegular14: {
           fontFamily: "AlwynNewRounded-Regular",
@@ -124,56 +232,87 @@ let customTheme = createTheme({
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "14px",
           fontWeight: "bold",
-        },
-        AlwynNewRoundedRegular12: {
-          fontFamily: "AlwynNewRounded-Regular",
-          fontSize: "12px",
-        },
-        AlwynNewRoundedRegular13: {
-          fontFamily: "AlwynNewRounded-Regular",
-          fontSize: "13px",
-        },
-        AlwynNewRoundedRegular13Bold: {
-          fontFamily: "AlwynNewRounded-Regular",
-          fontSize: "13px",
-          fontWeight: "bold",
-        },
-        AlwynNewRoundedRegular12Bold: {
-          fontFamily: "AlwynNewRounded-Regular",
-          fontSize: "12px",
-          fontWeight: "bold",
+          fontDisplay: 'fallback',
         },
         AlwynNewRoundedRegular15: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "15px",
+          fontDisplay: 'fallback',
         },
         AlwynNewRoundedRegular15Bold: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "15px",
           fontWeight: "bold",
+          fontDisplay: 'fallback',
         },
         AlwynNewRoundedRegular16: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "16px",
+          fontDisplay: 'fallback',
+        },
+        AlwynNewRoundedRegular16Bold: {
+          fontFamily: "AlwynNewRounded-Regular",
+          fontSize: "16px",
+          fontWeight: "bold",
+          fontDisplay: 'fallback',
         },
         AlwynNewRoundedRegular18: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "18px",
           "@media (max-width: 680px)": {
-            fontSize: "14px",
+            fontSize: "15px",
           },
+          "@media (max-width: 385px)": {
+            fontSize: "13px",
+          },
+          fontDisplay: 'fallback',
+        },
+        AlwynNewRoundedRegular20: {
+          fontFamily: "AlwynNewRounded-Regular",
+          fontSize: "20px",
+          "@media (max-width: 680px)": {
+            fontSize: "17px",
+          },
+          fontDisplay: 'fallback',
+        },
+        AlwynNewRoundedRegular20Bold: {
+          fontFamily: "AlwynNewRounded-Regular",
+          fontSize: "20px",
+          fontWeight: "bold",
+          "@media (max-width: 680px)": {
+            fontSize: "16px",
+          },
+          fontDisplay: 'fallback',
+        },
+        AlwynNewRoundedRegular25: {
+          fontFamily: "AlwynNewRounded-Regular",
+          fontSize: "25px",
+          "@media (max-width: 680px)": {
+            fontSize: "20px",
+          },
+          fontDisplay: 'fallback',
         },
         AlwynNewRoundedRegular28: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "28px",
           "@media (max-width: 680px)": {
-            fontSize: "14px",
+            fontSize: "20px",
           },
+          fontDisplay: 'fallback',
+        },
+        AlwynNewRoundedRegular30: {
+          fontFamily: "AlwynNewRounded-Regular",
+          fontSize: "30px",
+          "@media (max-width: 680px)": {
+            fontSize: "25px",
+          },
+          fontDisplay: 'fallback',
         },
 
         DubaiRegular10: {
           fontFamily: "DubaiRegular",
           fontSize: "10px",
+          fontDisplay: 'fallback',
         },
         DubaiRegular12: {
           fontFamily: "DubaiRegular",
@@ -181,6 +320,7 @@ let customTheme = createTheme({
           "@media (max-width: 680px)": {
             fontSize: "10px",
           },
+          fontDisplay: 'fallback',
         },
         DubaiRegular14: {
           fontFamily: "DubaiRegular",
@@ -188,6 +328,7 @@ let customTheme = createTheme({
           "@media (max-width: 680px)": {
             fontSize: "11px",
           },
+          fontDisplay: 'fallback',
         },
         DubaiRegular14Bold: {
           fontFamily: "DubaiRegular",
@@ -196,6 +337,20 @@ let customTheme = createTheme({
           "@media (max-width: 680px)": {
             fontSize: "11px",
           },
+          fontDisplay: 'fallback',
+        },
+        DubaiRegular16ForFiltersBtns: {
+          fontFamily: "DubaiRegular",
+          fontSize: "16px",
+          "@media (max-width: 376px)": {
+            fontSize: "12px",
+          },
+          fontDisplay: 'fallback',
+        },
+        DubaiRegular16ForFilters: {
+          fontFamily: "DubaiRegular",
+          fontSize: "16px",
+          fontDisplay: 'fallback',
         },
         DubaiRegular16: {
           fontFamily: "DubaiRegular",
@@ -203,6 +358,7 @@ let customTheme = createTheme({
           "@media (max-width: 680px)": {
             fontSize: "12px",
           },
+          fontDisplay: 'fallback',
         },
         DubaiRegular16Bold: {
           fontFamily: "DubaiRegular",
@@ -211,36 +367,41 @@ let customTheme = createTheme({
           "@media (max-width: 680px)": {
             fontSize: "12px",
           },
+          fontDisplay: 'fallback',
         },
         DubaiRegular18: {
           fontFamily: "DubaiRegular",
           fontSize: "18px",
           "@media (max-width: 680px)": {
-            fontSize: "13px",
+            fontSize: "15px",
           },
+          fontDisplay: 'fallback',
         },
         DubaiRegular18Bold: {
           fontFamily: "DubaiRegular",
           fontSize: "18px",
           fontWeight: "bold",
           "@media (max-width: 680px)": {
-            fontSize: "14px",
+            fontSize: "15px",
           },
+          fontDisplay: 'fallback',
         },
         DubaiRegular20: {
           fontFamily: "DubaiRegular",
           fontSize: "20px",
           "@media (max-width: 680px)": {
-            fontSize: "14px",
+            fontSize: "17px",
           },
+          fontDisplay: 'fallback',
         },
         DubaiRegular20Bold: {
           fontFamily: "DubaiRegular",
           fontSize: "20px",
           fontWeight: "bold",
           "@media (max-width: 680px)": {
-            fontSize: "14px",
+            fontSize: "17px",
           },
+          fontDisplay: 'fallback',
         },
         DubaiRegular24: {
           fontFamily: "DubaiRegular",
@@ -248,6 +409,7 @@ let customTheme = createTheme({
           "@media (max-width: 680px)": {
             fontSize: "16px",
           },
+          fontDisplay: 'fallback',
         },
         DubaiRegular24Bold: {
           fontFamily: "DubaiRegular",
@@ -256,6 +418,7 @@ let customTheme = createTheme({
           "@media (max-width: 680px)": {
             fontSize: "16px",
           },
+          fontDisplay: 'fallback',
         },
         DubaiRegular30Bold: {
           fontFamily: "DubaiRegular",
@@ -264,6 +427,7 @@ let customTheme = createTheme({
           "@media (max-width: 680px)": {
             fontSize: "14px",
           },
+          fontDisplay: 'fallback',
         },
         DubaiRegular32Bold: {
           fontFamily: "DubaiRegular",
@@ -272,10 +436,12 @@ let customTheme = createTheme({
           "@media (max-width: 680px)": {
             fontSize: "20px",
           },
+          fontDisplay: 'fallback',
         },
         footerSocialIcon: {
           fontSize: "12px",
         },
+
       },
     },
 
@@ -304,6 +470,13 @@ let customTheme = createTheme({
       styleOverrides: {
         root: {
           fontSize: "1rem",
+        },
+      },
+    },
+    MuiAutocomplete: {
+      styleOverrides: {
+        root: {
+          fontFamily: "AlwynNewRoundedRegular14",
         },
       },
     },

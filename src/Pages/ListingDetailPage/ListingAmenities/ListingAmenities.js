@@ -1,28 +1,173 @@
-import React from "react";
-import { Grid, Typography } from "@mui/material";
-import { PropertyAmenities, BuildingAmenities } from "../../../Constants/ConstantValues";
+import React, { useState, useEffect } from "react";
+import { Typography } from "@mui/material";
 import ListingAndBuildingFacts from "../../../Components/ListingAndBuildingFacts/ListingAndBuildingFacts";
 
-const text = `Newly constructed, this 8 bedroom and 21 bath modern Spanish Villa spans over 41,000SF of living. A sprawling open floorplan welcomes you upon entry with floor-to-ceiling glass pocket doors for quintessential indoor/outdoor living. 
-  
-The definition of an entertainer's dream, the lower levels astonish with boundless amenities including basketball court, 36-person theater, 1,200+ bottle wine cellars, recording studio & wellness center with 75' indoor pool, sauna, steam room, salon & fitness studio. 
+const ListingAmenities = ({ property, buildingObject }) => {
+  const [propertyAmenities, setPropertyAmenities] = useState([]);
+  const [buildingAmenities, setBuildingAmenities] = useState([]);
 
-Resort-like yard features multi-level patios, 75' size infinity`;
+  const _ = require("lodash");
 
-const ListingAmenities = () => {
-  const reactComponent = () => {
+  const extractBuildingAmenitiesToArray = (buildingObject) => {
+    let amenitiesArray = [];
+
+    if (
+      buildingObject?.buildingAc &&
+      !_.isEqual(buildingObject.buildingAc.trim(), "")
+    ) {
+      amenitiesArray.push(buildingObject.buildingAc);
+    }
+
+    if (
+      Array.isArray(buildingObject?.buildingAmenities) &&
+      buildingObject.buildingAmenities.length > 0
+    ) {
+      amenitiesArray.push(
+        ...buildingObject.buildingAmenities.filter(
+          (item) => !_.isEqual(item.trim(), "")
+        )
+      );
+    }
+
+    if (
+      Array.isArray(buildingObject?.buildingShopsCo) &&
+      buildingObject.buildingShopsCo.length > 0
+    ) {
+      amenitiesArray.push(
+        ...buildingObject.buildingShopsCo.filter(
+          (item) => !_.isEqual(item.trim(), "")
+        )
+      );
+    }
+
+    if (
+      Array.isArray(buildingObject?.buildingFacilities) &&
+      buildingObject.buildingFacilities.length > 0
+    ) {
+      amenitiesArray.push(
+        ...buildingObject.buildingFacilities.filter(
+          (item) => !_.isEqual(item.trim(), "")
+        )
+      );
+    }
+
+    if (
+      Array.isArray(buildingObject?.buildingSportsFacilities) &&
+      buildingObject.buildingSportsFacilities.length > 0
+    ) {
+      amenitiesArray.push(
+        ...buildingObject.buildingSportsFacilities.filter(
+          (item) => !_.isEqual(item.trim(), "")
+        )
+      );
+    }
+
+    if (
+      buildingObject?.elevators &&
+      !isNaN(buildingObject.elevators) &&
+      !_.isEqual(buildingObject.elevators.trim(), "0")
+    ) {
+      amenitiesArray.push(`${buildingObject.elevators} Elevators`);
+    }
+
+    if (buildingObject?.petPolicy) {
+      amenitiesArray.push(`Pets ${buildingObject.petPolicy}`);
+    }
+
+    if (
+      Array.isArray(buildingObject?.serviceLevels) &&
+      buildingObject.serviceLevels.length > 0
+    ) {
+      amenitiesArray.push(
+        ...buildingObject.serviceLevels.filter(
+          (item) => !_.isEqual(item.trim(), "")
+        )
+      );
+    }
+
+    setBuildingAmenities(amenitiesArray.filter(Boolean));
+  };
+
+  useEffect(() => {
+    extractBuildingAmenitiesToArray(buildingObject);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [buildingObject]);
+
+  const extractAmenitiesToArray = (property) => {
+    let amenitiesArray = [];
+
+    if (
+      property?.amenities &&
+      !_.isEqual(property.amenities.trim(), ",") &&
+      !_.isEqual(property.amenities.trim(), "")
+    ) {
+      amenitiesArray = property.amenities
+        .split(/[,]/)
+        .map((amenity) => amenity.trim());
+    }
+
+    if (property?.balconies === "yes") {
+      amenitiesArray.push("Balcony");
+    }
+
+    if (
+      property?.furnished &&
+      !_.isEqual(property.furnished.toLowerCase(), "no")
+    ) {
+      amenitiesArray.push(property.furnished);
+    }
+
+    if (property?.parkingQty && !isNaN(property.parkingQty)) {
+      const parkingQtyNumber = parseInt(property.parkingQty);
+      if (parkingQtyNumber > 0) {
+        amenitiesArray.push(
+          parkingQtyNumber > 1
+            ? `${parkingQtyNumber} Parkings`
+            : `${parkingQtyNumber} Parking`
+        );
+      }
+    }
+
+    if (
+      property?.terraces &&
+      !_.isEqual(property.terraces.toLowerCase(), "no")
+    ) {
+    }
+    setPropertyAmenities(amenitiesArray.filter(Boolean));
+  };
+
+  useEffect(() => {
+    extractAmenitiesToArray(property);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {}, [buildingAmenities]);
+
+  const reactComponentLeft = () => {
     return (
-      <>
-        <Grid id="listingAmenitiesSection" item xs={12} sm={5.5} mr={4} mb={2}>
-          <Typography variant="DubaiRegular24Bold">Property Amenities</Typography>
-        </Grid>
-        <Grid item xs={12} sm={5.5} mb={2}>
-          <Typography variant="DubaiRegular24Bold">Building Amenities</Typography>
-        </Grid>
-      </>
+      <Typography variant="DubaiRegular24Bold">Property Amenities</Typography>
     );
   };
-  return <ListingAndBuildingFacts rightData={BuildingAmenities} leftData={PropertyAmenities} text={text} reactComponent={reactComponent} />;
+
+  const reactComponentRight = () => {
+    return (
+      <Typography variant="DubaiRegular24Bold">Building Amenities</Typography>
+    );
+  };
+
+  return (
+    <ListingAndBuildingFacts
+      rightData={buildingAmenities}
+      leftData={propertyAmenities}
+      text={property.listingDescription}
+      reactComponentRight={reactComponentRight}
+      property={property}
+      reactComponentLeft={reactComponentLeft}
+      // buildingObject={buildingObject}
+    />
+  );
 };
 
 export default ListingAmenities;

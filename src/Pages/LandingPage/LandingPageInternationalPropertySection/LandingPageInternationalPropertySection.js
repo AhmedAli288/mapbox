@@ -30,6 +30,9 @@ const LandingPageInternationalPropertySection = () => {
               setActiveStep={setActiveStep}
               images={citiesImages}
               dark={false}
+              width={680}
+              height={400}
+              autoScroll
             />
           </Box>
         </Grid>
@@ -44,7 +47,7 @@ const LandingPageInternationalPropertySection = () => {
           <Typography variant="GothamBlack45" color="white">
             Explore our International Properties
           </Typography>
-          <Link href="/">
+          <Link href="/comingsoon">
             <CustomButton
               dark={false}
               text="Learn More"

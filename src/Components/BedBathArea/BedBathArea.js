@@ -6,7 +6,7 @@ import {
   MeterIcon,
   SqftIcon,
 } from "../../Assets/SVG/Common/CommonSvgs";
-
+import { formatNumberWithCommasAndWithoutDecimals } from "../../utils/utility";
 const BedBathArea = ({ beds, baths, meters, sqfts }) => {
   return (
     <>
@@ -60,7 +60,9 @@ const BedBathArea = ({ beds, baths, meters, sqfts }) => {
           alignItems="center"
         >
           <SqftIcon />
-          <Typography variant="DubaiRegular18">{sqfts}</Typography>
+          <Typography variant="DubaiRegular18">
+            {formatNumberWithCommasAndWithoutDecimals(sqfts)}
+          </Typography>
         </Stack>
       </Stack>
     </>

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Box, Container, Typography, Grid } from "@mui/material";
 import CustomButton from "../Button/CustomButton";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ButtonRightArrow } from "../../Assets/SVG/Common/CommonSvgs";
 import { neighbourhoodData } from "../../Constants/StaticPagesConstants";
 import { findArea } from "../../Constants/ConstantValues";
@@ -10,9 +10,13 @@ import GalleryComponent from "../Gallery/GalleryComponent";
 import CommuteTimes from "./CommuteTimes/CommuteTimes";
 import LocationBoundaries from "./LocationBoundaries/LocationBoundaries";
 import KeyFacts from "./KeyFacts/KeyFacts";
+import AppContext from "../../context/AppContext";
+import { objToBase64, truncateText } from "../../utils/utility";
 
 const SpecificNeighbourhood = () => {
+  const { setBuyOrRent, selectedCountry } = useContext(AppContext);
   const { name } = useParams();
+  const navigate = useNavigate();
 
   const specificNeighbourhood = name.includes(" ")
     ? name.replace(/\s+/g, "_")
@@ -57,6 +61,16 @@ const SpecificNeighbourhood = () => {
       return updatedHovered;
     });
   };
+  const handleClick = (value, buyOrRent) => {
+    setBuyOrRent(buyOrRent);
+    const queryParamValue = objToBase64({
+      buyOrRent: buyOrRent,
+      key: "Area",
+      value,
+      country: selectedCountry,
+    });
+    navigate(`/${buyOrRent}/search?value=${queryParamValue}`);
+  };
   return (
     <>
       <Box className="specificNeighbourBgContainer">
@@ -73,24 +87,26 @@ const SpecificNeighbourhood = () => {
             <Grid container spacing={1} mt={1}>
               <Grid item>
                 <CustomButton
-                  text={"Homes for Sale in Business Bay"}
+                  text={`Homes for Sale in ${truncateText(neighbourhood, 30)}`}
                   rightIcon={<ButtonRightArrow />}
                   onMouseEnter={() => handleMouseEvent(0)}
                   onMouseLeave={() => handleMouseEvent(0)}
                   dark={buttonHovered[0]}
                   variant="outlined"
                   customClassName="viewAllExclusiveButton"
+                  onClick={() => handleClick(neighbourhood, "buy")}
                 />
               </Grid>
               <Grid item>
                 <CustomButton
-                  text={"Homes for Rent in Business Bay"}
+                  text={`Homes for Rent in ${truncateText(neighbourhood, 30)}`}
                   rightIcon={<ButtonRightArrow />}
                   onMouseEnter={() => handleMouseEvent(1)}
                   onMouseLeave={() => handleMouseEvent(1)}
                   dark={buttonHovered[1]}
                   variant="outlined"
                   customClassName="viewAllExclusiveButton"
+                  onClick={() => handleClick(neighbourhood, "rent")}
                 />
               </Grid>
             </Grid>

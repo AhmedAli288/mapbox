@@ -10,7 +10,7 @@ function NearbySchools() {
   return (
     <Grid id="nearbySchoolsSection" className="nearbySchoolsSection tableSectionContainer" container rowSpacing={2} px={2} py={8} mt={5}>
       <Grid item xs={12}>
-        <TableComponent
+        {/* <TableComponent
           rowsPerPage={3}
           infoHeadersObj={nearbySchoolsHeadingInfoData}
           InfoDescription={customInfoDescriptionForSchools}
@@ -19,11 +19,12 @@ function NearbySchools() {
           hasInfoHeaders={true}
           NearbyData={NearbySchoolsData}
           isSchool={true}
-        />
+        /> */}
       </Grid>
       <Grid item xs={12}>
         <Typography className="tableSectionHeading" variant="DubaiRegular14" ml={0}>
-          {NearbySchoolsData.khdaAttribution}
+          {/* {NearbySchoolsData.khdaAttribution} */}
+          Comming Soon
         </Typography>
       </Grid>
       <Grid item xs={12}>

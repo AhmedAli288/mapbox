@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { DarkFilledStarIcon, DarkHalfStarIcon, DarkEmptyStarIcon, LightFilledStarIcon, LightHalfStarIcon, LightEmptyStarIcon, pricing } from "../../Assets/SVG/Common/CommonSvgs";
 
 const RatingStarAndOthers = ({ defaultValue, dark = false, stylingClass = null, pricingIcon = false }) => {
@@ -24,7 +24,7 @@ const RatingStarAndOthers = ({ defaultValue, dark = false, stylingClass = null, 
           }
         }
         return (
-          <span className={`${stylingClass} starSpacing`}>
+          <span key={index} className={`${stylingClass} starSpacing`}>
             <IconComponent key={index} onClick={() => handleClick(starValue)} />
           </span>
         );

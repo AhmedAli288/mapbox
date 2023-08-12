@@ -48,17 +48,17 @@ const SearchAndRecents = ({
 
               <Grid item xs={11} className="searchHistoryDetailContainer">
                 <Typography variant="DubaiRegular16Bold">
-                  {result.address.split(",")[0]}
+                  {result.address?.split(",")[0]}
                 </Typography>
                 <Box className="searchHistoryDetails">
                   {result.walking !== null && (
                     <Typography variant="DubaiRegular14">
-                      Walking: {Math.floor(result.walking / 60)} minutes
+                      Walking: {Math.floor(result.walking / 60)} mins
                     </Typography>
                   )}
                   {result.driving !== null && (
                     <Typography variant="DubaiRegular14">
-                      Driving: {Math.floor(result.driving / 60)} minutes
+                      Driving: {Math.floor(result.driving / 60)} mins
                     </Typography>
                   )}
                   <Typography
@@ -79,14 +79,14 @@ const SearchAndRecents = ({
       </Box>
       <Box className="searchHistoryNote">
         <Box className="searchHistoryNoteCircle">
-          <div class="circle backgroundModerateCyan">
+          <div className="circle backgroundModerateCyan">
             <Typography variant="DubaiRegular12">A</Typography>
           </div>
           <Typography variant="DubaiRegular14"> Starting Point</Typography>
         </Box>
 
         <Box className="searchHistoryNoteCircle">
-          <div class="circle backgroundDesaturatedBlue">
+          <div className="circle backgroundDesaturatedBlue">
             <Typography variant="DubaiRegular12">B</Typography>
           </div>
           <Typography variant="DubaiRegular14"> Destination Point</Typography>

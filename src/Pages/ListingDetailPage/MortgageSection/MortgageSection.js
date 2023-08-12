@@ -1,21 +1,19 @@
 import { Box, Grid, Typography, Stack, Divider } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import InfoIconDescription from "../../../Components/InfoIconDescription/InfoIconDescription";
 import { InfoIcon } from "../../../Assets/SVG/Common/CommonSvgs";
 import CustomButton from "../../../Components/Button/CustomButton";
 import { ButtonRightArrow } from "../../../Assets/SVG/Common/CommonSvgs";
 import { mortgage } from "../../../Constants/ConstantValues";
 import ListingCardIcon from "../../../Assets/SVG/ListingCardIcons/ListingCardIcons";
+import AppContext from "../../../context/AppContext";
+import { convertCurrency, calculatePercentage } from "../../../utils/utility";
 
-function MortgageSection() {
-  const mortgageLabels = [
-    "Transfer Fee",
-    "Title Deed Fee",
-    "Trustee Fee",
-    "Agency Fee",
-    "NOC Charges",
-    "Total",
-  ];
+function MortgageSection(property) {
+  // const [purchases, setPurchases] =useState([])
+  const { conversionRates, toCurrency, selectedCurrency } = useContext(AppContext);
+
+  const mortgageLabels = ["Transfer Fee", "Title Deed Fee", "Trustee Fee", "Agency Fee", "NOC Charges", "Total"];
 
   const [exclusivesButtonHovered, setExclusivesButtonHovered] = useState([
     true, // Hover state for button at index 0
@@ -31,17 +29,44 @@ function MortgageSection() {
     });
   };
 
+  let purchases = [
+    [
+      convertCurrency(conversionRates, toCurrency, selectedCurrency, property.transferFee ? property.transferFee : "0"),
+      property.transferFeePercentage ? property.transferFeePercentage : "N/A",
+      //  calculatePercentage(property.transferFee, property.purchasePrice)
+    ],
+    [
+      convertCurrency(conversionRates, toCurrency, selectedCurrency, property.titleDeedFee ? property.titleDeedFee : "0"),
+      property.titleDeedPercentage ? property.titleDeedPercentage : "N/A",
+      // calculatePercentage(property.titleDeedFee, property.purchasePrice)
+    ],
+    [
+      convertCurrency(conversionRates, toCurrency, selectedCurrency, property.trusteeFee ? property.trusteeFee : "0"),
+      property.trusteeFeePercentage ? property.trusteeFeePercentage : "N/A",
+      // calculatePercentage(property.trusteeFee, property.purchasePrice)
+    ],
+    [
+      convertCurrency(conversionRates, toCurrency, selectedCurrency, property.agencyFee ? property.agencyFee : "0"),
+      property.agencyFeePercentage ? property.agencyFeePercentage : "N/A",
+      // calculatePercentage(property.agencyFee, property.purchasePrice)
+    ],
+    [
+      convertCurrency(conversionRates, toCurrency, selectedCurrency, property.nocCharges ? property.nocCharges : "0"),
+      property.nocChargesPercentage ? property.nocChargesPercentage : "N/A",
+      // calculatePercentage(property.agencyFee, property.purchasePrice)
+    ],
+  ];
+  // console.log(purchases)
+
   return (
     <>
       <Box id="mortgageSection" className="mortgageWrapper">
         <Grid container justifyContent="center" spacing={6}>
           <Grid item>
-            <Typography variant="DubaiRegular24Bold">Mortgage</Typography>
-            <Grid container spacing={2}>
+            {/* <Typography variant="DubaiRegular24Bold">Mortgage</Typography> */}
+            {/* <Grid container spacing={2}>
               <Grid item xs className="serviceChargeWithIcon">
-                <Typography variant="DubaiRegular24Bold">
-                  {mortgage.pricePerMonth}
-                </Typography>
+                <Typography variant="DubaiRegular24Bold">{mortgage.pricePerMonth}</Typography>
 
                 <Box className="serviceChargeInfoIcon">
                   <div className="tagWithInfoIconContainer">
@@ -62,7 +87,7 @@ function MortgageSection() {
             <Stack spacing={2}>
               <Typography variant="DubaiRegular16Bold">
                 {`${mortgage.totalAnnualPaymentDuration}year fixed, ${mortgage.percentageInterest} Interest, ${mortgage.paercentageDownPayment}Down Payment`}
-                {/* 30 year fixed, 3.7% Interest, 25% Down Payment */}
+             
               </Typography>
               <CustomButton
                 text={"Find out how much you can borrow"}
@@ -91,36 +116,23 @@ function MortgageSection() {
                 variant="outlined"
                 customClassName="viewAllExclusiveButton"
               />
-            </Stack>
+            </Stack> */}
           </Grid>
           <Grid item xs={6}>
             <Box className="purchaseFees">
               <Stack spacing={2}>
-                <Typography
-                  variant="DubaiRegular24Bold"
-                  className="purchaseFeeTypography"
-                >
+                <Typography variant="DubaiRegular24Bold" className="purchaseFeeTypography">
                   Purchase Fees
                 </Typography>
                 <Grid container justifyContent="center">
                   {mortgageLabels.map((label, index) => (
                     <React.Fragment key={index}>
-                      <Grid
-                        item
-                        xs={5}
-                        className="serviceChargeWithIcon"
-                        key={index}
-                      >
-                        <Typography variant="DubaiRegular18">
-                          {label}
-                        </Typography>
+                      <Grid item xs={5} className="serviceChargeWithIcon" key={index}>
+                        <Typography variant="DubaiRegular18">{label}</Typography>
                         {mortgage.mortgageFees[index][2] ? (
                           <Box className="serviceChargeInfoIcon">
                             <div className="tagWithInfoIconContainer">
-                              <ListingCardIcon
-                                shape={"infoCircle"}
-                                variant="light"
-                              />
+                              <ListingCardIcon shape={"infoCircle"} variant="light" />
                               <div className="tagWithInfoIconTextBox">
                                 <InfoIconDescription
                                   heading={"Principal and Interest"}
@@ -135,24 +147,13 @@ function MortgageSection() {
                         ) : null}
                       </Grid>
                       <Grid item xs={4}>
-                        <Typography variant="DubaiRegular18">
-                          {mortgage.mortgageFees[index][0]}
-                        </Typography>
+                        <Typography variant="DubaiRegular18">{purchases && purchases[index] && purchases[index][0]}</Typography>
                       </Grid>
                       <Grid item xs={2}>
-                        <Typography variant="DubaiRegular18">
-                          {mortgage.mortgageFees[index][1]}
-                        </Typography>
+                        <Typography variant="DubaiRegular18">{purchases && purchases[index] && purchases[index][1]}</Typography>
                       </Grid>
-                      {/* {(index + 1) % 3 === 0 &&
-              index !== label.length && ( */}
-                      <Divider
-                        orientation="horizontal"
-                        flexItem
-                        className="mortgageDivider"
-                      />
-                      {/* )} */}
-                      {/* <Divider className="mortgageDivider"/> */}
+
+                      <Divider orientation="horizontal" flexItem className="mortgageDivider" />
                     </React.Fragment>
                   ))}
                 </Grid>

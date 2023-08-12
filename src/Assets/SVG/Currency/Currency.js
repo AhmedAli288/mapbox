@@ -104,21 +104,21 @@ export const currencies = [
       currencySymbol: "₿",
       flag: <CurrencyFlagsSvg countryCode="BTC" />,
     },
-    {
-      countryCode: "ETH",
-      phoneCode: "",
-      name: "Ethcoin",
-      currency: "ETH",
-      currencySymbol: "Ξ",
-      flag: <CurrencyFlagsSvg countryCode="ETH" />,
-    },
-    {
-      countryCode: "ADA",
-      phoneCode: "",
-      name: "ADA",
-      currency: "ADA",
-      currencySymbol: "₳",
-      flag: <CurrencyFlagsSvg countryCode="ADA" />,
+    // {
+    //   countryCode: "ETH",
+    //   phoneCode: "",
+    //   name: "Ethcoin",
+    //   currency: "ETH",
+    //   currencySymbol: "Ξ",
+    //   flag: <CurrencyFlagsSvg countryCode="ETH" />,
+    // },
+    // {
+    //   countryCode: "ADA",
+    //   phoneCode: "",
+    //   name: "ADA",
+    //   currency: "ADA",
+    //   currencySymbol: "₳",
+    //   flag: <CurrencyFlagsSvg countryCode="ADA" />,
    
-    }
+    // }
 ]  

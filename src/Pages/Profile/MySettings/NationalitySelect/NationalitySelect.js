@@ -6,6 +6,8 @@ const NationalitySelect = ({ selectedNationality, setSelectedNationality }) => {
     setSelectedNationality(event.target.value);
   };
 
+  const isValidNationality = nationalities.includes(selectedNationality);
+
   return (
     <div className="nationalitySelectBox">
       <select
@@ -14,6 +16,10 @@ const NationalitySelect = ({ selectedNationality, setSelectedNationality }) => {
         onChange={handleChange}
         className="nationalitySelect width100"
       >
+        {selectedNationality === "" && (
+          <option value="">Select Nationality</option>
+        )}
+        {!isValidNationality && <option value="">Select Nationality</option>}
         {nationalities.map((nationality) => (
           <option key={nationality} value={nationality}>
             {nationality}

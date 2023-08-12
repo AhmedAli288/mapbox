@@ -7,6 +7,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
 }
+iframe#webpack-dev-server-client-overlay {
+  display: none;
+}
 
 .MuiToolbar-root {
   min-height: 54px;
@@ -35,10 +38,10 @@ body {
 }
 
 .homePageBackgroundImage img {
-  width: "100%";
-  height: "100%";
-  background-size: "cover";
-  background-position: "center";
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -93,6 +96,8 @@ body {
 .LandingPageSearchAreaWrapper {
   position: absolute;
 }
+/* .LandingPageSearchAreaWrapperCenter {
+} */
 .landingPageSearchArea {
   position: relative;
   display: flex;
@@ -160,7 +165,8 @@ body {
 
 .landingAutocompleteTextField .MuiInput-input {
   margin-left: 12px;
-  font-family: "AlwynNewRoundedRegular12";
+  font-family: "AlwynNewRounded-Regular";
+  font-size: 14px;
 }
 .MuiAutocomplete-root:focus {
   outline: none;
@@ -168,13 +174,9 @@ body {
 
 .searchIconWrapper {
   position: relative;
-  right: 5px;
   display: flex;
   align-items: center;
-  height: 30px;
-  width: 30px;
   border-radius: 2px;
-  background-color: rgb(0, 0, 0);
 }
 
 .landingPageTextFieldsearchIcon {
@@ -183,7 +185,73 @@ body {
   border-radius: 2px;
 }
 
+.buildingGuidesAutoComplete.MuiAutocomplete-hasPopupIcon
+  .MuiAutocomplete-inputRoot,
+.MuiAutocomplete-hasClearIcon .MuiAutocomplete-inputRoot {
+  padding-right: 3px !important;
+}
+
+.MuiAutocomplete-noOptions {
+  font-family: "AlwynNewRounded-Regular";
+  font-size: 14px;
+}
+
+.agentSearchBox {
+  padding-right: 10px !important;
+}
+.searchContainer {
+  position: relative;
+}
+
+.searchResultList {
+  padding: 10px 0;
+  position: absolute;
+  top: 100%; /* Position it below the search form */
+  left: 0;
+  right: 0;
+  max-height: 200px; /* Set the maximum height for the results box */
+  overflow-y: auto; /* Add a scrollbar when content exceeds the max height */
+  background-color: #ffffff; /* Set the background color for the results box */
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.searchResultItemsHeading {
+  padding: 4px 12px;
+}
+.searchResultItem {
+  cursor: pointer; /* Show pointer cursor on hover */
+  background-color: transparent;
+  padding: 8px 20px;
+}
+
+.placeholderTypography {
+  font-family: "AlwynNewRoundedRegular12";
+  font-size: 14px;
+  font-weight: 400;
+  color: #777777;
+}
+.agentSearchNoOptions {
+  color: rgb(0, 0, 0, 0.6);
+}
+/* Change background color on hover similar to MUI Autocomplete */
+.searchResultItem:hover {
+  background-color: #f5f5f5;
+}
 /* Exclusive LandingPage Section CSS */
+
+/* 【c】【o】【m】【i】【n】【g】 【s】【o】【o】【n】 【p】【a】【g】【e】    【c】【s】【s】 */
+.comingSoonPageWrapper {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 95vh;
+  color: white;
+  width: 100%;
+}
 
 /* 【E】【r】【r】【o】【r】    【p】【a】【g】【e】    【c】【s】【s】 */
 
@@ -209,7 +277,7 @@ body {
 }
 
 .circles p {
-  font-size: 240px;
+  font-size: 150px;
   color: #fff;
   position: relative;
   z-index: 9;
@@ -217,7 +285,8 @@ body {
 }
 
 .circles p small {
-  font-size: 40px;
+  padding: 20px;
+  font-size: 50px;
   line-height: 100%;
   vertical-align: top;
 }
@@ -293,12 +362,12 @@ body {
     opacity: 0.7;
   }
   50% {
-    top: 240px;
+    top: -10px;
     left: 55%;
     opacity: 0.4;
   }
   75% {
-    top: 100px;
+    top: -15px;
     left: 40%;
     opacity: 0.6;
   }
@@ -326,7 +395,7 @@ body {
     opacity: 0.4;
   }
   75% {
-    top: 100px;
+    top: -15px;
     left: 40%;
     opacity: 0.6;
   }
@@ -395,61 +464,58 @@ body {
 
 @-webkit-keyframes bigmove {
   0% {
+    left: 25%;
     top: 0px;
-    right: 4%;
     opacity: 0.5;
   }
   25% {
-    top: 100px;
-    right: 40%;
-    opacity: 0.4;
+    top: 0px;
+    left: 50%;
+    opacity: 0.7;
   }
   50% {
-    top: 240px;
-    right: 45%;
+    left: 50%;
+    top: 0px;
     opacity: 0.8;
   }
-  75% {
-    top: 100px;
-    right: 35%;
-    opacity: 0.6;
-  }
   100% {
+    left: 25%;
     top: 0px;
-    right: 4%;
     opacity: 0.5;
   }
 }
 
 @keyframes bigmove {
   0% {
+    left: 25%;
     top: 0px;
-    right: 4%;
     opacity: 0.5;
   }
   25% {
-    top: 100px;
-    right: 40%;
-    opacity: 0.4;
+    top: 0px;
+    left: 50%;
+    opacity: 0.7;
   }
   50% {
-    top: 240px;
-    right: 45%;
+    left: 50%;
+    top: 0px;
     opacity: 0.8;
   }
-  75% {
-    top: 100px;
-    right: 35%;
-    opacity: 0.6;
-  }
   100% {
+    left: 25%;
     top: 0px;
-    right: 4%;
     opacity: 0.5;
   }
 }
 
 /* 【C】【o】【m】【p】【o】【n】【e】【n】【t】      【s】 【C】【S】【S】 */
+
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
 
 .viewAllExclusivesButtonWrapper {
   width: 432px;
@@ -463,7 +529,10 @@ body {
 .viewAllExclusiveButton.MuiButtonBase-root-MuiButton-root.customButtonDark {
   margin-top: 1.2rem;
 }
-
+.LandingPageExclusiveSectionWrapper .MuiGrid-item {
+  max-width: 100%;
+  box-sizing: border-box;
+}
 .LandingPageExclusiveSectionWrapper {
   padding: 3% 3%;
 }
@@ -471,6 +540,11 @@ body {
 .LandingPageExclusiveSectionWrapper.MuiContainer-root {
   margin: 0px;
   max-width: 100%;
+}
+
+.LandingPageExclusiveSectionWrapper .MuiGrid-item {
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Listing card css */
@@ -499,6 +573,10 @@ body {
   position: relative;
   z-index: 1;
 }
+.cardContentLowerLink {
+  text-decoration: none;
+  color: white;
+}
 
 .upperPaperBoxWrapper.MuiPaper-root {
   position: absolute;
@@ -511,13 +589,23 @@ body {
   padding: 10px 0;
 }
 
+.upperCardListingCardIcon.MuiButtonBase-root {
+  padding: 10px 0;
+}
+
+.upperBoxListingCardIconContainer {
+  padding: 0 8px 0 0;
+}
+
 .lowerPaperBoxWrapper.MuiPaper-root {
+  width: 100%;
   position: absolute;
   bottom: 0px;
   flex-wrap: 1;
   background-color: transparent;
   color: #ffffff;
   background: linear-gradient(to top, #000000, #2b2a2a00 100%);
+  border-radius: 5px;
 }
 
 .lowerCardContentWrapper {
@@ -559,10 +647,23 @@ body {
   transition: transform 0.1s, opacity 0.1s;
 }
 
+.textToDisappearDownwardsPricecardContentAlignment {
+  transform: translate(0, 50px);
+  transition: transform 0.1s;
+}
+.textToDisappearDownwardsCommunitycardContentAlignment {
+  transform: translate(0, 50px);
+  transition: transform 0.1s;
+}
+.textToDisappearDownwardsBuildingcardContentAlignment {
+  transform: translate(0, 50px);
+  transition: transform 0.1s;
+}
+
 .textToDisappearDownwardsBuilding {
   opacity: 0;
-  transform: translate(0, 1px);
-  transition: transform 0.1s, opacity 0.1s;
+  transform: translate(0, 20px);
+  transition: transform 0.1s;
 }
 
 .mouseOut {
@@ -627,7 +728,7 @@ body {
 
 .carouselTypography.MuiPaper-root {
   position: absolute;
-  bottom: 3.1rem;
+  /* bottom: 3.1rem; */
   flex-wrap: 1;
   background-color: transparent;
   color: #ffffff;
@@ -643,11 +744,22 @@ body {
 .carouselSizesGrid.MuiGrid-root {
   display: flex;
   justify-content: flex-end;
-  padding: 0 0.6rem 0 0;
+  padding: 0 1.2rem 0 0;
 }
 
 .thumbnailImageButton.MuiButton-root {
   padding: 0;
+}
+
+.agentImageContainer {
+  position: relative;
+  z-index: 1;
+}
+
+.agentHeartIcon.MuiButtonBase-root {
+  position: absolute;
+  right: 0;
+  z-index: 2;
 }
 
 .learnMoreBtnLanding.MuiButtonBase-root {
@@ -656,6 +768,15 @@ body {
 
 .colorBlack {
   color: black;
+}
+
+.agentImageWrapper {
+  position: relative;
+  min-width: 180px;
+}
+.agentImageOverlay {
+  position: absolute;
+  right: 0;
 }
 
 /* 【L】【a】【n】【d】【i】【n】【g】    【p】【a】【g】【e】   【n】【e】【w】   【d】【e】【v】【e】【l】【o】【p】【m】【e】【n】【t】   【c】【s】【s】 */
@@ -672,9 +793,9 @@ body {
 .newDevelopmentOpacity {
   position: absolute;
   width: 100%;
-  height: 15%;
+  height: 30%;
   bottom: 3rem;
-  background: linear-gradient(to top, #0000008c, #2b2a2a00 100%);
+  background: linear-gradient(to top, #0000008c, #2b2a2a18 100%);
   z-index: 999;
 }
 
@@ -753,6 +874,13 @@ body {
   margin: 0px;
   max-width: 100%;
 }
+
+.seoLinksUnderline:hover {
+  text-decoration: underline;
+  color: #fff;
+  cursor: pointer;
+}
+
 /* 【L】【a】【n】【d】【i】【n】【g】    【p】【a】【g】【e】 【H】【e】【a】【d】【e】【r】   【l】【i】【n】【k】【s】  【c】【s】【s】 */
 .headerLink {
   text-decoration: none;
@@ -761,6 +889,13 @@ body {
 
 .divWrapper:hover svg {
   fill: #000;
+}
+
+.profileNameMenu span {
+  max-width: 10ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* 【L】【a】【n】【d】【i】【n】【g】    【p】【a】【g】【e】   【s】【u】【b】【s】【c】【r】【i】【b】【e】   【a】【r】【e】【a】  【c】【s】【s】 */
@@ -802,6 +937,9 @@ body {
 
 .carouselBox {
   position: relative;
+}
+.carouselBox.MuiBox-root img {
+  border-radius: 5px;
 }
 
 .carouselBox .carouselNavigationBtns {
@@ -859,14 +997,14 @@ body {
 .carouselStartingPrice svg,
 .carouselSizes svg {
   fill: #fff;
-  margin: 0.5rem 0.4rem 0 0;
+  /* margin: 0.5rem 0.4rem 0 0; */
 }
 
-.MuiGrid-root .carouselSizesGrid {
+/* .MuiGrid-root .carouselSizesGrid {
   display: flex;
   justify-content: flex-end;
   padding: 0 0.6rem 0 0;
-}
+} */
 
 .boxColAlign {
   display: flex;
@@ -880,11 +1018,18 @@ body {
 .listingOpacity {
   z-index: 2;
   top: 11.4%;
-  left: 5%;
+
   position: absolute;
   background-color: rgb(0, 0, 0, 0);
   height: 87%;
+}
+.listingOpacityNoCardContentAlignment {
+  left: 5%;
   width: 90%;
+}
+.listingOpacityCardContentAlignment {
+  left: 10%;
+  width: 80%;
 }
 
 .cardDivider.MuiDivider-root {
@@ -923,7 +1068,7 @@ body {
 
 .serviceChargeInfoIcon {
   top: 0px;
-  margin: 4px 0 0 4px;
+  margin: 4px 0 0 0;
 }
 
 .serviceChargeInfoIcon svg {
@@ -982,15 +1127,15 @@ body {
 
 .listingDetailWrapper {
   color: rgb(0, 0, 0);
-  width: 85%;
+
   display: flex;
   margin: 0 auto;
-  padding: 0 1%;
+  /* padding: 0 1%; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-grow: 1;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  /* flex-grow: 1;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
 }
 
 .propertyDetailTag.MuiChip-root.success {
@@ -1135,6 +1280,7 @@ body {
 .tagWithInfoIconContainer {
   position: relative;
   display: inline-block;
+  margin-left: 5px;
 }
 
 .tagWithInfoIconTextBox {
@@ -1155,8 +1301,8 @@ body {
 
 .amenitiesParentContainer {
   background-color: #000;
-  border-radius: 5px;
-  padding: 5%;
+  /* border-radius: 5px; */
+  padding: 3% 1%;
 }
 
 .amenitiesListsContainer {
@@ -1171,6 +1317,7 @@ body {
   display: flex;
   flex-direction: row;
   margin: 10px 0;
+  cursor: pointer;
 }
 
 .amenitiesListViewBtn svg {
@@ -1210,13 +1357,44 @@ body {
 }
 
 .propertyDetailSpacer {
-  display: none;
+  display: block;
+  height: 10px;
+  background-color: transparent;
+  color: transparent;
 }
 
+.agentProfileImageFrameImageStyle {
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.agentTypeImageFrameImageStyle {
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+  object-fit: cover;
+}
+.otherAgentTypeImageFrameImageStyle {
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+  object-fit: cover;
+}
+.savedAgentsTypeImageFrameImageStyle {
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+}
 /* Listing Page CSS */
 .ListingDetailBody {
   width: 100%;
-  margin: 0 auto;
+  margin: 5px auto 0 auto;
   position: relative;
   top: 0;
 }
@@ -1226,10 +1404,13 @@ body {
 
 .similarHomesHeader {
   margin: 0 auto;
+  padding: 1px 16px;
+}
+.similarHomesSectionText {
+  padding: 1px 16px;
 }
 
-.similarHomesTabListWrapper,
-.similarHomesHeader {
+.similarHomesTabListWrapper {
   padding: 1px 16px;
 }
 .indicator .MuiTab-root {
@@ -1254,6 +1435,7 @@ body {
 .agentTextInput.MuiTextField-root input {
   background-color: #fff;
   border-radius: 5px;
+  font-family: "DubaiRegular";
 }
 
 .agentTextInput.MuiTextField-root p {
@@ -1263,6 +1445,11 @@ body {
 .agentTextArea.MuiTextField-root {
   background-color: #fff;
   border-radius: 5px;
+}
+
+.agentTextArea .MuiFilledInput-root {
+  background: none;
+  font-family: "DubaiRegular";
 }
 
 .contactAgentSendMessage.MuiButton-root.customButtonLight:hover {
@@ -1285,12 +1472,15 @@ body {
   fill: rgba(0, 0, 0, 0.87);
 }
 
-.agentSectionContainer.MuiGrid-root {
-  margin: 35px 0;
+.agentSectionContainer {
+  margin: 5% 0;
 }
 
 .otherAgentsContainer {
   padding: 1% 10%;
+}
+.otherAgentsSection {
+  margin: 2% 0;
 }
 
 .locationScoringSectionContainer {
@@ -1305,27 +1495,25 @@ body {
 }
 .buildingSectionWrapper {
   margin: 10px 0 0 0;
-  height: 613px;
+  min-height: 613px;
   background-color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   border-radius: 1px;
+  padding: 2%;
 }
 .buildingImageWrapper {
-  height: 473px;
-  width: 534px;
+  max-width: 100%;
   border-radius: 4px;
-  margin: 0 0 0 1%;
+  margin: 1%;
 }
+
 .buildingImageWrapper img {
   border-radius: 4px;
 }
-.buildingTextWrapper {
-  align-self: flex-start;
-  margin: 6% 0 0 2%;
-}
+
 .ratingsStarBuildingSection {
   color: white;
 }
@@ -1333,12 +1521,25 @@ body {
   color: white;
   border: 2px solid white;
 } */
+
+.buildingDetailBodyWrapper {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  top: 0;
+}
+.buildingTextWrapper {
+  margin: 0 0 0 2%;
+  max-width: 30%;
+}
 .buildingDetailsGridWrapper {
-  margin: 6% 0;
+  margin: 6% 0 3% 0;
+}
+.buildingSectionButtonWrapper {
+  margin: 40px 0 0 0;
 }
 
 .buildingImageWrapper {
-  height: 473px;
   max-width: 534px;
   border-radius: 4px;
   margin: 0 0 0 1%;
@@ -1349,7 +1550,7 @@ body {
 }
 .buildingTextWrapper {
   align-self: flex-start;
-  margin: 6% 0 0 2%;
+  margin: 0 0 0 2%;
 }
 .ratingsStarBuildingSection {
   color: white;
@@ -1359,23 +1560,22 @@ body {
   color: white;
   border: 2px solid white;
 } */
-.buildingDetailsGridWrapper {
-  margin: 6% 0 3% 0;
-}
 
 .exploreNeighborhoodWrapper {
-  height: 413px;
+  min-height: 413px;
+  padding: 2%;
   background-color: #000;
   display: flex;
   align-items: center;
-  /* justify-content: flex-start; */
+  justify-content: center;
 }
 .exploreNeighborhoodImage {
-  width: 432px;
-  height: 273px;
-  padding: 0 0 0 10%;
+  padding: 0 10% 0 10%;
+  /* max-width: 100%; */
+  box-sizing: border-box;
 }
 .exploreNeighborhoodTextAreaWrapper {
+  width: 100%;
   color: white;
   padding: 0 0 0 0;
 }
@@ -1387,6 +1587,12 @@ body {
 }
 .neighborhoodButtonWrapper {
   margin: 0 10px 0 0;
+}
+.defaultNeighborhoodImage {
+  max-width: 100%;
+}
+.defaultNeighborhoodImage img {
+  object-fit: cover;
 }
 
 .styledTableCell.head {
@@ -1408,7 +1614,7 @@ body {
 }
 
 .buildingAmenitiesWrapper {
-  margin: 20px 0;
+  margin: 20px 10% 30px 10%;
 }
 .buildingAmenitiesDivider {
   border-color: rgba(0, 0, 0, 0.322);
@@ -1533,7 +1739,7 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
   background-color: #000;
   color: white;
   margin: 5% 0;
-  min-height: 20rem;
+  min-height: 5rem;
 }
 .aroundTheBlockTableWrapper {
   margin: 0 2%;
@@ -1545,6 +1751,7 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 }
 .similarBuildingsSectionContainer {
   background-color: black;
+  text-decoration: none;
 }
 .similarBuildingsSectionHeading {
   color: white;
@@ -1552,6 +1759,10 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 
 .similarBuildingsCard.MuiCard-root {
   border-radius: 4px;
+  text-decoration: none;
+}
+.similarBuildingsLink {
+  text-decoration: none;
 }
 
 .similarBuildingsCardContent {
@@ -1561,6 +1772,18 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
   border-right: 1px solid #fff;
   border-bottom: 1px solid #fff;
   border-radius: 0 0 4px 4px;
+}
+.similarBuildingsCardContent.MuiTypography-root {
+  text-decoration: none;
+}
+
+.cardContentWrapper {
+  position: relative;
+}
+
+.cardOverlay {
+  position: absolute;
+  padding: 0 8px 0 0;
 }
 
 .whiteDivider.MuiDivider-root {
@@ -1628,7 +1851,7 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-height: 75.4vh;
+  min-height: 63.2vh;
   color: white;
   width: 100%;
 }
@@ -1655,7 +1878,10 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
   margin-top: 1.2rem;
   border: 1px solid rgb(255, 255, 255);
 }
+/* .css-ihdtdm{
 
+  line-height:1px !important;
+} */
 .signInButton.MuiButton-root:hover {
   border: 1px solid rgb(255, 255, 255);
 }
@@ -1669,13 +1895,18 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
   justify-content: center;
   /* position:absolute;
  bottom: 10%; */
+  min-height: 15vh;
   padding: 50px;
   align-items: center;
 }
 
+.authForm {
+  width: 25vw;
+}
+
 .authForm .MuiOutlinedInput-root {
   color: white;
-  /* border: 1px solid white; */
+  border: 1px solid white;
   /*  */
 }
 
@@ -1694,9 +1925,6 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 .MuiTextField-root .authForm input {
   height: 35px;
   padding: 0px 8px;
-}
-.authForm input {
-  border-top: solid 1px white;
 }
 
 .createAccountTypography.MuiTypography-root {
@@ -1722,13 +1950,17 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
   color: #ffffffcb !important;
   -webkit-text-fill-color: rgba(255, 255, 255, 0.418);
 }
+.authForm .MuiOutlinedInput-notchedOutline {
+  border: none;
+}
 .emailOtpHeaderWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 .OTPStackTextFieldWrapper {
-  width: 25%;
+  width: 80%;
   /* height: 50%; */
   display: flex;
   justify-content: center;
@@ -1781,11 +2013,11 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 }
 .mobileFormError.MuiStack-root {
   position: absolute;
-  margin-top: 50px;
+  margin-top: 45px;
 }
 .EmailFormError.MuiStack-root {
   position: absolute;
-  margin-top: 130px;
+  margin-top: 115px;
 }
 
 /*【L】【o】【g】【i】【n】   【C】【S】【S】 */
@@ -1794,29 +2026,6 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 }
 .loginFormContainer {
   background-color: black;
-}
-
-.loginTextInput.MuiTextField-root input {
-  border-radius: 4px;
-  border: 1px white solid;
-  color: #b1b1b1;
-}
-.loginTextInput.MuiOutlinedInput-root {
-  border-radius: 4px;
-  border: 1px white solid;
-  color: #b1b1b1;
-}
-.loginTextInput .MuiOutlinedInput-notchedOutline {
-  border: none;
-}
-
-.loginLinkLight {
-  text-decoration-color: white;
-}
-.LoginBtn {
-  padding: 10px;
-  /* background-color: white; */
-  color: #000;
 }
 
 .passwordUpdatedRedirectBtn.MuiButton-root.customButtonDark {
@@ -1856,7 +2065,7 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 
 .specificNeighbourWelcomeNote.MuiBox-root {
   position: absolute;
-  top: -90%;
+  top: -50%;
   right: 0%;
   width: 100%;
   padding: 4%;
@@ -1935,9 +2144,11 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
   width: 100%;
 }
 
-.objectFitCover {
-  object-fit: cover;
-}
+/* .objectFitCover {
+ 
+  width: 100%;
+  height: 50%;
+} */
 
 /* 【S】【p】【e】【c】【i】【f】【i】【c】 【N】【e】【i】【g】【h】【b】【o】【u】【r】【h】【o】【o】【d】 【c】【s】【s】 */
 
@@ -1952,20 +2163,16 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 .loginFormContainer {
   background-color: black;
 }
-.loginForm {
-  width: 17%;
+.loginForm .MuiGrid-root {
+  width: 10%;
 }
 
-.loginTextInput.MuiTextField-root input {
+.loginTextInput.MuiFormControl-root {
   border-radius: 4px;
   border: 1px white solid;
-  color: #b1b1b1;
+  color: #ff0000;
 }
-.loginTextInput.MuiOutlinedInput-root {
-  border-radius: 4px;
-  border: 1px white solid;
-  color: #b1b1b1;
-}
+
 .loginTextInput .MuiOutlinedInput-notchedOutline {
   border: none;
 }
@@ -2023,6 +2230,399 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
   padding-right: 0;
 }
 
+.buildingGuidesHeroTextWrapper {
+  position: absolute;
+  bottom: 4px;
+  height: 35vh;
+  width: 100%;
+  display: flex;
+
+  align-items: center;
+  color: white;
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.014)
+  );
+}
+.items-wrapper {
+  margin-left: 10rem;
+  /* Adjust the value as needed for the desired offset */
+}
+.searchGroupChildren {
+  padding-left: 0;
+}
+
+.searchGroupChildrenHome {
+  padding-left: 0;
+}
+.searchGroupItems {
+  padding-left: 15px;
+  list-style-type: none;
+}
+
+.buildingGuidesAutoComplete .MuiAutocomplete-endAdornment {
+  display: none;
+}
+.buildingGuidesAboutWrapper {
+  margin: 3% 8% 1% 10%;
+}
+.searchBuildingGuide {
+  margin-top: 3%;
+}
+.buildingGuideGalleryComponentWrapper {
+  margin: 1% 2% 2% 2%;
+}
+.galleryCardWrapper {
+  position: relative;
+  text-decoration: none;
+}
+.buildingNameGalleryComponentColumn {
+  width: 100%;
+  position: absolute;
+  top: 30%;
+  /* right:40% */
+  /* right: 100px; */
+}
+
+/*【s】【t】【a】【t】【i】【c】  【p】【a】【g】【e】【S】   【C】【S】【S】 */
+.baaStepSectionLight {
+  position: relative;
+  background-color: #fff;
+  color: #000;
+  padding: 35px 0;
+}
+
+.baaStepSectionDark {
+  position: relative;
+  background-color: #000;
+  color: #fff;
+  padding: 35px 0;
+}
+.stepCountHeading {
+  position: absolute;
+  top: 0;
+}
+.stepCountHeadingLight {
+  background-color: #fff;
+  color: #000;
+  padding: 20px 30px;
+  border-radius: 4px;
+}
+.stepCountHeadingDark {
+  background-color: #000;
+  color: #fff;
+  padding: 20px 30px;
+  border-radius: 4px;
+}
+.baa-hero {
+  position: absolute;
+  height: 23vh;
+  top: 40%;
+  right: 0;
+  display: flex;
+  text-align: right;
+  margin-right: 5rem;
+  color: #000;
+}
+
+.baa-hero-step-span span {
+  color: #fff;
+  background-color: #000;
+  padding: 10px 35px;
+  border-radius: 4px;
+}
+.baa-hero-step-spanText {
+  padding: 10px 0;
+}
+.buildingClassCardWhite {
+  background-color: #fff;
+  color: #000;
+  padding: 20px;
+  border-radius: 4px;
+  height: 100%;
+}
+.buildingClassificationBlackScoringTable {
+  border-radius: 4px;
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  height: 100%;
+}
+.buildingClassificationWhiteExampleTable {
+  border-radius: 4px;
+  background-color: #fff;
+  color: #000;
+  padding: 20px;
+  height: 100%;
+}
+
+.buildingNameGalleryComponentFirstColumn {
+  position: absolute;
+  top: 50%;
+  right: 40%;
+  /* right: 100px; */
+}
+.buildingNameGalleryComponentSecondColumn {
+  position: absolute;
+  top: 50%;
+  right: 30%;
+}
+
+.buildingNameGalleryComponentThirdColumn {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+}
+
+.buildingNameGalleryComponentTypography {
+  text-decoration: underline 3px;
+
+  color: #ffffff;
+  display: inline;
+  text-shadow: 0px 3px 6px #000000a8;
+  text-align: center;
+}
+.buildingNameGalleryComponentTypographyComingSoon {
+  color: #ffffff;
+  text-shadow: 0px 3px 6px #000000a8;
+}
+.buildingGuidesSubscribeSection {
+  margin: 2%;
+}
+.elevenGalleryLayoutUniformHeightGrid {
+  height: 395px;
+}
+
+.buildingClassificationHero {
+  position: absolute;
+  height: 15vh;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  text-align: right;
+  margin-left: 5rem;
+  color: #fff;
+}
+/* .buildingGuidesAutoCompleteWrapper{
+  margin-top: 10%;
+} */
+
+.agentProfileHeaderWrapper {
+  padding: 1em;
+}
+/* .agent-profile-info-wrapper {
+} */
+/* .agent-profile-body-content {
+} */
+/* .agent-profile-banner {
+} */
+.agent-profile-details {
+  position: relative;
+}
+.agent-profile-image-wrapper {
+  position: relative;
+}
+.agent-profile-profile-image {
+  border-radius: 4px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.agent-profile-get-to-know {
+  padding: 1.5rem;
+}
+.agent-details-agent-email {
+  text-decoration: underline;
+}
+.agent-details-agent-phone {
+  text-decoration: underline;
+}
+.salesRentalsContainer {
+  margin: 0 auto;
+}
+.tabListWrapper,
+.tabHeader {
+  padding: 1px 16px;
+}
+/* 【D】【e】【s】【i】【r】【a】【b】【l】【e】 【N】【e】【i】【g】【h】【b】【o】【r】【h】【o】【o】【d】 */
+.population {
+  background-color: black;
+  color: white;
+  padding: 10px 0;
+}
+
+.objectFitCover {
+  object-fit: cover;
+}
+
+/* 【L】【o】【a】【d】【e】【r】 【S】【t】【y】【l】【e】【s】  */
+
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.loaderWrapperWhiteBackground {
+  background-color: white;
+  border: 1px solid white;
+}
+.loaderWrapperBlackBackground {
+  background-color: rgba(0, 0, 0, 0.473);
+  border: 1px solid rgba(0, 0, 0, 0.685);
+}
+.loader {
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: relative;
+  text-indent: -9999em;
+  color: #000;
+}
+.loaderForWhiteBackground {
+  animation: mulShdSpin 1.1s infinite ease;
+  transform: translateZ(0);
+}
+.loaderForBlackBackground {
+  animation: mulShdBlackSpin 1.1s infinite ease;
+  transform: translateZ(0);
+}
+@keyframes mulShdBlackSpin {
+  0%,
+  100% {
+    box-shadow: 0em -2.6em 0em 0em #ffffff,
+      1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
+      2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
+      1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
+      0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
+      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
+      -2.6em 0em 0 0em rgba(0, 0, 0, 0.5),
+      -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.7);
+  }
+  12.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.7),
+      1.8em -1.8em 0 0em #ffffff, 2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
+      1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
+      0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
+      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
+      -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
+      -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.5);
+  }
+  25% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.5),
+      1.8em -1.8em 0 0em rgba(0, 0, 0, 0.7), 2.5em 0em 0 0em #ffffff,
+      1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
+      0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
+      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
+      -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
+      -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2);
+  }
+  37.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.2),
+      1.8em -1.8em 0 0em rgba(0, 0, 0, 0.5), 2.5em 0em 0 0em rgba(0, 0, 0, 0.7),
+      1.75em 1.75em 0 0em #ffffff, 0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
+      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
+      -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
+      -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.2),
+      1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2), 2.5em 0em 0 0em rgba(0, 0, 0, 0.5),
+      1.75em 1.75em 0 0em rgba(0, 0, 0, 0.7), 0em 2.5em 0 0em #ffffff,
+      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
+      -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
+      -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2);
+  }
+  62.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.2),
+      1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2), 2.5em 0em 0 0em rgba(0, 0, 0, 0.2),
+      1.75em 1.75em 0 0em rgba(0, 0, 0, 0.5), 0em 2.5em 0 0em rgba(0, 0, 0, 0.7),
+      -1.8em 1.8em 0 0em #ffffff, -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
+      -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2);
+  }
+  75% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.2),
+      1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2), 2.5em 0em 0 0em rgba(0, 0, 0, 0.2),
+      1.75em 1.75em 0 0em rgba(0, 0, 0, 0.2), 0em 2.5em 0 0em rgba(0, 0, 0, 0.5),
+      -1.8em 1.8em 0 0em rgba(0, 0, 0, 0.7), -2.6em 0em 0 0em #ffffff,
+      -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2);
+  }
+  87.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.2),
+      1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2), 2.5em 0em 0 0em rgba(0, 0, 0, 0.2),
+      1.75em 1.75em 0 0em rgba(0, 0, 0, 0.2), 0em 2.5em 0 0em rgba(0, 0, 0, 0.2),
+      -1.8em 1.8em 0 0em rgba(0, 0, 0, 0.5), -2.6em 0em 0 0em rgba(0, 0, 0, 0.7),
+      -1.8em -1.8em 0 0em #ffffff;
+  }
+}
+
+@keyframes mulShdSpin {
+  0%,
+  100% {
+    box-shadow: 0em -2.6em 0em 0em currentColor,
+      1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2), 2.5em 0em 0 0em rgba(0, 0, 0, 0.2),
+      1.75em 1.75em 0 0em rgba(0, 0, 0, 0.2), 0em 2.5em 0 0em rgba(0, 0, 0, 0.2),
+      -1.8em 1.8em 0 0em rgba(0, 0, 0, 0.2), -2.6em 0em 0 0em rgba(0, 0, 0, 0.5),
+      -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.7);
+  }
+  12.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.7),
+      1.8em -1.8em 0 0em currentColor, 2.5em 0em 0 0em rgba(0, 0, 0, 0.2),
+      1.75em 1.75em 0 0em rgba(0, 0, 0, 0.2), 0em 2.5em 0 0em rgba(0, 0, 0, 0.2),
+      -1.8em 1.8em 0 0em rgba(0, 0, 0, 0.2), -2.6em 0em 0 0em rgba(0, 0, 0, 0.2),
+      -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.5);
+  }
+  25% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.5),
+      1.8em -1.8em 0 0em rgba(0, 0, 0, 0.7), 2.5em 0em 0 0em currentColor,
+      1.75em 1.75em 0 0em rgba(0, 0, 0, 0.2), 0em 2.5em 0 0em rgba(0, 0, 0, 0.2),
+      -1.8em 1.8em 0 0em rgba(0, 0, 0, 0.2), -2.6em 0em 0 0em rgba(0, 0, 0, 0.2),
+      -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2);
+  }
+  37.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.2),
+      1.8em -1.8em 0 0em rgba(0, 0, 0, 0.5), 2.5em 0em 0 0em rgba(0, 0, 0, 0.7),
+      1.75em 1.75em 0 0em currentColor, 0em 2.5em 0 0em rgba(0, 0, 0, 0.2),
+      -1.8em 1.8em 0 0em rgba(0, 0, 0, 0.2), -2.6em 0em 0 0em rgba(0, 0, 0, 0.2),
+      -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.2),
+      1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2), 2.5em 0em 0 0em rgba(0, 0, 0, 0.5),
+      1.75em 1.75em 0 0em rgba(0, 0, 0, 0.7), 0em 2.5em 0 0em currentColor,
+      -1.8em 1.8em 0 0em rgba(0, 0, 0, 0.2), -2.6em 0em 0 0em rgba(0, 0, 0, 0.2),
+      -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2);
+  }
+  62.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.2),
+      1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2), 2.5em 0em 0 0em rgba(0, 0, 0, 0.2),
+      1.75em 1.75em 0 0em rgba(0, 0, 0, 0.5), 0em 2.5em 0 0em rgba(0, 0, 0, 0.7),
+      -1.8em 1.8em 0 0em currentColor, -2.6em 0em 0 0em rgba(0, 0, 0, 0.2),
+      -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2);
+  }
+  75% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.2),
+      1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2), 2.5em 0em 0 0em rgba(0, 0, 0, 0.2),
+      1.75em 1.75em 0 0em rgba(0, 0, 0, 0.2), 0em 2.5em 0 0em rgba(0, 0, 0, 0.5),
+      -1.8em 1.8em 0 0em rgba(0, 0, 0, 0.7), -2.6em 0em 0 0em currentColor,
+      -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2);
+  }
+  87.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.2),
+      1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2), 2.5em 0em 0 0em rgba(0, 0, 0, 0.2),
+      1.75em 1.75em 0 0em rgba(0, 0, 0, 0.2), 0em 2.5em 0 0em rgba(0, 0, 0, 0.2),
+      -1.8em 1.8em 0 0em rgba(0, 0, 0, 0.5), -2.6em 0em 0 0em rgba(0, 0, 0, 0.7),
+      -1.8em -1.8em 0 0em currentColor;
+  }
+}
+
 /*【M】【e】【d】【i】【a】   【Q】【u】【e】【r】【i】【e】【s】    【C】【S】【S】 */
 
 @media (max-width: 1000px) {
@@ -2054,20 +2654,58 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
   }
 }
 
-@media (max-width: 1240px) {
-  .propertyDetailSpacer {
-    display: block;
-    height: 10px;
-    background-color: transparent;
-    color: transparent;
+@media (min-width: 1550px) {
+  .authComponentsWrapper {
+    min-height: 61.6vh;
   }
 }
 
+@media (max-width: 1240px) {
+  .baa-hero {
+    top: 40%;
+    left: 30%;
+    margin: 0 20px 0 0;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 918px) {
+  .agent-profile-image-wrapper {
+    height: 20vw;
+  }
+  .buildingTextWrapper {
+    margin: 0 0 0 2%;
+    max-width: 50%;
+  }
+  .baa-hero {
+    top: 40%;
+    left: 25%;
+    margin: 0 20px 0 0;
+    flex-wrap: wrap;
+  }
+}
 @media (max-width: 800px) {
   .landingPageSearchArea {
     width: 100%;
     min-height: 10rem;
     top: 0px;
+  }
+  .buildingTextWrapper {
+    max-width: 100%;
+  }
+  .baa-hero {
+    top: 30%;
+    left: 25%;
+    margin: 0 20px 0 0;
+  }
+}
+@media (max-width: 670px) {
+  .searchFormPaper {
+    height: 34px;
+  }
+  .baa-hero {
+    top: 50%;
+    left: 30%;
+    margin: 0 0 0 0;
   }
 }
 
@@ -2078,5 +2716,160 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
   .MuiToolbar-root {
     padding-left: 0px;
     padding-right: 0px;
+  }
+}
+
+/* iPhone X, iPhone Xs, iPhone 11 Pro, iPhone 12 Pro */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
+  /* Your CSS rules for iPhone X, iPhone Xs, iPhone 11 Pro, iPhone 12 Pro */
+  .authComponentsWrapper {
+    min-height: 61.6vh;
+  }
+  .authForm {
+    width: 80vw;
+  }
+}
+
+/* iPhone XR, iPhone 11, iPhone 12, iPhone 13 */
+@media only screen and (min-device-width: 414px) and (max-device-width: 896px) and (orientation: portrait) {
+  /* Your CSS rules for iPhone XR, iPhone 11, iPhone 12, iPhone 13 */
+  .authComponentsWrapper {
+    min-height: 61.6vh;
+  }
+  .authForm {
+    width: 80vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .baa-hero {
+    top: 25%;
+    left: 5%;
+    margin: 0 0 0 0;
+  }
+}
+
+/* Google Pixel 5 */
+@media only screen and (min-device-width: 393px) and (max-device-width: 1080px) and (orientation: portrait) {
+  /* Your CSS rules for Google Pixel 5 */
+
+  .authComponentsWrapper {
+    min-height: 50.6vh;
+  }
+  .authForm {
+    width: 70vw;
+  }
+}
+
+/* Samsung Galaxy S8, Galaxy S8+ */
+@media only screen and (min-device-width: 360px) and (max-device-width: 370px) and (orientation: portrait) {
+  /* Your CSS rules for Samsung Galaxy S8, Galaxy S8+ */
+
+  .authComponentsWrapper {
+    min-height: 70.6vh;
+  }
+  .authForm {
+    width: 80vw;
+  }
+  .baa-hero {
+    top: 25%;
+    left: 0;
+    margin: 0 0 0 0;
+  }
+}
+
+/* Samsung Galaxy S20 Ultra */
+@media only screen and (min-device-width: 360px) and (max-device-width: 370px) and (orientation: portrait) {
+  /* Your CSS rules for Samsung Galaxy S20 Ultra */
+  .authComponentsWrapper {
+    min-height: 50.6vh;
+  }
+  .authForm {
+    width: 80vw;
+  }
+}
+
+/* iPad Air */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* Your CSS rules for iPad Air */
+  .authComponentsWrapper {
+    min-height: 37vh;
+  }
+  .authForm {
+    width: 50vw;
+  }
+}
+
+/* iPad Mini */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* Your CSS rules for iPad Mini */
+}
+
+/* Microsoft Surface Duo */
+@media only screen and (min-device-width: 540px) and (max-device-width: 720px) and (orientation: portrait) {
+  /* Your CSS rules for Microsoft Surface Duo */
+  .authComponentsWrapper {
+    min-height: 60.7vh;
+  }
+}
+
+/* Microsoft Surface Pro  */
+@media only screen and (min-device-width: 860px) and (max-device-width: 1000px) and (orientation: portrait) {
+  /* Your CSS rules for Microsoft Surface Pro */
+  .authComponentsWrapper {
+    min-height: 30.7vh;
+  }
+}
+
+/* Samsung Galaxy Fold */
+@media only screen and (min-device-width: 280px) and (max-device-width: 370px) and (orientation: portrait) {
+  /* Your CSS rules for Samsung Galaxy Fold */
+  .authComponentsWrapper {
+    min-height: 61.1vh;
+  }
+  .authForm {
+    width: 95vw;
+  }
+}
+
+/* Samsung Galaxy F51/F71 540 */
+@media only screen and (min-device-width: 411px) and (max-device-width: 520px) and (orientation: portrait) {
+  /* Your CSS rules for Samsung Galaxy F51/F71 */
+  .authComponentsWrapper {
+    min-height: 51.1vh;
+  }
+  .authForm {
+    width: 80vw;
+  }
+}
+
+/* Google Nest Hub, Nest Hub Max 768*/
+@media only screen and (min-device-width: 1021px) and (max-device-width: 1280px) and (orientation: portrait) {
+  /* Your CSS rules for Google Nest Hub, Nest Hub Max */
+  .authComponentsWrapper {
+    min-height: 10.1vh;
+  }
+}
+
+/* Add more media queries for other devices as needed */
+
+/* all small screens == 540 signUpFormErrorsWrapper*/
+@media only screen and (min-device-width: 200px) and (max-device-width: 542px) and (orientation: portrait) {
+  .signUpFormErrorsWrapper.MuiStack-root {
+    margin-top: 105px;
+  }
+  .mobileFormError.MuiStack-root {
+    margin-top: 45px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .carouselSizesGrid.MuiGrid-root {
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 600px) {
+  .ratingsOtherSpacer {
+    height: 7px;
   }
 }

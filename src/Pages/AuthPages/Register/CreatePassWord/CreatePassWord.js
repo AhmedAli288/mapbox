@@ -1,31 +1,48 @@
-import React, { useState } from "react";
-import { FormControl, IconButton, OutlinedInput, InputAdornment, Typography, Grid, FormHelperText } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import {
+  FormControl,
+  IconButton,
+  OutlinedInput,
+  InputAdornment,
+  Grid,
+  FormHelperText,
+} from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import CustomButton from "../../../../Components/Button/CustomButton";
 import ListingCardIcon from "../../../../Assets/SVG/ListingCardIcons/ListingCardIcons";
 import { validatePassword } from "../../../../utils/utility";
 import { ButtonRightArrow } from "../../../../Assets/SVG/Common/CommonSvgs";
-import { passwordValidationCriteria } from "../../../../Constants/ConstantValues";
+
 import { isEqual } from "lodash";
 import { signUp } from "../../../../network/apiServices";
+import LoadingSkeleton from "../../../../Components/LoadingSkeleton/LoadingSkeleton";
 // import SignIn from "../../SignIn/SignIn";
-import { useNavigate } from 'react-router-dom';
 
-function CreatePassword({password, setPassword,signUpObject, setCurrentStep, maxStep,currentStep}) {
- 
+function CreatePassword({
+  password,
+  setPassword,
+  signUpObject,
+  setCurrentStep,
+  maxStep,
+}) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [isPasswordTouched, setIsPasswordTouched] = useState(false);
-  const [isConfirmPasswordTouched, setIsConfirmPasswordTouched] = useState(false);
+  const [isConfirmPasswordTouched, setIsConfirmPasswordTouched] =
+    useState(false);
   const [passwordValidationErrors, setPasswordValidationErrors] = useState([]);
+  const [exclusivesButtonHovered, setExclusivesButtonHovered] = useState([
+    false,
+    false, 
+  ]);
+  const [loading, setLoading] = useState(false)
   // const navigate = useNavigate();
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
- 
 
   const handlePassword = (event) => {
     setPassword(event.target.value);
@@ -41,7 +58,7 @@ function CreatePassword({password, setPassword,signUpObject, setCurrentStep, max
 
   const handleConfirmPassword = (event) => {
     setConfirmPassword(event.target.value);
-    if (!isEqual(event.target.value, password)) {
+    if (!isEqual(event.target.value, password) && !isEqual(password, "")) {
       setConfirmPasswordError(true);
     } else {
       setConfirmPasswordError(false);
@@ -55,41 +72,75 @@ function CreatePassword({password, setPassword,signUpObject, setCurrentStep, max
   const handleConfirmPasswordBlur = () => {
     setIsConfirmPasswordTouched(true);
   };
-  const isSubmitDisabled = passwordError || confirmPasswordError || !isEqual(password, confirmPassword) || isEqual(password, "") || isEqual(confirmPassword, "");
+  const isSubmitDisabled =
+    passwordError ||
+    confirmPasswordError ||
+    !isEqual(password, confirmPassword) ||
+    isEqual(password, "") ||
+    isEqual(confirmPassword, "");
 
-  let isStepIncremented =false
+  let isStepIncremented = false;
   const handleSubmit = async (event) => {
     event.preventDefault();
     // handlePassword(event)
     // handleConfirmPassword(event)
-  
+
     if (!passwordError && !confirmPasswordError) {
-      console.log("button was clicked",currentStep, maxStep );
-      
+      // console.log("button was clicked",currentStep, maxStep );
+      setLoading(true)
       const signUpResponse = await signUp(signUpObject);
-      console.log(signUpResponse)
+      // console.log(signUpResponse)
       // navigate('/signin');
-      if(!isStepIncremented){
-        switch(signUpResponse.data.status){
+      if (!isStepIncremented) {
+        switch (signUpResponse.data.status) {
           case "SUCCESS":
-            isStepIncremented=true
+            isStepIncremented = true;
             setCurrentStep((prevStep) =>
-            prevStep < maxStep ? prevStep + 1 : prevStep
-          );
+              prevStep < maxStep ? prevStep + 1 : prevStep
+            );
+            break;
+          default:
+            return null;
+        }
+
+        //  return <SignIn/>
+        // Perform any additional actions here, such as submitting the form
       }
-  
-      //  return <SignIn/>
-      // Perform any additional actions here, such as submitting the form
     }
   };
-}
-  
+
+  const handleMouseEvent = (index) => {
+    setExclusivesButtonHovered((prevHovered) => {
+      const updatedHovered = [...prevHovered];
+      updatedHovered[index] = !updatedHovered[index];
+      return updatedHovered;
+    });
+  };
+
+  useEffect(()=>{},[loading])
+
   return (
     <Grid item>
-      <Grid className="loginFormContainer" container maxWidth={"100%"}justifyContent={"center"} alignItems={"center"}>
-        <form onSubmit={handleSubmit}>
-          <Grid container rowSpacing={2} direction={"column"} textAlign={"center"}>
-           
+      <Grid
+        className="loginFormContainer"
+        container
+        maxWidth={"100%"}
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
+        {loading ? (
+          <LoadingSkeleton
+            customClass={"loaderWrapperBlackBackground"}
+            customClassLoader={"loaderForBlackBackground"}
+          />
+        ) : (
+        <form onSubmit={handleSubmit} className="authForm">
+          <Grid
+            container
+            rowSpacing={1}
+            direction={"column"}
+            textAlign={"center"}
+          >
             <Grid item>
               <FormControl variant="outlined" fullWidth>
                 <OutlinedInput
@@ -98,7 +149,13 @@ function CreatePassword({password, setPassword,signUpObject, setCurrentStep, max
                   type={showPassword ? "text" : "password"}
                   endAdornment={
                     <InputAdornment position="end">
-                      <IconButton className="password-icon" aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
+                      <IconButton
+                        className="password-icon"
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
                         {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
                     </InputAdornment>
@@ -106,35 +163,28 @@ function CreatePassword({password, setPassword,signUpObject, setCurrentStep, max
                   value={password}
                   error={passwordError}
                   placeholder="Enter new password"
-                  
                   fullWidth
+                  size="small"
                   onChange={handlePassword}
                   onBlur={handlePasswordBlur}
                 />
-
-                {(isPasswordTouched || passwordError) && (
-                  <FormHelperText className="customHelperText">
-                    {isEqual(password, "") ? (
-                      <Grid container spacing={1} alignItems={"center"}>
-                        <Grid item>
-                          <ListingCardIcon shape="exclamationError" />
-                        </Grid>
-                        <Grid item> Password should not be empty</Grid>
-                      </Grid>
-                    ) : (
-                      passwordValidationErrors.map((error, index) => (
-                        <Grid key={index} container spacing={1} alignItems={"center"}>
-                          <Grid item>
-                            <ListingCardIcon shape="exclamationError" />
-                          </Grid>
-                          <Grid item>{error}</Grid>
-                        </Grid>
-                      ))
-                    )}
-                  </FormHelperText>
-                )}
               </FormControl>
             </Grid>
+            {(isPasswordTouched || passwordError) &&
+              (isEqual(password, "") ? (
+                <Grid container item columnSpacing={2} alignItems={"start"}>
+                  <Grid item xs={1}>
+                    <ListingCardIcon shape="exclamationError" />
+                  </Grid>
+                  <Grid item xs={10}>
+                    <FormHelperText className="customHelperText">
+                      Password should not be empty{" "}
+                    </FormHelperText>
+                  </Grid>
+                </Grid>
+              ) : (
+                ""
+              ))}
             <Grid item>
               <FormControl variant="outlined" fullWidth>
                 <OutlinedInput
@@ -143,7 +193,13 @@ function CreatePassword({password, setPassword,signUpObject, setCurrentStep, max
                   type={showPassword ? "text" : "password"}
                   endAdornment={
                     <InputAdornment position="end">
-                      <IconButton className="password-icon" aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
+                      <IconButton
+                        className="password-icon"
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
                         {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
                     </InputAdornment>
@@ -151,11 +207,12 @@ function CreatePassword({password, setPassword,signUpObject, setCurrentStep, max
                   value={confirmPassword}
                   error={confirmPasswordError}
                   placeholder="Confirm password"
-            
                   fullWidth
+                  size="small"
                   onChange={handleConfirmPassword}
                   onBlur={handleConfirmPasswordBlur}
                 />
+
                 {(isConfirmPasswordTouched || confirmPasswordError) && (
                   <FormHelperText className="customHelperText">
                     {isEqual(confirmPassword, "") ? (
@@ -163,23 +220,27 @@ function CreatePassword({password, setPassword,signUpObject, setCurrentStep, max
                         <Grid item>
                           <ListingCardIcon shape="exclamationError" />
                         </Grid>
-                        <Grid item> Password should not be empty</Grid>
+                        <Grid item> Password should not be empty.</Grid>
                       </Grid>
                     ) : (
                       <>
                         {isEqual(confirmPassword, password) ? (
                           <Grid container spacing={1} alignItems={"center"}>
-                            <Grid item>
-                              <ListingCardIcon shape="exclamationError" />
+                            <Grid item xs={1}>
+                              <ListingCardIcon shape="positiveTickGreen" />
                             </Grid>
-                            <Grid item>Passwords match</Grid>
+                            <Grid item xs={10}>
+                              <FormHelperText className="customHelperTextSuccess">
+                                Passwords match.
+                              </FormHelperText>
+                            </Grid>
                           </Grid>
                         ) : (
                           <Grid container spacing={1} alignItems={"center"}>
                             <Grid item>
                               <ListingCardIcon shape="exclamationError" />
                             </Grid>
-                            <Grid item>Passwords do not match</Grid>
+                            <Grid item>Passwords do not match.</Grid>
                           </Grid>
                         )}
                       </>
@@ -189,21 +250,48 @@ function CreatePassword({password, setPassword,signUpObject, setCurrentStep, max
               </FormControl>
             </Grid>
 
-         
             <Grid item>
-            <CustomButton
-              text="Sign up"
-              type="submit"
-              rightIcon={<ButtonRightArrow />}
-              dark={false}
-              variant="outlined"
-              customClassName="signInButton"
-              isDisabled={isSubmitDisabled}
-              onClick={handleSubmit}
-            />
+              <CustomButton
+                text="Submit"
+                type="submit"
+                rightIcon={<ButtonRightArrow />}
+                dark={exclusivesButtonHovered[0]}
+                variant="outlined"
+                customClassName="signInButton"
+                isDisabled={isSubmitDisabled}
+                onClick={handleSubmit}
+                onMouseEnter={() => handleMouseEvent(0)}
+                onMouseLeave={() => handleMouseEvent(0)}
+              />
             </Grid>
+            {(isPasswordTouched || passwordError) &&
+              (!isEqual(password, "") ? (
+                <Grid item>
+                  {passwordValidationErrors.map((error, index) => (
+                    <Grid
+                      key={index}
+                      container
+                      columnSpacing={2}
+                      alignItems={"start"}
+                    >
+                      <Grid item xs={1}>
+                        <ListingCardIcon shape="exclamationError" />
+                      </Grid>
+                      <Grid item xs={10}>
+                        <FormHelperText className="customHelperText">
+                          {error}
+                        </FormHelperText>
+                      </Grid>
+                    </Grid>
+                  ))}
+                </Grid>
+              ) : (
+                ""
+              ))}
           </Grid>
         </form>
+        )
+              }
       </Grid>
     </Grid>
   );

@@ -13,7 +13,6 @@ import {
 } from "../../../../network/apiServices";
 
 function OTPAuth({
-  exclusivesButtonHovered,
   emailOTPValue,
   setEmailOTPValue,
   mobileOTPValue,
@@ -36,6 +35,10 @@ function OTPAuth({
     emailOTPExpiryError: null,
     emailOTPInvalidError: null,
   });
+  const [exclusivesButtonHovered, setExclusivesButtonHovered] = useState([
+    false, // Hover state for button at index 0
+    false, // Hover state for button at index 1
+  ]);
 
   const validateOTP = (otp) => {
     setFormErrors((prevState) => ({
@@ -57,7 +60,7 @@ function OTPAuth({
     if (otp.some((value) => !regex.test(value))) {
       return false;
     }
-    console.log("valideteOtp errors", formErrors);
+    // console.log("valideteOtp errors", formErrors);
     // All checks passed, OTP is valid
     return true;
   };
@@ -170,7 +173,7 @@ function OTPAuth({
       (isSmsVerifiedVar || isSmsVerified) &&
       (isEmailVerifiedVar || isEmailVerified)
     ) {
-      // console.log('isSmsVeriefiedVar sEmailVerifiedVar true ')
+      // console.log('isSmsVeriefiedVar sEmailVerifiedVar true ',isSmsVerifiedVar ,isSmsVerified, isEmailVerifiedVar, isEmailVerified)
       setFormErrors((prevState) => ({
         ...prevState,
         mobileOTPValueError: null,
@@ -180,9 +183,7 @@ function OTPAuth({
         emailOTPExpiryError: null,
         emailOTPInvalidError: null,
       }));
-      setCurrentStep((prevStep) =>
-        prevStep < maxStep ? prevStep + 1 : (prevStep = 1)
-      );
+      setCurrentStep((prevStep) => (prevStep < maxStep - 1 ? prevStep + 1 : 4));
 
       // console.log("Either SMS or Email verified");
     }
@@ -198,30 +199,66 @@ function OTPAuth({
       emailOTPValueError: !isEmailOTPValid,
     }));
 
-    if (isMobileOTPValid && isEmailOTPValid) {
+    if (isMobileOTPValid) {
       setFormErrors((prevState) => ({
         ...prevState,
         mobileOTPValueError: null,
+      }));
+      // console.log('otp form values error',formErrors)
+      verificationOfOTP();
+    }
+    if (isEmailOTPValid) {
+      setFormErrors((prevState) => ({
+        ...prevState,
+
         emailOTPValueError: null,
       }));
       // console.log('otp form values error',formErrors)
       verificationOfOTP();
     }
+    // if (isEmailOTPValid && isMobileOTPValid) {
+    //   setFormErrors((prevState) => ({
+    //     ...prevState,
+
+    //     emailOTPValueError: null,
+    //     mobileOTPValueError: null,
+
+    //   }));
+    //   // console.log('otp form values error',formErrors)
+    //   verificationOfOTP();
+
+    // }
   };
 
+
+  const handleMouseEvent = (index) => {
+    setExclusivesButtonHovered((prevHovered) => {
+      const updatedHovered = [...prevHovered];
+      updatedHovered[index] = !updatedHovered[index];
+      return updatedHovered;
+    });
+  };
+
+
   return (
-    <>
-      <Box className="emailOtpHeaderWrapper">
+    <Grid
+      container
+      direction={"column"}
+      justifyContent={"center"}
+      alignItems={"center"}
+    >
+      <Grid className="emailOtpHeaderWrapper">
         <Typography variant="DubaiRegular18">
           We have sent you the OTP to your mobile number and email address.
         </Typography>
-      </Box>
-      <Box className="emailOtpHeaderWrapper">
+      </Grid>
+      <Grid className="emailOtpHeaderWrapper">
         <Typography variant="DubaiRegular18">
-          Kindly check your Inbox.
+          Kindly check your inbox.
         </Typography>
-      </Box>
+      </Grid>
       <Stack
+        className="authForm"
         direction="column"
         spacing={3}
         justifyContent="center"
@@ -233,6 +270,7 @@ function OTPAuth({
           mobileOTPValue={mobileOTPValue}
           setMobileOTPValue={setMobileOTPValue}
           formErrors={formErrors}
+          setFormErrors={setFormErrors}
           handleResend={() => {
             getMobileOtp({ phoneNumber: callingCode + phoneNumber });
           }}
@@ -249,6 +287,7 @@ function OTPAuth({
           emailOTPValue={emailOTPValue}
           setEmailOTPValue={setEmailOTPValue}
           formErrors={formErrors}
+          setFormErrors={setFormErrors}
           handleResend={() => {
             getEmailOtp({ email: email });
           }}
@@ -261,20 +300,22 @@ function OTPAuth({
           justifyContent="center"
           alignItems="center"
         >
-          <Grid item xs={3}>
+          <Grid item xs={12}>
             <CustomButton
-              text="Sign up"
+              text="Continue"
               type="submit"
               rightIcon={<ButtonRightArrow />}
               dark={exclusivesButtonHovered[0]}
               variant="outlined"
               customClassName="signInButton"
               onClick={handleOTPSubmit}
+              onMouseEnter={() => handleMouseEvent(0)}
+              onMouseLeave={() => handleMouseEvent(0)}
             />
           </Grid>
         </Grid>
       </Stack>
-    </>
+    </Grid>
   );
 }
 

@@ -41,6 +41,7 @@ const Thumbnails = ({ images, Ref, setActiveStep, onViewChange }) => {
         <Grid container spacing={1} wrap="nowrap">
           {images.map((image, index) => (
             <Grid item key={index}>
+              
               <Button
                 onClick={() => {
                   setActiveStep(index);

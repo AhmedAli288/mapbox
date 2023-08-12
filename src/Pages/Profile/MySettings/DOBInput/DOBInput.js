@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { format, parse } from "date-fns";
+import { format, parse, isValid } from "date-fns";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
 const DOBInput = ({ selectedDate, setSelectedDate }) => {
@@ -9,8 +9,17 @@ const DOBInput = ({ selectedDate, setSelectedDate }) => {
 
   useEffect(() => {
     if (selectedDate) {
-      const parsed = parse(selectedDate, "dd/MM/yyyy", new Date());
-      setParsedDate(parsed);
+      let parsed;
+      const formats = ["dd/MM/yyyy", "dd-MM-yyyy"];
+      for (const formatString of formats) {
+        parsed = parse(selectedDate, formatString, new Date());
+        if (isValid(parsed)) {
+          setParsedDate(parsed);
+          return;
+        }
+      }
+      console.error("Invalid date format:", selectedDate);
+      setParsedDate(null);
     } else {
       setParsedDate(null);
     }

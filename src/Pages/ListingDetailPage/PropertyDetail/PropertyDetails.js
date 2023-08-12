@@ -3,12 +3,12 @@ import PropertyDetailTop from "./PropertyDetailTop/PropertyDetailTop";
 import PropertyDetailBottom from "./PropertyDetailBottom/PropertyDetailBottom";
 import { Box } from "@mui/material";
 
-const PropertyDetails = () => {
+const PropertyDetails = ({ listingId, property }) => {
   return (
-    <Box>
-      <PropertyDetailTop />
+    <Box className="paddingPageWidth" mb={4}>
+      <PropertyDetailTop listingId={listingId} property={property} />
       <div className="propertyDetailSpacer"></div>
-      <PropertyDetailBottom />
+      <PropertyDetailBottom listingId={listingId} property={property} />
     </Box>
   );
 };
