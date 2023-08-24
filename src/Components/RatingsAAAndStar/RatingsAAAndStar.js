@@ -5,20 +5,20 @@ import BuildingClassificationSystem from "../../Pages/ListingDetailPage/Property
 import { InfoIcon } from "../../Assets/SVG/Common/CommonSvgs";
 import InfoIconDescription from "../InfoIconDescription/InfoIconDescription";
 
-function RatingsAAAndStar({ darkStars = true }) {
+function RatingsAAAndStar({ darkStars = true,customStyles,infoIconClass }) {
   return (
     <>
       <Stack direction="row" spacing={2}>
-        <Box mb={1} className="tagWithInfo">
+        <Box className={`marginBottom tagWithInfo  ${infoIconClass?infoIconClass:'tagWithInfoSvg'} ${customStyles?customStyles:'widthClassNameTagWithInfo'} `}>
           <Typography variant="DubaiRegular20" className="tagWithInfoText">
             N/A
           </Typography>
-          <Box className="tagWithInfoIcon">
-            <div className="tagWithInfoIconContainer">
+          <Box className={ `tagWithInfoIcon `} >
+            <div className={ `tagWithInfoIconContainer `}>
               <InfoIcon />
               <div className="tagWithInfoIconTextBox">
                 <InfoIconDescription
-                  heading={"The VALCOM Building Classification System (VBCS)"}
+                  heading={"The NEWTON Building Classification System (NCS)"}
                   headingColor={"#808080"}
                   description={<BuildingClassificationSystem />}
                 />
@@ -32,7 +32,7 @@ function RatingsAAAndStar({ darkStars = true }) {
       </Stack>
 
       <Stack direction="row" spacing={2}>
-        <Box className="tagWithInfo">
+        <Box  className={`marginTop tagWithInfo ${infoIconClass?infoIconClass:'tagWithInfoSvg'} ${customStyles?customStyles:'widthClassNameTagWithInfo'} `}>
           <Typography variant="DubaiRegular20" className="tagWithInfoText">
             N/A
           </Typography>

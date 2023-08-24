@@ -68,7 +68,7 @@ const Profile = () => {
         <Container className="profileContainer">
           <Box className="profilePic">
             <LazyLoadImage
-              src= {`${cdnPath}/assets/Avatar.jpg`}
+              src={`${cdnPath}/assets/Avatar.jpg`}
               height={"25%"}
               width={"15%"}
             />
@@ -189,7 +189,9 @@ const Profile = () => {
               {selectedTab === 1 && <SavedProperties />}
               {selectedTab === 2 && <SavedBuildings />}
               {selectedTab === 3 && <SavedSearches />}
-              {selectedTab === 4 && <Typography>No record found!</Typography>}
+              {selectedTab === 4 && (
+                <Typography mt={4}>No record found!</Typography>
+              )}
               {selectedTab === 5 && <MyAgents />}
             </>
           )}

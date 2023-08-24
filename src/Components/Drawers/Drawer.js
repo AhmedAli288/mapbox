@@ -1,6 +1,5 @@
-import React, { useRef, useEffect, useState, memo } from "react";
+import React, { memo } from "react";
 import Drawer from "@mui/material/Drawer";
-import { Popover } from "@mui/material";
 
 export const TemporaryDrawer = memo(
   ({ open, container, handleClose, children }) => {

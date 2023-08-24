@@ -4,6 +4,7 @@ import ServiceCharges from "../../../ListingDetailPage/PropertyDetail/PropertyDe
 import { convertCurrency,extractMasterDeveloper } from "../../../../utils/utility";
 import AppContext from "../../../../context/AppContext";
 import { notAvailable } from "../../../../Constants/ConstantValues";
+import isEqual from 'lodash/isEqual';
 function BuildingOtherDetails({ buildingObject }) {
 
   const { conversionRates, toCurrency, selectedCurrency } =
@@ -64,12 +65,13 @@ function BuildingOtherDetails({ buildingObject }) {
   const data = [
     {
       label: "Master Community",
-      value: buildingObject.subAreaSubCommunity,
+      value: buildingObject.subAreaSubCommunity && !isEqual(buildingObject.subAreaSubCommunity,'')?buildingObject.subAreaSubCommunity:notAvailable,
       description: null,
     },
     {
       label: "District",
-      value: buildingObject.district || buildingObject.subAreaSubCommunity,
+      value:buildingObject.district && !isEqual(buildingObject.district,'')?buildingObject.district:notAvailable,
+     
       description: null,
     },
     {
@@ -88,7 +90,7 @@ function BuildingOtherDetails({ buildingObject }) {
     },
     {
       label: "Units Types",
-      value: getPropertyTypesString(buildingObject),
+      value: !isEqual(getPropertyTypesString(buildingObject),'')?getPropertyTypesString(buildingObject):notAvailable,
       description: null,
     },
     {
@@ -108,12 +110,12 @@ function BuildingOtherDetails({ buildingObject }) {
     },
     {
       label: "Elevators",
-      value: buildingObject.elevators,
+      value: buildingObject.elevators && !isEqual( buildingObject.elevators,'')? buildingObject.elevators:notAvailable,
       description: null,
     },
     {
       label: "Service Elevators",
-      value: buildingObject.serviceElevators,
+      value: buildingObject.serviceElevators&& !isEqual(buildingObject.serviceElevators,'')?buildingObject.serviceElevators:notAvailable,
       description: null,
     },
     {
@@ -129,7 +131,7 @@ function BuildingOtherDetails({ buildingObject }) {
     },
     {
       label: "Public Parking",
-      value: buildingObject.publicParking?buildingObject.publicParking:notAvailable,
+      value: buildingObject.publicParking && !isEqual(buildingObject.publicParking,'')?buildingObject.publicParking:notAvailable,
       description: null,
     },
 

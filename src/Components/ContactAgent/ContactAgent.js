@@ -4,7 +4,7 @@ import ListingCardIc from "../../Assets/SVG/ListingCardIcons/ListingCardIcons";
 import { isEmail, isMobilePhone } from "validator";
 import CustomButton from "../Button/CustomButton";
 import { contactAgent } from "../../network/apiServices";
-import { isEqual } from "lodash";
+import isEqual from 'lodash/isEqual'
 import { isMediumScreens, isSmallScreens } from "../../Constants/ConstantValues";
 import { errorToast, successToast } from "../../utils/useToast";
 
@@ -82,7 +82,11 @@ function ContactAgent({ propertyDetails }) {
     <Grid item xs={12}>
       <Grid container item xs={12} bgcolor={"black"} p={2} borderRadius={2} textAlign={"center"}>
         <form onSubmit={handleSubmit}>
-          <Grid container item spacing={1}>
+          <Grid container item spacing={1}
+           justifyContent="center"
+           alignItems="center"
+          >
+            
             <Grid item xs={12}>
               <TextField
                 id="name"
@@ -153,8 +157,8 @@ function ContactAgent({ propertyDetails }) {
                 onChange={(event) => setMessage(event.target.value)}
               />
             </Grid>
-            <Grid item xs={12} mt={1}>
-              <CustomButton customClassName="contactAgentSendMessage" dark={false} type="submit" text={"Send Message "} rightIcon={<ListingCardIc shape={"arrowRight"} />} fullWidth={false} />
+            <Grid item xs={8} mt={1}>
+              <CustomButton customClassName="contactAgentSendMessage" dark={false} type="submit" text={"Send Message "} rightIcon={<ListingCardIc shape={"arrowRight"} />} fullWidth={true} />
             </Grid>
           </Grid>
         </form>
@@ -164,12 +168,12 @@ function ContactAgent({ propertyDetails }) {
           <CustomButton
             dark={false}
             onClick={() => {
-              console.log("view all agents");
+              // console.log("view all agents");
             }}
             text={"View all agents "}
             typographyVariant="DubaiRegular18"
             rightIcon={<ListingCardIc shape={"arrowRight"} />}
-            fullWidth={false}
+            fullWidth={true}
           />
         </Link>
       </Grid>

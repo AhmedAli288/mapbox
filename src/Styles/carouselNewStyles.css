@@ -1,0 +1,185 @@
+.carouselBox .carouselNavigationLeftBtn {
+  position: absolute;
+  top: 45%;
+  display: flex;
+  left: 0;
+  /* z-index: 3; */
+}
+
+.carouselBox .carouselNavigationLeftBtn svg {
+  fill: #fff;
+}
+
+.carouselBox .carouselNavigationRightBtn svg {
+  fill: #fff;
+}
+
+.carouselBox .carouselNavigationRightBtn {
+  position: absolute;
+  top: 45%;
+  display: flex;
+  right: 0;
+  /* z-index: 3; */
+}
+
+.carouselBox {
+  position: relative;
+}
+
+.lightCarouselDots .MuiMobileStepper-dot {
+  border: 1px solid #fff;
+}
+
+.lightCarouselDots .MuiMobileStepper-dotActive {
+  background-color: #fff;
+}
+
+.darkCarouselDots .MuiMobileStepper-dot {
+  border: 1px solid #000;
+}
+
+.darkCarouselDots .MuiMobileStepper-dotActive {
+  background-color: #000;
+}
+
+.carouselNavigationLeftBtn.MuiButtonBase-root svg,
+.carouselNavigationRightBtn.MuiButtonBase-root svg {
+  fill: #fff;
+}
+
+.carouselNavigationLeftBtn.Mui-disabled svg,
+.carouselNavigationRightBtn.Mui-disabled svg {
+  fill: rgb(255, 255, 255, 0.7);
+}
+
+.carouselNavigationLeftBtn.MuiButtonBase-root,
+.carouselNavigationRightBtn.MuiButtonBase-root {
+  background: none;
+  padding: 0px;
+  margin: 0px;
+  min-width: 20px;
+  cursor: pointer;
+}
+
+.carouselNavigationLeftBtn.MuiButtonBase-root:hover,
+.carouselNavigationRightBtn.MuiButtonBase-root:hover {
+  background: none;
+}
+
+.carouselTypography.MuiPaper-root {
+  position: absolute;
+  flex-wrap: 1;
+  background-color: transparent;
+  color: #ffffff;
+  padding: 0 0 0.2rem 0.5rem;
+}
+
+.carouselStartingPrice svg,
+.carouselSizes svg {
+  fill: #fff;
+  margin: 0.5rem 0.4rem 0 0;
+}
+
+.carouselSizesGrid.MuiGrid-root {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 1.2rem 0 0;
+}
+
+.thumbnailImageButton.MuiButton-root {
+  padding: 0;
+}
+
+/* .carouselBox .imageContainer {
+  position: relative;
+  width: 100%;
+} */
+
+.ListingDetailBody .MuiGrid-root .carouselBox .imageContainer {
+  position: relative;
+  /* max-width: 100%; */
+  /* margin: auto; */
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+/* .ListingDetailBody .MuiGrid-root .carouselBox .imageContainer {
+  height: 65vh;
+} */
+
+/* .cardBoxWrapper .carouselBox .imageContainer {
+  height: 40vh;
+  border-radius: 5px;
+} */
+
+.cardBoxWrapper .carouselBox .imageContainer img {
+  border-radius: 10px;
+}
+
+.carouselBox .imageContainer img {
+  width: 100%;
+  height: 100%;
+}
+
+/* .carouselBox .homePageBackgroundImage {
+  position: relative;
+} */
+
+.carouselBox .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.thumbnailCarouselFullImgDialog.MuiDialog-root .MuiPaper-root {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0);
+  position: relative;
+}
+
+.thumbnailCarouselFullImg.MuiBox-root {
+  width: 80%;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0);
+  transform: translateX(13%);
+}
+
+.thumbnailCarouselFullImgDialog.MuiDialog-root {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  padding: 1% 0 0 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.thumbnailCarouselFullImgClose {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+@media (max-width: 1024px) {
+  .carouselSizesGrid.MuiGrid-root {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .thumbnailCarouselFullImg.MuiBox-root {
+    width: 100%;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0);
+    transform: translateX(0%);
+    overflow-x: hidden;
+  }
+}

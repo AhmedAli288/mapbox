@@ -1,19 +1,35 @@
-
-export const cdnPath =`https://ik.imagekit.io/valcom123/images/manseel`
+export const cdnPath = `https://ik.imagekit.io/valcom123/images/manseel`;
 
 export const neighbourhoodData = {
   Business_Bay: {
-    backgroundImage:`${cdnPath}/assets/BusinessBayBg.jpg`,
+    backgroundImage: `${cdnPath}/assets/BusinessBayBg.jpg`,
     neighbourhood: "Business Bay",
-    WelcomeDesc: `Straddling Dubai Creek, Business Bay is a contemporary financial district packed with corporate high-rises, stylish apartments buildings, and swanky hotels. Dubai Water Canal has jogging and cycling tracks plus a colorful mechanical waterfall. Mid-priced stores fill Bay Avenue mall, along with family-friendly dining options. Smart waterside restaurants serve Lebanese dishes, Asian street snacks, and high-end seafood.`,
+    WelcomeDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Straddling Dubai Creek, Business Bay is a contemporary financial
+          district packed with corporate high-rises, stylish apartment
+          buildings, and swanky hotels.
+        </p>
+        <p>
+          Dubai Water Canal has jogging and cycling tracks plus a colorful
+          mechanical waterfall. Mid-priced stores fill Bay Avenue mall, along
+          with family-friendly dining options.
+        </p>
+        <p>
+          Smart waterside restaurants serve Lebanese dishes, Asian street
+          snacks, and high-end seafood.
+        </p>
+      </div>
+    ),
     expectWhatDesc:
-      "Even so Business Bay is the pulsating business heart of Dubai, it is not a noisy place compared to other major cities. Business Bay offers stunning views from almost every angle, a waterfront life, small parks and countless options for dining on every level. For sport enthusiasts, there are multiple running and cycling tracks which relate to Dubai’s vast cycling track network of more than 500 km.",
+      "A contemporary, futuristic and manageable neighborhood easy to commute.",
     marketDesc:
-      "Super high end, high rise residential buildings like “The Volante” are also available as mid end residential complexes like the “Executive Towers” with almost 1,800 apartments in 10 towers. Some of the worlds most renowned architects like Zaha Hadid with her “The Opus” tower or the JW Marriott Hotel Towers, the second highest twin towers in the world designed by Ashok Korgaonkar amongst many others formed Business Bay into one of the most beautiful business districts in the world.",
+      "Mid end to high end, mostly high rise building with stunning views.",
     loveThingsDesc:
-      "Business Bay is a multicultural hub for all nationalities with endless options for dining, clubbing or just to hang out with friends enjoying a drink. Spectacular roof top bars with truly breathtaking views (and similar prices) can also be found like restaurants where you can feed a family with just 50 Dirhams. Depending on where you live in Business Bay, Dubai Mall with all its entertainment options is just a short walk or a short ride away.",
-  
-    map:  `${cdnPath}/assets/businessBayMap.png"`,
+      "Relaxing strolls along the waterfront, outdoor activities, dining and lounging.",
+
+    map: `${cdnPath}/assets/businessBayMap.png`,
     neighbours: {
       north: "Sheikh Zayed Road",
       west: "Al Khail Road",
@@ -21,223 +37,358 @@ export const neighbourhoodData = {
       east: "Al Qouz",
     },
     dxbairport: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "18.7 km",
+      car: "15 min.",
+      metro: "46 min.",
+      walking: "3 hr 51 min.",
     },
     dwcairport: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
+      distance: "47.7 km",
+      car: "35 min.",
+      metro: "1 hr 53 min.",
       walking: null,
     },
     publicbeach: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "10.9 km",
+      car: "16 min.",
+      metro: "41 min.",
+      walking: "1 hr 58 min.",
     },
     dubaimall: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "1.8 km",
+      car: "6 min.",
+      metro: "12 min.",
+      walking: "12 min.",
     },
     expo2020: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: null,
+      distance: "32.2 km",
+      car: "26 min.",
+      metro: "1 hr 24 min.",
+      walking: "7 hr 32 min.",
     },
     dubaimarina: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "20.1 km",
+      car: "18 min.",
+      metro: "55 min.",
+      walking: "4 hr 26 min.",
     },
-    aroundTheBlockDesc: `Business Bay is Dubai’s main business district covering an area of 5,9 million m2 or 64 million square feet. It is diverted in a southeast and a northwest part by the Dubai Canal. The masterplan was developed 2003 by Dubai Properties, one of Dubai’s large government developers. As more and more buildings get completed and empty plots disappear Business Bay becomes a lively business and residential district. Its excellent location within Dubai makes it the place to be for more than 15 luxurious 5-star hotels and over 20 4-star hotels.`,
-
+    aroundTheBlockDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Business Bay is Dubai’s main business district covering an area of 5,9
+          million m2 or 64 million square feet. It is divided into a southeast
+          and a northwest part by the Dubai Canal. The masterplan was developed
+          in 2003 by Dubai Properties, one of Dubai’s large government
+          developers.
+        </p>
+        <p>
+          As more and more buildings get completed and empty plots disappear,
+          Business Bay becomes a lively business and residential district. Its
+          excellent location within Dubai makes it the place to be for more than
+          15 luxurious 5-star hotels and over 20 4-star hotels.
+        </p>
+      </div>
+    ),
     aroundTheBlockImages: [
       {
-        imageUrl: "/images/aroundTheBlock/around1.jpg",
+        imageUrl: `${cdnPath}/mag/bb/atb/1.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 1,
+        text: "",
       },
       {
-        imageUrl: "/images/aroundTheBlock/around2.jpg",
+        imageUrl: `${cdnPath}/mag/bb/atb/2.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl: "/images/aroundTheBlock/around3.jpg",
+        imageUrl: `${cdnPath}/mag/bb/atb/3.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl: "/images/aroundTheBlock/around4.jpg",
+        imageUrl: `${cdnPath}/mag/bb/atb/4.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 1,
+        text: "",
       },
     ],
-    whatToExpectDesc: `Even so Business Bay is the pulsating business heart of Dubai, it is not a noisy place compared to other major cities. Business Bay offers stunning views from almost every angle, a waterfront life, small parks and countless options for dining on every level. For sport enthusiasts, there are multiple running and cycling tracks which relate to Dubai’s vast cycling track network of more than 500 km.`,
+    whatToExpectDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Even so Business Bay is the pulsating business heart of Dubai, it is
+          not a noisy place compared to other major cities.
+        </p>
+        <p>
+          Business Bay offers stunning views from almost every angle, a
+          waterfront life, small parks and countless options for dining on every
+          level. For sport enthusiasts, there are multiple running and cycling
+          tracks which relate to Dubai’s vast cycling track network of more than
+          500 km.
+        </p>
+      </div>
+    ),
     whatToExpectImages: [
       {
-        imageUrl: "/images/whatToExpect/expect1.jpg",
+        imageUrl: `${cdnPath}/mag/bb/wte/1.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 1,
+        text: "",
       },
       {
-        imageUrl: "/images/whatToExpect/expect2.jpg",
+        imageUrl: `${cdnPath}/mag/bb/wte/2.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl: "/images/whatToExpect/expect3.jpg",
+        imageUrl: `${cdnPath}/mag/bb/wte/3.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl: "/images/whatToExpect/expect4.jpg",
+        imageUrl: `${cdnPath}/mag/bb/wte/4.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: "/images/whatToExpect/expect5.jpg",
+        imageUrl: `${cdnPath}/mag/bb/wte/5.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: "/images/whatToExpect/expect6.jpg",
+        imageUrl: `${cdnPath}/mag/bb/wte/6.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: "/images/whatToExpect/expect7.jpg",
+        imageUrl: `${cdnPath}/mag/bb/wte/7.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 1,
+        text: "",
       },
       {
-        imageUrl: "/images/whatToExpect/expect8.jpg",
+        imageUrl: `${cdnPath}/mag/bb/wte/8.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 1,
+        text: (
+          <div className="specificNeighbourPara">
+            <p>
+              The Dubai Canal Waterfall is illuminated at nighttime and motion
+              operated. It cascades down on both sides of Sheikh Zayed Road
+              bridge but stops for vessels to pass.
+            </p>
+            <p>
+              Enjoy the impressive sight while strolling alongside the Canal.
+            </p>
+          </div>
+        ),
       },
       {
-        imageUrl: "/images/whatToExpect/expect9.jpg",
+        imageUrl: `${cdnPath}/mag/bb/wte/9.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: "/images/whatToExpect/expect10.jpg",
+        imageUrl: `${cdnPath}/mag/bb/wte/10.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: "/images/whatToExpect/expect11.jpg",
+        imageUrl: `${cdnPath}/mag/bb/wte/11.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
-      // Add more image objects here
     ],
-    theMarketDesc: `Super high end, high rise residential buildings like “The Volante” are also available as mid end residential complexes like the “Executive Towers” with almost 1,800 apartments in 10 towers. Some of the worlds most renowned architects like Zaha Hadid with her “The Opus” tower or the JW Marriott Hotel Towers, the second highest twin towers in the world designed by Ashok Korgaonkar amongst many others formed Business Bay into one of the most beautiful business districts in the world.`,
+    theMarketDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Super high end, high rise residential buildings like “The Volante” are
+          also available as mid end residential complexes like the “Executive
+          Towers” with almost 1,800 apartments in 10 towers. Some of the world's
+          most renowned architects like Zaha Hadid with her “The Opus” tower or
+          the JW Marriott Hotel Towers, the second highest twin towers in the
+          world designed by Ashok Korgaonkar amongst many others formed Business
+          Bay into one of the most beautiful business districts in the world.
+        </p>
+      </div>
+    ),
     theMarketImages: [
       {
-        imageUrl: "/images/theMarket/market1.jpg",
+        imageUrl: `${cdnPath}/mag/bb/tm/1.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 1,
+        text: "",
       },
       {
-        imageUrl: "/images/theMarket/market2.jpg",
+        imageUrl: `${cdnPath}/mag/bb/tm/2.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: "/images/theMarket/market3.jpg",
+        imageUrl: `${cdnPath}/mag/bb/tm/3.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: "/images/theMarket/market4.jpg",
+        imageUrl: `${cdnPath}/mag/bb/tm/4.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: "/images/theMarket/market5.jpg",
+        imageUrl: `${cdnPath}/mag/bb/tm/5.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 1,
+        text: "",
       },
       {
-        imageUrl: "/images/theMarket/market6.jpg",
+        imageUrl: `${cdnPath}/mag/bb/tm/6.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 1,
+        text: "",
       },
-
-      // Add more image objects here
     ],
-    thingsToLoveDesc: `Business Bay is a multicultural hub for all nationalities with endless options for dining, clubbing or just to hang out with friends enjoying a drink. Spectacular roof top bars with truly breathtaking views (and similar prices) can also be found like restaurants where you can feed a family with just 50 Dirhams. Depending on where you live in Business Bay, Dubai Mall with all its entertainment options is just a short walk or a short ride away.`,
-
+    thingsToLoveDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Business Bay is a multicultural hub for all nationalities with endless
+          options for dining, clubbing or just to hang out with friends enjoying
+          a drink. Spectacular rooftop bars with truly breathtaking views (and
+          similar prices) can also be found, along with restaurants where you
+          can feed a family with just 50 Dirhams.
+        </p>
+        <p>
+          Depending on where you live in Business Bay, Dubai Mall with all its
+          entertainment options is just a short walk or a short ride away.
+        </p>
+      </div>
+    ),
     thingsToLoveImages: [
       {
-        imageUrl: "/images/thingsToLove/things1.jpg",
+        imageUrl: `${cdnPath}/mag/bb/ttl/1.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 1,
+        text: "",
       },
       {
-        imageUrl: "/images/thingsToLove/things2.jpg",
+        imageUrl: `${cdnPath}/mag/bb/ttl/2.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl: "/images/thingsToLove/things3.jpg",
+        imageUrl: `${cdnPath}/mag/bb/ttl/3.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl: "/images/thingsToLove/things4.jpg",
+        imageUrl: `${cdnPath}/mag/bb/ttl/4.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: "/images/thingsToLove/things5.jpg",
+        imageUrl: `${cdnPath}/mag/bb/ttl/5.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: "/images/thingsToLove/things6.jpg",
+        imageUrl: `${cdnPath}/mag/bb/ttl/6.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: "/images/thingsToLove/things7.jpg",
+        imageUrl: `${cdnPath}/mag/bb/ttl/7.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 1,
+        text: "",
       },
       {
-        imageUrl: "/images/thingsToLove/things8.jpg",
+        imageUrl: `${cdnPath}/mag/bb/ttl/8.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl: "/images/thingsToLove/things9.jpg",
+        imageUrl: `${cdnPath}/mag/bb/ttl/9.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
-
-      // Add more image objects here
     ],
   },
   Downtown_Dubai: {
-    backgroundImage:
-      `${cdnPath}/mag/dtd/hero/hero.jpg`,
+    backgroundImage: `${cdnPath}/mag/dtd/hero/hero.jpg`,
     neighbourhood: "Downtown Dubai",
-    WelcomeDesc: `Middle East’s leading financial hub is a district where business meets art and culinary excellence. As a special economic zone DIFC spans over 110 ha (272 acres) and has its own independent internationally regulated judicial and regulatory system and is home to hundreds of financial institutions, wealth funds, REIT’s and investors.`,
+    WelcomeDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Downtown is the 2 square kilometer pulsating heart of Dubai with
+          plenty of wow-factors for residents and tourists alike.
+          Pedestrian-friendly designed with wide promenades, Downtown Dubai
+          invites visitors and residents for strolls along Sheikh Mohammed bin
+          Rashid Boulevard with its countless and irresistible restaurants and
+          cafes.
+        </p>
+        <p>
+          Downtown is perfectly located between the city’s two largest business
+          districts, Dubai International Financial Centre in the north and
+          Business Bay in the south.
+        </p>
+      </div>
+    ),
     expectWhatDesc:
-      "A contemporary, futuristic designed financial district with an excellent infrastructure.",
+      "Ultimate urban lifestyle with iconic landmarks, entertainment and glamour.",
     marketDesc:
-      "High rise high-end office and residential buildings with spectacular architecture and stunning views.",
+      "Simply one of the most prestigious and splendid neighborhoods on earth.",
     loveThingsDesc:
-      "An unparalleled destination for business, arts and fine dining.",
-    map: `${cdnPath}/assets/businessBayMap.png"`,
+      "Phenomenal architecture, world-class shopping and beautiful promenades.",
+    map: `${cdnPath}/assets/downTownMap.jpg`,
     neighbours: {
       north: "Al Asayel Road",
       west: "Sheikh Zayed Road",
@@ -245,257 +396,385 @@ export const neighbourhoodData = {
       east: "Financial Center Road",
     },
     dxbairport: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "18.7 km",
+      car: "15 min.",
+      metro: "46 min.",
+      walking: "3 hr 51 min.",
     },
     dwcairport: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
+      distance: "47.7 km",
+      car: "35 min.",
+      metro: "1 hr 53 min.",
       walking: null,
     },
     publicbeach: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "10.9 km",
+      car: "16 min.",
+      metro: "41 min.",
+      walking: "1 hr 58 min.",
     },
     dubaimall: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "1.8 km",
+      car: "6 min.",
+      metro: "12 min.",
+      walking: "12 min.",
     },
     expo2020: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: null,
+      distance: "32.2 km",
+      car: "26 min.",
+      metro: "1 hr 24 min.",
+      walking: "7 hr 32 min.",
     },
     dubaimarina: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "20.1 km",
+      car: "18 min.",
+      metro: "55 min.",
+      walking: "4 hr 26 min.",
     },
-    aroundTheBlockDesc: `Downtown is the 2 square kilometer pulsating heart of Dubai with plenty of wow-factors for residents and tourists alike. Pedestrian friendly designed with wide promenades, Downtown Dubai invite visitors and residents for strolls along Sheikh Mohammed bin Rashid Boulevard with its countless and irresistible restaurants and cafés. Downtown is perfectly located between the city’s two largest business districts, Dubai International Financial Centre in the north and Business Bay in the south.`,
+    aroundTheBlockDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Downtown is the 2 square kilometer pulsating heart of Dubai with
+          plenty of wow-factors for residents and tourists alike.
+          Pedestrian-friendly designed with wide promenades, Downtown Dubai
+          invites visitors and residents for strolls along Sheikh Mohammed bin
+          Rashid Boulevard with its countless and irresistible restaurants and
+          cafés.
+        </p>
+        <p>
+          Downtown is perfectly located between the city’s two largest business
+          districts, Dubai International Financial Centre in the north and
+          Business Bay in the south.
+        </p>
+      </div>
+    ),
     aroundTheBlockImages: [
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/atb/1.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/atb/1.jpg`,
         buildingName: "burj khalifa",
         buildingRefNumber: "REF002",
+        grid: 1,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/atb/2.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/atb/2.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/atb/3.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/atb/3.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/atb/5.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/atb/5.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/atb/6.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/atb/6.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 1,
+        text: (
+          <div className="specificNeighbourPara">
+            <p>
+              Multiple landmarks can be found within a walking distance: Burj
+              Khalifa, the world’s largest tower, Souk al Bahar, the traditional
+              Arabic style market, Dubai Fountains, the famous engineering
+              marvel with the music, water, and light show, and Dubai Opera, the
+              fantastic and unique entertainment destination in the Middle East,
+              just to name the most important.
+            </p>
+          </div>
+        ),
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/atb/7.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/atb/7.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/atb/10.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/atb/10.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/atb/11.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/atb/11.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 1,
+        text: "",
       },
     ],
-    whatToExpectDesc: `Centerpiece in Downtown Dubai beside the Burj Khalifa is the Dubai mall, one of the world’s largest malls with 5,9 million sqft. internal floor area, which hosts more than 1,200 stores and more than 200 food and beverage outlets, an Olympic size ice rink and the famous aquarium and underwater zoo. Dubai Mall is the world's most-visited shopping and leisure destination and is attracting more than 60 million visitors a year.`,
+    whatToExpectDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Centerpiece in Downtown Dubai beside the Burj Khalifa is the Dubai
+          Mall, one of the world’s largest malls with 5.9 million sqft. internal
+          floor area, which hosts more than 1,200 stores and more than 200 food
+          and beverage outlets, an Olympic size ice rink, and the famous
+          aquarium and underwater zoo. Dubai Mall is the world's most-visited
+          shopping and leisure destination and is attracting more than 60
+          million visitors a year.
+        </p>
+      </div>
+    ),
     whatToExpectImages: [
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/wte/1.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/wte/1.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 1,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/wte/2.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/wte/2.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/wte/3.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/wte/3.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/wte/4.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/wte/4.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/wte/6.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/wte/6.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 1,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/wte/7.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/wte/7.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
-
+      {
+        imageUrl: `${cdnPath}/mag/dtd/wte/8.jpg`,
+        buildingName: "Image 8",
+        buildingRefNumber: "REF008",
+        grid: 2,
+        text: "",
+      },
       // Add more image objects here
     ],
-    theMarketDesc: `Downtown Dubai as one of the most prestigious and splendid neighborhoods on earth is the true centerpiece of the emirate Dubai. It is a mix of modern and traditional architecture – impressive and gleaming towers next to beautiful arabian style low rise buildings in the old town district. And there are still pockets of green to explore. Several super luxury 5-star hotels are located at Downtown Dubai and attract tourists throughout the whole year.`,
-
+    theMarketDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Downtown Dubai, as one of the most prestigious and splendid
+          neighborhoods on earth, is the true centerpiece of the emirate Dubai.
+          It is a mix of modern and traditional architecture – impressive and
+          gleaming towers next to beautiful Arabian style low-rise buildings in
+          the old town district. And there are still pockets of green to
+          explore.
+        </p>
+        <p>
+          Several super luxury 5-star hotels are located in Downtown Dubai and
+          attract tourists throughout the whole year.
+        </p>
+      </div>
+    ),
     theMarketImages: [
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/tm/1.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/tm/1.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 1,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/tm/2.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/tm/2.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
-      
-
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/tm/4.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/tm/4.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/tm/5.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/tm/5.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/tm/6.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/tm/6.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/tm/7.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/tm/7.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/tm/10.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/tm/10.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 1,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/tm/11.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/tm/11.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/tm/12.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/tm/14.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/tm/14.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/tm/12.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
-
       // Add more image objects here
     ],
-
-    thingsToLoveDesc: `Take a stroll around the man made Burj Khalifa lake with over 120,000 m2, or down the boulevard, watch the supercars driving by and take a break in one of the mouthwatering al fresco dining restaurant and café options. In the evening, when the tall palm trees are illuminated by fairy lights, the atmosphere is so special and give you the feeling that life is truly great. Watch people passing by, dressed up to the nines heading to a concert, Opera performance or other events at the Opera.`,
+    thingsToLoveDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Take a stroll around the man-made Burj Khalifa lake with over 120,000
+          m², or down the boulevard, watch the supercars driving by and take a
+          break in one of the mouthwatering al fresco dining restaurants and
+          café options. In the evening, when the tall palm trees are illuminated
+          by fairy lights, the atmosphere is so special and gives you the
+          feeling that life is truly great. Watch people passing by, dressed up
+          to the nines heading to a concert, Opera performance, or other events
+          at the Opera.
+        </p>
+      </div>
+    ),
     thingsToLoveImages: [
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/ttl/1.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/ttl/1.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 1,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/ttl/2.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/ttl/2.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/ttl/4.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/ttl/4.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/ttl/5.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/ttl/5.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 1,
+        text: (
+          <div className="specificNeighbourPara">
+            <p>
+              The most well-known event of the year is the new year countdown,
+              live broadcasted to the whole world with its awe-inspiring
+              fireworks. It brings people from the whole world together, just to
+              experience it once in a lifetime.
+            </p>
+          </div>
+        ),
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/ttl/6.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/ttl/6.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 2,
+        text: (
+          <div className="specificNeighbourPara">
+            <p>
+              The boulevard hosts also other events like parades for the
+              national day or motorcades of classic cars. Something is always
+              happening like free outdoor film screenings, concerts, food, and
+              craft markets that support local brands, making sure there are no
+              dull moments at Downtown Dubai for its inhabitants.
+            </p>
+          </div>
+        ),
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/ttl/8.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/ttl/8.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/ttl/9.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/ttl/9.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 3,
+        text: (
+          <div className="specificNeighbourPara">
+            <p>
+              You can have a dinner in one of the celebrity chefs' restaurants
+              or just enjoy your night out with friends and great food in a
+              spectacular environment.
+            </p>
+          </div>
+        ),
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/ttl/11.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/ttl/11.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl:
-          `${cdnPath}/mag/dtd/ttl/123.jpg`,
+        imageUrl: `${cdnPath}/mag/dtd/ttl/123.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       // Add more image objects here
     ],
@@ -503,14 +782,27 @@ export const neighbourhoodData = {
   Dubai_Marina: {
     backgroundImage: `${cdnPath}/mag/dm/hero/1.jpg`,
     neighbourhood: "Dubai Marina",
-    WelcomeDesc: `Dubai Marina, built on a 3 kilometer (2 miles) long stretch of shoreline is today world’s largest man-made marina and one of the most beautiful canal cities globally. Around a central waterway with countless marina berths more than 200 towers are offering spectacular views over the Persian Gulf and the marvelous marina.`,
+    WelcomeDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Dubai Marina, built on a 3-kilometer (2 miles) long stretch of
+          shoreline, is today the world's largest man-made marina and one of the
+          most beautiful canal cities globally.
+        </p>
+        <p>
+          Around a central waterway with countless marina berths, more than 200
+          towers are offering spectacular views over the Persian Gulf and the
+          marvelous marina.
+        </p>
+      </div>
+    ),
     expectWhatDesc:
       "A contemporary, unique canal city with multiple ultra-high-rise towers offering stunning views.",
     marketDesc:
       "More than 200 residential towers from all building classes with great access to public transportation.",
     loveThingsDesc:
       "Countless options for dining on all levels, multicultural waterfront living and easy beach access.",
-    map: `${cdnPath}/assets/businessBayMap.png"`,
+    map: `${cdnPath}/assets/dubaiMarinaMap.jpg`,
     neighbours: {
       north: "Persian Gulf",
       west: "Sheikh Zayed Road",
@@ -518,211 +810,469 @@ export const neighbourhoodData = {
       east: "Internet City",
     },
     dxbairport: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "18.7 km",
+      car: "15 min.",
+      metro: "46 min.",
+      walking: "3 hr 51 min.",
     },
     dwcairport: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
+      distance: "47.7 km",
+      car: "35 min.",
+      metro: "1 hr 53 min.",
       walking: null,
     },
     publicbeach: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "10.9 km",
+      car: "16 min.",
+      metro: "41 min.",
+      walking: "1 hr 58 min.",
     },
     dubaimall: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "1.8 km",
+      car: "6 min.",
+      metro: "12 min.",
+      walking: "12 min.",
     },
     expo2020: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: null,
+      distance: "32.2 km",
+      car: "26 min.",
+      metro: "1 hr 24 min.",
+      walking: "7 hr 32 min.",
     },
     dubaimarina: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "20.1 km",
+      car: "18 min.",
+      metro: "55 min.",
+      walking: "4 hr 26 min.",
     },
-    aroundTheBlockDesc: `The canal with more than 8 km of landscaped public walkways is the center of the marina and occupies more than 12% of the total space. The two sea exits of the canal make part of Dubai Marina an island, including the neighboring district Jumeirah Beach Residences (JBR) which separates Dubai Marina from the sea.`,
+    aroundTheBlockDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          The canal with more than 8 km of landscaped public walkways is the
+          center of the marina and occupies more than 12% of the total space.
+        </p>
+        <p>
+          The two sea exits of the canal make part of Dubai Marina an island,
+          including the neighboring district Jumeirah Beach Residences (JBR)
+          which separates Dubai Marina from the sea.
+        </p>
+      </div>
+    ),
     aroundTheBlockImages: [
-      {
-        imageUrl: `${cdnPath}/mag/dm/atb/1.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
       {
         imageUrl: `${cdnPath}/mag/dm/atb/2.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/dm/atb/3.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/dm/atb/4.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/dm/atb/5.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
+        grid: 1,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/dm/atb/6.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/atb/5.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/atb/4.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 3,
+        text: (
+          <div className="specificNeighbourPara">
+            <p>
+              The latest added mode of transport, Dubai tram was opened in
+              November 2014, links Dubai Metro and the Palm Monorail, and runs
+              along Al Sufouh Road and Jumeirah Beach Road.
+            </p>
+          </div>
+        ),
       },
       {
         imageUrl: `${cdnPath}/mag/dm/atb/7.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
-      },
-    ],
-    whatToExpectDesc: `Plenty of tourists strolling around in Dubai Marina mixing up with residents making Dubai Marina a bustling area with a unique flair. Seemingly conflicting architecture combines to create one of the most beautiful skylines in the city.`,
-    whatToExpectImages: [
-      {
-        imageUrl: `${cdnPath}/mag/dm/wte/1.jpg`,
-        buildingName: "Image 1",
-        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: `${cdnPath}/mag/dm/wte/2.jpg`,
+        imageUrl: `${cdnPath}/mag/dm/atb/1.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/atb/3.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 1,
+        text: "",
+      },
+    ],
+    whatToExpectDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Plenty of tourists strolling around in Dubai Marina mixing up with
+          residents making Dubai Marina a bustling area with a unique flair.
+        </p>
+        <p>
+          Seemingly conflicting architecture combines to create one of the most
+          beautiful skylines in the city.
+        </p>
+      </div>
+    ),
+    whatToExpectImages: [
+      {
+        imageUrl: `${cdnPath}/mag/dm/wte/5.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 1,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/dm/wte/3.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 2,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/wte/1.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 2,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/wte/2.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/dm/wte/4.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/dm/wte/5.jpg`,
-        buildingName: "Image 1",
-        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/dm/wte/6.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
-      
+      {
+        imageUrl: `${cdnPath}/mag/dm/wte/7.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 1,
+        text: "",
+      },
       // Add more image objects here
     ],
-    theMarketDesc: `Dubai marina is for sure one of the top residential areas in Dubai. Many residents fall in love with Dubai marina because of the unique waterfront living in this magical neighborhood. Prices for a studio start around AED 35k whereas 1-bedroom apartments are available from AED 40k to AED 100k. 2 beds start around AED 55k and top out at AED 200k. The annual rent for 3-bed apartments is between AED 80k and AED 300k. Large penthouses can cost anywhere between AED 350k and AED 1m. Apartments in Marina are generally larger in size then in other areas. Apart from apartments there are in some towers a few podium level townhouses available.`,
+    theMarketDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Dubai Marina is for sure one of the top residential areas in Dubai.
+          Many residents fall in love with Dubai Marina because of the unique
+          waterfront living in this magical neighborhood.
+        </p>
+        <p>
+          Prices for a studio start around AED 35k, whereas 1-bedroom apartments
+          are available from AED 40k to AED 100k. 2-bedroom units start around
+          AED 55k and top out at AED 200k. The annual rent for 3-bedroom
+          apartments is between AED 80k and AED 300k. Large penthouses can cost
+          anywhere between AED 350k and AED 1m. Apartments in Marina are
+          generally larger in size than in other areas. Apart from apartments,
+          there are a few podium-level townhouses available in some towers.
+        </p>
+      </div>
+    ),
     theMarketImages: [
       {
-        imageUrl: `${cdnPath}/mag/dm/tm/1.jpg`,
-        buildingName: "Image 1",
-        buildingRefNumber: "REF001",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/dm/tm/2.jpg`,
+        imageUrl: `${cdnPath}/mag/dm/tm/6.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/dm/tm/3.jpg`,
-        buildingName: "Image 1",
-        buildingRefNumber: "REF001",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/dm/tm/4.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
+        grid: 1,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/dm/tm/5.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl: `${cdnPath}/mag/dm/tm/6.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
-
-      // Add more image objects here
-    ],
-    thingsToLoveDesc: `Dubai Marina is a pedestrian friendly neighborhood with almost everything available within a walking distance. As traffic is sometimes very dense and parking options are rare, many residents prefer to use the tram. The laid back waterfront living within this with high rises packed, bustling district and the close proximity to the beach create a living experience nowhere else can be found.`,
-    thingsToLoveImages: [
-      {
-        imageUrl: `${cdnPath}/mag/dm/ttl/1.jpg`,
+        imageUrl: `${cdnPath}/mag/dm/tm/1.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 2,
+        text: "",
       },
       {
-        imageUrl: `${cdnPath}/mag/dm/ttl/2.jpg`,
+        imageUrl: `${cdnPath}/mag/dm/tm/2.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/tm/3.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/tm/4.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
+      // Add more image objects here
+    ],
+    thingsToLoveDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Dubai Marina is a pedestrian friendly neighborhood with almost
+          everything available within a walking distance. As traffic is
+          sometimes very dense and parking options are rare, many residents
+          prefer to use the tram. The laid back waterfront living within this
+          with high rises packed, bustling district and the close proximity to
+          the beach create a living experience nowhere else can be found.
+        </p>
+      </div>
+    ),
+    thingsToLoveImages: [
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/10.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 1,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/11.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: (
+          <div className="specificNeighbourPara">
+            <p>
+              Schools of Oman cownose rays, eagle rays, whale sharks, and other
+              large species of marine wildlife are regular visitors in Dubai
+              Marina.
+            </p>
+          </div>
+        ),
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/12.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/13.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/14.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 1,
+        text: (
+          <div className="specificNeighbourPara">
+            <p>
+              There are plenty of sport activities in this amazing neighborhood.
+              You can experience a breathtaking free-fall and parachute
+              experience with Skydive Dubai. Take the leap above the iconic Palm
+              Jumeirah and see Dubai Marina from an entirely different
+              perspective.
+            </p>
+            <p>
+              Multiple running tracks, the world’s largest urban zip line
+              experience, or just a beach volleyball game at sunset – you have
+              the choice.
+            </p>
+          </div>
+        ),
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/15.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 2,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/16.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 2,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/17.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/18.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/dm/ttl/3.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/dm/ttl/4.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/dm/ttl/5.jpg`,
-        buildingName: "Image 1",
-        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/dm/ttl/6.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/5.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/dm/ttl/7.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/4.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 1,
+        text: (
+          <div className="specificNeighbourPara">
+            <p>
+              The countless options for dining range from spectacular fine
+              dining to street food of all varieties.
+            </p>
+            <p>
+              Nightlife also has many options, from classic lounges and rooftop
+              bars with breathtaking views, to trendy beach clubs with large
+              pools like Zero Gravity or Bla Bla with its more than 20 bars.
+            </p>
+          </div>
+        ),
       },
       {
         imageUrl: `${cdnPath}/mag/dm/ttl/8.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/2.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/1.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/dm/ttl/9.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
-
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/19.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/20.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/21.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/dm/ttl/22.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
       // Add more image objects here
     ],
   },
   Dubai_International_City_Center: {
     backgroundImage: `${cdnPath}/mag/difc/hero/1.jpg`,
-    neighbourhood: "Dubai International Financial Center (DIFC)",
-    WelcomeDesc: `Middle East’s leading financial hub is a district where business meets art and culinary excellence. As a special economic zone DIFC spans over 110 ha (272 acres) and has its own independent internationally regulated judicial and regulatory system and is home to hundreds of financial institutions, wealth funds, REIT’s and investors.`,
+    neighbourhood: "DIFC",
+    WelcomeDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Middle East’s leading financial hub is a district where business meets
+          art and culinary excellence.
+        </p>
+        <p>
+          As a special economic zone, DIFC spans over 110 ha (272 acres) and has
+          its own independent internationally regulated judicial and regulatory
+          system. It is home to hundreds of financial institutions, wealth
+          funds, REITs, and investors.
+        </p>
+      </div>
+    ),
     expectWhatDesc:
       "A contemporary, futuristic designed financial district with an excellent infrastructure.",
     marketDesc:
       "High rise high-end office and residential buildings with spectacular architecture and stunning views.",
     loveThingsDesc:
       "An unparalleled destination for business, arts and fine dining.",
-    map: `${cdnPath}/assets/businessBayMap.png"`,
+    map: `${cdnPath}/assets/difcMap.jpg`,
     neighbours: {
       north: "Sheikh Zayed Road",
       west: "Al Mustaqbal Street",
@@ -730,269 +1280,464 @@ export const neighbourhoodData = {
       east: "2nd Za'abeel Road",
     },
     dxbairport: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "18.7 km",
+      car: "15 min.",
+      metro: "46 min.",
+      walking: "3 hr 51 min.",
     },
     dwcairport: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
+      distance: "47.7 km",
+      car: "35 min.",
+      metro: "1 hr 53 min.",
       walking: null,
     },
     publicbeach: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "10.9 km",
+      car: "16 min.",
+      metro: "41 min.",
+      walking: "1 hr 58 min.",
     },
     dubaimall: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "1.8 km",
+      car: "6 min.",
+      metro: "12 min.",
+      walking: "12 min.",
     },
     expo2020: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: null,
+      distance: "32.2 km",
+      car: "26 min.",
+      metro: "1 hr 24 min.",
+      walking: "7 hr 32 min.",
     },
     dubaimarina: {
-      distance: 18.7,
-      car: 15,
-      metro: 113,
-      walking: 233,
+      distance: "20.1 km",
+      car: "18 min.",
+      metro: "55 min.",
+      walking: "4 hr 26 min.",
     },
-    aroundTheBlockDesc: `As one of the world’s top financial centres, DIFC is the leading financial hub in the Middle East, Africa and South Asia (MEASA) region. More than 1,000 companies are registered in the DIFC Free zone with more than 30% are so called Fintech companies. The district is governed by a common-law framework distinct from the United Arab Emirates (UAE) legal system, with laws and regulations issued in English. DIFC offers clients a 50-year guarantee of zero taxes on corporate income and profits, complemented by the UAE's network of double taxation treaties.`,
+    aroundTheBlockDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          As one of the world’s top financial centers, DIFC is the leading
+          financial hub in the Middle East, Africa, and South Asia (MEASA)
+          region. More than 1,000 companies are registered in the DIFC Free
+          Zone, with more than 30% being so-called Fintech companies.
+        </p>
+        <p>
+          The district is governed by a common-law framework distinct from the
+          United Arab Emirates (UAE) legal system, with laws and regulations
+          issued in English. DIFC offers clients a 50-year guarantee of zero
+          taxes on corporate income and profits, complemented by the UAE's
+          network of double taxation treaties.
+        </p>
+      </div>
+    ),
     aroundTheBlockImages: [
       {
-        imageUrl: `${cdnPath}/mag/difc/atb/1.jpg`,
+        imageUrl: `${cdnPath}/mag/difc/atb/8.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/atb/2.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/atb/3.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/atb/5.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
+        grid: 1,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/difc/atb/6.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/atb/1.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/difc/atb/7.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 1,
+        text: "",
       },
       {
-        imageUrl: `${cdnPath}/mag/difc/atb/8.jpg`,
+        imageUrl: `${cdnPath}/mag/difc/atb/10.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: (
+          <div className="specificNeighbourPara">
+            <p>
+              The buildings are connected through the Gate Avenue, which allows
+              residents to walk year-round either inside or on the outdoor
+              promenade from the residential towers to their offices in the Gate
+              District. Gate Avenue hosts more than 300 shops and dining venues.
+            </p>
+          </div>
+        ),
       },
       {
         imageUrl: `${cdnPath}/mag/difc/atb/9.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
- 
+      {
+        imageUrl: `${cdnPath}/mag/difc/atb/2.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/atb/5.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/atb/3.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
     ],
-    whatToExpectDesc: `Iconic architecture and the mix between high end residential and ultra-modern office buildings paired with excellent infrastructure, perfect accessibility, connectivity, and the central location within Dubai make DIFC to one of the most sought-after areas across Dubai. An underground road called "the tunnel" is built for all kind of delivery or waste disposal trucks. It connects most buildings and make sure, commercial traffic is reduced to an absolute minimum.`,
-
+    whatToExpectDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Iconic architecture and the mix between high-end residential and
+          ultra-modern office buildings, paired with excellent infrastructure,
+          perfect accessibility, connectivity, and the central location within
+          Dubai, make DIFC one of the most sought-after areas across Dubai.
+        </p>
+        <p>
+          An underground road called "the tunnel" is built for all kinds of
+          delivery or waste disposal trucks. It connects most buildings and
+          ensures that commercial traffic is reduced to an absolute minimum.
+        </p>
+      </div>
+    ),
     whatToExpectImages: [
+      {
+        imageUrl: `${cdnPath}/mag/difc/wte/6.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 1,
+        text: "",
+      },
       {
         imageUrl: `${cdnPath}/mag/difc/wte/1.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/wte/2.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/wte/3.jpg`,
-        buildingName: "Image 1",
-        buildingRefNumber: "REF001",
+        grid: 2,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/difc/wte/4.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/difc/wte/5.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: `${cdnPath}/mag/difc/wte/6.jpg`,
+        imageUrl: `${cdnPath}/mag/difc/wte/3.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/wte/2.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/difc/wte/7.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
-      }
-      // Add more image objects here
+        grid: 1,
+        text: "",
+      },
     ],
-    theMarketDesc: `Occupancy levels in DIFC are always lower than in other areas. You can find everything from studios to luxury penthouse suites. Prices start around 60k for a studio and climb to 450k for a 5-bed penthouse, but you can find sometimes also more expensive large penthouses for above 600k. Awe-inspiring office towers with their state-of-the- art urban architecture and technology and multiple sophisticated 5-star hotels complete this amazingly unique district.`,
+    theMarketDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          Occupancy levels in DIFC are always lower than in other areas. You can
+          find everything from studios to luxury penthouse suites. Prices start
+          around 60k for a studio and climb to 450k for a 5-bed penthouse, but
+          you can sometimes also find more expensive large penthouses for above
+          600k.
+        </p>
+        <p>
+          Awe-inspiring office towers with their state-of-the-art urban
+          architecture and technology, along with multiple sophisticated 5-star
+          hotels, complete this amazingly unique district.
+        </p>
+      </div>
+    ),
     theMarketImages: [
+      {
+        imageUrl: `${cdnPath}/mag/difc/tm/4.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 1,
+        text: "",
+      },
       {
         imageUrl: `${cdnPath}/mag/difc/tm/1.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/difc/tm/2.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/difc/tm/3.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/tm/4.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/difc/tm/5.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/tm/6.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/tm/7.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/difc/tm/8.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 2,
+        text: "",
       },
-
-      // Add more image objects here
-    ],
-
-    thingsToLoveDesc: `In DIFC you can find the highest density of Michelin stared chefs in Dubai. A few of these restaurants rank among the top 50 best restaurants in the world.`,
-    thingsToLoveImages: [
       {
-        imageUrl: `${cdnPath}/mag/difc/ttl/1.jpg`,
+        imageUrl: `${cdnPath}/mag/difc/tm/6.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/tm/9.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/tm/7.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
+    ],
+    thingsToLoveDesc: (
+      <div className="specificNeighbourPara">
+        <p>
+          In DIFC, you can find the highest density of Michelin-starred chefs in
+          Dubai. A few of these restaurants rank among the top 50 best
+          restaurants in the world.
+        </p>
+      </div>
+    ),
+    thingsToLoveImages: [
+      {
+        imageUrl: `${cdnPath}/mag/difc/ttl/11.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 1,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/ttl/12.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 2,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/ttl/9.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 2,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/ttl/13.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/ttl/14.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/ttl/4.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/ttl/5.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 2,
+        text: (
+          <div className="specificNeighbourPara">
+            <p>
+              Beautiful pieces of art can be found throughout the whole district
+              and complement the phenomenal architecture and landscaping. Twice
+              a year, the art night event takes place in the Gate Village, where
+              some of the many acclaimed art galleries in the district use the
+              event to launch new exhibits.
+            </p>
+            <p>
+              Thousands of attendees come to enjoy the eclectic and lively mix
+              of music performances, art shows, and delicious food in the
+              pedestrian-only Gate Village district.
+            </p>
+          </div>
+        ),
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/ttl/7.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 2,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/ttl/18.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/ttl/19.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
+      },
+      {
+        imageUrl: `${cdnPath}/mag/difc/ttl/6.jpg`,
+        buildingName: "Image 2",
+        buildingRefNumber: "REF002",
+        grid: 3,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/difc/ttl/2.jpg`,
         buildingName: "Image 2",
         buildingRefNumber: "REF002",
+        grid: 1,
+        text: (
+          <div className="specificNeighbourPara">
+            <p>
+              A very special place is the sunken garden in the Ritz-Carlton
+              Hotel, where due to its specific location you can enjoy sitting
+              comfortably outdoors without sweating even in the hottest summer
+              nights.
+            </p>
+          </div>
+        ),
       },
       {
         imageUrl: `${cdnPath}/mag/difc/ttl/3.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/ttl/4.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/ttl/5.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/ttl/6.jpg`,
-        buildingName: "Image 1",
-        buildingRefNumber: "REF001",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/ttl/7.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/ttl/8.jpg`,
-        buildingName: "Image 1",
-        buildingRefNumber: "REF001",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/ttl/9.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
+        grid: 3,
+        text: (
+          <div className="specificNeighbourPara">
+            <p>DIFC is truly a place where you can work, live, and play.</p>
+          </div>
+        ),
       },
       {
         imageUrl: `${cdnPath}/mag/difc/ttl/10.jpg`,
         buildingName: "Image 1",
         buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: `${cdnPath}/mag/difc/ttl/11.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
+        imageUrl: `${cdnPath}/mag/difc/ttl/8.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: `${cdnPath}/mag/difc/ttl/12.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/ttl/13.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/ttl/14.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/ttl/15.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
-      },
-      {
-        imageUrl: `${cdnPath}/mag/difc/ttl/16.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
+        imageUrl: `${cdnPath}/mag/difc/ttl/1.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 1,
+        text: "",
       },
       {
         imageUrl: `${cdnPath}/mag/difc/ttl/17.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: (
+          <div className="specificNeighbourPara">
+            <p>
+              Often you can see the peacocks of DIFC strolling around, looking
+              for tourists to capture them for their social media.
+            </p>
+          </div>
+        ),
       },
       {
-        imageUrl: `${cdnPath}/mag/difc/ttl/18.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
+        imageUrl: `${cdnPath}/mag/difc/ttl/16.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
       {
-        imageUrl: `${cdnPath}/mag/difc/ttl/19.jpg`,
-        buildingName: "Image 2",
-        buildingRefNumber: "REF002",
+        imageUrl: `${cdnPath}/mag/difc/ttl/15.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 3,
+        text: "",
       },
-
+      {
+        imageUrl: `${cdnPath}/mag/difc/ttl/20.jpg`,
+        buildingName: "Image 1",
+        buildingRefNumber: "REF001",
+        grid: 1,
+        text: "",
+      },
       // Add more image objects here
     ],
   },
@@ -1437,6 +2182,8 @@ export const buildingClassificationData = {
         cardHeadingType: "GothamBlack25",
         cardBodyType: "AlwynNewRoundedRegular20",
         cardClass: "buildingClassCardWhite",
+        justifyContent: "center",
+        alignItems: "center",
         cardContentArray: [
           {
             cardHeading: "Class A",
@@ -1521,10 +2268,12 @@ export const buildingClassificationData = {
         headingContent: "Scoring",
         headingTypoVariant: "GothamBlack25",
       },
+
       {
-        type: "paragaraph",
-        paragraphContent:
+        type: "paragraph",
+        paragraphContent: [
           "The maximum score given to building is 1300 while the minimum is 210.",
+        ],
       },
       {
         type: "tableContentArray",
@@ -1558,6 +2307,9 @@ export const buildingClassificationData = {
   sectionFour: {
     sectionHeading: "Example",
     bodyContent: [
+      // {
+      //   cardsNotCenteredAndStretch:true
+      // },
       {
         type: "paragraph",
         paragraphContent: [
@@ -1573,6 +2325,8 @@ export const buildingClassificationData = {
         tableHeadingType: "AlwynNewRoundedRegular20Bold",
         tableClass: "buildingClassificationWhiteExampleTable",
         tableRowType: "AlwynNewRoundedRegular20",
+        justifyContent: "flex-start",
+        alignItems: "center",
         tableContentArray: [
           [
             {

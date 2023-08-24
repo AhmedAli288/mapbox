@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 import ListingCardIcon from "../../../../Assets/SVG/ListingCardIcons/ListingCardIcons";
 import CustomButton from "../../../../Components/Button/CustomButton";
@@ -29,6 +29,7 @@ function TopHeaderButtons({ page, property }) {
 
   const [likedShape, setLikedShape] = useState(false);
 
+  const isMediumScreen =useMediaQuery(isMediumScreens)
   const refId =
     property?.listingReferenceId ||
     property?.referenceNumber ||
@@ -40,6 +41,7 @@ function TopHeaderButtons({ page, property }) {
     //on run, determine and set the like state based on if the property in the hashtable exists and is true
     if (isEqual(page, "listingDetails")) {
       //check if listingId exists in hash table
+
       if (listingHash[refId]?.liked) {
         setLikedShape(true);
       }
@@ -51,7 +53,7 @@ function TopHeaderButtons({ page, property }) {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [property]);
 
   const handleLike = () => {
     if (!userObj) {
@@ -226,16 +228,17 @@ function TopHeaderButtons({ page, property }) {
     <Box className="topButtonsWrapperListingHeader paddingPageWidth">
       <Grid
         container
-        justifyContent="space-between"
+        justifyContent={isMediumScreen?'space-evenly':"space-between"}
         alignItems="center"
         spacing={2}
       >
-        <Grid item xs={12} md={6} lg={3} xl={2}>
-          <Link to="/" onClick={() => window.history.back()}>
+        <Grid item xs={12} sm={3}  md={3} lg={3} xl={1.7}>
+          <Link to="/" onClick={() => window.history.back()} className="noTextDecoration">
             <CustomButton
+              customClassName="customClassNameTopHeaderButtons"
               text="Back to search results"
               dark={false}
-              size={isMediumScreens ? "16px" : "12px"}
+              size={isMediumScreen ? "16px" : "12px"}
               typographyVariant="DubaiRegular14"
               leftIcon={<ListingCardIcon shape="redo" shapeColor="black" />}
               variant="outlined"
@@ -243,11 +246,18 @@ function TopHeaderButtons({ page, property }) {
           </Link>
         </Grid>
 
-        <Grid item xs={12} md={6} lg={4} xl={3}>
-          <Grid spacing={1} container>
+        <Grid item xs={12} sm={3}  md={4} lg={4} xl={2.7}>
+          <Grid
+            spacing={1}
+            container
+            direction="row"
+            justifyContent="flex-end"
+            alignItems="center"
+          >
             {isEqual(page, "listingDetails") ? (
-              <Grid item xs={6} md={6} lg={6}>
+              <Grid item xs={6} md={6} lg={6} xl={5.4}>
                 <CustomButton
+                  customClassName="customClassNameTopHeaderButtons"
                   text="Book a Viewing"
                   dark={false}
                   size="small"
@@ -274,6 +284,7 @@ function TopHeaderButtons({ page, property }) {
             {isEqual(page, "listingDetails") ? (
               <Grid item xs={6} md={6} lg={6} xl={5}>
                 <CustomButton
+                  customClassName="customClassNameTopHeaderButtons"
                   text="Make an Offer"
                   dark={false}
                   size="small"
@@ -295,10 +306,17 @@ function TopHeaderButtons({ page, property }) {
             )}
           </Grid>
         </Grid>
-        <Grid item xs={12} md={12} lg={5}>
-          <Grid spacing={1} container>
-            <Grid item xs>
+        <Grid item xs={12} md={5} lg={3}>
+          <Grid
+            spacing={1}
+            container
+            direction="row"
+            justifyContent="flex-end"
+            alignItems="center"
+          >
+            <Grid item xs={4} md={3}>
               <CustomButton
+                customClassName="customClassNameTopHeaderButtons"
                 text="Share"
                 dark={false}
                 size="small"
@@ -309,9 +327,10 @@ function TopHeaderButtons({ page, property }) {
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs>
+            <Grid item xs={4} md={4.1}>
               <CustomButton
-                text="Save "
+                customClassName="customClassNameTopHeaderButtons"
+                text="Save Search"
                 dark={false}
                 onClick={handleLike}
                 size="small"
@@ -325,8 +344,9 @@ function TopHeaderButtons({ page, property }) {
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs>
+            <Grid item xs={4} md={3}>
               <CustomButton
+                customClassName="customClassNameTopHeaderButtons"
                 text="More"
                 dark={false}
                 size="small"

@@ -2,6 +2,7 @@ import React from "react";
 import { Grid } from "@mui/material";
 import AmenitiesLists from "../../Pages/ListingDetailPage/ListingAmenities/AmenitiesLists/AmenitiesLists";
 import AmenitiesDescription from "../../Pages/ListingDetailPage/ListingAmenities/AmenitiesDescription/AmenitiesDescription";
+import { loremIpsum } from "../../Constants/ConstantValues";
 
 function ListingAndBuildingFacts({
   leftData,
@@ -13,6 +14,7 @@ function ListingAndBuildingFacts({
   property,
   reactComponent,
 }) {
+
   return (
     <>
       <Grid
@@ -20,14 +22,21 @@ function ListingAndBuildingFacts({
         flexDirection={"row"}
         className=" amenitiesParentContainer "
         mt={2}
-        justifyContent={"space-between"}
-        pt={5}
-        pb={4}
+        mb={2}
+        justifyContent={"center"}
+        alignContent={'center'}
+     
+        spacing={8}
+        id="listingAmenitiesSection"
       >
-        <Grid item xs={12} sm={5}>
-          {text ? <AmenitiesDescription text={text} /> : null}
+        <Grid item xs={12} sm={5} className=" amenitiesParentContainerItem">
+          {text ? (
+            <AmenitiesDescription text={text} />
+          ) : (
+            <AmenitiesDescription text={loremIpsum} />
+          )}
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={6} className=" amenitiesParentContainerItem">
           <AmenitiesLists
             leftData={leftData}
             rightData={rightData}

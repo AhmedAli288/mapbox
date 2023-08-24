@@ -19,7 +19,7 @@ import {
   getBuildingDetails,
 } from "../../network/apiServices";
 import AppContext from "../../context/AppContext";
-import LoadingSkeleton from "../../Components/LoadingSkeleton/LoadingSkeleton";
+import TimerLoadingSkeleton from "../../Components/LoadingSkeleton/TimerLoadingSkeleton";
 import LandingPageLinksArea from "../LandingPage/LandingPageLinksArea/LandingPageLinksArea";
 import LandingPageSubscribeSection from "../LandingPage/LandingPageSubscribeSection/LandingPageSubscribeSection";
 import { isEqual } from "lodash";
@@ -28,7 +28,7 @@ import { errorToast } from "../../utils/useToast";
 function BuildingDetailPage() {
   const [buildingAgents, setBuildingAgents] = useState([]);
   const [buildingData, setBuildingData] = useState({});
-  const { selectedCountry, setBuildingReferenceNoContext } =
+  const { selectedCountry, setBuildingReferenceNoContext, setBuildingObjectContext } =
     useContext(AppContext);
 
   const { id } = useParams();
@@ -46,18 +46,19 @@ function BuildingDetailPage() {
         });
 
         setBuildingData(building.data);
+        setBuildingObjectContext(building.data)
 
         //get building's listings
         const listingsArray = await getListingsByBuilding({
           countryName: selectedCountry,
           buildingRefNumber: id,
         });
-
+// console.log('listingsArray',listingsArray)
         if (!isEqual(listingsArray.data.status, "SUCCESS")) {
           setBuildingAgents([]);
-          errorToast(
-            `Oops! Something went wrong: ${listingsArray.data.message}`
-          );
+          // errorToast(
+          //   `Oops! Something went wrong: ${listingsArray.data.message}`
+          // );
         } else {
           //get owners for all buildings listings
           const emailList = listingsArray.data.listings
@@ -71,7 +72,7 @@ function BuildingDetailPage() {
           setBuildingAgents(buildingAgentsDetails.data.agentDetails);
         }
       } catch (error) {
-        errorToast(`Building and agent details: ${error}`);
+        errorToast(`Building and or agent details: ${error}`);
       }
     }
 
@@ -82,10 +83,10 @@ function BuildingDetailPage() {
 
   return Object.keys(buildingData).length > 0 ? (
     <Box className="listingDetailWrapper">
-      <ListingDetailPageHeader
+      {/* <ListingDetailPageHeader
         buildingObject={buildingData}
         page={"buildingDetails"}
-      />
+      /> */}
       <Box className="buildingDetailBodyWrapper">
         <BuildingOtherInfo buildingObject={buildingData} />
         <BuildingFacts buildingObject={buildingData} />
@@ -104,7 +105,7 @@ function BuildingDetailPage() {
         {/* <RatingsReviewsSection generalData={ratingsReviewsData} /> */}
         <SimilarBuildingsSection buildingObject={buildingData} />
         {buildingAgents.length > 0 ? (
-          <OtherAgents title={"Building Expert"} agents={buildingAgents} />
+          <OtherAgents title={"Get in touch with a Building Expert"} agents={buildingAgents} />
         ) : null}
         {/* <BuildingExPloreNeighborhood buildingObject={buildingData} /> */}
         <LandingPageLinksArea />
@@ -112,7 +113,7 @@ function BuildingDetailPage() {
       </Box>
     </Box>
   ) : (
-    <LoadingSkeleton />
+    <TimerLoadingSkeleton />
   );
 }
 

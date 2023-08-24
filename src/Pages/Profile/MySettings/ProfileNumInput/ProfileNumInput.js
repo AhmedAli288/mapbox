@@ -159,7 +159,7 @@ const ProfileNumInput = ({
             break;
         }
       } catch (error) {
-        console.error("Error occurred during SMS OTP validation:", error);
+        // console.error("Error occurred during SMS OTP validation:", error);
       }
     }
 
@@ -219,6 +219,7 @@ const ProfileNumInput = ({
             setCallingCode={setCallingCode}
             callingCode={callingCode}
             setValidMobileNumber={setValidMobileNumber}
+            validMobileNumber={validMobileNumber}
             minWidth={120}
             height={40}
             customCLass="profileCountryCode"

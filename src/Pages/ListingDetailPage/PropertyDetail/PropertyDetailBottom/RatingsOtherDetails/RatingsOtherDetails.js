@@ -10,6 +10,8 @@ import {
   formatNumberWithCommasAndDecimals,
   formatNumberWithCommasAndWithoutDecimals,
 } from "../../../../../utils/utility";
+import { notAvailable } from "../../../../../Constants/ConstantValues";
+import isEqual from 'lodash/isEqual';
 
 const RatingsOtherDetails = ({ listingId, property }) => {
   const { toCurrency, selectedCurrency, conversionRates } =
@@ -67,12 +69,12 @@ const RatingsOtherDetails = ({ listingId, property }) => {
     },
     {
       label: "Property Type",
-      value: property?.propertyType,
+      value: property?.propertyType && !isEqual(property.propertyType,'')?property.propertyType: notAvailable,
       description: null,
     },
     {
       label: "Digital Currency accepted",
-      value: property?.digitalCurrencyAccepted,
+      value: property?.digitalCurrencyAccepted && !isEqual( property.digitalCurrencyAccepted, '')? property.digitalCurrencyAccepted:notAvailable,
       description: null,
     },
     {
@@ -107,15 +109,16 @@ const RatingsOtherDetails = ({ listingId, property }) => {
       },
       {
         label: "Rental Deposit Percentage",
-        value: property?.rentalDepositPercentage,
+        value: property?.rentalDepositPercentage && !isEqual(property.rentalDepositPercentage,'')?property?.rentalDepositPercentage:notAvailable ,
         description: null,
       }
     );
   }
+
   return (
     <>
       <div className="ratingsOtherSpacer"></div>
-      <RatingsAAAndStar listingId={listingId} property={property} />
+      <RatingsAAAndStar listingId={listingId} property={property} customStyles='customStylesTagWithInfo' />
       <BedBathArea
         beds={property?.beds}
         baths={property?.baths}

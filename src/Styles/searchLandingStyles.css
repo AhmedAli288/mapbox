@@ -1,5 +1,6 @@
 .searchLandingMainContainer.MuiGrid-root {
   margin-left: -4px;
+  width: 100%;
 }
 
 .state-select {
@@ -137,7 +138,7 @@ li.menu-item {
   text-align: center;
   font-size: 16px;
   font-weight: 400;
-  color: #000;
+  color: #63625d;
 }
 
 .list-items .item:hover .item-text {
@@ -160,6 +161,7 @@ li.menu-item {
   background-color: #fff;
   display: none;
   z-index: 3;
+  width: calc(100% + 3rem);
 }
 
 .select-btn.open ~ .nestedListItems {
@@ -196,10 +198,11 @@ li.menu-item {
 
 .numInpDDField {
   border-radius: 4px;
-  padding: 4px;
+  padding: 4px 6px 3px 6px;
   max-width: 100%;
   width: 100%;
   box-sizing: border-box;
+  border: 0.3px solid #000;
 }
 
 .numInpDDUl {
@@ -215,6 +218,12 @@ li.menu-item {
   width: 100%;
   min-width: 100px;
   box-shadow: 0 0 5px #63625d;
+}
+
+.numInpDDContainer input::placeholder {
+  font-family: "AlwynNewRounded-Regular";
+  color: #000;
+  font-weight: 600;
 }
 
 .numInpDDUl li {
@@ -262,11 +271,6 @@ li.menu-item {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #63625d;
-}
-
-.searchLandingBtn.MuiButton-root {
-  height: 1.85rem;
-  justify-content: space-between;
 }
 
 .textCenter {
@@ -504,6 +508,10 @@ li.menu-item {
   margin-bottom: 0px;
 }
 
+.searchLandingCardsGrid.MuiGrid-root {
+  overflow: hidden;
+}
+
 .searchLandingCardsGrid.MuiGrid-root.MuiGrid-item:first-child,
 .searchLandingCardsGrid.MuiGrid-root.MuiGrid-item:nth-child(2) {
   margin-top: 0px;
@@ -516,6 +524,10 @@ li.menu-item {
 
 .searchLandingSortCont {
   position: relative;
+}
+
+.searchLandingSortCont svg {
+  padding-left: 10px;
 }
 
 .searchLandingSortDiv {
@@ -536,6 +548,14 @@ li.menu-item {
   background-color: #000;
   color: #fff;
 }
+.MuiGrid-item .simpleSelectCheckMark {
+  text-align: center;
+}
+
+.simpleSelectMenuItemCont {
+  display: flex;
+  align-items: center;
+}
 
 .scrollButton {
   background: none;
@@ -545,6 +565,54 @@ li.menu-item {
   padding: 0;
   margin: 0;
   color: #000;
+}
+
+.MuiButton-root.searchLandingBtn.customButtonDark {
+  height: 1.85rem;
+}
+
+.MuiButton-root.searchLandingBtn.customButtonLight {
+  height: 1.85rem;
+}
+
+.MuiButton-root.moreSearchLandingBtn.customButtonDark {
+  height: 1.85rem;
+}
+
+.MuiButton-root.moreSearchLandingBtn.customButtonLight {
+  height: 1.85rem;
+}
+
+.MuiButton-root.searchLandingBtn {
+  justify-content: space-between;
+  padding: 5px;
+  border: 0.3px solid #000;
+}
+
+.searchLandingBtn.MuiButton-root :hover svg {
+  fill: #000;
+}
+
+.searchLandingBtn .MuiTypography-root {
+  padding: 8px 0px;
+}
+
+.moreSearchLandingBtn.MuiButton-root {
+  justify-content: space-between;
+  padding: 5px;
+  border: 0.3px solid #000;
+}
+
+.moreSearchLandingBtn.MuiButton-root svg {
+  stroke: #000;
+}
+
+.moreSearchLandingBtn.MuiButton-root:hover svg {
+  stroke: #fff;
+}
+
+.moreSearchLandingBtn .MuiTypography-root {
+  padding: 8px 0px;
 }
 
 @media (min-width: 600px) and (max-width: 959px) {
@@ -594,5 +662,9 @@ li.menu-item {
 
   .checkbox > input:checked + span::before {
     left: 0.4rem;
+  }
+
+  .nestedListItems {
+    width: calc(100% + 9rem);
   }
 }

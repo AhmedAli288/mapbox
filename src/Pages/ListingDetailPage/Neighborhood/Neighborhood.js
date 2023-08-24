@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import {
   desirableNeighborhoods,
   comingSoonURL,
+  loremIpsum,
 } from "../../../Constants/ConstantValues";
 import { cdnPath } from "../../../Constants/StaticPagesConstants";
 import FindAreaCard from "../../LandingPage/LandingPageFindArea/FindAreaCard/FindAreaCard";
@@ -65,14 +66,17 @@ function Neighborhood({ property, width = 544, height = 273 }) {
               </Typography>
               <Box className="neighborhoodCommunityWrapper">
                 <Typography variant="DubaiRegular20Bold">
-                  {property.subAreaSubCommunity}
+                  { property.area || property.subAreaSubCommunity}
                 </Typography>
               </Box>
               <Box className="neighborhoodCommunityWrapper">
                 <Typography variant="DubaiRegular18">
-                  {property.neighborhoodDescription
-                    ? property.neighborhoodDescription.slice(0, 100)
-                    : null}
+                  {_.isEqual(property.area,'Jumeirah Village Circle' )?'Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers.':
+                  property.neighborhoodDescription
+                  ? property.neighborhoodDescription.slice(0, 100)
+                  : loremIpsum
+                  }
+                
                 </Typography>
               </Box>
               <Box className="neighborhoodButtonWrapper">
@@ -89,7 +93,7 @@ function Neighborhood({ property, width = 544, height = 273 }) {
                       }
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6} md={12} lg={5}>
+                  <Grid item xs={12} sm={6} md={12} lg={4}>
                     <CustomButton
                       dark={false}
                       text={`All Neighborhoods`}

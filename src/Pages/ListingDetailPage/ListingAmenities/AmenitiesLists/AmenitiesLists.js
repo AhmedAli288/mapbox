@@ -42,7 +42,7 @@ const AmenitiesLists = ({
             {visibleLeftData.map((item, id) => {
               return (
                 <React.Fragment key={id}>
-                  <Grid container display="flex" flexDirection="row">
+                  <Grid container my={0.3} >
                     {_.isArray(item) ? (
                       <Grid
                         item
@@ -88,7 +88,8 @@ const AmenitiesLists = ({
         ) :
          <>
           <Grid item xs={12} sm={5.5} mr={4} >
-          {reactComponentLeft()}
+            
+          {visibleLeftData.length>0?reactComponentLeft():null}
             {visibleLeftData.map((item, id) => {
               return (
                 <Stack key={id} direction={"column"} spacing={0.5} mt={0.5}>
@@ -105,7 +106,7 @@ const AmenitiesLists = ({
             )}
           </Grid>
           <Grid item xs={12} sm={5.5}>
-              {reactComponentRight()}
+              {visibleRightData.length>0?reactComponentRight():null}
             {visibleRightData.map((item, id) => {
               return (
                 <Stack key={id} direction={"column"} spacing={0.5} mt={0.5}>

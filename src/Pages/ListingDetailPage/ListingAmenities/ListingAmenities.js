@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Typography } from "@mui/material";
 import ListingAndBuildingFacts from "../../../Components/ListingAndBuildingFacts/ListingAndBuildingFacts";
+import isEqual from 'lodash/isEqual'
 
 const ListingAmenities = ({ property, buildingObject }) => {
   const [propertyAmenities, setPropertyAmenities] = useState([]);
   const [buildingAmenities, setBuildingAmenities] = useState([]);
 
-  const _ = require("lodash");
+
 
   const extractBuildingAmenitiesToArray = (buildingObject) => {
     let amenitiesArray = [];
 
     if (
       buildingObject?.buildingAc &&
-      !_.isEqual(buildingObject.buildingAc.trim(), "")
+      !isEqual(buildingObject.buildingAc.trim(), "")
     ) {
       amenitiesArray.push(buildingObject.buildingAc);
     }
@@ -24,7 +25,7 @@ const ListingAmenities = ({ property, buildingObject }) => {
     ) {
       amenitiesArray.push(
         ...buildingObject.buildingAmenities.filter(
-          (item) => !_.isEqual(item.trim(), "")
+          (item) => !isEqual(item.trim(), "")
         )
       );
     }
@@ -35,7 +36,7 @@ const ListingAmenities = ({ property, buildingObject }) => {
     ) {
       amenitiesArray.push(
         ...buildingObject.buildingShopsCo.filter(
-          (item) => !_.isEqual(item.trim(), "")
+          (item) => !isEqual(item.trim(), "")
         )
       );
     }
@@ -46,7 +47,7 @@ const ListingAmenities = ({ property, buildingObject }) => {
     ) {
       amenitiesArray.push(
         ...buildingObject.buildingFacilities.filter(
-          (item) => !_.isEqual(item.trim(), "")
+          (item) => !isEqual(item.trim(), "")
         )
       );
     }
@@ -57,7 +58,7 @@ const ListingAmenities = ({ property, buildingObject }) => {
     ) {
       amenitiesArray.push(
         ...buildingObject.buildingSportsFacilities.filter(
-          (item) => !_.isEqual(item.trim(), "")
+          (item) => !isEqual(item.trim(), "")
         )
       );
     }
@@ -65,7 +66,7 @@ const ListingAmenities = ({ property, buildingObject }) => {
     if (
       buildingObject?.elevators &&
       !isNaN(buildingObject.elevators) &&
-      !_.isEqual(buildingObject.elevators.trim(), "0")
+      !isEqual(buildingObject.elevators.trim(), "0")
     ) {
       amenitiesArray.push(`${buildingObject.elevators} Elevators`);
     }
@@ -80,7 +81,7 @@ const ListingAmenities = ({ property, buildingObject }) => {
     ) {
       amenitiesArray.push(
         ...buildingObject.serviceLevels.filter(
-          (item) => !_.isEqual(item.trim(), "")
+          (item) => !isEqual(item.trim(), "")
         )
       );
     }
@@ -99,12 +100,15 @@ const ListingAmenities = ({ property, buildingObject }) => {
 
     if (
       property?.amenities &&
-      !_.isEqual(property.amenities.trim(), ",") &&
-      !_.isEqual(property.amenities.trim(), "")
+      !isEqual(property.amenities.trim(), ",") &&
+      !isEqual(property.amenities.trim(), "")
     ) {
-      amenitiesArray = property.amenities
-        .split(/[,]/)
-        .map((amenity) => amenity.trim());
+
+      // let propertyAmenitiesArray =property.amenities..replace('[','').replace(']','').split(",")
+      // console.log('propertyAmenitiesArray',propertyAmenitiesArray)
+      amenitiesArray = property.amenities?property.amenities.replaceAll('\"','').replace('[','').replace(']','').split(",").map((amenity) => amenity.trim()): null;
+      
+        
     }
 
     if (property?.balconies === "yes") {
@@ -113,7 +117,7 @@ const ListingAmenities = ({ property, buildingObject }) => {
 
     if (
       property?.furnished &&
-      !_.isEqual(property.furnished.toLowerCase(), "no")
+      !isEqual(property.furnished.toLowerCase(), "no")
     ) {
       amenitiesArray.push(property.furnished);
     }
@@ -131,10 +135,11 @@ const ListingAmenities = ({ property, buildingObject }) => {
 
     if (
       property?.terraces &&
-      !_.isEqual(property.terraces.toLowerCase(), "no")
+      !isEqual(property.terraces.toLowerCase(), "no")
     ) {
     }
     setPropertyAmenities(amenitiesArray.filter(Boolean));
+ 
   };
 
   useEffect(() => {
@@ -166,6 +171,8 @@ const ListingAmenities = ({ property, buildingObject }) => {
       property={property}
       reactComponentLeft={reactComponentLeft}
       // buildingObject={buildingObject}
+      
+    
     />
   );
 };

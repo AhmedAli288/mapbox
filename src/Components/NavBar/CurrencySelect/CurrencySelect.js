@@ -33,7 +33,7 @@ const CurrencySelect = () => {
       })
 
       .catch((err) => {
-        console.error("Error fetching conversion rates:", err.message);
+        // console.error("Error fetching conversion rates:", err.message);
       });
   };
 

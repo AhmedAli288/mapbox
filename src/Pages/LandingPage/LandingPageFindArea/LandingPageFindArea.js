@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import _ from "lodash";
 import { Box, Grid, Container, Typography } from "@mui/material";
 import FindAreaCard from "./FindAreaCard/FindAreaCard";
@@ -10,9 +10,13 @@ import { objToBase64 } from "../../../utils/utility";
 import { useNavigate } from "react-router-dom";
 
 const LandingPageFindArea = () => {
+  const [exclusivesButtonHovered, setExclusivesButtonHovered] = useState(true);
+
   const { selectedCountry, buyOrRent } = useContext(AppContext);
   const navigate = useNavigate();
-
+  const handleMouseEvent = () => {
+    setExclusivesButtonHovered(!exclusivesButtonHovered);
+  };
   const handleViewMore = () => {
     //navigate to search landing page with
     //build object
@@ -63,6 +67,12 @@ const LandingPageFindArea = () => {
             text="View more areas"
             rightIcon={<ButtonRightArrow />}
             customClassName={"learnMoreBtnLanding"}
+            textIconSpacingClass={2}
+            onMouseEnter={handleMouseEvent}
+            onMouseLeave={handleMouseEvent}
+            dark={exclusivesButtonHovered}
+            variant="outlined"
+            
           />
         </Grid>
 

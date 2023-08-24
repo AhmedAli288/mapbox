@@ -17,7 +17,7 @@ export function HeaderLinksDivider({ menuItems, menuItemTypographyVariant }) {
         flexWrap='wrap'
       >
         {menuItems.map((menuItem, index) => (
-          <ScrollLink className="bottomHeaderLinks" key={index} to={menuItem.sectionId} smooth={true} offset={-300} duration={500}>
+          <ScrollLink className="bottomHeaderLinks" key={index} to={menuItem.sectionId} smooth={true} offset={-200} duration={500}>
             <Typography variant={menuItemTypographyVariant} key={index} text={menuItem.text}>
               {menuItem.text}
             </Typography>

@@ -232,19 +232,23 @@ function DesirableNeighborhoods() {
           )}
         </Box>
         <Box
-          className="amenitiesListViewBtn buildingGuidesAboutWrapper"
+          className="amenitiesListViewBtndesirableNeighborhood "
           onClick={handleToggle}
         >
           {!isExpanded ? (
-            <>
+            <Stack  direction="row"
+            justifyContent="center"
+            alignItems="center">
               <Typography variant="DubaiRegular18">Read more</Typography>
               <KeyboardArrowDownIcon />
-            </>
+            </Stack>
           ) : (
-            <>
+            <Stack direction="row"
+            justifyContent="center"
+            alignItems="center">
               <Typography variant="DubaiRegular18">Read less</Typography>
               <KeyboardArrowUpIcon />
-            </>
+            </Stack>
           )}
         </Box>
 

@@ -5,12 +5,9 @@ import { languageMenuItems } from "../../Constants/ConstantValues";
 import LanguageIcon from "@mui/icons-material/Language";
 import { CallingCountryCodes } from "../../Assets/SVG/Flags/CallingCountryCodes/CallingCountryCodes";
 
-
 const FlagWithLabel = ({ flagComponent, name }) => (
-
- 
   <>
-  
+ 
     <Typography variant="DubaiRegular16" className="flagRenderPadding" mr={1}>
       {" "}
       {flagComponent}
@@ -20,11 +17,21 @@ const FlagWithLabel = ({ flagComponent, name }) => (
 );
 
 export const FlagRenderValue = ({ value }) => {
-  const _=require('lodash')
-  const matchingItem = CountryFlags.find((itemFlag) => _.isEqual(itemFlag.name,value));
-  const matchingCurrency = currencies.find((currency) =>_.isEqual(currency.code === value) );
-  const isLanguage = languageMenuItems.some((language) =>_.isEqual( language.language, value));
-  const callingCountryCode = CallingCountryCodes.find((countryCode) =>_.isEqual( countryCode.phoneCode, value));
+  const _ = require("lodash");
+  const matchingItem = CountryFlags.find((itemFlag) =>
+    _.isEqual(itemFlag.name, value)
+  );
+
+  const matchingCurrency = currencies.find((currency) =>
+    _.isEqual(currency.currency, value)
+  );
+
+  const isLanguage = languageMenuItems.some((language) =>
+    _.isEqual(language.language, value)
+  );
+  const callingCountryCode = CallingCountryCodes.find((countryCode) =>
+    _.isEqual(countryCode.phoneCode, value)
+  );
 
   if (matchingItem) {
     const editedValue = [
@@ -46,15 +53,16 @@ export const FlagRenderValue = ({ value }) => {
   } else if (matchingCurrency) {
     return (
       <FlagWithLabel
-        flagComponent={matchingCurrency.flag}
-        name={matchingCurrency.name}
+        // flagComponent={matchingCurrency.flag}
+        name={`${matchingCurrency.currency} (${matchingCurrency.currencySymbol})`}
       />
     );
   } else if (isLanguage) {
     return (
       <FlagWithLabel
-        flagComponent={<LanguageIcon className="languageIcon" />}
-        name={null}
+      // not using flagComponent due to padding. Otherwise passing icon as Name.
+        // flagComponent={<LanguageIcon className="languageIcon" />}
+        name={<LanguageIcon className="languageIcon" />}
       />
     );
   } else if (callingCountryCode) {
@@ -68,4 +76,3 @@ export const FlagRenderValue = ({ value }) => {
 
   return value;
 };
-

@@ -2,6 +2,15 @@
 .navToolBar {
   justify-content: space-between;
 }
+
+.homeLink.MuiContainer-root {
+  padding-left: 10px;
+  padding-right: 0;
+}
+.navToolBar.MuiToolbar-root {
+  padding-left: 0;
+  padding-right: 0;
+}
 .alignBox {
   display: flex;
   align-items: center;
@@ -18,7 +27,7 @@
   background-color: transparent;
   color: #ffffff;
   margin: 0;
-  padding: 14px 10px;
+  padding: 14px 16px;
   display: flex;
   justify-content: space-between;
 }
@@ -49,6 +58,8 @@
   background-color: #ffffff;
   padding: 0;
   color: #000000;
+  transition: 0.1s ease-in;
+  z-index: 1300;
   /* transition-delay: 1s; */
 }
 
@@ -60,6 +71,8 @@
   background-color: #ffffff;
   padding: 0;
   color: #000000;
+  transition: 0.1s ease-in;
+  z-index: 1300;
 }
 .currencyOptionsClassNameIsMediumScreens {
   visibility: hidden;
@@ -107,7 +120,7 @@
   color: #000000 !important;
 }
 
-.elevateSelectComponent{
+.elevateSelectComponent {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.288);
 }
 /* 
@@ -157,11 +170,12 @@
 
 /* cutsom dropdown menu styles of the navbar i,e explore more and  agents*/
 
-.ul {
-  margin: 0;
-  padding: 14px 10px;
+.ulWrapper {
+  position: relative;
+  padding: 14px 16px;
   display: flex;
   justify-content: space-between;
+  margin: 0;
 }
 
 .ulChild {
@@ -170,24 +184,23 @@
   z-index: 1301;
 }
 
-.ul > .li {
-  position: relative;
+.ulWrapper > .li {
   display: flex;
   align-items: center;
   height: calc(100%);
   box-sizing: border-box;
 }
 
-.ul > .li > div {
+.ulWrapper > .li > div {
   display: flex;
   align-items: center;
 }
 
-.ul > .li .ulChild {
+.ulWrapper > .li .ulChild {
   visibility: hidden;
   position: absolute;
-  top: 169%;
-  left: -9px;
+  top: 105%;
+  left: 0;
   opacity: 0;
   transition: 0.1s ease-in;
   display: inline-block;
@@ -213,12 +226,12 @@
   color: #ffffff;
 }
 
-ul:hover {
+.ulWrapper:hover {
   background-color: #ffffff;
   color: rgb(0, 0, 0);
 }
 
-.ul:hover .ulChild {
+.ulWrapper:hover .ulChild {
   background-color: #ffffff;
   color: rgb(0, 0, 0);
   visibility: visible;
@@ -226,20 +239,23 @@ ul:hover {
   opacity: 1;
 }
 
-.ul > .li:hover .ulChild {
+.ulWrapper > .li:hover .ulChild {
   visibility: visible;
   transition-delay: 0.05s;
   opacity: 1;
 }
 
-ul:hover .divWrapper svg {
+.ulWrapper:hover .divWrapper svg {
   stroke: #000;
 }
+
+/* Delayed hiding of sub-menu on mouse out */
 
 /* Additional styles for increasing spacing */
 .divWrapper {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .divWrapper > :not(:last-child) {
@@ -267,19 +283,25 @@ ul:hover .divWrapper svg {
 
 .ListingHeaderWrapper {
   width: 100%;
-  position: sticky;
-  top: 9.5%;
-  padding: 45px 0 2px 0;
-  z-index: 1000;
-  background: #ffffff;
+  padding: 13px 0 7px 0;
 
+  background: #ffffff;
+  color: #000;
 }
-.paddingPageWidth{
-padding: 0 1%;
+.customClassNameTopHeaderButtons.MuiButton-root {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.paddingPageWidth {
+  padding: 0 1%;
 }
 .bottomHeaderLinksWrapper {
-  margin: 0.5% 0 1px 0;
+  margin: 20px 0 1px 0;
   /* min-height: 50px; */
+}
+.noTextDecoration {
+  text-decoration: none;
+  -webkit-text-decoration: none;
 }
 .bottomHeaderLinks a {
   position: relative;
@@ -310,74 +332,45 @@ padding: 0 1%;
   border-color: #000000;
   top: 20px;
 }
+.navBarOpt > .MuiToolbar-root {
+  padding-left: 2px;
+  padding-right: 5px;
+}
 
 /* screens > 10 and <= 770px */
 @media (min-width: 10px) and (max-width: 359px) {
-  .ListingHeaderWrapper {
-    top: 8%;
-  }
 }
 
 /* iphone se */
 @media (min-width: 360px) and (max-width: 410px) {
-  .ListingHeaderWrapper {
-    top: 3.5%;
-  }
 }
 
 /* screens > 3600px and <= 770px */
 @media (min-width: 411px) and (max-width: 415px) {
-  .ListingHeaderWrapper {
-    top: 2%;
-  }
 }
 
 @media (min-width: 415px) and (max-width: 537px) {
-  .ListingHeaderWrapper {
-    top: 3.2%;
-  }
 }
 @media (min-width: 538px) and (max-width: 770px) {
-  .ListingHeaderWrapper {
-    top: 7.2%;
-  }
 }
 
 /* screens > 770px and <= 915px */
 @media (min-width: 771px) and (max-width: 767px) {
-  .ListingHeaderWrapper {
-    top: 4.5%;
-  }
 }
 @media (min-width: 768px) and (max-width: 818px) {
-  .ListingHeaderWrapper {
-    top: 5.8%;
-  }
 }
 @media (min-width: 768px) and (max-width: 818px) {
-  .ListingHeaderWrapper {
-    top: 5.8%;
-  }
 }
 
 @media (min-width: 818px) and (max-width: 915px) {
-  .ListingHeaderWrapper {
-    top: 4%;
-  }
 }
 /* screens > 915px and <= 1285px */
 
 @media (min-width: 916px) and (max-width: 1285px) {
-  .ListingHeaderWrapper {
-    top: 7.5%;
-  }
 }
 
 /* screens > 1285px */
 @media (min-width: 1286px) and (max-width: 1550px) {
-  .ListingHeaderWrapper {
-    top: 7.5%;
-  }
 }
 
 @media (max-width: 1024px) {
@@ -388,7 +381,7 @@ padding: 0 1%;
     color: #000000;
   }
   .selectOptionsWrapper {
-    z-index: 1310;
+    z-index: 1100;
     color: #000000;
   }
   .selectComponentWrapper {
@@ -400,10 +393,6 @@ padding: 0 1%;
   } */
 }
 @media (min-width: 1550px) {
-  .ListingHeaderWrapper {
-    top: 5.5%;
-  }
-  /* insert styles here */
 }
 
 @media only screen and (max-width: 1132px) and (min-width: 1024px) {
@@ -421,7 +410,7 @@ padding: 0 1%;
     margin: 0px;
   }
 
-  .navBarOpt .MuiToolbar-root {
-    padding: 0px;
+  .navBarOpt > .MuiToolbar-root {
+    padding-left: 0;
   }
 }

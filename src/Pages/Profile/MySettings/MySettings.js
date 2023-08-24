@@ -8,6 +8,7 @@ import "../../../Styles/profile.css";
 import ProfileNumInput from "./ProfileNumInput/ProfileNumInput";
 import AppContext from "../../../context/AppContext";
 import { updateAccountDetails } from "../../../network/apiServices";
+import { successToast } from "../../../utils/useToast";
 
 const MySettings = () => {
   const context = useContext(AppContext);
@@ -26,7 +27,6 @@ const MySettings = () => {
     userDetails?.nationality
   );
   const [selectedDate, setSelectedDate] = useState(userDetails?.dateOfBirth);
-  const [successMessage, setSuccessMessage] = useState("");
   const [validationError, setValidationError] = useState("");
 
   const handleFirstName = (value) => {
@@ -63,7 +63,7 @@ const MySettings = () => {
           if (res.data.status === "INVALID") {
             setValidationError(res.data.message);
           } else {
-            setSuccessMessage(res.data.message);
+            successToast(res.data.message);
           }
         })
         .catch((err) => {});
@@ -125,7 +125,6 @@ const MySettings = () => {
       />
 
       {validationError && <p className="red">{validationError}</p>}
-      {successMessage && <p className="green">✓ {successMessage}</p>}
     </div>
   );
 };

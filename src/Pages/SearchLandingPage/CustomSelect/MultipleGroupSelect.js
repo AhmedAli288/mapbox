@@ -24,12 +24,20 @@ const MultipleGroupSelect = ({ data, selectedBedsBaths, handleBedsBaths }) => {
       >
         <Grid item xs={10} className="btn-text">
           <Typography component="span" variant="DubaiRegular16">
-            {selectedBedsBaths.beds.length > 0
-              ? `${selectedBedsBaths.beds.join(",")} Beds`
+            {selectedBedsBaths.beds.includes("Any")
+              ? selectedBedsBaths.beds
+                  .filter((item) => item !== "Any")
+                  .join(", ") + " Beds"
+              : selectedBedsBaths.beds.length > 0
+              ? `${selectedBedsBaths.beds.join(", ")} Beds`
               : "Beds"}{" "}
             &{" "}
-            {selectedBedsBaths.baths.length > 0
-              ? `${selectedBedsBaths.baths.join(",")} Baths`
+            {selectedBedsBaths.baths.includes("Any")
+              ? selectedBedsBaths.baths
+                  .filter((item) => item !== "Any")
+                  .join(", ") + " Baths"
+              : selectedBedsBaths.baths.length > 0
+              ? `${selectedBedsBaths.baths.join(", ")} Baths`
               : "Baths"}
           </Typography>
         </Grid>

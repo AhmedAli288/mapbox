@@ -37,6 +37,7 @@ function CreatePassword({
     false,
     false, 
   ]);
+
   const [loading, setLoading] = useState(false)
   // const navigate = useNavigate();
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -53,6 +54,9 @@ function CreatePassword({
     } else {
       setPasswordError(true);
       setPasswordValidationErrors(validation.errors);
+    }
+    if (confirmPasswordError && isEqual(event.target.value, confirmPassword)) {
+      setConfirmPasswordError(false);
     }
   };
 
@@ -82,15 +86,13 @@ function CreatePassword({
   let isStepIncremented = false;
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // handlePassword(event)
-    // handleConfirmPassword(event)
+   
 
     if (!passwordError && !confirmPasswordError) {
-      // console.log("button was clicked",currentStep, maxStep );
+    
       setLoading(true)
       const signUpResponse = await signUp(signUpObject);
-      // console.log(signUpResponse)
-      // navigate('/signin');
+     
       if (!isStepIncremented) {
         switch (signUpResponse.data.status) {
           case "SUCCESS":
@@ -103,8 +105,7 @@ function CreatePassword({
             return null;
         }
 
-        //  return <SignIn/>
-        // Perform any additional actions here, such as submitting the form
+   
       }
     }
   };

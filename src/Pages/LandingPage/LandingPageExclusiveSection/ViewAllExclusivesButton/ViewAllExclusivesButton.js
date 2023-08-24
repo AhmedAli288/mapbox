@@ -12,6 +12,7 @@ function ViewAllExclusivesButton() {
   const handleMouseEvent = () => {
     setExclusivesButtonHovered(!exclusivesButtonHovered);
   };
+  
   const handleClick = (event, value) => {
     // console.log('have ben cleked')
     // console.log(value)
@@ -31,6 +32,7 @@ function ViewAllExclusivesButton() {
         variant="outlined"
         customClassName="viewAllExclusiveButton"
         onClick={handleClick}
+        textIconSpacingClass={2}
       />
     </Box>
   );

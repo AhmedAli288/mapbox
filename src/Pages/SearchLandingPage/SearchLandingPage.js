@@ -40,6 +40,7 @@ import {
   rearrangeArray,
 } from "./utils/searchingUtils";
 import { errorToast, successToast } from "../../utils/useToast";
+import LoadingSkeleton from "../../Components/LoadingSkeleton/LoadingSkeleton";
 
 const bedsBathsData = {
   beds: ["Any", "1", "2", "3", "4", "5", "6", "7", "7+"],
@@ -95,6 +96,22 @@ const SearchLandingPage = () => {
   const [rearrangedList, setRearrangedList] = useState([]);
   const [toggleSort, setToggleSort] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState("Ascending");
+  const [isLoading, setIsLoading] = useState(true);
+  const [saveBtnHovered, setSaveBtnHovered] = useState(true);
+  const [searchBtnHovered, setSearchBtnHovered] = useState(true);
+  const [moreFilterBtnHovered, setMoreFilterBtnHovered] = useState(false);
+
+  const saveHandleMouseEvent = () => {
+    setSaveBtnHovered(!saveBtnHovered);
+  };
+
+  const searchHandleMouseEvent = () => {
+    setSearchBtnHovered(!searchBtnHovered);
+  };
+
+  const moreFilterHandleMouseEvent = () => {
+    setMoreFilterBtnHovered(!moreFilterBtnHovered);
+  };
 
   const scrollContainer = (direction) => {
     if (scrollRef.current) {
@@ -115,7 +132,6 @@ const SearchLandingPage = () => {
 
   useEffect(() => {
     const rearrangedArray = rearrangeArray(searchedListings, syncedData);
-
     setRearrangedList(rearrangedArray);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -123,11 +139,11 @@ const SearchLandingPage = () => {
 
   useEffect(() => {
     setSearchedObj(searchObject());
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [params.name]);
 
   const fetchFilteredSearchData = async () => {
+    setIsLoading(true);
     const payload = generatePayload(
       minPrice,
       maxPrice,
@@ -173,31 +189,30 @@ const SearchLandingPage = () => {
 
             setSearchedListings(formattedListings);
             setRearrangedList(formattedListings);
+            setIsLoading(false);
           } else {
             setSearchedListings(res.data.listings);
             setRearrangedList(res.data.listings);
+            setIsLoading(false);
           }
         } else if (res.data.status === "INVALID") {
           setSearchedListings([]);
           setRearrangedList([]);
+          setIsLoading(false);
         }
+        setStatesPopulated(false);
       })
       .catch((err) => {
+        setIsLoading(false);
+        setStatesPopulated(false);
         // console.log("err: ", err);
       });
   };
 
   useEffect(() => {
-    if (selectedCountry && selectedState && selectedCity) {
-      setStatesPopulated(true);
-    }
-  }, [selectedCountry, selectedState, selectedCity]);
-
-  useEffect(() => {
     if (statesPopulated) {
       fetchFilteredSearchData();
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statesPopulated]);
 
@@ -218,7 +233,8 @@ const SearchLandingPage = () => {
       setAmenities,
       setVacant,
       setCryptoAccept,
-      setInstantViewing
+      setInstantViewing,
+      setStatesPopulated
     );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -400,11 +416,13 @@ const SearchLandingPage = () => {
     setRearrangedList(lists);
   };
 
+  // handle loading and no records
+
   return (
     <>
       <Box mx={3} mt={3}>
         <Grid container spacing={1} className="searchLandingMainContainer">
-          <Grid item xs={6} sm={4} lg={1.7}>
+          <Grid item xs={6} sm={4} lg={2}>
             <SimpleSelect
               value={selectedState}
               onChange={handleState}
@@ -412,7 +430,7 @@ const SearchLandingPage = () => {
               flag
             />
           </Grid>
-          <Grid item xs={6} sm={4} lg={1.7}>
+          <Grid item xs={6} sm={4} lg={2}>
             <SimpleSelect
               value={selectedCity}
               onChange={handleCity}
@@ -420,14 +438,15 @@ const SearchLandingPage = () => {
             />
           </Grid>
           <Box className="visibleOnlyInXS" />
-          <Grid item xs={6} sm={4} lg={1.7}>
+          <Grid item xs={6} sm={4} lg={2}>
             <SimpleSelect
               value={propertyType}
               onChange={handlePropertyType}
               items={PropertyTypes}
+              isPropertyType={true}
             />
           </Grid>
-          <Grid item xs={6} sm={4} lg={1.7}>
+          <Grid item xs={6} sm={4} lg={2}>
             <MultipleGroupSelect
               data={bedsBathsData}
               handleBedsBaths={handleBedsBaths}
@@ -435,7 +454,7 @@ const SearchLandingPage = () => {
             />
           </Grid>
           <Box className="visibleOnlyInXS" />
-          <Grid item xs={6} sm={4} lg={1.7}>
+          <Grid item xs={4.3} sm={4} lg={2}>
             <NestedSelect
               selectedPeriod={selectedPeriod}
               setSelectedPeriod={setSelectedPeriod}
@@ -446,27 +465,34 @@ const SearchLandingPage = () => {
               params={params.name}
             />
           </Grid>
-          <Grid item xs={3.3} sm={2} lg={1.7}>
+          <Grid item xs={3.2} sm={1.7} md={1.8} lg={0.8}>
             <CustomButton
               onClick={fetchFilteredSearchData}
               text="Search"
-              dark={true}
+              onMouseEnter={searchHandleMouseEvent}
+              onMouseLeave={searchHandleMouseEvent}
+              dark={searchBtnHovered}
               size="small"
               customClassName="searchLandingBtn"
               typographyVariant="DubaiRegular16ForFiltersBtns"
               rightIcon={<SmallSearchIcon />}
             />
           </Grid>
-          <Grid item xs={2.7} sm={2} lg={1.7}>
+          <Grid item xs={4.5} sm={2.3} md={2.2} lg={1.2}>
             <CustomButton
               onClick={saveSearch}
-              text="Save"
-              dark={true}
+              text="Save Search"
+              onMouseEnter={saveHandleMouseEvent}
+              onMouseLeave={saveHandleMouseEvent}
+              dark={saveBtnHovered}
               size="small"
               customClassName="searchLandingBtn"
               typographyVariant="DubaiRegular16ForFiltersBtns"
               rightIcon={
-                <ListingCardIcon shape={"saveIcon"} shapeColor={"black"} />
+                <ListingCardIcon
+                  shape={"saveIcon"}
+                  shapeColor={saveBtnHovered ? "black" : "white"}
+                />
               }
             />
           </Grid>
@@ -477,10 +503,10 @@ const SearchLandingPage = () => {
           mt={1}
           className="searchLandingMainContainer "
         >
-          <Grid item xs={4} sm={4} lg={1.7} className="textCenter height100">
+          <Grid item xs={4} sm={4} lg={2} className="textCenter height100">
             <SearchForm
               customClassName="inputTagSearchLanding"
-              placeholder={"neighbourhood / buildings"}
+              placeholder={"Neighbourhood, Buildings"}
               setEnteredValuesArray={setEnteredValuesArray}
             />
           </Grid>
@@ -489,7 +515,7 @@ const SearchLandingPage = () => {
             item
             xs={8}
             sm={8}
-            lg={5.1}
+            lg={6}
             pb={1}
             className="textCenter alignCenter"
           >
@@ -543,16 +569,25 @@ const SearchLandingPage = () => {
           <Grid item xs={6} sm={3} lg={1.3} pb={1} className="textCenter ">
             <CustomButton
               text="More Filters"
-              dark={false}
+              onMouseEnter={moreFilterHandleMouseEvent}
+              onMouseLeave={moreFilterHandleMouseEvent}
+              dark={moreFilterBtnHovered}
               size="small"
-              customClassName="searchLandingBtn blackIcon"
+              customClassName="moreSearchLandingBtn "
               typographyVariant="DubaiRegular16ForFiltersBtns"
-              rightIcon={<ListingCardIcon shape={"moreIcon"} shapeColor={""} />}
+              rightIcon={<ListingCardIcon shape={"moreIcon"} />}
               variant="outlined"
               onClick={handleOpenPopup}
             />
           </Grid>
-          <Grid item xs={5} sm={3} lg={1.3} className="textCenter">
+          <Grid
+            item
+            xs={5}
+            sm={3}
+            lg={1}
+            pb={1}
+            className="textCenter alignCenter"
+          >
             <label className="checkbox">
               <input
                 type="checkbox"
@@ -574,7 +609,14 @@ const SearchLandingPage = () => {
             flexItem
             className="searchLandingDividerVertXS"
           />
-          <Grid item xs={6} sm={2.95} lg={1.25} pb={1} className="textCenter">
+          <Grid
+            item
+            xs={6}
+            sm={2.95}
+            lg={0.9}
+            pb={1}
+            className="textCenter alignCenter"
+          >
             <Typography variant="DubaiRegular16ForFilters">
               {searchedListings.length > 0 ? searchedListings.length : 0}{" "}
               Listings
@@ -586,19 +628,19 @@ const SearchLandingPage = () => {
             item
             xs={5}
             sm={2.95}
-            lg={1.25}
+            lg={0.7}
             pb={1}
             className="textCenter alignCenter searchLandingSortCont"
             onMouseEnter={toggleSortClick}
             onMouseLeave={toggleSortClick}
           >
-            <Grid item xs={8}>
+            <Grid item pl={0.6}>
               <Typography variant="DubaiRegular16ForFilters">
                 Sort by
               </Typography>
             </Grid>
 
-            <Grid item xs={4} className="arrow-dwn">
+            <Grid item className="arrow-dwn">
               <ExpandMoreSharp />
             </Grid>
             {toggleSort && (
@@ -625,54 +667,60 @@ const SearchLandingPage = () => {
         </Grid>
         <hr className="searchLandingHrTag" />
       </Box>
-      <Grid container className="mapAndListingsContainer">
-        <Grid item xs={12} sm={12} md={7} mb={1}>
-          <Box ml={3} mr={1}>
-            <ManseelMap
-              listings={searchedListings}
-              areaStartRange={6}
-              sync
-              setSyncedData={setSyncedData}
-            />
-          </Box>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={4.8}
-          mt={2}
-          className="searchListingCardContainer"
-        >
-          <Grid container>
-            {rearrangedList.length > 0 ? (
-              rearrangedList?.map((item, key) => (
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}
-                  md={6}
-                  lg={6}
-                  key={key}
-                  className="searchLandingCardsGrid"
-                >
-                  <Card
-                    item={item}
+      {isLoading ? (
+        <LoadingSkeleton />
+      ) : (
+        <Grid container className="mapAndListingsContainer">
+          <Grid item xs={12} sm={12} md={7} mb={1}>
+            <Box ml={3} mr={1}>
+              <ManseelMap
+                listings={searchedListings}
+                areaStartRange={6}
+                sync
+                setSyncedData={setSyncedData}
+              />
+            </Box>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={4.8}
+            mt={2}
+            className="searchListingCardContainer"
+          >
+            <Grid container>
+              {rearrangedList.length > 0 ? (
+                rearrangedList?.map((item, key) => (
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    md={6}
+                    lg={6}
                     key={key}
-                    width={220}
-                    height={240}
-                    cardContentAlignment="true"
-                  />
-                </Grid>
-              ))
-            ) : (
-              <Typography variant="AlwynNewRoundedRegular16" ml={2} mt={1}>
-                No records found.
-              </Typography>
-            )}
+                    className="searchLandingCardsGrid"
+                  >
+                    <Card
+                      item={item}
+                      key={key}
+                      width={220}
+                      height={240}
+                      availableGrids={3.2}
+                      cardContentAlignment="true"
+                    />
+                  </Grid>
+                ))
+              ) : (
+                <Typography variant="AlwynNewRoundedRegular16" ml={2} mt={1}>
+                  No records found.
+                </Typography>
+              )}
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
+      )}
+
       <MoreFilterPopup
         open={openPopup}
         onClose={handleClosePopup}

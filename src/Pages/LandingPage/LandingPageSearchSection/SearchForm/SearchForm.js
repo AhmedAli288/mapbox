@@ -82,7 +82,7 @@ function SearchForm() {
               `/agent-profile/${newValue.value}?agent=${queryParamValue}`
             );
           } catch (error) {
-            console.error("Error fetching agent:", error);
+            // console.error("Error fetching agent:", error);
           }
         }
         getAgentsData();

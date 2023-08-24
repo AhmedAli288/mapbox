@@ -1,20 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, Typography, Box } from "@mui/material";
 import BuildingOtherInfoCarousel from "./BuildingOtherInfoCarousel/BuildingOtherInfoCarousel";
 import BuildingOtherDetails from "./BuildingOtherDetails/BuildingOtherDetails";
 import { toCarouselArray } from "../../../utils/utility";
 import { defaultBuildingImageImages } from "../../../Constants/ConstantValues";
 
+
 function BuildingOtherInfo({ buildingObject }) {
+
+ 
   const buildingName =
     buildingObject.buildingName ||
     buildingObject.subAreaSubCommunity ||
     buildingObject.greaterArea;
   let images = toCarouselArray(buildingName, buildingObject, "buildingImages");
 
+  useEffect(() => {
+    if (buildingObject?.buildingImages) {
+      buildingObject?.buildingImages?.forEach((image) => {
+        const img = new Image();
+        img.src = image.imgPath;
+      });
+    }
+  }, [images, buildingObject]);
+
   return images ? (
     <Box
-      id="buildingDetailSection "
+      id="buildingDetailSection"
       className="buildingOtherInfo paddingPageWidth"
     >
       <Grid container direction="row" justifyContent="space-between">

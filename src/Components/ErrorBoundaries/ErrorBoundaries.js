@@ -1,40 +1,54 @@
 import React from "react";
 import CustomButton from "../Button/CustomButton";
 import { useNavigate } from "react-router-dom";
-import { Grid } from "@mui/material";
+import { Grid, Typography, Box } from "@mui/material";
+import { ButtonLeftArrow } from "../../Assets/SVG/Common/CommonSvgs";
 
 function ErrorBoundaryFallBack({ error, resetErrorBoundary }) {
   const navigate = useNavigate();
 
   const goToPageOnClick = () => {
     navigate("/");
+    navigate(0);
   };
   return (
-    <section id="not-found" role="alert">
-      <div className="circles">
-        <p>
-          Ops! <br></br>
-          
-          <small>something Went wrong</small>
-        </p>
-        <Grid container direction="row" justifyContent="center">
-          <Grid item>
-            <CustomButton onClick={goToPageOnClick} text="Go Back" />
-          </Grid>
+    <Box className="errorBoundaryWrapper">
+      <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        spacing={20}
+      >
+        <Grid item>
+          <Typography variant="GothamBlack20Bold">
+            Oops! Something went wrong
+          </Typography>
         </Grid>
-        <details
-          style={{ whiteSpace: "pre-wrap", color: "black" }}
-          className="title"
-        >
-          {error && error.toString()}
-          <br />
-          {error.message}
-        </details>
-        <span className="circle big"></span>
-        <span className="circle med"></span>
-        <span className="circle small"></span>
-      </div>
-    </section>
+        <Grid item xs={3}>
+          <CustomButton
+            onClick={goToPageOnClick}
+            text="Back to home"
+            leftIcon={<ButtonLeftArrow />}
+          />
+        </Grid>
+        <Grid item xs={3}>
+          <details
+            style={{ whiteSpace: "pre-wrap", color: "black" }}
+            className="title"
+          >
+            {error &&
+              (typeof error === "object" &&
+              error !== null &&
+              Object.keys(error).length === 0
+                ? "Empty Error Object"
+                : error.toString())}
+            <br />
+            {error && error.message}
+          </details>
+        </Grid>
+      </Grid>
+    </Box>
   );
 }
 

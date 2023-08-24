@@ -16,9 +16,8 @@ const SearchMap = ({ property }) => {
   const layerIdRef = useRef(null);
   const sourceIdRef = useRef(null);
   const originMarkerRef = useRef(null);
-  const [drivingDuration, setDrivingDuration] = useState(null);
-  const [walkingDuration, setWalkingDuration] = useState(null);
   const [tempDestination, setTempDestination] = useState(null);
+  const [destCoords, setDestCoords] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [origin, setOrigin] = useState([55.32759217693615, 25.27477288473898]);
 
@@ -36,59 +35,37 @@ const SearchMap = ({ property }) => {
   };
 
   const getDurationByProfile = (profile, origin, destination) => {
-    // Construct the API request URL
     const apiUrl = `https://api.mapbox.com/directions/v5/mapbox/${profile}/${origin[0]}%2C${origin[1]}%3B${destination[1]}%2C${destination[0]}.json?geometries=polyline&steps=true&overview=full&language=en&access_token=${mapboxgl.accessToken}`;
 
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
-        // Retrieve the duration based on the selected profile
         const duration = data.routes[0].duration;
 
         if (profile === "driving") {
-          setDrivingDuration(duration);
-        } else {
-          setWalkingDuration(duration);
+          // Search for the entry in searchResults and update driving duration
+          setSearchResults((prevSearchResults) =>
+            prevSearchResults.map((result) =>
+              result.coordinates[0] === destination[0] &&
+              result.coordinates[1] === destination[1]
+                ? { ...result, driving: duration }
+                : result
+            )
+          );
+        } else if (profile === "walking") {
+          // Search for the entry in searchResults and update walking duration
+          setSearchResults((prevSearchResults) =>
+            prevSearchResults.map((result) =>
+              result.coordinates[0] === destination[0] &&
+              result.coordinates[1] === destination[1]
+                ? { ...result, walking: duration }
+                : result
+            )
+          );
         }
       })
       .catch((error) => {});
   };
-
-  let count = 1;
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    count += 1;
-    if (tempDestination && walkingDuration && drivingDuration && count > 1) {
-      const newSearchResult = {
-        address: tempDestination,
-        walking: walkingDuration,
-        driving: drivingDuration,
-      };
-
-      setSearchResults((prevSearchResults) => {
-        const updatedSearchResults = [...prevSearchResults, newSearchResult];
-        if (updatedSearchResults.length > 3) {
-          updatedSearchResults.shift(); // Remove the first (oldest) search result
-        }
-        return updatedSearchResults;
-      });
-      setTempDestination(null);
-      setWalkingDuration(null);
-      setDrivingDuration(null);
-    }
-  }, [walkingDuration, drivingDuration]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResults((prevSearchResults) => {
-        const filteredSearchResults = prevSearchResults.filter(
-          (result) => result.walking !== null || result.driving !== null
-        );
-        return filteredSearchResults;
-      });
-    }, 5000);
-  }, [searchResults]);
 
   useEffect(() => {
     setSearchResults([]);
@@ -109,6 +86,39 @@ const SearchMap = ({ property }) => {
       setOrigin(coords);
     }
   }, [property]);
+
+  useEffect(() => {
+    if (tempDestination && destCoords) {
+      const existingEntryIndex = searchResults.findIndex(
+        (result) => result.address === tempDestination
+      );
+
+      if (existingEntryIndex === -1) {
+        const newEntry = {
+          address: tempDestination,
+          coordinates: destCoords,
+          walking: null,
+          driving: null,
+        };
+
+        const updatedSearchResults = [newEntry, ...searchResults];
+
+        if (updatedSearchResults.length > 3) {
+          updatedSearchResults.pop();
+        }
+
+        setSearchResults(updatedSearchResults);
+
+        // Call getDurationByProfile for both walking and driving
+        getDurationByProfile("walking", origin, destCoords);
+        getDurationByProfile("driving", origin, destCoords);
+        setDestCoords(null);
+        setTempDestination(null);
+      }
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tempDestination, destCoords]);
 
   useEffect(() => {
     mapRef.current = new mapboxgl.Map({
@@ -138,10 +148,8 @@ const SearchMap = ({ property }) => {
         const polylineString = route[0].geometry;
         const coordinates = polyline.decode(polylineString);
 
-        let coords = coordinates.at(-1);
+        setDestCoords(coordinates.at(-1));
 
-        getDurationByProfile("driving", origin, coords);
-        getDurationByProfile("walking", origin, coords);
         try {
           if (searchResults.length > 0) {
             if (existingLayerId && mapRef.current.getLayer(existingLayerId)) {

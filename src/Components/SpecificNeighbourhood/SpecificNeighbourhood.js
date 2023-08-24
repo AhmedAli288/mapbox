@@ -6,12 +6,12 @@ import { ButtonRightArrow } from "../../Assets/SVG/Common/CommonSvgs";
 import { neighbourhoodData } from "../../Constants/StaticPagesConstants";
 import { findArea } from "../../Constants/ConstantValues";
 import FindAreaCard from "../../Pages/LandingPage/LandingPageFindArea/FindAreaCard/FindAreaCard";
-import GalleryComponent from "../Gallery/GalleryComponent";
 import CommuteTimes from "./CommuteTimes/CommuteTimes";
 import LocationBoundaries from "./LocationBoundaries/LocationBoundaries";
 import KeyFacts from "./KeyFacts/KeyFacts";
 import AppContext from "../../context/AppContext";
 import { objToBase64, truncateText } from "../../utils/utility";
+import ManualGallery from "../Gallery/ManualGallery";
 
 const SpecificNeighbourhood = () => {
   const { setBuyOrRent, selectedCountry } = useContext(AppContext);
@@ -61,6 +61,7 @@ const SpecificNeighbourhood = () => {
       return updatedHovered;
     });
   };
+
   const handleClick = (value, buyOrRent) => {
     setBuyOrRent(buyOrRent);
     const queryParamValue = objToBase64({
@@ -71,14 +72,23 @@ const SpecificNeighbourhood = () => {
     });
     navigate(`/${buyOrRent}/search?value=${queryParamValue}`);
   };
+
+  const filteredAreaData = findArea.filter((item) => item.imgLabel !== name);
   return (
     <>
       <Box className="specificNeighbourBgContainer">
         <Box component="img" src={backgroundImage} alt="background Image" />
       </Box>
+
       <Container className="specificNeighbourFactsContainer">
         <Grid container>
-          <Grid item xs={7}>
+          <Grid
+            item
+            xs={12}
+            md={7.5}
+            order={{ xs: 3, sm: 3, md: 1 }}
+            className="specificNeighbourDescCont"
+          >
             <KeyFacts
               expectWhatDesc={expectWhatDesc}
               marketDesc={marketDesc}
@@ -93,7 +103,7 @@ const SpecificNeighbourhood = () => {
                   onMouseLeave={() => handleMouseEvent(0)}
                   dark={buttonHovered[0]}
                   variant="outlined"
-                  customClassName="viewAllExclusiveButton"
+                  customClassName="specificNeighborhoodBtn"
                   onClick={() => handleClick(neighbourhood, "buy")}
                 />
               </Grid>
@@ -105,16 +115,22 @@ const SpecificNeighbourhood = () => {
                   onMouseLeave={() => handleMouseEvent(1)}
                   dark={buttonHovered[1]}
                   variant="outlined"
-                  customClassName="viewAllExclusiveButton"
+                  customClassName="specificNeighborhoodBtn"
                   onClick={() => handleClick(neighbourhood, "rent")}
                 />
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={1} />
-          <Grid item xs={4} className="specificNeighbourWelcomeContainer">
+          <Grid item xs={1} order={{ xs: 2, sm: 2, md: 2 }} />
+          <Grid
+            item
+            xs={10}
+            md={3.5}
+            order={{ xs: 1, sm: 1, md: 3 }}
+            className="specificNeighbourWelcomeContainer"
+          >
             <Box className="specificNeighbourWelcomeNote">
-              <Typography variant="GothamBlack30" mb={2}>
+              <Typography variant="GothamBlack36" mb={2}>
                 Welcome to {neighbourhood}
               </Typography>
               <Typography variant="DubaiRegular18">{WelcomeDesc}</Typography>
@@ -145,48 +161,48 @@ const SpecificNeighbourhood = () => {
       </Container>
 
       <Box className="specificNeighbourGalleryContainer padding4up16lr">
-        <Typography variant="GothamBlack24">Around the block:</Typography>
-        <Typography variant="DubaiRegular18" mt={2}>
+        <Typography variant="GothamBlack24">Around the block</Typography>
+        <Typography variant="DubaiRegular18" my={2}>
           {aroundTheBlockDesc}
         </Typography>
-
-        <GalleryComponent images={aroundTheBlockImages} />
+        <ManualGallery images={aroundTheBlockImages} />
       </Box>
       <Box className="specificNeighbourGalleryContainer padding1up16lr">
         <Typography variant="GothamBlack24">What To Expect:</Typography>
-        <Typography variant="DubaiRegular18" mt={2}>
+        <Typography variant="DubaiRegular18" my={2}>
           {whatToExpectDesc}
         </Typography>
 
-        <GalleryComponent images={whatToExpectImages} />
+        <ManualGallery images={whatToExpectImages} />
       </Box>
       <Box className="specificNeighbourGalleryContainer padding1up16lr">
-        <Typography variant="GothamBlack24">The Market:</Typography>
-        <Typography variant="DubaiRegular18" mt={2}>
+        <Typography variant="GothamBlack24">The Market</Typography>
+        <Typography variant="DubaiRegular18" my={2}>
           {theMarketDesc}
         </Typography>
 
-        <GalleryComponent images={theMarketImages} />
+        <ManualGallery images={theMarketImages} />
       </Box>
       <Box className="specificNeighbourGalleryContainer padding1up4dn16lr">
-        <Typography variant="GothamBlack24">Things to love:</Typography>
-        <Typography variant="DubaiRegular18" mt={2}>
+        <Typography variant="GothamBlack24">Things to love</Typography>
+        <Typography variant="DubaiRegular18" my={2}>
           {thingsToLoveDesc}
         </Typography>
-        <GalleryComponent images={thingsToLoveImages} />
+        <ManualGallery images={thingsToLoveImages} />
       </Box>
       <Box className=" padding4updn16lr">
         <Typography variant="GothamBlack26">
           Other Neighborhoods To Explore
         </Typography>
         <Grid container spacing={2} mt={1}>
-          {findArea.slice(0, 3).map((item, id) => {
+          {filteredAreaData.slice(0, 3).map((item, id) => {
             return (
               <Grid item key={id} xs={12} sm={3.8} md={3.8}>
                 <FindAreaCard
                   imgLabel={item.imgLabel}
                   imgPath={item.imgPath}
                   link={item.link}
+                  toSpecificNeighbourHood={true}
                 />
               </Grid>
             );

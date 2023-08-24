@@ -20,19 +20,19 @@ const SavedProperties = () => {
   }, [savedProperties, listingHash]);
 
   return (
-    <Grid container spacing={1.5}>
+    <>
       {savedListing?.length > 0 ? (
-        savedListing?.map((item, key) => {
-          return (
+        <Grid container spacing={1.5}>
+          {savedListing?.map((item, key) => (
             <Grid item xs={12} sm={6} md={4} lg={4} key={key}>
               <Card item={item} key={key} width={768} height={500} />
             </Grid>
-          );
-        })
+          ))}
+        </Grid>
       ) : (
         <Typography mt={4}>No record found!</Typography>
       )}
-    </Grid>
+    </>
   );
 };
 

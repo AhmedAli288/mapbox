@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Typography, Grid, Stack, useMediaQuery, } from "@mui/material";
+import { Box, Typography, Grid, Stack} from "@mui/material";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
@@ -7,16 +7,17 @@ import RatingsAAAndStar from "../../../Components/RatingsAAAndStar/RatingsAAAndS
 import CustomButton from "../../../Components/Button/CustomButton";
 import { ButtonRightArrow } from "../../../Assets/SVG/Common/CommonSvgs";
 import { cdnPath } from "../../../Constants/StaticPagesConstants";
-import { isMediumScreens } from "../../../Constants/ConstantValues";
-import { extractMasterDeveloper } from "../../../utils/utility";
+import { notAvailable } from "../../../Constants/ConstantValues";
 
-function  BuildingSection({ buildingObject, width = 544, height = 473 }) {
+import { extractMasterDeveloper } from "../../../utils/utility";
+import isEqual from 'lodash/isEqual';
+
+function BuildingSection({ buildingObject, width = 544, height = 473 }) {
   const [detailItems, setDetailItems] = useState({});
-  // listingId = listingId.id;
-  // const buildingObject = getObjectById(exclusives, listingId);
-  // const { listings } = useContext(AppContext);
-    // Use useMediaQuery to determine the screen width
-    const isMediumScreen = useMediaQuery(isMediumScreens);
+
+
+  // const isMediumScreen = useMediaQuery(isMediumScreens);
+ 
   useEffect(() => {
     if (buildingObject) {
       const getPropertyTypesString = (buildingObject) => {
@@ -58,28 +59,29 @@ function  BuildingSection({ buildingObject, width = 544, height = 473 }) {
           buildingObject.buildingName || buildingObject.subAreaSubCommunity,
         Developer: developerEntry
           ? extractMasterDeveloper(developerEntry.crmAssociate)
-          : "Not Available",
+          : notAvailable,
 
-        Stories: buildingObject.stories || "Not Available",
+        Stories: buildingObject.stories || notAvailable,
         Units:
           buildingObject.residentialUnits !== ""
             ? buildingObject.residentialUnits
-            : "Not Available",
+            : notAvailable,
         "Property Use":
-          buildingObject.buildingUsage || buildingObject.PropertyType,
-        "Year Built": buildingObject.yearCompleted,
-        "Units Type": getPropertyTypesString(buildingObject),
+          buildingObject.buildingUsage?buildingObject.buildingUsage:buildingObject.PropertyType?buildingObject.PropertyType:notAvailable,
+        "Year Built": buildingObject.yearCompleted && !isEqual(buildingObject.yearCompleted,'')?buildingObject.yearCompleted :notAvailable,
+        "Units Type":!isEqual(getPropertyTypesString(buildingObject),'')? getPropertyTypesString(buildingObject):notAvailable,
       });
     }
   }, [buildingObject]);
+
 
   return buildingObject && Object.keys(detailItems).length > 0 ? (
     <Box id="buildingSection" className="buildingSectionWrapper">
       <Stack
         direction="row"
-        justifyContent="center"
+        justifyContent="space-around"
         alignItems="center"
-        spacing={isMediumScreen? 2: 5}
+        spacing={0}
         useFlexGap
         flexWrap="wrap"
       >
@@ -88,7 +90,6 @@ function  BuildingSection({ buildingObject, width = 544, height = 473 }) {
             src={
               buildingObject.buildingImages
                 ? `${buildingObject.buildingImages}?tr=w-${width},h-${height}`
-               
                 : `${cdnPath}/dbuilding/1.jpg?tr=w-${width},h-${height}`
             }
             className="defaultNeighborhoodImage"
@@ -115,9 +116,22 @@ function  BuildingSection({ buildingObject, width = 544, height = 473 }) {
                     </Typography>
                   </Grid>
                   <Grid item xs={6} sm={6} md={6}>
-                    <Typography variant="AlwynNewRoundedRegular16">
-                      {value}
-                    </Typography>
+                    {index === 0 ? ( // Check if it's the first item
+                      <Link
+                      to={`/building/${buildingObject.buildingName}/${buildingObject.referenceNo}`}
+                        className="buildingSectionLinkStylesWithUnderline"
+                      >
+                        {
+                          <Typography variant="AlwynNewRoundedRegular16" >
+                            {value}
+                          </Typography>
+                        }
+                      </Link>
+                    ) : (
+                      <Typography variant="AlwynNewRoundedRegular16">
+                        {value}
+                      </Typography>
+                    )}
                   </Grid>
                 </React.Fragment>
               ))}
@@ -125,9 +139,10 @@ function  BuildingSection({ buildingObject, width = 544, height = 473 }) {
           </Box>
           <Box className="buildingSectionButtonWrapper">
             <Grid container>
-              <Grid item  xs={12} sm={12} md={12}>
+              <Grid item xs={12} sm={10} md={10}>
                 <Link
                   to={`/building/${buildingObject.buildingName}/${buildingObject.referenceNo}`}
+                  className="buildingSectionLinkStyles"
                 >
                   <CustomButton
                     dark={false}

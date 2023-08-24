@@ -13,8 +13,14 @@ function LandingPageExclusiveSection({ exclusives }) {
         <Grid container spacing={1.5}>
           {exclusives && exclusives?.length > 0
             ? exclusives.slice(0, 9).map((item, key) => (
-                <Grid item xs={12} sm={6} md={4} lg={4} key={key}>
-                  <Card item={item} key={key} width={768} height={500} />
+                <Grid item xs={12} sm={6} md={6} lg={4} key={key}>
+                  <Card
+                    item={item}
+                    key={key}
+                    width={768}
+                    height={500}
+                    availableGrids={4}
+                  />
                 </Grid>
               ))
             : (() => {
@@ -22,7 +28,7 @@ function LandingPageExclusiveSection({ exclusives }) {
 
                 for (let i = 0; i < 9; i++) {
                   cardSkeletons.push(
-                    <Grid item xs={12} sm={6} md={4} lg={4} key={i}>
+                    <Grid item xs={12} sm={6} md={6} lg={4} key={i}>
                       <ExclusiveCardSkeleton />
                     </Grid>
                   );

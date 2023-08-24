@@ -5,12 +5,16 @@ import RatingsAAAndStar from "../../../Components/RatingsAAAndStar/RatingsAAAndS
 import ServiceCharges from "../../ListingDetailPage/PropertyDetail/PropertyDetailBottom/RatingsOtherDetails/PropertyInfoDescription/ServiceCharges";
 import { notAvailable } from "../../../Constants/ConstantValues";
 import { extractMasterDeveloper } from "../../../utils/utility";
+import isEqual from 'lodash/isEqual';
+
 
 function BuildingFacts({ buildingObject }) {
+
+
   const buildingFactsLabels = [
     [
       "Building Type",
-      buildingObject.buildingType,
+      buildingObject.buildingType && !isEqual(buildingObject.buildingType,'')?buildingObject.buildingType:notAvailable,
       <ServiceCharges />,
       "Service charges",
       {
@@ -20,7 +24,7 @@ function BuildingFacts({ buildingObject }) {
     ],
     [
       "Zoning",
-      buildingObject.buildingZoning,
+      buildingObject.buildingZoning && !isEqual( buildingObject.buildingZoning,'')? buildingObject.buildingZoning:notAvailable,
       <ServiceCharges />,
       "Zoning",
       {
@@ -44,17 +48,17 @@ function BuildingFacts({ buildingObject }) {
   const contractorEntry = buildingObject.crmAssociates ? buildingObject.crmAssociates.find((associate) => associate.crmAssociateType === "Contractor") : null;
   const architectEntry = buildingObject.crmAssociates ? buildingObject.crmAssociates.find((associate) => associate.crmAssociateType === "Architect") : null;
   const buildingFactsValues = [
-    buildingObject.buildingType,
-    buildingObject.zoning,
+    buildingObject.buildingZoning && !isEqual( buildingObject.buildingZoning,'')? buildingObject.buildingZoning:notAvailable,
+    buildingObject.buildingZoning && !isEqual( buildingObject.buildingZoning,'')? buildingObject.buildingZoning:notAvailable,
     buildingObject.buildingOwner || buildingObject.ownerShipType||notAvailable,
     architectEntry ? extractMasterDeveloper(architectEntry.crmAssociate) : notAvailable,
     developerEntry ? extractMasterDeveloper(developerEntry.crmAssociate) : notAvailable,
     contractorEntry ? extractMasterDeveloper(contractorEntry.crmAssociate) : notAvailable,
     buildingObject.yearLaunched? buildingObject.yearLaunched:notAvailable,
     buildingObject.yearCompleted?buildingObject.yearCompleted:notAvailable,
-    buildingObject.petPolicy,
-    buildingObject.serviceLevels,
-    buildingObject.fireFightingSystem,
+    buildingObject.petPolicy && !isEqual(buildingObject.petPolicy, '')?buildingObject.petPolicy:notAvailable,
+    buildingObject.serviceLevels && !isEqual(buildingObject.serviceLevels, '')?buildingObject.serviceLevels:notAvailable,
+    buildingObject.fireFightingSystem  && !isEqual(buildingObject.fireFightingSystem, '')?buildingObject.fireFightingSystem:notAvailable,
   ];
 
   const ratingComponent = () => {
@@ -62,7 +66,7 @@ function BuildingFacts({ buildingObject }) {
       <>
         <Typography variant="DubaiRegular24Bold">Building Facts</Typography>
         <Grid item xs={12} sm={12} mr={12} mt={2} style={{ flexDirection: "row" }}>
-          <RatingsAAAndStar darkStars={false} />
+          <RatingsAAAndStar darkStars={false}  customStyles='customStylesTagWithInfoBuilding' infoIconClass='buildingInfoIcon'  />
         </Grid>
       </>
     );

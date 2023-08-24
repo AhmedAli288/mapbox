@@ -10,10 +10,10 @@ const SavedSearches = () => {
   const savedSearches = userPreferences?.savedSearches;
 
   return (
-    <Grid container spacing={2}>
+    <>
       {savedSearches?.length > 0 ? (
-        savedSearches.map((search, id) => {
-          return (
+        <Grid container spacing={2}>
+          {savedSearches.map((search, id) => (
             <Grid item xs={12} sm={6} md={4} key={id} mb={5}>
               <div className="savedSearchesCardContainer">
                 <SearchedCard
@@ -32,12 +32,12 @@ const SavedSearches = () => {
                 />
               </div>
             </Grid>
-          );
-        })
+          ))}
+        </Grid>
       ) : (
         <Typography mt={4}>No record found!</Typography>
       )}
-    </Grid>
+    </>
   );
 };
 

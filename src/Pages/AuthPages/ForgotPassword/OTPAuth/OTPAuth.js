@@ -5,7 +5,12 @@ import { Typography, Box, Stack, Divider, Grid } from "@mui/material";
 import CustomButton from "../../../../Components/Button/CustomButton";
 import { ButtonRightArrow } from "../../../../Assets/SVG/Common/CommonSvgs";
 
-import { validateSmsOtp, validateEmailOtp, getMobileOtp, getEmailOtp } from "../../../../network/apiServices";
+import {
+  validateSmsOtp,
+  validateEmailOtp,
+  getMobileOtp,
+  getEmailOtp,
+} from "../../../../network/apiServices";
 import { errorToast, infoToast } from "../../../../utils/useToast";
 
 function OTPAuth({
@@ -78,7 +83,7 @@ function OTPAuth({
           phoneNumber: callingCode + phoneNumber,
           otp: smsOTPString,
         });
-       
+
         switch (smsValidationData.data.status) {
           case "VERIFIED":
             setIsSmsVerified(true);
@@ -112,7 +117,7 @@ function OTPAuth({
             break;
         }
       } catch (error) {
-        console.error("Error occurred during SMS OTP validation:", error);
+        // console.error("Error occurred during SMS OTP validation:", error);
       }
     }
 
@@ -122,7 +127,7 @@ function OTPAuth({
           email: email,
           otp: emailOTPstring,
         });
-    
+
         infoToast(`Checking email...`);
         switch (emailOtpValidationData.data.status) {
           case "VERIFIED":
@@ -158,14 +163,16 @@ function OTPAuth({
             break;
         }
       } catch (error) {
-        console.error("Error occurred during email OTP validation:", error);
         errorToast(`OTP validation error: ${error}`);
       }
     }
 
     // console.log(formErrors)
     // console.log(isSmsVerifiedVar, isEmailVerifiedVar,isEmailVerified,isSmsVerified)
-    if ((isSmsVerifiedVar || isSmsVerified) && (isEmailVerifiedVar || isEmailVerified)) {
+    if (
+      (isSmsVerifiedVar || isSmsVerified) &&
+      (isEmailVerifiedVar || isEmailVerified)
+    ) {
       // console.log('isSmsVeriefiedVar sEmailVerifiedVar true ')
       setFormErrors((prevState) => ({
         ...prevState,
@@ -176,7 +183,9 @@ function OTPAuth({
         emailOTPExpiryError: null,
         emailOTPInvalidError: null,
       }));
-      setCurrentStep((prevStep) => (prevStep < maxStep ? prevStep + 1 : (prevStep = 1)));
+      setCurrentStep((prevStep) =>
+        prevStep < maxStep ? prevStep + 1 : (prevStep = 1)
+      );
 
       // console.log("Either SMS or Email verified");
     }
@@ -206,12 +215,22 @@ function OTPAuth({
   return (
     <>
       <Box className="emailOtpHeaderWrapper">
-        <Typography variant="DubaiRegular18">We have sent you the OTP to your mobile number and email address.</Typography>
+        <Typography variant="DubaiRegular18">
+          We have sent you the OTP to your mobile number and email address.
+        </Typography>
       </Box>
       <Box className="emailOtpHeaderWrapper">
-        <Typography variant="DubaiRegular18">Kindly check your Inbox.</Typography>
+        <Typography variant="DubaiRegular18">
+          Kindly check your Inbox.
+        </Typography>
       </Box>
-      <Stack direction="column" spacing={3} justifyContent="center" alignItems="center" mt={1}>
+      <Stack
+        direction="column"
+        spacing={3}
+        justifyContent="center"
+        alignItems="center"
+        mt={1}
+      >
         <MobileOTPValidation
           handleMobileOTPSubmit={handleOTPSubmit}
           mobileOTPValue={mobileOTPValue}
@@ -239,9 +258,22 @@ function OTPAuth({
           isEmailVerified={isEmailVerified}
           email={email}
         />
-        <Grid container direction="row" justifyContent="center" alignItems="center">
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
           <Grid item xs={3}>
-            <CustomButton text="Sign up" type="submit" rightIcon={<ButtonRightArrow />} dark={exclusivesButtonHovered[0]} variant="outlined" customClassName="signInButton" onClick={handleOTPSubmit} />
+            <CustomButton
+              text="Sign up"
+              type="submit"
+              rightIcon={<ButtonRightArrow />}
+              dark={exclusivesButtonHovered[0]}
+              variant="outlined"
+              customClassName="signInButton"
+              onClick={handleOTPSubmit}
+            />
           </Grid>
         </Grid>
       </Stack>

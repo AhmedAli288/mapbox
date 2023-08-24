@@ -29,17 +29,15 @@ const CommuteTimes = ({
 
             <Stack direction="column">
               <Typography variant="DubaiRegular18">
-                {dxbairport.distance} km
+                {dxbairport.distance}
               </Typography>
+              <Typography variant="DubaiRegular18">{dxbairport.car}</Typography>
               <Typography variant="DubaiRegular18">
-                {dxbairport.car} min
-              </Typography>
-              <Typography variant="DubaiRegular18">
-                {dxbairport.metro} min
+                {dxbairport.metro}
               </Typography>
               <Typography variant="DubaiRegular18">
                 {dxbairport.walking
-                  ? dxbairport.walking + " min"
+                  ? dxbairport.walking
                   : "don't even think about it"}
               </Typography>
             </Stack>
@@ -61,17 +59,15 @@ const CommuteTimes = ({
 
             <Stack direction="column">
               <Typography variant="DubaiRegular18">
-                {dwcairport.distance} km
+                {dwcairport.distance}
               </Typography>
+              <Typography variant="DubaiRegular18">{dwcairport.car}</Typography>
               <Typography variant="DubaiRegular18">
-                {dwcairport.car} min
-              </Typography>
-              <Typography variant="DubaiRegular18">
-                {dwcairport.metro} min
+                {dwcairport.metro}
               </Typography>
               <Typography variant="DubaiRegular18">
                 {dwcairport.walking
-                  ? dwcairport.walking + " min"
+                  ? dwcairport.walking
                   : "don't even think about it"}
               </Typography>
             </Stack>
@@ -91,17 +87,17 @@ const CommuteTimes = ({
 
             <Stack direction="column">
               <Typography variant="DubaiRegular18">
-                {publicbeach.distance} km
+                {publicbeach.distance}
               </Typography>
               <Typography variant="DubaiRegular18">
-                {publicbeach.car} min
+                {publicbeach.car}
               </Typography>
               <Typography variant="DubaiRegular18">
-                {publicbeach.metro} min
+                {publicbeach.metro}
               </Typography>
               <Typography variant="DubaiRegular18">
                 {publicbeach.walking
-                  ? publicbeach.walking + " min"
+                  ? publicbeach.walking
                   : "don't even think about it"}
               </Typography>
             </Stack>
@@ -125,17 +121,15 @@ const CommuteTimes = ({
 
             <Stack direction="column">
               <Typography variant="DubaiRegular18">
-                {dubaimall.distance} km
+                {dubaimall.distance}
               </Typography>
+              <Typography variant="DubaiRegular18">{dubaimall.car}</Typography>
               <Typography variant="DubaiRegular18">
-                {dubaimall.car} min
-              </Typography>
-              <Typography variant="DubaiRegular18">
-                {dubaimall.metro} min
+                {dubaimall.metro}
               </Typography>
               <Typography variant="DubaiRegular18">
                 {dubaimall.walking
-                  ? dubaimall.walking + " min"
+                  ? dubaimall.walking
                   : "don't even think about it"}
               </Typography>
             </Stack>
@@ -155,17 +149,13 @@ const CommuteTimes = ({
 
             <Stack direction="column">
               <Typography variant="DubaiRegular18">
-                {expo2020.distance} km
+                {expo2020.distance}
               </Typography>
-              <Typography variant="DubaiRegular18">
-                {expo2020.car} min
-              </Typography>
-              <Typography variant="DubaiRegular18">
-                {expo2020.metro} min
-              </Typography>
+              <Typography variant="DubaiRegular18">{expo2020.car}</Typography>
+              <Typography variant="DubaiRegular18">{expo2020.metro}</Typography>
               <Typography variant="DubaiRegular18">
                 {expo2020.walking
-                  ? expo2020.walking + " min"
+                  ? expo2020.walking
                   : "don't even think about it"}
               </Typography>
             </Stack>
@@ -185,17 +175,17 @@ const CommuteTimes = ({
 
             <Stack direction="column">
               <Typography variant="DubaiRegular18">
-                {dubaimarina.distance} km
+                {dubaimarina.distance}
               </Typography>
               <Typography variant="DubaiRegular18">
-                {dubaimarina.car} min
+                {dubaimarina.car}
               </Typography>
               <Typography variant="DubaiRegular18">
-                {dubaimarina.metro} min
+                {dubaimarina.metro}
               </Typography>
               <Typography variant="DubaiRegular18">
                 {dubaimarina.walking
-                  ? dubaimarina.walking + " min"
+                  ? dubaimarina.walking
                   : "don't even think about it"}
               </Typography>
             </Stack>

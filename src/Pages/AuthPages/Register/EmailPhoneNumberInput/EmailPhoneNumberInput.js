@@ -146,7 +146,7 @@ function EmailPhoneNumberInput({
                   Already have an account?{" "}
                 </Typography>
 
-                <Link className="authLinks" to="/login">
+                <Link className="loginLinkLight" to="/login">
                   <Typography variant="DubaiRegular18"> Login</Typography>
                 </Link>
               </div>

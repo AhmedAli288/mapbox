@@ -53,12 +53,12 @@ const SearchAndRecents = ({
                 <Box className="searchHistoryDetails">
                   {result.walking !== null && (
                     <Typography variant="DubaiRegular14">
-                      Walking: {Math.floor(result.walking / 60)} mins
+                      Walking: {Number(result.walking / 60).toFixed(0)} mins
                     </Typography>
                   )}
                   {result.driving !== null && (
                     <Typography variant="DubaiRegular14">
-                      Driving: {Math.floor(result.driving / 60)} mins
+                      Driving: {Number(result.driving / 60).toFixed(0)} mins
                     </Typography>
                   )}
                   <Typography

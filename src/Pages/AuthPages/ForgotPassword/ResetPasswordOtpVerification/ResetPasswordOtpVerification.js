@@ -3,7 +3,10 @@ import { Typography, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import CustomButton from "../../../../Components/Button/CustomButton";
 import EmailOTPValidation from "../OTPAuth/OTPAuthForm/EmailOTPValidation/EmailOTPValidation";
-import { validateEmailOtp, resetUserPassword } from "../../../../network/apiServices";
+import {
+  validateEmailOtp,
+  resetUserPassword,
+} from "../../../../network/apiServices";
 import { ButtonRightArrow } from "../../../../Assets/SVG/Common/CommonSvgs";
 import { isEqual } from "lodash";
 
@@ -73,7 +76,7 @@ function ResetPasswordOtpVerification({ email, advanceCurrentStep }) {
             break;
         }
       } catch (error) {
-        console.error("Error occurred during email OTP validation:", error); //toast
+        // console.error("Error occurred during email OTP validation:", error); //toast
       }
     }
 
@@ -108,10 +111,25 @@ function ResetPasswordOtpVerification({ email, advanceCurrentStep }) {
 
   return (
     <Grid item>
-      <Grid className=" authComponentsWrapper" container justifyContent={"center"} alignItems={"center"}>
-        <Grid container rowSpacing={2} direction={"column"} justifyContent={"center"} alignItems={"center"} textAlign={"center"}>
+      <Grid
+        className=" authComponentsWrapper"
+        container
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
+        <Grid
+          container
+          rowSpacing={2}
+          direction={"column"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          textAlign={"center"}
+        >
           <Grid item>
-            <Typography className="loginTypographyLight" variant="GothamBlack18">
+            <Typography
+              className="loginTypographyLight"
+              variant="GothamBlack18"
+            >
               Reset password
             </Typography>
           </Grid>
@@ -140,14 +158,28 @@ function ResetPasswordOtpVerification({ email, advanceCurrentStep }) {
           </Grid>
           <Grid container item justifyContent={"center"}>
             <Grid item xs={12}>
-              <CustomButton customClassName="loginBtn" dark={false} type="submit" text={"Continue "} rightIcon={<ButtonRightArrow />} fullWidth={true} onClick={handleOTPSubmit} />
+              <CustomButton
+                customClassName="loginBtn"
+                dark={false}
+                type="submit"
+                text={"Continue "}
+                rightIcon={<ButtonRightArrow />}
+                fullWidth={true}
+                onClick={handleOTPSubmit}
+              />
             </Grid>
           </Grid>
           <Grid item>
-            <Typography className="loginTypographyLight" variant="DubaiRegular18">
+            <Typography
+              className="loginTypographyLight"
+              variant="DubaiRegular18"
+            >
               Already have an account?{" "}
               <Link className="loginLinkLight" to="/login">
-                <Typography className="loginTypographyLight" variant="DubaiRegular18">
+                <Typography
+                  className="loginTypographyLight"
+                  variant="DubaiRegular18"
+                >
                   Login
                 </Typography>
               </Link>

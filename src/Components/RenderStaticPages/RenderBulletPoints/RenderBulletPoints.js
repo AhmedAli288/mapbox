@@ -14,15 +14,15 @@ export const RenderBulletPoints = ({ columnCount, bulletHeading, headingTypoVari
 
         {bulletPoints.map((point, index) => {
           return (
-            <Grid key={index} container item xs={12} md={6}lg={12 / columnCount} rowSpacing={2}>
+            <Grid key={index} container item xs={12} md={6}lg={12 / columnCount} >
   <Grid item xs={12}>
     {point.pointHeading &&
       (pointIcon ? (
-        <Grid container alignItems={"center"} spacing={2}>
-          <Grid item>
+        <Grid container alignItems={"center"} spacing={1}>
+          <Grid item xs={1}>
             <ListingCardIcon shape={pointIcon} />
           </Grid>
-          <Grid item>
+          <Grid item xs={11}>
             <Typography variant={pointTypographyVariant ? pointTypographyVariant : "GothamBlack22"}>{point.pointHeading}</Typography>
           </Grid>
         </Grid>

@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Carousel from "../Carousel/Carousel";
 import CardContent from "./CardContent/CardContent";
 import { Box } from "@mui/material";
 
-function Card({ onClick, item, width=768, height=500, cardContentAlignment }) {
+function Card({
+  onClick,
+  item,
+  width = 768,
+  height = 500,
+  availableGrids = 4,
+  cardContentAlignment,
+}) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -26,17 +32,11 @@ function Card({ onClick, item, width=768, height=500, cardContentAlignment }) {
         onMouseLeave={handleMouseLeave}
       >
         <Box className="cardBoxWrapper">
-          <CardContent item={item} isHovered={isHovered} cardContentAlignment={cardContentAlignment}/>
-          <Link
-            to={`/listing/${item?.area}/${
-              item.referenceNumber
-                ? item.referenceNumber
-                : item.listingReferenceId
-            }`}
-          >
-            
-            <Box onClick={onClick} className={`listingOpacity ${cardContentAlignment?'listingOpacityCardContentAlignment' :'listingOpacityNoCardContentAlignment'}`}></Box>
-          </Link>
+          <CardContent
+            item={item}
+            isHovered={isHovered}
+            cardContentAlignment={cardContentAlignment}
+          />
           <Carousel
             dots={false}
             images={item?.images}
@@ -44,6 +44,12 @@ function Card({ onClick, item, width=768, height=500, cardContentAlignment }) {
             setActiveStep={setActiveStep}
             width={width}
             height={height}
+            availableGrids={availableGrids}
+            customState={`/listing/${item?.area}/${
+              item.referenceNumber
+                ? item.referenceNumber
+                : item.listingReferenceId
+            }`}
           />
         </Box>
       </Box>

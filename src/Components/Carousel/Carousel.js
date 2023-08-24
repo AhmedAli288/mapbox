@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { MobileStepper } from "@mui/material";
 import ImagesSlider from "./ImagesSlider";
+import TestSlider from "./TestSlider";
 
 // Props: "images" for images array having object of keys: [ imgPath, imgLabel ] ,
 //        "dots = true" for to show dots or not,
@@ -20,6 +21,9 @@ function Carousel({
   dark = true,
   width,
   height,
+  availableGrids = 2,
+  customState,
+  oldCarousel = false,
   autoScroll = false,
   autoScrollInterval = 2500,
 }) {
@@ -54,14 +58,28 @@ function Carousel({
 
   return (
     <>
-      <ImagesSlider
-        activeStep={activeStep}
-        handleBack={handleBack}
-        handleNext={handleNext}
-        images={images}
-        width={width}
-        height={height}
-      />
+      {oldCarousel ? (
+        <ImagesSlider
+          activeStep={activeStep}
+          handleBack={handleBack}
+          handleNext={handleNext}
+          images={images}
+          width={width}
+          height={height}
+          customState={customState}
+        />
+      ) : (
+        <TestSlider
+          activeStep={activeStep}
+          handleBack={handleBack}
+          handleNext={handleNext}
+          images={images}
+          width={width}
+          height={height}
+          availableGrids={availableGrids}
+          customState={customState}
+        />
+      )}
       {dots ? (
         <MobileStepper
           steps={maxSteps}

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Grid, Divider,Box } from "@mui/material";
+import { Typography, Grid, Divider, Box } from "@mui/material";
 import ContactAgent from "../../../Components/ContactAgent/ContactAgent";
 import { agentSectionTypes } from "../../../Constants/ConstantValues";
 import { getAgentDetails } from "../../../network/apiServices";
 import ListingAgent from "../../../Components/ListingAgent/ListingAgent";
-
 
 function AgentSection({ agentDetails, propertyDetails }) {
   const [agentData, setAgentData] = useState(null);
@@ -17,7 +16,7 @@ function AgentSection({ agentDetails, propertyDetails }) {
         });
         setAgentData(agent.data.agentDetails[0]);
       } catch (error) {
-        console.error("Error fetching agent:", error);
+        // console.error("Error fetching agent:", error);
       }
     }
 
@@ -25,35 +24,52 @@ function AgentSection({ agentDetails, propertyDetails }) {
   }, [agentDetails]);
 
   return (
-    <Box className="agentSectionContainer" >
-
-    <Grid id="agentSection" container spacing={2} justifyContent={"space-between"} px={{ xs: 5, sm: 10, md: 15, lg: 20 }}>
-      {agentData && (
+    <Box className="agentSectionContainer">
+      <Grid
+        id="agentSection"
+        container
+        spacing={2}
+        justifyContent={"space-between"}
+        px={{ xs: 5, sm: 10, md: 15, lg: 20 }}
+      >
+        {agentData && (
+          <Grid item xs={12} md={5}>
+            <Grid item xs={12} mb={2}>
+              <Typography
+                className="contactAgentSectionHeading"
+                variant="GothamBlack24"
+                ml={0}
+              >
+                Listing Agent
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={12}>
+              <ListingAgent
+                agentData={agentData}
+                sectionType={agentSectionTypes.agentSection}
+                hasHeart
+              />
+            </Grid>
+          </Grid>
+        )}
+        <Grid item>
+          <Divider orientation="vertical" variant="middle" />
+        </Grid>
         <Grid item xs={12} md={5}>
           <Grid item xs={12} mb={2}>
-            <Typography className="contactAgentSectionHeading" variant="GothamBlack24" ml={0}>
-              Listing Agent
+            <Typography
+              className="contactAgentSectionHeading"
+              variant="GothamBlack24"
+              ml={0}
+            >
+              Contact Agent
             </Typography>
           </Grid>
           <Grid item xs={12} md={12}>
-            <ListingAgent agentData={agentData} sectionType={agentSectionTypes.agentSection} hasHeart />
+            <ContactAgent propertyDetails={propertyDetails} />
           </Grid>
         </Grid>
-      )}
-      <Grid item>
-        <Divider orientation="vertical" variant="middle" />
       </Grid>
-      <Grid item xs={12} md={5}>
-        <Grid item xs={12} mb={2}>
-          <Typography className="contactAgentSectionHeading" variant="GothamBlack24" ml={0}>
-            Contact Agent
-          </Typography>
-        </Grid>
-        <Grid item xs={12} md={12}>
-          <ContactAgent propertyDetails={propertyDetails} />
-        </Grid>
-      </Grid>
-    </Grid>
     </Box>
   );
 }

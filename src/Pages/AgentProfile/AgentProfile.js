@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Box } from "@mui/material";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorBoundaryFallBack from "../../Components/ErrorBoundaries/ErrorBoundaries";
 import LandingPageSubscribeSection from "../LandingPage/LandingPageSubscribeSection/LandingPageSubscribeSection";
 import LandingPageLinksArea from "../LandingPage/LandingPageLinksArea/LandingPageLinksArea";
-import { isEqual } from "lodash";
 import AppContext from "../../context/AppContext";
 import { useLocation, Link } from "react-router-dom";
 import {
@@ -33,6 +32,11 @@ import {
 } from "../../Constants/ConstantValues";
 import { errorToast } from "../../utils/useToast";
 import { cdnPath } from "../../Constants/StaticPagesConstants";
+import { LogoHeadingComponent } from "../../Components/LogoHeadingComponent/LogoHeadingComponent";
+
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import isEqual from "lodash/isEqual";
 
 function AgentProfile() {
   //add country as well
@@ -45,6 +49,9 @@ function AgentProfile() {
   // const [filteredTransactions, setFilteredTransactions] = useState([]);
   const [agentData, setAgentData] = useState(null);
   const [liked, setLiked] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {}, [expanded]);
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -61,6 +68,10 @@ function AgentProfile() {
   let mobileNumber = agentData?.workPhone
     ? agentData?.workPhone
     : defaultAgentContactNumber;
+  let knowAgentParagraphs =
+    agentData?.aboutMe && !isEqual(agentData?.aboutMe, "")
+      ? agentData?.aboutMe
+      : notAvailable
 
   const headerLinks = [
     {
@@ -95,7 +106,7 @@ function AgentProfile() {
         });
         setAgentData(agent.data.agentDetails[0]);
       } catch (error) {
-        console.error("Error fetching agent:", error);
+        // console.error("Error fetching agent:", error);
       }
     }
 
@@ -262,6 +273,14 @@ function AgentProfile() {
         })
         .catch((err) => {});
     }
+  };
+
+  const visibleText = expanded
+    ? knowAgentParagraphs
+    : knowAgentParagraphs?.slice(0, 550);
+  const shouldAddDots = !expanded && knowAgentParagraphs.length > 550;
+  const handleClick = () => {
+    setExpanded(!expanded);
   };
 
   return (
@@ -567,32 +586,62 @@ function AgentProfile() {
             <Grid container rowSpacing={2}>
               <Grid item>
                 {/* Get to know agent */}
-                {/* <Grid className="agent-profile-get-to-know" container rowGap={2}>
-                  <LogoHeadingComponent heading={`Get to know ${agentName}`} headingTypoVariant={"GothamBlack24"} />
-                  <RenderMultiParagraph
-                    paragraphs={knowAgentParagraphs}
+                <Grid
+                  className="agent-profile-get-to-know"
+                  container
+                  rowGap={2}
+                >
+                  <LogoHeadingComponent
+                    heading={`Get to know ${agentName}`}
+                    headingTypoVariant={"GothamBlack24"}
+                  />
+                  {/* <RenderMultiParagraph
+                    paragraphs={[knowAgentParagraphs]}
                     paragraphTypoVariant={"AlwynNewRoundedRegular20"}
                     defaultParagraphs={2}
+                    defaultCharacters={95}
                     hasViewMore
                     expandText={"Continue Reading"}
                     collapsedText={"Collapse"}
                     dropDownTypoVariant={"DubaiRegular20"}
-                  />
-                </Grid> */}
+                  /> */}
+                  <Grid>
+                    <Box className="agentsDescripBox">
+                      <Typography variant="AlwynNewRoundedRegular20">
+                        {visibleText}
+                        {shouldAddDots && " ..."}
+                      </Typography>
+                      {knowAgentParagraphs.length <= 550 ? null : (
+                        <Box className="agentsViewBtn" onClick={handleClick}>
+                          <Typography variant="AlwynNewRoundedRegular20">
+                            {expanded ? "Read Less" : "Continue Reading"}
+                          </Typography>
+                          {expanded ? (
+                            <KeyboardArrowUpIcon />
+                          ) : (
+                            <KeyboardArrowDownIcon />
+                          )}
+                        </Box>
+                      )}
+                    </Box>
+                  </Grid>
+                </Grid>
               </Grid>
-              <Grid item id="agent-listings" xs>
-                <AgentSalesRentals
-                  titleHeading={`${agentName}'s Listings`}
-                  handleTabClick={handleListings}
-                  itemSpacing={2}
-                >
-                  {filteredListings.map((listing, key) => (
-                    <Grid key={key} item xs={12} sm={12} md={4} lg={3}>
-                      <Card item={listing} key={key} />
-                    </Grid>
-                  ))}
-                  {/* children rendered listings according to listings */}
-                </AgentSalesRentals>
+              <Grid item id="agent-listings" xs={12}>
+                {allAgentListings.length > 0 && (
+                  <AgentSalesRentals
+                    titleHeading={`${agentName}'s Listings`}
+                    handleTabClick={handleListings}
+                    itemSpacing={2}
+                  >
+                    {filteredListings.length>0?filteredListings.map((listing, key) => (
+                      <Grid key={key} item xs={12} sm={12} md={4} lg={3}>
+                        <Card item={listing} key={key} />
+                      </Grid>
+                    )): notAvailable }
+                    {/* children rendered listings according to listings */}
+                  </AgentSalesRentals>
+                )}
               </Grid>
             </Grid>
           </Grid>

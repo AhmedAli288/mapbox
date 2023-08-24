@@ -4,7 +4,7 @@ import SubscribeForm from "./SubscribeForm/SubscribeForm";
 import isEmail from "validator/lib/isEmail";
 import { subscribeToNewsletter } from "../../../network/apiServices";
 import { isEqual } from "lodash";
-import { errorToast, successToast } from "../../../utils/useToast";
+import { errorToast, successToast, infoToast } from "../../../utils/useToast";
 
 const LandingPageSubscribeSection = () => {
   const [email, setEmail] = useState("");
@@ -24,15 +24,18 @@ const LandingPageSubscribeSection = () => {
 
       subscribeToNewsletter(data)
         .then((res) => {
-          if (!isEqual(res.data.status, "SUCCESS")) {
+         
+          if (isEqual(res.data.message, "Email already exists")) {
             //toast failure message
-            errorToast(`Oops! Something went wrong.`);
+            infoToast(res.data.message);
           } else {
             //success scenario
-            successToast(`You've been successfully subscribed`);
+            successToast(res.data.message);
           }
         })
-        .catch((error) => {});
+        .catch((error) => {
+          errorToast(error.data.message?error.data.message:`Error in Subscribing`)
+        });
       setEmail("");
     } else {
       setError(true);
@@ -41,9 +44,9 @@ const LandingPageSubscribeSection = () => {
 
   return (
     <Container disableGutters={true} className="subscribeSectionContainer">
-      <Grid container spacing={2}>
+      <Grid container spacing={2} justifyContent='center'>
         <Grid item xs={12} sm={2} />
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={12} sm={5}>
           <Box className="boxColAlign">
             <Typography variant="GothamBlack26">Subscribe</Typography>
             <Typography variant="DubaiRegular20">

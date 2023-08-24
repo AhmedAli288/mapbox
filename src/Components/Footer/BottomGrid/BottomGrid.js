@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 import { FlagRenderValue } from "../../FlagRenderValue/FlagRenderValue";
 
 function BottomGrid() {
-  // const countryCode = useSelector((state) => state.selectedCountry.initial);
   return (
-    <Grid container className="bottomGridFooter" mt={7} pb={5}>
+    <Grid container className="bottomGridFooter" mt={7} pb={5} px={9}>
       <Grid item xs={12} sm={6}>
         <Typography variant="DubaiRegular18" gutterBottom>
           Copyright © 2021-{new Date().getFullYear()} VALCOM Properties LLC. All

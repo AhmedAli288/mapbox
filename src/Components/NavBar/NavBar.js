@@ -18,7 +18,7 @@ import {
 import CountrySelect from "./GeoSelect/CountrySelect";
 import CurrencySelect from "./CurrencySelect/CurrencySelect";
 import LanguageSelect from "./LanguageSelect/LanguageSelect";
-import { ReactComponent as Logo } from "../../Assets/SVG/logo.svg";
+// import ListingCardIcon from "../../Assets/SVG/ListingCardIcons/ListingCardIcons";
 import MenuDropdown from "./MenuDropdown/MenuDropdown";
 import {
   exploreMenuItems,
@@ -31,6 +31,8 @@ import { addLikedFlag, base64ToObj, objToBase64 } from "../../utils/utility";
 import { getUserDetails, userLogout } from "../../network/apiServices";
 import { isEqual } from "lodash";
 import AppContext from "../../context/AppContext";
+import ListingDetailPageHeader from "../../Pages/ListingDetailPage/ListingDetailPageHeader/ListingDetailPageHeader";
+
 
 function NavBar() {
   const context = useContext(AppContext);
@@ -44,6 +46,9 @@ function NavBar() {
     setBuildingHash,
     setBuyOrRent,
     navLinkBuyOrRent,
+    setNavLinkBuyOrRent,
+    selectedCountry,
+    listingObjectContext, buildingObjectContext
   } = context;
 
   // const [exploreAnchorEl, setExploreAnchorEl] = useState(null);
@@ -56,6 +61,7 @@ function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
   const currentURL = window.location.href;
 
   useEffect(() => {
@@ -130,21 +136,21 @@ function NavBar() {
   const handleExploreClick = (event) => {
     // setExploreAnchorEl(event.currentTarget);
     setIsExploreHovered(true);
-    handleMenuClose()
+    handleMenuClose();
   };
 
   const handleAgentsClick = (event) => {
     setAgentsAnchorEl(event.currentTarget);
     // setIsHovered(true)
     setIsAgentsHovered(true);
-    handleMenuClose()
+    handleMenuClose();
   };
 
   const handleProfileClick = (event) => {
     setProfileAnchorEl(event.currentTarget);
     // setIsHovered(true)
     setIsProfileHovered(true);
-    handleMenuClose()
+    handleMenuClose();
   };
 
   const handleClose = () => {
@@ -156,26 +162,57 @@ function NavBar() {
     setIsProfileHovered(false);
   };
   const goToPageOnClick = () => {
+    setBuyOrRent("buy");
     navigate("/");
   };
-  const handleBuyRentClick = (event, value) => {
-    setBuyOrRent(value);
-    const queryParamValue = objToBase64({ buyOrRent: value });
-
+  const handleBuyRentClick = (value) => {
+    const queryParamValue = objToBase64({
+      city: "",
+      state: "All",
+      country: selectedCountry,
+      buyOrRent: value,
+    });
     navigate(`/${value}/search?value=${queryParamValue}`);
-    navigate(0);
+    setBuyOrRent(value);
+    setNavLinkBuyOrRent(value);
   };
 
   const isMediumScreen = useMediaQuery(isMediumScreens);
+
+  let headerProps = {};
+
+  if (location.pathname.includes('/listing/')) {
+
+    headerProps = {
+      page: 'listingDetails',
+      property: listingObjectContext // Provide the property data here
+    };
+  } else if (location.pathname.includes('/building/')) {
+  
+
+    headerProps = {
+      page: 'buildingDetails',
+      buildingObject: buildingObjectContext // Provide the building data here
+    };
+  }
+
+  useEffect(() => {}, [navLinkBuyOrRent]);
   return (
     <>
       <ErrorBoundary FallbackComponent={ErrorBoundaryFallBack}>
-        <AppBar position="sticky">
+        <AppBar elevation={0} position="sticky">
           <Container maxWidth="xl" className="homeLink" id="homeLink">
             <Toolbar className="navToolBar">
               <Box className="alignBox">
-                <Box className="logoInnerBox" onClick={goToPageOnClick}>
-                  <Logo />
+                <Box
+                  className="logoInnerBox  cursorPointer"
+                  onClick={goToPageOnClick}
+                >
+                  <img
+                    src="/images/logoManseel.png"
+                    alt="Logo"
+                    height={"55vh"}
+                  />
                 </Box>
               </Box>
 
@@ -185,9 +222,11 @@ function NavBar() {
                   <Toolbar>
                     <LinkItem
                       value="buy"
-                      onClick={handleBuyRentClick}
+                      customOnClick={() => handleBuyRentClick("buy")}
                       customClass={
-                        navLinkBuyOrRent === "buy" && currentURL.includes("buy")
+                        navLinkBuyOrRent === "buy" &&
+                        (currentURL.includes("listing") ||
+                          currentURL.includes("buy"))
                           ? "menuItemActive"
                           : ""
                       }
@@ -196,18 +235,23 @@ function NavBar() {
                     </LinkItem>
                     <LinkItem
                       value="rent"
-                      onClick={handleBuyRentClick}
+                      customOnClick={() => handleBuyRentClick("rent")}
                       customClass={
                         navLinkBuyOrRent === "rent" &&
-                        currentURL.includes("rent")
+                        (currentURL.includes("listing") ||
+                          currentURL.includes("rent"))
                           ? "menuItemActive"
                           : ""
                       }
                     >
                       Rent
                     </LinkItem>
-                    <LinkItem to="/sell">Sell</LinkItem>
-                    <LinkItem to="/commercial">Commercial</LinkItem>
+                    <LinkItem customOnClick={() => navigate("/sell")}>
+                      Sell
+                    </LinkItem>
+                    <LinkItem customOnClick={() => navigate("/commercial")}>
+                      Commercial
+                    </LinkItem>
                     <MenuDropdown
                       buttonTitle="Explore"
                       menuItems={exploreMenuItems}
@@ -243,7 +287,9 @@ function NavBar() {
                         </Link>
                       </MenuDropdown>
                     ) : (
-                      <LinkItem to="/signin">Sign in</LinkItem>
+                      <LinkItem customOnClick={() => navigate("/signin")}>
+                        Sign in
+                      </LinkItem>
                     )}
                     <CurrencySelect isDrawerOpen={menuOpen} />
                   </Toolbar>
@@ -265,14 +311,24 @@ function NavBar() {
                   <CountrySelect className="drawer" />
                   <Divider />
                   <List>
-                    <LinkItem value="buy" onClick={handleBuyRentClick}>
+                    <LinkItem
+                      value="buy"
+                      customOnClick={() => handleBuyRentClick("buy")}
+                    >
                       Buy
                     </LinkItem>
-                    <LinkItem value="buy" onClick={handleBuyRentClick}>
+                    <LinkItem
+                      value="rent"
+                      customOnClick={() => handleBuyRentClick("rent")}
+                    >
                       Rent
                     </LinkItem>
-                    <LinkItem to="/sell">Sell</LinkItem>
-                    <LinkItem to="/commercial">Commercial</LinkItem>
+                    <LinkItem customOnClick={() => navigate("/sell")}>
+                      Sell
+                    </LinkItem>
+                    <LinkItem customOnClick={() => navigate("/commercial")}>
+                      Commercial
+                    </LinkItem>
                   </List>
                   <Divider />
                   <List>
@@ -314,7 +370,9 @@ function NavBar() {
                         </Link>
                       </MenuDropdown>
                     ) : (
-                      <LinkItem to="/signin">Sign in</LinkItem>
+                      <LinkItem customOnClick={() => navigate("/signin")}>
+                        Sign in
+                      </LinkItem>
                     )}
                   </List>
                   <Divider />
@@ -323,6 +381,8 @@ function NavBar() {
               </Drawer>
             </Toolbar>
           </Container>
+          {Object.keys(headerProps).length>0? <ListingDetailPageHeader {...headerProps}/>: null}
+       
         </AppBar>
       </ErrorBoundary>
     </>

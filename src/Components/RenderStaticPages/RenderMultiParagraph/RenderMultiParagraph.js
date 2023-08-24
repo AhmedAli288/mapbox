@@ -4,10 +4,15 @@ import ListingCardIcon from "../../../Assets/SVG/ListingCardIcons/ListingCardIco
 
 //takes array of strings, each string is a paragraph block
 
-export const RenderMultiParagraph = ({ paragraphs, paragraphTypoVariant, defaultParagraphs, hasViewMore = false, expandText, collapsedText, dropDownTypoVariant }) => {
+export const RenderMultiParagraph = ({ paragraphs, paragraphTypoVariant, defaultParagraphs, hasViewMore = false, expandText, collapsedText, dropDownTypoVariant, defaultCharacters }) => {
   const [expanded, setExpanded] = useState(false);
-
-  const visibleData = expanded ? paragraphs : paragraphs.slice(0, defaultParagraphs);
+let visibleData;
+  if(defaultCharacters){
+    visibleData=expanded ? paragraphs : paragraphs.slice(0, defaultParagraphs);
+  }else{
+    visibleData= expanded ? paragraphs : paragraphs.slice(0, defaultParagraphs);
+  }
+  
   const onMore = () => {
     setExpanded(!expanded);
   };
@@ -19,6 +24,7 @@ export const RenderMultiParagraph = ({ paragraphs, paragraphTypoVariant, default
             <Typography variant={paragraphTypoVariant ? paragraphTypoVariant : "AlwynNewRoundedRegular20"}>{paragraph} </Typography>
           </Grid>
         ))}
+       
         {hasViewMore && paragraphs.length > defaultParagraphs && (
           <Grid container alignItems="center" spacing={1} onClick={onMore}>
             <Grid item>

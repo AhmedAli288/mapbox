@@ -2,7 +2,7 @@ import React from "react";
 import { FlagRenderValue } from "../../../../Components/FlagRenderValue/FlagRenderValue";
 import { ExpandMoreSharp, Check } from "@mui/icons-material";
 import { MenuItem, Box, ListItemIcon } from "@mui/material";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import { CallingCountryCodes } from "../../../../Assets/SVG/Flags/CallingCountryCodes/CallingCountryCodes";
 import { useEffect } from "react";
 
@@ -26,7 +26,7 @@ function CountryCallingCode({
     setValidMobileNumber(validNumber(CallingCountryCodes, callingCode));
   });
 
-  const handleChange = (event: SelectChangeEvent) => {
+  const handleChange = (event) => {
     setCallingCode(event.target.value);
     setValidMobileNumber(validNumber(CallingCountryCodes, event.target.value));
   };

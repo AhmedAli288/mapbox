@@ -732,6 +732,44 @@ function CountryFlagsSvg({ countryCode, width = 19, height = 12, ...props }) {
           </g>
         </svg>
       );
+    case "SP":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width={width}
+          height={height}
+          viewBox="0 0 19 12"
+          {...props}
+        >
+          <g
+            id="Group_24248"
+            data-name="Group 24248"
+            transform="translate(-6903 5047)"
+          >
+            <rect
+              id="rect2630"
+              width={width}
+              height={height / 4}
+              transform="translate(6903 -5045.4)"
+              fill="#c60b1e"
+            />
+            <rect
+              id="rect2632"
+              width={width}
+              height={height / 1.5}
+              transform="translate(6903 -5042)"
+              fill="#ffc400"
+            />
+            <rect
+              id="rect2634"
+              width={width}
+              height={height / 4}
+              transform="translate(6903 -5037.8)"
+              fill="#c60b1e"
+            />
+          </g>
+        </svg>
+      );
     default:
       return null;
   }

@@ -122,7 +122,8 @@ export const populateStatesFromSearchedObj = (
   setAmenities,
   setVacant,
   setCryptoAccept,
-  setInstantViewing
+  setInstantViewing,
+  setStatesPopulated
 ) => {
   if (!_.isEmpty(searchedObj)) {
     if (searchedObj.listingFilters) {
@@ -200,6 +201,7 @@ export const populateStatesFromSearchedObj = (
       setVacant(listingFilters.propertyUsage === "Vacant");
       setCryptoAccept(listingFilters.digitalCurrencyAccepted === "Yes");
       setInstantViewing(listingFilters.viewingOptions === "instantly");
+      setStatesPopulated(true);
     } else {
       setEnteredValuesArray(() => {
         if (searchedObj.key) {
@@ -235,6 +237,7 @@ export const populateStatesFromSearchedObj = (
       setVacant(false);
       setCryptoAccept(false);
       setInstantViewing(false);
+      setStatesPopulated(true);
     }
   }
 };

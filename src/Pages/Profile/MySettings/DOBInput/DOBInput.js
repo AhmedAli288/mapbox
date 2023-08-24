@@ -18,7 +18,6 @@ const DOBInput = ({ selectedDate, setSelectedDate }) => {
           return;
         }
       }
-      console.error("Invalid date format:", selectedDate);
       setParsedDate(null);
     } else {
       setParsedDate(null);

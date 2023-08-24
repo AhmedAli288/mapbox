@@ -4,6 +4,7 @@ import PasswordComponent from "../../../Components/PasswordComponent/PasswordCom
 import CustomButton from "../../../Components/Button/CustomButton";
 import AppContext from "../../../context/AppContext";
 import { updateUserPassword } from "../../../network/apiServices";
+import { successToast } from "../../../utils/useToast";
 
 const ChangePassword = () => {
   const context = useContext(AppContext);
@@ -13,7 +14,6 @@ const ChangePassword = () => {
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
   const [currentPass, setCurrentPass] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
   const [validationError, setValidationError] = useState("");
   const [passwordValidationErrors, setPasswordValidationErrors] = useState([]);
 
@@ -56,7 +56,7 @@ const ChangePassword = () => {
           setCurrentPass("");
           setPassword("");
           setConfirmPass("");
-          setSuccessMessage(res.data.message);
+          successToast(res.data.message);
         }
       })
       .catch((err) => {
@@ -122,7 +122,6 @@ const ChangePassword = () => {
       />
 
       {validationError && <p className="red">{validationError}</p>}
-      {successMessage && <p className="green">✓ {successMessage}</p>}
     </div>
   );
 };

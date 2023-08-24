@@ -11,8 +11,12 @@ function FindAnAgent() {
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallBack}>
       <Grid item>
-      
-        <PageSearchArea heading={"Find your Area Specialist"} searchAreaPositionClass={"LandingPageSearchAreaWrapperCenter"} imgUrl={ `${cdnPath}/assets/FindAnAgent.png`} page={"findAgent"} />
+        <PageSearchArea
+          heading={"Find your Area Specialist"}
+          searchAreaPositionClass={"LandingPageSearchAreaWrapperCenter"}
+          imgUrl={`${cdnPath}/assets/agentSearchPage.jpg`}
+          page={"findAgent"}
+        />
       </Grid>
       <Grid item>
         <LandingPageLinksArea />

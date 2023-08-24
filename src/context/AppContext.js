@@ -24,6 +24,7 @@ const AppProvider = (props) => {
   const [buyOrRent, setBuyOrRent]=useState('buy')
   const [agentData, setAgentData] = useState(null);
   const [ navLinkBuyOrRent, setNavLinkBuyOrRent] =useState('')
+  const [listingObjectContext, setListingObjectContext] = useState({});
 
   const contextValue = {
     baseCurrency,
@@ -64,7 +65,8 @@ const AppProvider = (props) => {
     setBuyOrRent,
     navLinkBuyOrRent,
     setNavLinkBuyOrRent,
-    buildingReferenceNoContext, setBuildingReferenceNoContext
+    buildingReferenceNoContext, setBuildingReferenceNoContext,
+    listingObjectContext, setListingObjectContext
   };
 
   return <AppContext.Provider value={contextValue}>{props.children}</AppContext.Provider>;

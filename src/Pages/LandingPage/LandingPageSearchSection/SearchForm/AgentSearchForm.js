@@ -81,7 +81,9 @@ const AgentSearchForm = () => {
             });
           }
         }
+        return null;
       });
+      return null;
     });
     leafItems.sort((a, b) => a.value.localeCompare(b.value));
     subItems.sort((a, b) => a.value.localeCompare(b.value));

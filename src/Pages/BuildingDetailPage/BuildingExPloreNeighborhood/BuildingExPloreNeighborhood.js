@@ -3,6 +3,7 @@ import { Box, Typography, Grid } from "@mui/material";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import CustomButton from "../../../Components/Button/CustomButton";
 import { ButtonRightArrow } from "../../../Assets/SVG/Common/CommonSvgs";
+import { loremIpsum } from "../../../Constants/ConstantValues";
 
 function BuildingExPloreNeighborhood({ buildingObject}) {
   // const buildingObject = listingObject.buildingData;
@@ -28,7 +29,7 @@ function BuildingExPloreNeighborhood({ buildingObject}) {
                   <Typography variant="DubaiRegular20Bold">{buildingObject.subAreaSubCommunity}</Typography>
                 </Box>
                 <Box className="neighborhoodCommunityWrapper">
-                  <Typography variant="DubaiRegular18">{buildingObject.buildingNeighborhoodDescription?buildingObject.buildingNeighborhoodDescription:buildingObject.description}</Typography>
+                  <Typography variant="DubaiRegular18">{buildingObject.buildingNeighborhoodDescription?buildingObject.buildingNeighborhoodDescription:buildingObject.description?buildingObject.description:loremIpsum}</Typography>
                 </Box>
                 <Box className="neighborhoodButtonWrapper">
                   <Grid container spacing={2}>

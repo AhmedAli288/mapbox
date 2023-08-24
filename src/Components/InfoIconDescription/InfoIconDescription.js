@@ -18,14 +18,14 @@ const InfoIconDescription = ({
       ) : isTable || description.isTable ? (
         <TableComponent />
       ) : description.isObject || isObject ? (
-        <Box className="InfoIconDescripContainer">
+        <Box className="InfoIconDescriptionContainer">
           <Box bgcolor={headingColor} className="InfoIconDescripTop">
             <Typography variant="DubaiRegular18Bold">{heading}</Typography>
           </Box>
           <ObjectComponent />
         </Box>
       ) : (
-        <Box className="InfoIconDescripContainer">
+        <Box className="InfoIconDescriptionContainer">
           <Box bgcolor={headingColor} className="InfoIconDescripTop">
             <Typography variant="DubaiRegular18Bold">{heading}</Typography>
           </Box>

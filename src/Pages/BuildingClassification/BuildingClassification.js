@@ -15,11 +15,15 @@ import { RenderCardGrid } from "../../Components/RenderStaticPages/RenderCardGri
 import { cdnPath } from "../../Constants/StaticPagesConstants";
 
 function BuildingClassification() {
-  const checkBodyContent = (content, index) => {
+  const checkBodyContent = (content, index, ) => {
+    
     if (isEqual(content.type, "paragraph")) {
       return (
         <Grid item xs={12}>
-          <RenderMultiParagraph key={index} paragraphs={content.paragraphContent} />
+          <RenderMultiParagraph
+            key={index}
+            paragraphs={content.paragraphContent}
+          />
         </Grid>
       );
     }
@@ -41,7 +45,10 @@ function BuildingClassification() {
     if (isEqual(content.type, "heading")) {
       return (
         <Grid item xs={12}>
-          <LogoHeadingComponent heading={content.headingContent} headingTypoVariant={content.headingTypoVariant} />
+          <LogoHeadingComponent
+            heading={content.headingContent}
+            headingTypoVariant={content.headingTypoVariant}
+          />
         </Grid>
       );
     }
@@ -60,10 +67,17 @@ function BuildingClassification() {
       );
     }
     if (isEqual(content.type, "tableContentArray")) {
+    
       return (
-        <Grid container item columnGap={2}>
+        <Grid container item columnGap={content.justifyContent?1:2} rowGap={2} justifyContent={content.justifyContent?content.justifyContent:'center'}>
           {content.tableContentArray.map((table, index) => (
-            <Grid key={index} item xs={12} md={6} lg={10 / content.tableContentArray.length}>
+            <Grid
+              key={index}
+              item
+              xs={12}
+              md={4}
+              lg={content.justifyContent?11.5/content.tableContentArray.length:10 / content.tableContentArray.length}
+            >
               <RenderStaticGridTable
                 key={index}
                 customClass={content.tableClass}
@@ -78,11 +92,24 @@ function BuildingClassification() {
       );
     }
     if (isEqual(content.type, "cardGrid")) {
+      // console.log('content.',content., sectionFour)
       return (
-        <Grid container item spacing={2} justifyContent={"center"} alignItems={""}>
+        <Grid
+          container
+          item
+          spacing={2}
+          justifyContent={content.justifyContent?content.justifyContent:"center"}
+          alignItems={""}
+        >
           {content.cardContentArray.map((content, index) => (
-            <Grid key={index} item xs={12} md={5} lg={5} >
-              <RenderCardGrid customClass={"buildingClassCardWhite"} cardHeading={content.cardHeading} cardBody={content.cardBody} />
+            
+            <Grid key={index} item xs={12} md={5} lg={5}>
+              <RenderCardGrid
+                customClass={"buildingClassCardWhite"}
+                cardHeading={content.cardHeading}
+                cardBody={content.cardBody}
+                
+              />
             </Grid>
           ))}
         </Grid>
@@ -90,21 +117,39 @@ function BuildingClassification() {
     }
   };
 
-  const { sectionOne, sectionTwo, sectionThree, sectionFour } = buildingClassificationData;
+  const { sectionOne, sectionTwo, sectionThree, sectionFour } =
+    buildingClassificationData;
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallBack}>
-      <Grid container spacing={2} rowGap={5} direction={"column"} className="" justifyContent={"center"}>
+      <Grid
+        container
+        spacing={2}
+        rowGap={5}
+        direction={"column"}
+        justifyContent={"center"}
+      >
         <Grid item>
-    
-          <BackgroundImageAndTextWithGradientBackground backgroundImage={ `${cdnPath}/assets/BuildingClassification.png`} heroText={"Building Classification"} customHeroClass={"buildingClassificationHero"} />
+          <BackgroundImageAndTextWithGradientBackground
+            backgroundImage={`${cdnPath}/assets/BuildingClassification.png`}
+            heroText={"Building Classification"}
+            customHeroClass={"buildingClassificationHero"}
+          />
         </Grid>
         {/* section 1 */}
-        <Grid container spacing={2} className="baaStepSectionLight" justifyContent={"center"}>
+        <Grid
+          container
+          spacing={2}
+          className="baaStepSectionLight"
+          justifyContent={"center"}
+        >
           <Grid item xs={12} md={6} lg={8}>
             {sectionOne.sectionHeading && (
-              <Grid item xs={6}>
-                <LogoHeadingComponent heading={sectionOne.sectionHeading} headingTypoVariant={"GothamBlack40"} />
+              <Grid item xs={8} mb={2}>
+                <LogoHeadingComponent
+                  heading={sectionOne.sectionHeading}
+                  headingTypoVariant={"GothamBlack40"}
+                />
               </Grid>
             )}
             {/* section.bodyContent exists? map through  */}
@@ -120,11 +165,19 @@ function BuildingClassification() {
           </Grid>
         </Grid>
         {/* sectopm 2 */}
-        <Grid container spacing={2} className="baaStepSectionDark" justifyContent={"center"}>
-          <Grid item  xs={12} md={6} lg={8}>
+        <Grid
+          container
+          spacing={2}
+          className="baaStepSectionDark"
+          justifyContent={"center"}
+        >
+          <Grid item xs={12} md={6} lg={8}>
             {sectionTwo.sectionHeading && (
-              <Grid item xs={6}>
-                <LogoHeadingComponent heading={sectionTwo.sectionHeading} headingTypoVariant={"GothamBlack40"} />
+              <Grid item xs={8} mb={2}>
+                <LogoHeadingComponent
+                  heading={sectionTwo.sectionHeading}
+                  headingTypoVariant={"GothamBlack40"}
+                />
               </Grid>
             )}
 
@@ -142,11 +195,19 @@ function BuildingClassification() {
         </Grid>
 
         {/* section 3 */}
-        <Grid container spacing={2} className="baaStepSectionLight" justifyContent={"center"}>
-          <Grid item xs={12} md={6} lg={8}>
+        <Grid
+          container
+          spacing={2}
+          className="baaStepSectionLight"
+          justifyContent={"center"}
+        >
+          <Grid item xs={12} md={12} lg={8}>
             {sectionThree.sectionHeading && (
-              <Grid item xs={6}>
-                <LogoHeadingComponent heading={sectionThree.sectionHeading} headingTypoVariant={"GothamBlack40"} />
+              <Grid item xs={8} mb={2}>
+                <LogoHeadingComponent
+                  heading={sectionThree.sectionHeading}
+                  headingTypoVariant={"GothamBlack40"}
+                />
               </Grid>
             )}
 
@@ -163,17 +224,25 @@ function BuildingClassification() {
           </Grid>
         </Grid>
         {/* secion 4 */}
-        <Grid container spacing={2} className="baaStepSectionDark" justifyContent={"center"}>
-          <Grid item  xs={12} md={6} lg={8}>
+        <Grid
+          container
+          spacing={2}
+          className="baaStepSectionDark"
+          justifyContent={"center"}
+        >
+          <Grid item xs={12} md={12} lg={8}>
             {sectionFour.sectionHeading && (
-              <Grid item xs={6}>
-                <LogoHeadingComponent heading={sectionFour.sectionHeading} headingTypoVariant={"GothamBlack40"} />
+              <Grid item xs={6} mb={1}>
+                <LogoHeadingComponent
+                  heading={sectionFour.sectionHeading}
+                  headingTypoVariant={"GothamBlack40"}
+                />
               </Grid>
             )}
             {/* section.bodyContent exists? map through  */}
             {sectionFour.bodyContent && (
               <Grid item xs={12}>
-                <Grid container rowSpacing={3}>
+                <Grid container rowSpacing={0} columnGap={0} justifyContent={'flex-start'}>
                   {sectionFour.bodyContent.map((content, index) => {
                     return checkBodyContent(content, index);
                   })}

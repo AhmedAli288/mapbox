@@ -34,9 +34,9 @@ const SavedBuildings = () => {
   };
   return (
     <>
-      <Grid container spacing={1}>
-        {savedBuilding?.length > 0 ? (
-          savedBuilding?.map((building) => {
+      {savedBuilding?.length > 0 ? (
+        <Grid container spacing={1}>
+          {savedBuilding?.map((building) => {
             return (
               <BuildingCard
                 key={building.buildingReferenceId}
@@ -46,11 +46,11 @@ const SavedBuildings = () => {
                 hasHeart
               />
             );
-          })
-        ) : (
-          <Typography mt={4}>No record found!</Typography>
-        )}
-      </Grid>
+          })}
+        </Grid>
+      ) : (
+        <Typography mt={4}>No record found!</Typography>
+      )}
     </>
   );
 };

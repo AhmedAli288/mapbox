@@ -35,6 +35,7 @@ iframe#webpack-dev-server-client-overlay {
 .homePageBackgroundImage {
   width: 100%;
   height: 100%;
+  /* min-height: 330px; */
 }
 
 .homePageBackgroundImage img {
@@ -54,6 +55,11 @@ iframe#webpack-dev-server-client-overlay {
   color: rgba(255, 255, 255, 0.87);
   background-color: rgb(0, 0, 0);
 }
+.buildingSectionLinkStylesWithUnderline {
+  color: white;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
 .buyRent .MuiToggleButton-root {
   /* box-sizing: none; */
   -webkit-tap-highlight-color: white;
@@ -63,7 +69,7 @@ iframe#webpack-dev-server-client-overlay {
   border-radius: 0;
   padding: 0;
   cursor: default;
-
+  -webkit-text-decoration: none;
   text-decoration: none;
   color: #63625d;
   font-family: DubaiReqular16;
@@ -108,7 +114,7 @@ iframe#webpack-dev-server-client-overlay {
   border-radius: 4px;
   width: 36rem;
   min-height: 10rem;
-  top: -40px;
+  /* top: -40px; */
 }
 
 .findYourHome {
@@ -165,7 +171,7 @@ iframe#webpack-dev-server-client-overlay {
 
 .landingAutocompleteTextField .MuiInput-input {
   margin-left: 12px;
-  font-family: "AlwynNewRounded-Regular";
+  font-family: "DubaiRegular";
   font-size: 14px;
 }
 .MuiAutocomplete-root:focus {
@@ -255,92 +261,9 @@ iframe#webpack-dev-server-client-overlay {
 
 /* 【E】【r】【r】【o】【r】    【p】【a】【g】【e】    【c】【s】【s】 */
 
-.circles:after {
-  content: "";
-  display: inline-block;
-  width: 100%;
-  height: 100px;
-  background: #fff;
-  position: absolute;
-  top: -50px;
-  left: 0;
-  transform: skewY(-4deg);
-  -webkit-transform: skewY(-4deg);
-}
-
-.circles {
-  background: #fff;
-  text-align: center;
-  position: relative;
-
-  /* box-shadow:inset -1px -4px 4px rgba(0,0,0,0.2); */
-}
-
-.circles p {
-  font-size: 150px;
-  color: #fff;
-  position: relative;
-  z-index: 9;
-  line-height: 100%;
-}
-
-.circles p small {
-  padding: 20px;
-  font-size: 50px;
-  line-height: 100%;
-  vertical-align: top;
-}
-
-.circle details {
-  text-align: center;
-  font-size: small;
-  position: relative;
-  color: #000000;
-}
-
-.circles .circle.small {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: #000000;
-  position: absolute;
-  z-index: 1;
-  top: 80px;
-  left: 50%;
-  animation: 7s smallmove infinite cubic-bezier(1, 0.22, 0.71, 0.98);
-  -webkit-animation: 7s smallmove infinite cubic-bezier(1, 0.22, 0.71, 0.98);
-  animation-delay: 1.2s;
-  -webkit-animation-delay: 1.2s;
-}
-
-.circles .circle.med {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: #000000;
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 10%;
-  animation: 7s medmove infinite cubic-bezier(0.32, 0.04, 0.15, 0.75);
-  -webkit-animation: 7s medmove infinite cubic-bezier(0.32, 0.04, 0.15, 0.75);
-  animation-delay: 0.4s;
-  -webkit-animation-delay: 0.4s;
-}
-
-.circles .circle.big {
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  background: #000000;
-  position: absolute;
-  z-index: 1;
-  top: 200px;
-  right: 0;
-  animation: 8s bigmove infinite;
-  -webkit-animation: 8s bigmove infinite;
-  animation-delay: 3s;
-  -webkit-animation-delay: 1s;
+.errorBoundaryWrapper {
+  height: 100vh;
+  display: flex;
 }
 
 /* Flag Render Component CSS */
@@ -518,12 +441,21 @@ iframe#webpack-dev-server-client-overlay {
 }
 
 .viewAllExclusivesButtonWrapper {
-  width: 432px;
+  width: 485px;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
   margin-top: 30px;
+}
+
+.specificNeighborhoodBtn.MuiButtonBase-root.customButtonDark {
+  margin-top: 1.2rem;
+  padding: 7px 7px 7px 0;
+}
+.specificNeighborhoodBtn.MuiButtonBase-root.customButtonLight {
+  margin-top: 1.2rem;
+  padding: 7px 7px 7px 0;
 }
 
 .viewAllExclusiveButton.MuiButtonBase-root-MuiButton-root.customButtonDark {
@@ -575,6 +507,7 @@ iframe#webpack-dev-server-client-overlay {
 }
 .cardContentLowerLink {
   text-decoration: none;
+  -webkit-text-decoration: none;
   color: white;
 }
 
@@ -679,78 +612,6 @@ iframe#webpack-dev-server-client-overlay {
   transition: transform 0.1s, opacity 0.1s, height 0.1s;
 }
 
-.carouselBox {
-  position: relative;
-}
-
-.carouselBox .carouselNavigationBtns {
-  position: absolute;
-  top: 40%;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.lightCarouselDots .MuiMobileStepper-dot {
-  border: 1px solid #fff;
-}
-
-.lightCarouselDots .MuiMobileStepper-dotActive {
-  background-color: #fff;
-}
-
-.darkCarouselDots .MuiMobileStepper-dot {
-  border: 1px solid #000;
-}
-
-.darkCarouselDots .MuiMobileStepper-dotActive {
-  background-color: #000;
-}
-
-.carouselNavigationBtns .MuiButtonBase-root svg {
-  fill: #fff;
-}
-
-.carouselNavigationBtns .Mui-disabled svg {
-  fill: rgb(255, 255, 255, 0.7);
-}
-
-.carouselNavigationBtns .MuiButtonBase-root {
-  background: none;
-  padding: 0px;
-  margin: 0px;
-  min-width: 20px;
-  cursor: pointer;
-}
-
-.carouselNavigationBtns .MuiButtonBase-root:hover {
-  background: none;
-}
-
-.carouselTypography.MuiPaper-root {
-  position: absolute;
-  /* bottom: 3.1rem; */
-  flex-wrap: 1;
-  background-color: transparent;
-  color: #ffffff;
-  padding: 0 0 0.2rem 0.5rem;
-}
-
-.carouselStartingPrice svg,
-.carouselSizes svg {
-  fill: #fff;
-  margin: 0.5rem 0.4rem 0 0;
-}
-
-.carouselSizesGrid.MuiGrid-root {
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 1.2rem 0 0;
-}
-
-.thumbnailImageButton.MuiButton-root {
-  padding: 0;
-}
-
 .agentImageContainer {
   position: relative;
   z-index: 1;
@@ -764,6 +625,9 @@ iframe#webpack-dev-server-client-overlay {
 
 .learnMoreBtnLanding.MuiButtonBase-root {
   margin-top: 5%;
+  padding-right: 20px;
+  text-decoration: none;
+  -webkit-text-decoration: none;
 }
 
 .colorBlack {
@@ -877,6 +741,7 @@ iframe#webpack-dev-server-client-overlay {
 
 .seoLinksUnderline:hover {
   text-decoration: underline;
+  -webkit-text-decoration: underline;
   color: #fff;
   cursor: pointer;
 }
@@ -884,6 +749,7 @@ iframe#webpack-dev-server-client-overlay {
 /* 【L】【a】【n】【d】【i】【n】【g】    【p】【a】【g】【e】 【H】【e】【a】【d】【e】【r】   【l】【i】【n】【k】【s】  【c】【s】【s】 */
 .headerLink {
   text-decoration: none;
+  -webkit-text-decoration: none;
   color: #000;
 }
 
@@ -925,30 +791,24 @@ iframe#webpack-dev-server-client-overlay {
 }
 
 .MuiTextField-root.subscribeEmailInput input {
-  height: 35px;
+  height: 42px;
   padding: 0px 8px;
 }
 
-.subscribeBtnLanding.MuiButtonBase-root {
+.subscribeBtnLanding.MuiButton-root {
   margin-top: 1.2rem;
+  height: 42px !important;
 }
 
 /* 【C】【o】【m】【p】【o】【n】【e】【n】【t】      【s】 【C】【S】【S】 */
 
-.carouselBox {
-  position: relative;
-}
 .carouselBox.MuiBox-root img {
   border-radius: 5px;
 }
 
-.carouselBox .carouselNavigationBtns {
+/* .carouselBox .carouselNavigationBtns {
   position: absolute;
-  top: 40%;
   justify-content: space-between;
-  width: 100%;
-}
-
 .lightCarouselDots .MuiMobileStepper-dot {
   border: 1px solid #fff;
 }
@@ -983,7 +843,7 @@ iframe#webpack-dev-server-client-overlay {
 
 .carouselNavigationBtns .MuiButtonBase-root:hover {
   background: none;
-}
+} */
 
 .carouselTypography.MuiPaper-root.css-19b5xqf-MuiPaper-root {
   position: absolute;
@@ -997,14 +857,7 @@ iframe#webpack-dev-server-client-overlay {
 .carouselStartingPrice svg,
 .carouselSizes svg {
   fill: #fff;
-  /* margin: 0.5rem 0.4rem 0 0; */
 }
-
-/* .MuiGrid-root .carouselSizesGrid {
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 0.6rem 0 0;
-} */
 
 .boxColAlign {
   display: flex;
@@ -1039,6 +892,7 @@ iframe#webpack-dev-server-client-overlay {
 
 .lineThrough {
   text-decoration: line-through;
+  -webkit-text-decoration: line-through;
 }
 
 .lightGrey {
@@ -1060,6 +914,10 @@ iframe#webpack-dev-server-client-overlay {
 
 .InfoIconDescripBottom {
   padding: 10px;
+}
+.InfoIconDescriptionContainer {
+  width: 100%;
+  z-index: 100;
 }
 
 .serviceChargeWithIcon {
@@ -1116,11 +974,23 @@ iframe#webpack-dev-server-client-overlay {
   display: flex;
   align-items: center;
 }
+
 .rateBtn {
   padding: 0 50px;
 }
+
 .starSpacing {
   margin-right: 5px;
+}
+
+.imagesSliderOpacity {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+.positionRelative {
+  position: relative;
 }
 
 /*  【L】【i】【s】【t】【i】【n】【g】   【D】【e】【t】【a】【i】【l】【s】    【C】【S】【S】 */
@@ -1155,13 +1025,26 @@ iframe#webpack-dev-server-client-overlay {
   position: relative;
   display: flex;
   align-items: center;
-  width: 25%;
   color: #fed700;
   background-color: #000;
   border: 1px solid #fed700;
   border-radius: 5px;
 }
-
+.marginTop {
+  margin-top: 5.2px !important;
+}
+.marginBottom {
+  margin-bottom: 5.2px !important;
+}
+.widthClassNameTagWithInfo {
+  width: 15%;
+}
+.customStylesTagWithInfo {
+  width: 82px;
+}
+.customStylesTagWithInfoBuilding {
+  width: 13%;
+}
 .contactAgentSendMessage.css-1tlrf3d-MuiButtonBase-root-MuiButton-root.customButtonLight:hover {
   background-color: black;
   color: rgba(255, 255, 255, 0.87);
@@ -1184,7 +1067,7 @@ iframe#webpack-dev-server-client-overlay {
   right: 2px;
 }
 
-.tagWithInfo svg {
+.tagWithInfoSvg svg {
   fill: #fff;
   padding: 2px 5px 2px 5px;
   border: 1px solid #fff;
@@ -1302,7 +1185,10 @@ iframe#webpack-dev-server-client-overlay {
 .amenitiesParentContainer {
   background-color: #000;
   /* border-radius: 5px; */
-  padding: 3% 1%;
+  padding: 0 1%;
+}
+.amenitiesParentContainerItem.MuiGrid-root.MuiGrid-item {
+  padding-bottom: 64px;
 }
 
 .amenitiesListsContainer {
@@ -1310,7 +1196,28 @@ iframe#webpack-dev-server-client-overlay {
 }
 
 .amenitiesListsContainer .MuiDivider-root {
-  border-color: #fbfbfb;
+  border-color: #fbfbfb8c;
+  width: 70%;
+}
+.amenitiesListViewBtndesirableNeighborhood {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0;
+  cursor: pointer;
+  margin: 1% 8% 1% 10%;
+}
+.agentsViewBtn {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0;
+  cursor: pointer;
+  /* position: absolute;
+  bottom: 3px;
+  left: 30px; */
+}
+.agentsViewBtn svg {
+  margin: auto 2px;
+  font-size: large;
 }
 
 .amenitiesListViewBtn {
@@ -1318,6 +1225,9 @@ iframe#webpack-dev-server-client-overlay {
   flex-direction: row;
   margin: 10px 0;
   cursor: pointer;
+  position: absolute;
+  bottom: 3px;
+  left: 30px;
 }
 
 .amenitiesListViewBtn svg {
@@ -1326,13 +1236,13 @@ iframe#webpack-dev-server-client-overlay {
 }
 
 .amenitiesDescripBox {
+  min-height: 15vh;
   background-color: white;
   border-radius: 5px;
   position: relative;
-  padding: 1% 4% 2% 4%;
+  padding: 0% 4% 4% 4%;
   background: linear-gradient(315deg, transparent 0.8em, #fff 0);
   background-repeat: no-repeat;
-  margin-top: 3%;
 }
 
 .amenitiesDescripBox::after {
@@ -1348,8 +1258,8 @@ iframe#webpack-dev-server-client-overlay {
 }
 
 .amenitiesDescripText {
-  font-family: "DubaiRegular";
-  font-size: 18px;
+  font-family: "AlwynNewRounded-Regular";
+  font-size: 20px;
   white-space: pre-line;
   padding: 10px;
   overflow: auto;
@@ -1411,7 +1321,7 @@ iframe#webpack-dev-server-client-overlay {
 }
 
 .similarHomesTabListWrapper {
-  padding: 1px 16px;
+  padding: 1px 10px;
 }
 .indicator .MuiTab-root {
   border: 1px solid black;
@@ -1514,6 +1424,12 @@ iframe#webpack-dev-server-client-overlay {
   border-radius: 4px;
 }
 
+.buildingSectionLinkStyles {
+  color: white;
+  text-decoration: none;
+  -webkit-text-decoration: none;
+}
+
 .ratingsStarBuildingSection {
   color: white;
 }
@@ -1528,9 +1444,12 @@ iframe#webpack-dev-server-client-overlay {
   position: relative;
   top: 0;
 }
+
 .buildingTextWrapper {
+  align-self: flex-start;
   margin: 0 0 0 2%;
-  max-width: 30%;
+
+  max-width: 40%;
 }
 .buildingDetailsGridWrapper {
   margin: 6% 0 3% 0;
@@ -1548,10 +1467,7 @@ iframe#webpack-dev-server-client-overlay {
   border-radius: 4px;
   width: 534px;
 }
-.buildingTextWrapper {
-  align-self: flex-start;
-  margin: 0 0 0 2%;
-}
+
 .ratingsStarBuildingSection {
   color: white;
   margin-top: 15px;
@@ -1752,6 +1668,7 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 .similarBuildingsSectionContainer {
   background-color: black;
   text-decoration: none;
+  -webkit-text-decoration: none;
 }
 .similarBuildingsSectionHeading {
   color: white;
@@ -1759,10 +1676,12 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 
 .similarBuildingsCard.MuiCard-root {
   border-radius: 4px;
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 .similarBuildingsLink {
   text-decoration: none;
+  -webkit-text-decoration: none;
 }
 
 .similarBuildingsCardContent {
@@ -1775,6 +1694,7 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 }
 .similarBuildingsCardContent.MuiTypography-root {
   text-decoration: none;
+  -webkit-text-decoration: none;
 }
 
 .cardContentWrapper {
@@ -1934,6 +1854,8 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 .authLinks {
   color: white;
   margin: 0 5px;
+  text-decoration: none;
+  -webkit-text-decoration: none;
 }
 
 .OTPStackForm {
@@ -2065,16 +1987,17 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 
 .specificNeighbourWelcomeNote.MuiBox-root {
   position: absolute;
-  top: -50%;
+  top: -45vh;
   right: 0%;
   width: 100%;
-  padding: 4%;
+  padding: 8%;
   display: flex;
   flex-direction: column;
   color: #fff;
   background-color: #000;
   border-radius: 5px;
   z-index: 2;
+  white-space: pre-line;
 }
 
 .specificNeighbourFactsContainer.MuiContainer-root {
@@ -2108,11 +2031,21 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
   margin: 0.5em 0;
 }
 
+.specificNeighbourGalleryContainer .MuiTypography-root {
+  white-space: pre-line;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
 .specificNeighbourGalleryContainer {
   display: flex;
   flex-direction: column;
   background-color: #000;
   color: #fff;
+}
+
+.galleryText {
+  padding: 8px 0 0 8px;
 }
 
 .padding4updn16lr {
@@ -2142,6 +2075,11 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 .fitImage {
   height: 100%;
   width: 100%;
+}
+
+.specificNeighbourPara p {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 /* .objectFitCover {
@@ -2179,6 +2117,8 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 
 .loginLinkLight {
   text-decoration-color: white;
+  -webkit-text-decoration-color: white;
+  color: white;
 }
 .LoginBtn {
   padding: 10px;
@@ -2267,15 +2207,14 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 .buildingGuidesAboutWrapper {
   margin: 3% 8% 1% 10%;
 }
-.searchBuildingGuide {
-  margin-top: 3%;
-}
+
 .buildingGuideGalleryComponentWrapper {
   margin: 1% 2% 2% 2%;
 }
 .galleryCardWrapper {
   position: relative;
   text-decoration: none;
+  -webkit-text-decoration: none;
 }
 .buildingNameGalleryComponentColumn {
   width: 100%;
@@ -2286,6 +2225,7 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 }
 
 /*【s】【t】【a】【t】【i】【c】  【p】【a】【g】【e】【S】   【C】【S】【S】 */
+
 .baaStepSectionLight {
   position: relative;
   background-color: #fff;
@@ -2342,6 +2282,7 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
   border-radius: 4px;
   height: 100%;
 }
+
 .buildingClassificationBlackScoringTable {
   border-radius: 4px;
   background-color: #000;
@@ -2377,6 +2318,7 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 
 .buildingNameGalleryComponentTypography {
   text-decoration: underline 3px;
+  -webkit-text-decoration: underline 3px;
 
   color: #ffffff;
   display: inline;
@@ -2438,6 +2380,7 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 }
 .agent-details-agent-phone {
   text-decoration: underline;
+  -webkit-text-decoration: underline;
 }
 .salesRentalsContainer {
   margin: 0 auto;
@@ -2455,6 +2398,11 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 
 .objectFitCover {
   object-fit: cover;
+}
+
+.underlineText {
+  text-decoration: underline;
+  -webkit-text-decoration: underline;
 }
 
 /* 【L】【o】【a】【d】【e】【r】 【S】【t】【y】【l】【e】【s】  */
@@ -2631,6 +2579,13 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
     top: -60%;
     right: 2.5%;
     width: 100%;
+  }
+  .baaStepSectionLight {
+    padding: 35px 0 35px 25px;
+  }
+
+  .baaStepSectionDark {
+    padding: 35px 0 35px 25px;
   }
 }
 
@@ -2853,6 +2808,17 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
 
 /* Add more media queries for other devices as needed */
 
+@media only screen and (max-width: 768px) {
+  .specificNeighbourWelcomeNote.MuiBox-root {
+    top: -30vh;
+    left: 3vw;
+  }
+
+  .specificNeighbourDescCont.MuiGrid-root {
+    margin-top: 32vh;
+  }
+}
+
 /* all small screens == 540 signUpFormErrorsWrapper*/
 @media only screen and (min-device-width: 200px) and (max-device-width: 542px) and (orientation: portrait) {
   .signUpFormErrorsWrapper.MuiStack-root {
@@ -2863,13 +2829,17 @@ ul.MuiCollapse-entered .MuiTreeItem-content:hover {
   }
 }
 
-@media (max-width: 1024px) {
-  .carouselSizesGrid.MuiGrid-root {
-    justify-content: flex-start;
-  }
-}
 @media (max-width: 600px) {
   .ratingsOtherSpacer {
     height: 7px;
+  }
+
+  .specificNeighbourWelcomeNote.MuiBox-root {
+    top: -18vh;
+    left: 3vw;
+  }
+
+  .specificNeighbourDescCont.MuiGrid-root {
+    margin-top: 44vh;
   }
 }

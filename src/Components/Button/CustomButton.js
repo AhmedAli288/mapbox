@@ -12,15 +12,27 @@ function CustomButton({
   customClassName = "",
   leftIcon = null,
   isDisabled = false,
+  textIconSpacingClass = 1,
   ...props
 }) {
   return (
-    <Button className={dark ? `customButtonDark ${customClassName} ` : `customButtonLight ${customClassName}`} size={size} fullWidth={fullWidth} onClick={onClick} disabled={isDisabled} {...props}>
+    <Button
+      className={
+        dark
+          ? `customButtonDark ${customClassName} `
+          : `customButtonLight ${customClassName}`
+      }
+      size={size}
+      fullWidth={fullWidth}
+      onClick={onClick}
+      disabled={isDisabled}
+      {...props}
+    >
       {leftIcon ? (
         <>
           {leftIcon && leftIcon}
           {text ? (
-            <Typography variant={typographyVariant} p={1}>
+            <Typography variant={typographyVariant} p={textIconSpacingClass}>
               {text}
             </Typography>
           ) : null}
@@ -29,7 +41,7 @@ function CustomButton({
       ) : (
         <>
           {text ? (
-            <Typography variant={typographyVariant} p={1}>
+            <Typography variant={typographyVariant} p={textIconSpacingClass}>
               {text}
             </Typography>
           ) : null}

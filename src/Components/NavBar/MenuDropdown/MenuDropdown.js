@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { ExpandMoreSharp } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import ListingCardIcon from "../../../Assets/SVG/ListingCardIcons/ListingCardIcons";
@@ -6,7 +6,8 @@ import ListingCardIcon from "../../../Assets/SVG/ListingCardIcons/ListingCardIco
 function MenuDropdown({ customClass, buttonTitle, menuItems, titleIcon, iconVariant, children }) {
   return (
     <>
-      <ul className="ul">
+  
+    <ul className="ulWrapper">
         <li className="li">
           <div className={`divWrapper ${customClass}`}>
             {titleIcon && <ListingCardIcon shape={titleIcon} variant={iconVariant} />}
@@ -26,6 +27,9 @@ function MenuDropdown({ customClass, buttonTitle, menuItems, titleIcon, iconVari
           </ul>
         </li>
       </ul>
+
+
+    
     </>
   );
 }

@@ -7,6 +7,8 @@ COPY package.json ./
 COPY package-lock.json ./
 RUN npm install --silent
 COPY . ./
+# Copy the .env file into the container
+#COPY .env .env
 # Build the React app with minification
 RUN npm run build
 

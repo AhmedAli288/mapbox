@@ -38,6 +38,8 @@ function LandingPageNewDevelopmentSection() {
                 rightIcon={<ButtonRightArrow />}
                 fullWidth={false}
                 customClassName={"learnMoreBtnLanding"}
+                textIconSpacingClass={1.4}
+                typographyVariant="AlwynNewRoundedRegular18"
               />
             </Link>
           </Grid>
@@ -57,6 +59,7 @@ function LandingPageNewDevelopmentSection() {
               images={devlopmentImages}
               width={680}
               height={400}
+              oldCarousel
               autoScroll
             />
           </Box>

@@ -4,6 +4,7 @@ import "./Styles/footerStyles.css";
 import "./Styles/headerStyles.css";
 import "./Styles/searchMap.css";
 import "./Styles/skeleton.css";
+import "./Styles/carouselNewStyles.css";
 
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";

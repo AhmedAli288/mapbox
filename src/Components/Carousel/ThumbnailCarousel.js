@@ -1,9 +1,13 @@
 import React, { useRef, useState } from "react";
-import { MobileStepper, Container } from "@mui/material";
+import { MobileStepper, Container, Dialog, Box } from "@mui/material";
 import ThumbnailCarouselBottom from "./ThumbnailCarouselBottom";
-import ImagesSlider from "./ImagesSlider";
 import VideoComponent from "./VideoComponent";
 import { isEmpty } from "lodash";
+import CloseIcon from "@mui/icons-material/Close";
+import TestSlider from "./TestSlider";
+import { useEffect } from "react";
+import { preloadImages } from "../../utils/utility";
+import ImagesSlider from "./ImagesSlider";
 
 const CAROUSEL = "carousel";
 const FLOOR_PLAN = "floorPlan";
@@ -27,6 +31,13 @@ function ThumbnailCarousel({
   const carouselMaxSteps = carouselImages.length || 0;
   const floorMaxSteps = floorImages.length || 0;
   const [view, setView] = useState(CAROUSEL);
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  // Close the modal
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
 
   const handleNext = () => {
     if (view === CAROUSEL) {
@@ -54,28 +65,37 @@ function ThumbnailCarousel({
     setView(newView);
   };
 
+  useEffect(() => {
+    preloadImages(carouselImages, width, height);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const renderView = () => {
     switch (view) {
       case CAROUSEL:
         return (
-          <ImagesSlider
+          <TestSlider
             activeStep={carouselStep}
             handleBack={handleBack}
             handleNext={handleNext}
             images={carouselImages}
             width={width}
             height={height}
+            availableGrids={2}
+            customState={modalIsOpen}
+            setCustomState={setModalIsOpen}
           />
         );
       case FLOOR_PLAN:
         return (
-          <ImagesSlider
+          <TestSlider
             activeStep={floorStep}
             handleBack={handleBack}
             handleNext={handleNext}
             images={floorImages}
             width={width}
             height={height}
+            availableGrids={2}
           />
         );
       case VIDEO:
@@ -111,6 +131,26 @@ function ThumbnailCarousel({
           videoTour={isEmpty(videoUrl) ? false : true}
         />
       )}
+      <Dialog
+        open={modalIsOpen}
+        onClose={closeModal}
+        className="thumbnailCarouselFullImgDialog"
+      >
+        <Box className="thumbnailCarouselFullImg">
+          <ImagesSlider
+            activeStep={carouselStep}
+            handleBack={handleBack}
+            handleNext={handleNext}
+            images={carouselImages}
+            width={1280}
+            height={720}
+          />
+        </Box>
+        <CloseIcon
+          onClick={closeModal}
+          className="thumbnailCarouselFullImgClose cursorPointer"
+        />
+      </Dialog>
     </>
   );
 }

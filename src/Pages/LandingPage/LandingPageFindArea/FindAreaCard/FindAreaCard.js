@@ -5,7 +5,7 @@ import AppContext from "../../../../context/AppContext";
 import { objToBase64 } from "../../../../utils/utility";
 import { isEqual } from "lodash";
 
-const FindAreaCard = ({ imgLabel, imgPath, link }) => {
+const FindAreaCard = ({ imgLabel, imgPath, link, toSpecificNeighbourHood }) => {
   const { buyOrRent, selectedCountry } = useContext(AppContext);
   const queryParamValue = objToBase64({
     key: "Area",
@@ -14,7 +14,7 @@ const FindAreaCard = ({ imgLabel, imgPath, link }) => {
     country: selectedCountry,
   });
   return (
-    <Link href={`/${buyOrRent}/search?value=${queryParamValue}`}>
+    <Link href={toSpecificNeighbourHood?link:`/${buyOrRent}/search?value=${queryParamValue}`}>
       <Box className="findAreaBox">
         <Box className="findAreaOpacity"></Box>
         <LazyLoadImage effect="opacity" src={imgPath} alt={imgLabel} className="findAreaImg" />

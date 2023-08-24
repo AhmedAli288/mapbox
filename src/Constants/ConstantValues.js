@@ -1,13 +1,15 @@
+import React from "react";
 import CountryFlagsSvg from "../Assets/SVG/Flags/CountryFlagsSvg/CountryFlagsSvg";
 const CDNPath = "https://ik.imagekit.io/valcom123/images/manseel";
-export const isMediumScreens = "(max-width:1023px)";
+export const isMediumScreens = "(max-width:1024px)";
 export const isSmallScreens = "(max-width:768px)";
 export const isExtraSmallScreens = "(max-width:540px)";
 
 export const zIndexMediumScreens = "(max-width:960px)";
 export const defaultCurrency = "AED د.إ";
 export const defaultCountry = "United Arab Emirates";
-
+export const loremIpsum =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempor dui a lacinia ullamcorper. Curabitur id erat pharetra, cursus erat tincidunt, ultricies ipsum. Vivamus hendrerit efficitur risus, id vehicula lacus sollicitudin eu. Etiam at purus eu sapien consequat lacinia. Donec fermentum commodo quam ac rhoncus.";
 export const agentsMenuItems = [
   {
     title: "Find an Agent",
@@ -274,7 +276,7 @@ export const citiesImages = [
 export const findArea = [
   {
     imgLabel: "Dubai Marina",
-    imgPath:`${CDNPath}/assets/Marina01.png`,
+    imgPath: `${CDNPath}/assets/Marina01.png`,
     link: "/specificneighbourhood/Dubai Marina",
   },
 
@@ -283,40 +285,41 @@ export const findArea = [
     imgPath: `${CDNPath}/assets/Downtown01.jpg`,
     link: "/specificneighbourhood/Downtown Dubai",
   },
-  
+
   {
     imgLabel: "Business Bay",
     imgPath: `${CDNPath}/assets/BusinessBay01.jpg`,
     link: "/specificneighbourhood/Business Bay",
   },
+
   {
     imgLabel: "Meydan",
     imgPath: `${CDNPath}/assets/Meydan01.jpg`,
-    link: "/",
+    link: "/comingsoon",
   },
   {
     imgLabel: "Palm Jumeirah",
-    imgPath:`${CDNPath}/assets/PalmJumeirah01.jpg`,
-    link: "/",
+    imgPath: `${CDNPath}/assets/PalmJumeirah01.jpg`,
+    link: "/comingsoon",
   },
   {
     imgLabel: "Jumeirah Village Circle",
     imgPath: `${CDNPath}/assets/JumeirahVillageCircle01.jpg`,
-    link: "/",
+    link: "/comingsoon",
   },
   {
     imgLabel: "The Greens and Views",
-    imgPath:`${CDNPath}/assets/GreensAndViews01.jpg`,
-    link: "/",
+    imgPath: `${CDNPath}/assets/GreensAndViews01.jpg`,
+    link: "/comingsoon",
   },
   {
     imgLabel: "Arabian Residences",
     imgPath: `${CDNPath}/assets/ArabianResidences01.jpg`,
-    link: "/",
+    link: "/comingsoon",
   },
   {
     imgLabel: "Dubai International Financial Center (DIFC)",
-    imgPath:`${CDNPath}/assets/DubaiInternationCityCenter01.jpg`,
+    imgPath: `${CDNPath}/assets/DubaiInternationCityCenter01.jpg`,
     link: "/specificneighbourhood/Dubai International City Center",
   },
 ];
@@ -1979,48 +1982,45 @@ export const defaultBuildingImageImages = {
 };
 
 export const propertyAmenitiesArray = [
-  "Study Room",
-  "Sea View",
-  "Private Garage",
-  "Community View",
-  "Pets Allowed",
-  "Drivers Room",
-  "Marble Floor",
-  "Built In Wardobes",
-  "Private Sauna",
-  "Garden View",
-  "On Mid Floor",
-  "Broadband Ready",
-  "On High Floor",
-  "Basement Parking",
-  "Private Jacuzzi",
   "Balcony",
-  "Golf Course View",
-  "Private Steam Room",
-  "Maids Room",
-  "Solid Wood Floors",
-  "Kitchen White Goods",
-  "Private Garden",
-  "Fully Furnished",
-  "Partly Furnished",
-  "Park View",
-  "Landscaped Garden",
-  "Fully Fitted Kitchen",
-  "Private Swimming Pool",
-  "Outdoor Entertaining Area",
+  "Basement Parking",
+  "Built In Wardobes",
+  "Broadband Ready",
+  "Community View",
   "Covered Parking",
+  "Drivers Room",
+  "Fully Fitted Kitchen",
+  "Fully Furnished",
+  "Garden View",
+  "Golf Course View",
+  "Kitchen White Goods",
+  "Landscaped Garden",
+  "Maids Room",
+  "Marble Floor",
+  "On High Floor",
+  "On Mid Floor",
+  "Outdoor Entertaining Area",
+  "Park View",
+  "Partly Furnished",
+  "Pets Allowed",
+  "Private Garage",
+  "Private Garden",
+  "Private Jacuzzi",
+  "Private Sauna",
+  "Private Steam Room",
+  "Private Swimming Pool",
+  "Sea View",
+  "Solid Wood Floors",
+  "Study Room",
 ];
 
 export const notAvailable = "Not Available";
 
 export const comingSoonURL = "/comingsoon";
 
-
-
 export const desirableNeighborhoods = [
-
   {
-    imageUrl:`${CDNPath}/assets//DowntownDubai.jpg`,
+    imageUrl: `${CDNPath}/DesirableNeighborhoods/DowntownDubai.jpg`,
     title: "Downtown Dubai",
     buildingRefNumber: 99887465,
     buildingName: "Downtown Dubai",

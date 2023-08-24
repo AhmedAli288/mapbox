@@ -32,6 +32,7 @@ const LandingPageInternationalPropertySection = () => {
               dark={false}
               width={680}
               height={400}
+              oldCarousel
               autoScroll
             />
           </Box>
@@ -54,6 +55,8 @@ const LandingPageInternationalPropertySection = () => {
               rightIcon={<ButtonRightArrow />}
               fullWidth={false}
               customClassName={"learnMoreBtnLanding"}
+              textIconSpacingClass={1.4}
+              typographyVariant="AlwynNewRoundedRegular18"
             />
           </Link>
         </Grid>

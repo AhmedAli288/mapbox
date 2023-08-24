@@ -1,14 +1,15 @@
+import React from "react";
 import CountryFlagsSvg from "./CountryFlagsSvg/CountryFlagsSvg";
 
 export const CountryFlags = [
   {
     countryCode: "AE",
     phoneCode: "971",
-    editedPhoneCode:"971",
+    editedPhoneCode: "971",
     name: "United Arab Emirates",
     currency: "AED",
     currencySymbol: "د.إ",
-    flag:<CountryFlagsSvg countryCode="AE" />,
+    flag: <CountryFlagsSvg countryCode="AE" />,
   },
   // {
   //   countryCode: "US",

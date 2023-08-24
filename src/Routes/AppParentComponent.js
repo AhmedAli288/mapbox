@@ -25,6 +25,7 @@ import AgentProfile from "../Pages/AgentProfile/AgentProfile";
 import ComingSoon from "../Components/ComingSoon/ComingSoon";
 import DesirableNeighborhoods from "../Pages/DesirableNeighborhoods/DesirableNeighborhoods";
 import SearchLandingPage from "../Pages/SearchLandingPage/SearchLandingPage";
+import Error404 from "../Components/ErrorBoundaries/Error404";
 
 function AppParentComponent() {
   const renderLayout = (component, showFooter = true, showPrivacy = false) => (
@@ -144,6 +145,9 @@ function AppParentComponent() {
             element={renderLayout(<ComingSoon />)}
           />
           <Route path="/comingsoon" element={renderLayout(<ComingSoon />)} />
+
+          {/* always to be at the bottom */}
+          <Route path='*' element={renderLayout(<Error404 />)} />
         </Routes>
       </ErrorBoundary>
     </ThemeProvider>

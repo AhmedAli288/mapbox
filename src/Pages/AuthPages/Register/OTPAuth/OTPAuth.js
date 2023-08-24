@@ -118,7 +118,7 @@ function OTPAuth({
             break;
         }
       } catch (error) {
-        console.error("Error occurred during SMS OTP validation:", error);
+        // console.error("Error occurred during SMS OTP validation:", error);
       }
     }
 
@@ -128,7 +128,7 @@ function OTPAuth({
           email: email,
           otp: emailOTPstring,
         });
-        console.log("am checking status and checking try for email");
+        // console.log("am checking status and checking try for email");
         switch (emailOtpValidationData.data.status) {
           case "VERIFIED":
             setIsEmailVerified(true);
@@ -156,24 +156,23 @@ function OTPAuth({
               emailOTPInvalidError: true,
               emailOTPExpiryError: null,
             }));
-            // console.log("Email invalid");
+          
             break;
           default:
             // Handle default case if necessary
             break;
         }
       } catch (error) {
-        console.error("Error occurred during email OTP validation:", error);
+    
       }
     }
 
-    // console.log(formErrors)
-    // console.log(isSmsVerifiedVar, isEmailVerifiedVar,isEmailVerified,isSmsVerified)
+
     if (
       (isSmsVerifiedVar || isSmsVerified) &&
       (isEmailVerifiedVar || isEmailVerified)
     ) {
-      // console.log('isSmsVeriefiedVar sEmailVerifiedVar true ',isSmsVerifiedVar ,isSmsVerified, isEmailVerifiedVar, isEmailVerified)
+     
       setFormErrors((prevState) => ({
         ...prevState,
         mobileOTPValueError: null,
@@ -213,23 +212,11 @@ function OTPAuth({
 
         emailOTPValueError: null,
       }));
-      // console.log('otp form values error',formErrors)
+   
       verificationOfOTP();
     }
-    // if (isEmailOTPValid && isMobileOTPValid) {
-    //   setFormErrors((prevState) => ({
-    //     ...prevState,
-
-    //     emailOTPValueError: null,
-    //     mobileOTPValueError: null,
-
-    //   }));
-    //   // console.log('otp form values error',formErrors)
-    //   verificationOfOTP();
-
-    // }
+  
   };
-
 
   const handleMouseEvent = (index) => {
     setExclusivesButtonHovered((prevHovered) => {
@@ -238,7 +225,6 @@ function OTPAuth({
       return updatedHovered;
     });
   };
-
 
   return (
     <Grid

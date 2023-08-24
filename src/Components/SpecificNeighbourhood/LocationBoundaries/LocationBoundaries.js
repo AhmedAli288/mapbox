@@ -28,26 +28,26 @@ const LocationBoundaries = ({ neighbourhood, map, neighbours }) => {
             <Typography variant="DubaiRegular24Bold">Boundaries</Typography>
             <Stack direction="column" my={1}>
               <Typography variant="DubaiRegular18Bold">NORTH</Typography>
-              <Typography variant="DubaiRegular18">
+              <Typography variant="DubaiRegular18" className="underlineText">
                 {neighbours.north}
               </Typography>
             </Stack>
             <Stack direction="column" my={1}>
+              <Typography variant="DubaiRegular18Bold">WEST</Typography>
+              <Typography variant="DubaiRegular18" className="underlineText">
+                {neighbours.west}
+              </Typography>
+            </Stack>
+            <Stack direction="column" my={1}>
               <Typography variant="DubaiRegular18Bold">SOUTH</Typography>
-              <Typography variant="DubaiRegular18">
+              <Typography variant="DubaiRegular18" className="underlineText">
                 {neighbours.south}
               </Typography>
             </Stack>
             <Stack direction="column" my={1}>
               <Typography variant="DubaiRegular18Bold">EAST</Typography>
-              <Typography variant="DubaiRegular18">
+              <Typography variant="DubaiRegular18" className="underlineText">
                 {neighbours.east}
-              </Typography>
-            </Stack>
-            <Stack direction="column" my={1}>
-              <Typography variant="DubaiRegular18Bold">WEST</Typography>
-              <Typography variant="DubaiRegular18">
-                {neighbours.west}
               </Typography>
             </Stack>
           </Grid>

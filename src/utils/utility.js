@@ -284,9 +284,11 @@ export const convertCurrency = (
   selectedCurrency,
   amount
 ) => {
-
   const cleanedNumber = parseInt(amount?.replace(/[^0-9.]/g, ""), 10);
-  const convertedAmount =conversionRates && conversionRates[toCurrency]? cleanedNumber * conversionRates[toCurrency]:cleanedNumber * 1;
+  const convertedAmount =
+    conversionRates && conversionRates[toCurrency]
+      ? cleanedNumber * conversionRates[toCurrency]
+      : cleanedNumber * 1;
   const formattedAmount = Math.ceil(convertedAmount).toLocaleString();
 
   return `${selectedCurrency} ${formattedAmount}`;
@@ -356,38 +358,6 @@ export const addLikedFlag = (sourceData, extension) => {
 
   return result;
 };
-
-// export const rearrangeSearchData = (data, value) => {
-//   console.log(data);
-//   const searchData = [];
-
-//   for (const key in data) {
-//     if (data.hasOwnProperty(key)) {
-//       const dataArray = data[key];
-//       dataArray.forEach((item) => {
-//         const capitalizedKey =
-//           item.key.charAt(0).toUpperCase() + item.key.slice(1).toLowerCase();
-//         const newItem = {
-//           value: item.value,
-//           key: capitalizedKey,
-//           city: item.city,
-//           state: item.state,
-//           country: item.country,
-//         };
-
-//         if (item.email) {
-//           newItem.email = item.email;
-//         } else if (item.workingAgents) {
-//           newItem.workingAgents = item.workingAgents;
-//         }
-
-//         searchData.push(newItem);
-//       });
-//     }
-//   }
-
-//   return searchData;
-// };
 
 export const rearrangeSearchData = (data, value) => {
   const searchData = [];
@@ -501,8 +471,23 @@ export const truncateText = (text, maxLength) => {
 export const extractMasterDeveloper = (stringValue) => {
   const parts = stringValue.split("-");
   if (parts.length >= 2) {
-      return parts[1].trim();
+    return parts[1].trim();
   } else {
-      return stringValue;
+    return stringValue;
   }
-}
+};
+
+export const preloadImages = (imageUrls, width, height) => {
+  const imagePromises = imageUrls?.map((imageUrl) => {
+    const imgPath = imageUrl?.imgPath;
+    const separator = imgPath && imgPath.includes("?") ? "&" : "?";
+    return new Promise((resolve, reject) => {
+      const image = new Image();
+      image.onload = resolve;
+      image.onerror = reject;
+      image.src = `${imgPath}${separator}tr=w-${width},h-${height}`;
+    });
+  });
+
+  return Promise.all(imagePromises);
+};

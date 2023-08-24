@@ -5,7 +5,7 @@ import { authTokenPayload, AuthURL } from "../Constants/ConstantValues";
 import { base64Generator } from "../utils/utility";
 
 export const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_BASEURL_STAGING,
+  baseURL: process.env.REACT_APP_BASEURL,
 });
 
 let isRefreshing = false;
@@ -20,7 +20,7 @@ const oAuthAPI = (referenceKey) => {
     }
 
     axios
-      .post(process.env.REACT_APP_BASEURL_STAGING + AuthURL, authTokenPayload, {
+      .post(process.env.REACT_APP_BASEURL + AuthURL, authTokenPayload, {
         headers: {
           APP_REFERENCE_KEY: referenceKey,
         },
@@ -112,6 +112,7 @@ fetchTokenBeforeRequests();
 
 const responseInterceptor = axiosInstance.interceptors.response.use(
   async (response) => {
+    response.headers['Cache-Control'] = 'public, max-age=86400'; // Cache for 1 day
     return response;
   },
   async (error) => {

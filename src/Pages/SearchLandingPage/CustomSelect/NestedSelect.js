@@ -1,7 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { ExpandMoreSharp } from "@mui/icons-material";
 import { Typography, Grid, Divider } from "@mui/material";
 import NumberInputDropdown from "./NumberInputDropdown";
+import AppContext from "../../../context/AppContext";
 
 const values = [
   "10,000",
@@ -25,6 +26,8 @@ const NestedSelect = ({
   setMaxPrice,
   params,
 }) => {
+  const context = useContext(AppContext);
+  const { selectedCurrency } = context;
   const listItemsRef = useRef(null);
   const [isHovering, setIsHovering] = useState(false);
 
@@ -76,7 +79,7 @@ const NestedSelect = ({
           <div className="multipleFilterPriceContainer">
             <span className="width42">
               <NumberInputDropdown
-                text={"Min. Price AED"}
+                text={`Min. Price ${selectedCurrency}`}
                 price={minPrice}
                 setPrice={setMinPrice}
                 values={values}
@@ -90,7 +93,7 @@ const NestedSelect = ({
             </span>
             <span className="width42">
               <NumberInputDropdown
-                text={"Max. Price AED"}
+                text={`Max. Price ${selectedCurrency}`}
                 price={maxPrice}
                 setPrice={setMaxPrice}
                 values={values}

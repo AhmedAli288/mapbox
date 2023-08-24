@@ -23,21 +23,23 @@ const MyAgents = () => {
   }, []);
 
   return (
-    <Grid container rowSpacing={5}>
+    <>
       {savedAgents?.length > 0 ? (
-        savedAgents?.map((agent, index) => (
-          <Grid key={index} item xs={12} md={6}>
-            <ListingAgent
-              agentData={agent}
-              sectionType={agentSectionTypes.savedAgents}
-              hasHeart
-            />
-          </Grid>
-        ))
+        <Grid container rowSpacing={5}>
+          {savedAgents?.map((agent, index) => (
+            <Grid key={index} item xs={12} md={6}>
+              <ListingAgent
+                agentData={agent}
+                sectionType={agentSectionTypes.savedAgents}
+                hasHeart
+              />
+            </Grid>
+          ))}
+        </Grid>
       ) : (
         <Typography mt={4}>No record found!</Typography>
       )}
-    </Grid>
+    </>
   );
 };
 

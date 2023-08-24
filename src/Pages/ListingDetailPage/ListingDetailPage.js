@@ -18,22 +18,37 @@ import SearchMap from "../../Components/SearchingMap/SearchMap";
 import AppContext from "../../context/AppContext";
 import { getObjectById, toCarouselArray } from "../../utils/utility";
 import { getBuildingDetails, getListings } from "../../network/apiServices";
-import LoadingSkeleton from "../../Components/LoadingSkeleton/LoadingSkeleton";
+import TimerLoadingSkeleton from "../../Components/LoadingSkeleton/TimerLoadingSkeleton";
 import LandingPageLinksArea from "../LandingPage/LandingPageLinksArea/LandingPageLinksArea";
 import LandingPageSubscribeSection from "../LandingPage/LandingPageSubscribeSection/LandingPageSubscribeSection";
 
 function ListingDetailPage() {
   const [buildingObject, setBuildingObject] = useState();
   const listingId = useParams();
-  const { setBuildingObjectContext, selectedCountry, listings, setListings } =
-    useContext(AppContext);
+  const {
+    setBuildingObjectContext,
+    selectedCountry,
+    listings,
+    setListings,
+    navLinkBuyOrRent,
+    setNavLinkBuyOrRent,
+  
+    setListingObjectContext
+  } = useContext(AppContext);
   const _ = require("lodash");
   const property = getObjectById(listings, listingId.id, "referenceNumber");
+ 
 
   useEffect(() => {
+    setListingObjectContext(property)
     async function fetchAndSetbuilding() {
       try {
         if (property) {
+          property?.saleOrRent === "For Rent"
+            ? setNavLinkBuyOrRent("rent")
+            : setNavLinkBuyOrRent("buy");
+
+          // useEffect(()=>{},[buyOrRent])
           const buildingReferenceNumber = property.referenceNumberBuilding;
           const building = await getBuildingDetails({
             //sometimes building referenceNumberBuilding is null. handle this.
@@ -43,7 +58,9 @@ function ListingDetailPage() {
           setBuildingObject(building.data);
           setBuildingObjectContext(building.data);
         }
-      } catch (error) {}
+      } catch (error) {
+        console.log("buidlingError", error);
+      }
     }
 
     fetchAndSetbuilding();
@@ -52,6 +69,9 @@ function ListingDetailPage() {
   }, [listings, property]);
 
   useEffect(() => {
+    property?.saleOrRent === "For Rent"
+      ? setNavLinkBuyOrRent("rent")
+      : setNavLinkBuyOrRent("buy");
     if (!listings || _.isEqual(listings.length, 0)) {
       async function fetchAndSetListings() {
         try {
@@ -65,8 +85,9 @@ function ListingDetailPage() {
             "listingImages"
           );
           setListings(images);
+          setListingObjectContext(images)
         } catch (error) {
-          console.error("Error Refetching All listings:", error);
+          // console.error("Error Refetching All listings:", error);
         }
       }
       fetchAndSetListings();
@@ -75,9 +96,11 @@ function ListingDetailPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {}, [navLinkBuyOrRent]);
+
   return property ? (
     <Box className="listingDetailWrapper ">
-      <ListingDetailPageHeader page={"listingDetails"} property={property} />
+      {/* <ListingDetailPageHeader page={"listingDetails"} property={property} /> */}
       <Box className="ListingDetailBody">
         <PropertyDetails property={property} />
         <ListingAmenities property={property} buildingObject={buildingObject} />
@@ -112,7 +135,7 @@ function ListingDetailPage() {
       </Box>
     </Box>
   ) : (
-    <LoadingSkeleton />
+    <TimerLoadingSkeleton />
   );
 }
 

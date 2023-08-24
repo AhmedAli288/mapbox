@@ -46,7 +46,7 @@ function Register() {
     languageSpoken: ["English"],
     reportingTo: "Robert",
     description: "working as a frontend dev in the turgos technology",
-    nationality: "Nigerien",
+    nationality: "",
     jobTitle: "Frontend Dev",
     applicationSource: "MANSEEL",
   };

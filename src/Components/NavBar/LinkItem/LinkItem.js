@@ -1,19 +1,16 @@
-import { Link } from "react-router-dom";
+
 import { MenuItem, Typography } from "@mui/material";
+import { useEffect } from "react";
 
 function LinkItem(props) {
-  const { to, children, value, customClass } = props;
+  const {  children, value, customClass, customOnClick } = props;
 
-  const handleClick = (event) => {
-    props.onClick && props.onClick(event, value);
-  };
+
   return (
     <MenuItem
       variant="DubaiRegular16"
-      component={Link}
-      to={to}
       id="linkItem"
-      onClick={handleClick}
+      onClick={customOnClick}
       value={value}
       className={customClass}
     >

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Container, Grid, Typography } from "@mui/material";
+import React, { useContext, useEffect } from "react";
+import { Grid, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Company from "./Company/Company";
 import Discover from "./Discover/Discover";
@@ -38,50 +38,36 @@ const items = [
 ];
 
 function FooterComponent() {
-  const [pageLoaded, setPageLoaded] = useState(false);
   const { setAllSearchData, selectedCountry } = useContext(AppContext);
 
   useEffect(() => {
-    window.onload = () => {
-      setTimeout(() => {
-        setPageLoaded(true); // Set pageLoaded to true after a delay
-      }, 400);
-    };
-  }, []);
-
-  
-  useEffect(() => {
-    if (pageLoaded) {
-      async function fetchAllSearchData() {
-        try {
-          const fetchData = await getAllSearchData({
-            country: selectedCountry,
-          });
-          setAllSearchData(fetchData.data.resultData);
-        } catch (error) {
-          errorToast(`All search data: ${error} `);
-        }
+    async function fetchAllSearchData() {
+      try {
+        const fetchData = await getAllSearchData({
+          country: selectedCountry,
+        });
+        setAllSearchData(fetchData.data.resultData);
+      } catch (error) {
+        errorToast(`All search data: ${error} `);
       }
-      fetchAllSearchData();
     }
+    fetchAllSearchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageLoaded]);
+  }, []);
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallBack}>
       <Box>
         <footer className="footerStyles">
-          <Container disableGutters={true} className="linksAreaContainer">
-            <Grid container spacing={4}>
-              {items.map((item, id) => (
-                <Grid item xs={12} md={3} key={id}>
-                  <Typography variant="GothamBlack26">{item.name}</Typography>
-                  <item.component />
-                </Grid>
-              ))}
-            </Grid>
-            <DisclaimerGrid />
-            <BottomGrid />
-          </Container>
+          <Grid container spacing={4} px={9}>
+            {items.map((item, id) => (
+              <Grid item xs={12} sm={6} md={3} key={id}>
+                <Typography variant="GothamBlack26">{item.name}</Typography>
+                <item.component />
+              </Grid>
+            ))}
+          </Grid>
+          <DisclaimerGrid />
+          <BottomGrid />
         </footer>
       </Box>
     </ErrorBoundary>

@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { MenuItem, ListItemIcon, Typography, Grid } from "@mui/material";
+import { MenuItem, Box, Typography, Grid } from "@mui/material";
 import { ExpandMoreSharp, Check } from "@mui/icons-material";
 
-const SimpleSelect = ({ value, onChange, items = [], flag = false }) => {
+const SimpleSelect = ({
+  value,
+  onChange,
+  items = [],
+  flag = false,
+  isPropertyType = false,
+}) => {
   const [isHovering, setIsHovering] = useState(false);
 
   const handleOptionClick = (option) => {
@@ -67,7 +73,11 @@ const SimpleSelect = ({ value, onChange, items = [], flag = false }) => {
           className="option-text"
         >
           <Typography component="span" variant="DubaiRegular16">
-            {defaultValue || "Select Option"}
+            {isPropertyType && defaultValue === "Select All"
+              ? "Property Type"
+              : defaultValue
+              ? defaultValue
+              : "Select option"}
           </Typography>
         </Grid>
         <Grid item xs={2} className="emirateExpandArrow">
@@ -84,12 +94,12 @@ const SimpleSelect = ({ value, onChange, items = [], flag = false }) => {
                 className="menu-item"
                 onClick={() => handleOptionClick(item)}
               >
-                <Grid container>
+                <Grid container className="simpleSelectMenuItemCont">
                   <Grid item xs={1.5} sm={2}>
                     {item === defaultValue && (
-                      <ListItemIcon>
+                      <Box className="simpleSelectCheckMark">
                         <Check />
-                      </ListItemIcon>
+                      </Box>
                     )}
                   </Grid>
                   {flag ? (

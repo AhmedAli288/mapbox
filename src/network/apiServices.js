@@ -37,7 +37,7 @@ export const getAuthToken = () => {
   return new Promise((resolve, reject) => {
     const ref = localStorage.getItem("reference_key");
     axios
-      .post(process.env.REACT_APP_BASEURL_STAGING + AuthURL, authTokenPayload, {
+      .post(process.env.REACT_APP_BASEURL + AuthURL, authTokenPayload, {
         headers: {
           APP_REFERENCE_KEY: ref,
         },
@@ -63,7 +63,7 @@ export const postRefreshToken = async () => {
     };
 
     axios
-      .post(process.env.REACT_APP_BASEURL_STAGING + RefreshTokenURL, payload, {
+      .post(process.env.REACT_APP_BASEURL + RefreshTokenURL, payload, {
         headers: {
           APP_REFERENCE_KEY: ref,
           Authorization: `Bearer ${app_reference.accessToken}`,
@@ -111,7 +111,7 @@ export const getMobileOtp = async (smsPayLoad) => {
 
     // Handle the response
   } catch (error) {
-    console.error("getMobileError:", error);
+    // console.error("getMobileError:", error);
   }
 };
 
@@ -121,7 +121,7 @@ export const validateSmsOtp = async (smsOtpPayLoad) => {
 
     //   console.log(validateSmsResponse)
   } catch (error) {
-    console.error("smsValidateError:", error);
+    // console.error("smsValidateError:", error);
   }
 };
 
@@ -132,7 +132,7 @@ export const validateEmailOtp = async (emailOtpPayLoad) => {
 
     //   console.log(validateEmailOtpResponse)
   } catch (error) {
-    console.error("emailValidateError:", error);
+    // console.error("emailValidateError:", error);
   }
 };
 
@@ -142,7 +142,7 @@ export const signUp = async (signUpPayLoad) => {
 
     //   console.log(validateEmailOtpResponse)
   } catch (error) {
-    console.error("signUpError:", error);
+    // console.error("signUpError:", error);
   }
 };
 

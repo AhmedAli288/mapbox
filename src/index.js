@@ -11,7 +11,6 @@ import ScrollToTopWrapper from "./Components/ScrollToTop/ScrollToTopWrapper";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
   <BrowserRouter>
     <AppProvider>
       <ScrollToTopWrapper>
@@ -19,7 +18,6 @@ root.render(
       </ScrollToTopWrapper>
     </AppProvider>
   </BrowserRouter>
-  // </React.StrictMode>
 );
 
 reportWebVitals();

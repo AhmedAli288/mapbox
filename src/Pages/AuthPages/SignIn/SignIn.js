@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Box, Grid, Stack, Typography } from "@mui/material";
-import { ReactComponent as Logo } from "../../../Assets/SVG/logo.svg";
+import Logo from "../../../Assets/SVG/Logo.js";
 import CustomButton from "../../../Components/Button/CustomButton";
 import { ButtonRightArrow } from "../../../Assets/SVG/Common/CommonSvgs";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -24,7 +24,12 @@ function SignIn() {
   return (
     <Box className="authComponentsWrapper">
       <Box className="welcomeTextWrapper">
-        <Stack direction={"row"} justifyContent="center" alignItems="center" spacing={1}>
+        <Stack
+          direction={"row"}
+          justifyContent="center"
+          alignItems="center"
+          spacing={1}
+        >
           <Typography variant="DubaiRegular18">Welcome to</Typography>
           <Box className="alignBoxSignIn">
             <Link to="/">
@@ -36,14 +41,21 @@ function SignIn() {
         </Stack>
         <Stack>
           <Box>
-            <Typography variant="DubaiRegular18">Log in with your account to continue</Typography>
+            <Typography variant="DubaiRegular18">
+              Log in with your account to continue
+            </Typography>
           </Box>
         </Stack>
       </Box>
       <Box className="signInButtonWrapper">
-        <Grid container justifyContent={isSmallScreen ? "center" : "space-around"} alignItems={isSmallScreen ? "center" : "stretch"} spacing={1}>
+        <Grid
+          container
+          justifyContent={isSmallScreen ? "center" : "space-around"}
+          alignItems={isSmallScreen ? "center" : "stretch"}
+          spacing={1}
+        >
           <Grid item xs={6}>
-            <Link to="/login">
+            <Link to="/login"  className="authLinks">
               <CustomButton
                 text=" Login   "
                 rightIcon={<ButtonRightArrow />}
@@ -56,7 +68,7 @@ function SignIn() {
             </Link>
           </Grid>
           <Grid item xs={6}>
-            <Link to="/register">
+            <Link to="/register"  className="authLinks">
               <CustomButton
                 text="Sign up"
                 rightIcon={<ButtonRightArrow />}
