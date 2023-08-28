@@ -62,7 +62,7 @@ let customTheme = createTheme({
         GothamBlack13: {
           fontFamily: "Gotham-Black",
           fontSize: "13px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "11px",
             fontDisplay: "fallback",
           },
@@ -70,7 +70,7 @@ let customTheme = createTheme({
         GothamBlack18: {
           fontFamily: "Gotham-Black",
           fontSize: "18px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "15px",
           },
           fontDisplay: "fallback",
@@ -78,7 +78,7 @@ let customTheme = createTheme({
         GothamBlack21: {
           fontFamily: "Gotham-Black",
           fontSize: "21px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "18px",
           },
           fontDisplay: "fallback",
@@ -87,7 +87,7 @@ let customTheme = createTheme({
           fontFamily: "Gotham-Black",
           fontSize: "20px",
           fontWeight: "900",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "16px",
           },
           fontDisplay: "fallback",
@@ -95,7 +95,7 @@ let customTheme = createTheme({
         GothamBlack22: {
           fontFamily: "Gotham-Black",
           fontSize: "22px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "18px",
           },
           fontDisplay: "fallback",
@@ -104,7 +104,7 @@ let customTheme = createTheme({
         GothamBlack24: {
           fontFamily: "Gotham-Black",
           fontSize: "24px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "20px",
           },
           fontDisplay: "fallback",
@@ -113,7 +113,7 @@ let customTheme = createTheme({
           fontFamily: "Gotham-Black",
           fontSize: "24px",
           fontWeight: "900",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "20px",
           },
           fontDisplay: "fallback",
@@ -121,7 +121,7 @@ let customTheme = createTheme({
         GothamBlack25: {
           fontFamily: "Gotham-Black",
           fontSize: "25px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "20px",
           },
           fontDisplay: "fallback",
@@ -129,7 +129,7 @@ let customTheme = createTheme({
         GothamBlack26: {
           fontFamily: "Gotham-Black",
           fontSize: "26px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "20px",
           },
           fontDisplay: "fallback",
@@ -137,7 +137,7 @@ let customTheme = createTheme({
         GothamBlack27: {
           fontFamily: "Gotham-Black",
           fontSize: "27px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "21px",
           },
           fontDisplay: "fallback",
@@ -145,7 +145,7 @@ let customTheme = createTheme({
         GothamBlack30: {
           fontFamily: "Gotham-Black",
           fontSize: "30px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "26px",
           },
           fontDisplay: "fallback",
@@ -153,7 +153,7 @@ let customTheme = createTheme({
         GothamBlack32: {
           fontFamily: "Gotham-Black",
           fontSize: "32px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "27px",
           },
           fontDisplay: "fallback",
@@ -161,7 +161,7 @@ let customTheme = createTheme({
         GothamBlack36: {
           fontFamily: "Gotham-Black",
           fontSize: "36px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "28px",
           },
           "@media (max-width: 576px)": {
@@ -172,7 +172,7 @@ let customTheme = createTheme({
         GothamBlack40: {
           fontFamily: "Gotham-Black",
           fontSize: "40px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "24px",
           },
           fontDisplay: "fallback",
@@ -180,7 +180,10 @@ let customTheme = createTheme({
         GothamBlack45: {
           fontFamily: "Gotham-Black",
           fontSize: "45px",
-          "@media (max-width: 780px)": {
+          "@media (max-width: 920px)": {
+            fontSize: "38px",
+          },
+          "@media (max-width: 890px)": {
             fontSize: "30px",
           },
           "@media (max-width: 475px)": {
@@ -194,7 +197,7 @@ let customTheme = createTheme({
           "@media (max-width: 1200px)": {
             fontSize: "40px",
           },
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "20px",
           },
           fontDisplay: "fallback",
@@ -258,7 +261,7 @@ let customTheme = createTheme({
         AlwynNewRoundedRegular18: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "18px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "15px",
           },
           "@media (max-width: 385px)": {
@@ -270,7 +273,7 @@ let customTheme = createTheme({
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "18px",
           fontWeight: "bold",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "15px",
           },
           "@media (max-width: 385px)": {
@@ -281,7 +284,7 @@ let customTheme = createTheme({
         AlwynNewRoundedRegular20: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "20px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "17px",
           },
           fontDisplay: "fallback",
@@ -290,7 +293,7 @@ let customTheme = createTheme({
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "20px",
           fontWeight: "bold",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "16px",
           },
           fontDisplay: "fallback",
@@ -298,7 +301,7 @@ let customTheme = createTheme({
         AlwynNewRoundedRegular25: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "25px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "20px",
           },
           fontDisplay: "fallback",
@@ -306,7 +309,7 @@ let customTheme = createTheme({
         AlwynNewRoundedRegular28: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "28px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "20px",
           },
           fontDisplay: "fallback",
@@ -314,7 +317,7 @@ let customTheme = createTheme({
         AlwynNewRoundedRegular30: {
           fontFamily: "AlwynNewRounded-Regular",
           fontSize: "30px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 890px)": {
             fontSize: "25px",
           },
           fontDisplay: "fallback",
@@ -328,7 +331,7 @@ let customTheme = createTheme({
         DubaiRegular12: {
           fontFamily: "DubaiRegular",
           fontSize: "12px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 376px)": {
             fontSize: "10px",
           },
           fontDisplay: "fallback",
@@ -336,7 +339,7 @@ let customTheme = createTheme({
         DubaiRegular14: {
           fontFamily: "DubaiRegular",
           fontSize: "14px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 376px)": {
             fontSize: "11px",
           },
           fontDisplay: "fallback",
@@ -345,7 +348,7 @@ let customTheme = createTheme({
           fontFamily: "DubaiRegular",
           fontSize: "14px",
           fontWeight: "bold",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 376px)": {
             fontSize: "11px",
           },
           fontDisplay: "fallback",
@@ -354,7 +357,7 @@ let customTheme = createTheme({
           fontFamily: "DubaiRegular",
           fontSize: "16px",
           "@media (max-width: 376px)": {
-            fontSize: "12px",
+            fontSize: "14px",
           },
           fontDisplay: "fallback",
         },
@@ -366,7 +369,7 @@ let customTheme = createTheme({
         DubaiRegular16: {
           fontFamily: "DubaiRegular",
           fontSize: "16px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 376px)": {
             fontSize: "12px",
           },
           fontDisplay: "fallback",
@@ -375,7 +378,7 @@ let customTheme = createTheme({
           fontFamily: "DubaiRegular",
           fontSize: "16px",
           fontWeight: "bold",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 376px)": {
             fontSize: "12px",
           },
           fontDisplay: "fallback",
@@ -383,7 +386,7 @@ let customTheme = createTheme({
         DubaiRegular18: {
           fontFamily: "DubaiRegular",
           fontSize: "18px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 376px)": {
             fontSize: "15px",
           },
           fontDisplay: "fallback",
@@ -392,7 +395,7 @@ let customTheme = createTheme({
           fontFamily: "DubaiRegular",
           fontSize: "18px",
           fontWeight: "bold",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 376px)": {
             fontSize: "15px",
           },
           fontDisplay: "fallback",
@@ -400,7 +403,7 @@ let customTheme = createTheme({
         DubaiRegular20: {
           fontFamily: "DubaiRegular",
           fontSize: "20px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 376px)": {
             fontSize: "17px",
           },
           fontDisplay: "fallback",
@@ -409,7 +412,7 @@ let customTheme = createTheme({
           fontFamily: "DubaiRegular",
           fontSize: "20px",
           fontWeight: "bold",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 376px)": {
             fontSize: "17px",
           },
           fontDisplay: "fallback",
@@ -417,7 +420,7 @@ let customTheme = createTheme({
         DubaiRegular24: {
           fontFamily: "DubaiRegular",
           fontSize: "24px",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 376px)": {
             fontSize: "16px",
           },
           fontDisplay: "fallback",
@@ -426,7 +429,7 @@ let customTheme = createTheme({
           fontFamily: "DubaiRegular",
           fontSize: "24px",
           fontWeight: "bold",
-          "@media (max-width: 680px)": {
+          "@media (max-width: 376px)": {
             fontSize: "16px",
           },
           fontDisplay: "fallback",
@@ -435,8 +438,8 @@ let customTheme = createTheme({
           fontFamily: "DubaiRegular",
           fontSize: "30px",
           fontWeight: "Bold",
-          "@media (max-width: 680px)": {
-            fontSize: "14px",
+          "@media (max-width: 376px)": {
+            fontSize: "20px",
           },
           fontDisplay: "fallback",
         },
@@ -444,8 +447,8 @@ let customTheme = createTheme({
           fontFamily: "DubaiRegular",
           fontSize: "32px",
           fontWeight: "bold",
-          "@media (max-width: 680px)": {
-            fontSize: "20px",
+          "@media (max-width: 500px)": {
+            fontSize: "26px",
           },
           fontDisplay: "fallback",
         },

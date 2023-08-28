@@ -12,17 +12,17 @@ function OtherAgentsType({ agentName, agentData, hasHeart, liked, handleLike }) 
   const [open, setOpen] = useState(false);
   const agentDataB64 = objToBase64(agentData);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={6}>
+      <Grid item xs={6} sm={5} md={6}>
         <Grid item className="agentImageWrapper">
           <Grid className="agentImageOverlay upperBoxListingCardIconContainer">
             {hasHeart && (
@@ -34,29 +34,27 @@ function OtherAgentsType({ agentName, agentData, hasHeart, liked, handleLike }) 
             )}
           </Grid>
 
-          <Grid>
+          <Grid item xs>
             <Link to={`/agent-profile/${agentName}?agent=${agentDataB64}`} state={{ agentData }}>
               <ImageFrame src={agentData.imageUrl} width={"100%"} height={""} alt={agentName} imageStyleClass={"otherAgentTypeImageFrameImageStyle "} />
             </Link>
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={6} sm={5} md={6} >
         <Grid container height={"100%"} alignContent={"space-between"}>
-          <Grid item xs={12} md={8}>
+          <Grid item xs={12} sm={6}md={8}>
             <AgentDetails agentName={agentName} agentData={agentData} sectionType={agentSectionTypes.otherAgents} />
           </Grid>
-          <Grid item xs={12} sm={8} md={10}>
+          <Grid item xs={8} sm={8} md={10} lg={9}>
             <CustomButton
               customClassName="viewBookingDetailsBtn"
-              onClick={handleClickOpen}
+           
               text={"Book a Viewing"}
               typographyVariant="DubaiRegular16"
               rightIcon={<ListingCardIcon shape={"arrowRight"} />}
             />
-            <Dialog open={open} onClose={handleClose}>
-              <Typography sx={{ p: 2 }}>Coming Soon</Typography>
-            </Dialog>
+        
           </Grid>
         </Grid>
       </Grid>

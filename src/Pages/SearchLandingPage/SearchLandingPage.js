@@ -41,6 +41,7 @@ import {
 } from "./utils/searchingUtils";
 import { errorToast, successToast } from "../../utils/useToast";
 import LoadingSkeleton from "../../Components/LoadingSkeleton/LoadingSkeleton";
+import { mobGrids, tabGrids } from "../../Constants/ConstantValues";
 
 const bedsBathsData = {
   beds: ["Any", "1", "2", "3", "4", "5", "6", "7", "7+"],
@@ -694,10 +695,10 @@ const SearchLandingPage = () => {
                 rearrangedList?.map((item, key) => (
                   <Grid
                     item
-                    xs={12}
-                    sm={6}
-                    md={6}
-                    lg={6}
+                    xs={mobGrids}
+                    sm={tabGrids}
+                    md={tabGrids}
+                    lg={tabGrids}
                     key={key}
                     className="searchLandingCardsGrid"
                   >
@@ -706,7 +707,7 @@ const SearchLandingPage = () => {
                       key={key}
                       width={220}
                       height={240}
-                      availableGrids={3.2}
+                      availableGrids={2.4}
                       cardContentAlignment="true"
                     />
                   </Grid>

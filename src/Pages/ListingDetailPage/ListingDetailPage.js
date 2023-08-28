@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Box } from "@mui/material";
-import ListingDetailPageHeader from "./ListingDetailPageHeader/ListingDetailPageHeader";
 import SimilarHomesSection from "./SimilarHomesSection/SimilarHomesSection";
 import PropertyDetails from "./PropertyDetail/PropertyDetails";
 import ListingAmenities from "./ListingAmenities/ListingAmenities";

@@ -61,11 +61,12 @@ function BuildingSection({ buildingObject, width = 544, height = 473 }) {
           ? extractMasterDeveloper(developerEntry.crmAssociate)
           : notAvailable,
 
-        Stories: buildingObject.stories || notAvailable,
+        Stories:buildingObject.stories && !isEqual(buildingObject.stories,'')? buildingObject.stories:notAvailable,
+         
         Units:
-          buildingObject.residentialUnits !== ""
-            ? buildingObject.residentialUnits
-            : notAvailable,
+          buildingObject.residentialUnits
+          && !isEqual( buildingObject.residentialUnits,'')? buildingObject.residentialUnits:notAvailable,
+         
         "Property Use":
           buildingObject.buildingUsage?buildingObject.buildingUsage:buildingObject.PropertyType?buildingObject.PropertyType:notAvailable,
         "Year Built": buildingObject.yearCompleted && !isEqual(buildingObject.yearCompleted,'')?buildingObject.yearCompleted :notAvailable,

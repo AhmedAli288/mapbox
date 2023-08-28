@@ -209,7 +209,7 @@ function CardContent({ onClick, item, isHovered, cardContentAlignment }) {
                 </Typography>
               </Box>
               <Box>
-                <Grid container spacing={1}>
+                <Grid container justifyContent={cardContentAlignment?'flex-start':''} >
                   {cardContentAlignment ? (
                     <Grid item xs={12} md={12}>
                       <Box
@@ -236,7 +236,7 @@ function CardContent({ onClick, item, isHovered, cardContentAlignment }) {
                       </Box>
                     </Grid>
                   ) : (
-                    <Grid item xs={6} md={6}>
+                    <Grid item xs={5} md={5}>
                       <Box
                         className={`listingCardHovered ${
                           isHovered
@@ -262,7 +262,7 @@ function CardContent({ onClick, item, isHovered, cardContentAlignment }) {
                     </Grid>
                   )}
 
-                  <Grid item xs={1} md={1}>
+                  <Grid item xs={1} md={ 1}>
                     <Box className="lowerCardListingContentWrapper">
                       <Box
                         className={`listingCardHovered ${
@@ -295,7 +295,7 @@ function CardContent({ onClick, item, isHovered, cardContentAlignment }) {
                       isHovered ? "hoveredDisplayDivider" : "mouseOut"
                     }`}
                   />
-                  <Grid item xs={1} md={1}>
+                  <Grid item xs={  1} md={1}>
                     <Box className="lowerCardListingContentWrapper">
                       <Box
                         className={`listingCardHovered ${
@@ -328,7 +328,8 @@ function CardContent({ onClick, item, isHovered, cardContentAlignment }) {
                       isHovered ? "hoveredDisplayDivider" : "mouseOut"
                     }`}
                   />
-                  <Grid item xs={1.5} md={1.5}>
+                  
+                  <Grid item xs={ cardContentAlignment ?2.3:true } >
                     <Box className="lowerCardListingContentWrapper">
                       <Box
                         className={`listingCardHovered ${
@@ -363,7 +364,7 @@ function CardContent({ onClick, item, isHovered, cardContentAlignment }) {
                       isHovered ? "hoveredDisplayDivider" : " mouseOut"
                     }`}
                   />
-                  <Grid item xs={1} md={1}>
+                  <Grid item xs={ cardContentAlignment ?2.3: true}>
                     <Box className="lowerCardListingContentWrapper">
                       <Box
                         className={`listingCardHovered ${

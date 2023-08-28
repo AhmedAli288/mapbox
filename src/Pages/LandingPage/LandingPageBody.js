@@ -104,10 +104,10 @@ function LandingPageBody() {
           placeHolderUrl={`${cdnPath}/assets/HomePageHeaderPlaceholder`}
           imgAlt={"Luxurious contemporary house in Dubai"}
         />
-
-        <div ref={exclusiveSectionRef}>
-          <LandingPageExclusiveSection exclusives={exclusiveListings} />
-        </div>
+        <LandingPageExclusiveSection
+          referrer={exclusiveSectionRef}
+          exclusives={exclusiveListings}
+        />
         {/* Landing Page Map */}
         <Container
           ref={mapSectionRef}

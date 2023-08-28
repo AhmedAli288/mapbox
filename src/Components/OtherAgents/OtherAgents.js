@@ -25,7 +25,7 @@ function OtherAgents({ title, agents }) {
           {/* change to map through all agents */}
           {visibleData.map((agent, index) => (
             <Grid key={index} item xs={12} md={6} lg={4}>
-              <ListingAgent agentData={agent} sectionType={agentSectionTypes.otherAgents} hasHeart />
+              <ListingAgent agentData={agent} sectionType={agentSectionTypes.otherAgents} hasHeart={false} />
             </Grid>
           ))}
 

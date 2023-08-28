@@ -2176,6 +2176,12 @@ export const buildingClassificationData = {
           "A + or - added to the classification can specify that a building is remarkably close to a higher or lower class. ",
         ],
       },
+     
+    ],
+  },
+  sectionTwoPart2:{
+    bodyContent: [
+  
       {
         type: "cardGrid",
         cardGridCols: 2,
@@ -2184,6 +2190,7 @@ export const buildingClassificationData = {
         cardClass: "buildingClassCardWhite",
         justifyContent: "center",
         alignItems: "center",
+        gridSize:11,
         cardContentArray: [
           {
             cardHeading: "Class A",
@@ -2280,6 +2287,8 @@ export const buildingClassificationData = {
         tableHeadingType: "AlwynNewRoundedRegular20Bold",
         tableRowType: "AlwynNewRoundedRegular20",
         tableClass: "buildingClassificationBlackScoringTable",
+        justifyContent: "flex-start",
+        alignItems: "center",
         tableContentArray: [
           [
             { tableHeading: "", tableRows: ["AAA", "AA", "A"] },
@@ -2332,9 +2341,10 @@ export const buildingClassificationData = {
             {
               tableHeading: "Level 1",
               tableRows: [
-                "Recent built projects with most advanced standards younger than 10 years",
-                "100",
+                "Recent built projects with most advanced standards younger than 10 years"
+               
               ],
+              bottomData:[ "100"]
             },
           ],
           [
@@ -2342,8 +2352,9 @@ export const buildingClassificationData = {
               tableHeading: "Level 2",
               tableRows: [
                 "Very well maintained older buildings with advanced standards not older than 20 years",
-                "80",
+              
               ],
+              bottomData:[ "80"],
             },
           ],
           [
@@ -2351,8 +2362,10 @@ export const buildingClassificationData = {
               tableHeading: "Level 3",
               tableRows: [
                 "Buildings renovated on a continuous basis with up to date security and comfort standards",
-                "70",
+                
               ],
+              
+              bottomData:[ "70"],
             },
           ],
           [
@@ -2360,8 +2373,9 @@ export const buildingClassificationData = {
               tableHeading: "Level 4",
               tableRows: [
                 "Recent built projects with minimal required standards and well maintained older buildings",
-                "60",
+               
               ],
+              bottomData:[ "60"],
             },
           ],
           [
@@ -2369,8 +2383,10 @@ export const buildingClassificationData = {
               tableHeading: "Level 5",
               tableRows: [
                 "Older buildings with minimal standards and minimal maintenance",
-                "40",
+               
               ],
+              
+              bottomData:[ "40"],
             },
           ],
           [
@@ -2378,8 +2394,10 @@ export const buildingClassificationData = {
               tableHeading: "Level 6",
               tableRows: [
                 "Very old buildings with lowest standards and high renovation backlog",
-                "10",
-              ],
+               
+              ]
+              ,
+              bottomData:[ "10"],
             },
           ],
         ],

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function TimerLoadingSkeleton({
   customClass = "loaderWrapperWhiteBackground",
   customClassLoader = "loaderForWhiteBackground",
-  loadTime = 4000,
+  loadTime = 10000,
   specialMessage,
 }) {
   const [showMessage, setShowMessage] = useState(false);

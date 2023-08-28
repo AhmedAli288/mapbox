@@ -13,7 +13,7 @@ const CommuteTimes = ({
     <div>
       <Typography variant="GothamBlack24">Commute Times</Typography>
       <Grid container mt={1}>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={4}>
           <Box className="commuteTimeHeading">
             <Typography variant="DubaiRegular18Bold">
               Dubai DXB Airport
@@ -43,7 +43,7 @@ const CommuteTimes = ({
             </Stack>
           </Stack>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={4}>
           <Box className="commuteTimeHeading">
             <Typography variant="DubaiRegular18Bold">
               Dubai DWC Airport
@@ -73,7 +73,7 @@ const CommuteTimes = ({
             </Stack>
           </Stack>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={4}>
           <Box className="commuteTimeHeading">
             <Typography variant="DubaiRegular18Bold">Public Beach</Typography>
           </Box>
@@ -105,7 +105,7 @@ const CommuteTimes = ({
         </Grid>
       </Grid>
       <Grid container mt={2}>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={4}>
           <Box className="commuteTimeHeading">
             <Typography variant="DubaiRegular18Bold">
               Dubai Mall/Burj Khalifa
@@ -135,7 +135,7 @@ const CommuteTimes = ({
             </Stack>
           </Stack>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={4}>
           <Box className="commuteTimeHeading">
             <Typography variant="DubaiRegular18Bold">Expo 2020</Typography>
           </Box>
@@ -161,7 +161,7 @@ const CommuteTimes = ({
             </Stack>
           </Stack>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={4}>
           <Box className="commuteTimeHeading">
             <Typography variant="DubaiRegular18Bold">Dubai Marina</Typography>
           </Box>

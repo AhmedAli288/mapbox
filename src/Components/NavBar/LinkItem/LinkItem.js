@@ -1,6 +1,5 @@
 
 import { MenuItem, Typography } from "@mui/material";
-import { useEffect } from "react";
 
 function LinkItem(props) {
   const {  children, value, customClass, customOnClick } = props;

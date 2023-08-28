@@ -19,19 +19,19 @@ function LandingPageNewDevelopmentSection() {
       >
         <Grid
           item
-          container
-          xs={12}
+         
+          xs={6}
           sm={3}
           md={3}
+          
           mb={2}
           order={{ xs: 2, sm: 1 }}
         >
-          <Grid item xs={12}>
+       
             <Typography variant="GothamBlack45">
               Discover New Developments
             </Typography>
-          </Grid>
-          <Grid item xs={12}>
+        
             <Link href="/comingsoon">
               <CustomButton
                 text="Learn More"
@@ -42,7 +42,7 @@ function LandingPageNewDevelopmentSection() {
                 typographyVariant="AlwynNewRoundedRegular18"
               />
             </Link>
-          </Grid>
+        
         </Grid>
 
         <Grid item xs={12} sm={7} md={7} order={{ xs: 1, sm: 2 }}>

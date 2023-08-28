@@ -10,7 +10,12 @@ import { toCarouselArray } from "../../../utils/utility";
 import { getSimilarHomesDetails } from "../../../network/apiServices";
 import { useParams } from "react-router-dom";
 import ListingCardIcon from "../../../Assets/SVG/ListingCardIcons/ListingCardIcons";
-import { isExtraSmallScreens } from "../../../Constants/ConstantValues";
+import {
+  isExtraSmallScreens,
+  laptopGrids,
+  mobGrids,
+  tabGrids,
+} from "../../../Constants/ConstantValues";
 
 function SimilarHomesSection({ property, rowsPerPage }) {
   const [value, setValue] = useState("RECOMMENDED"); //PRICE ,LAYOUT ,LOCATION ,RECOMMENDED
@@ -55,7 +60,7 @@ function SimilarHomesSection({ property, rowsPerPage }) {
     fetchAndSetSimilarHomesData();
   }, [value, listingId, selectedCountry]);
 
-  const isExtraSmallScreen = useMediaQuery(isExtraSmallScreens)
+  const isExtraSmallScreen = useMediaQuery(isExtraSmallScreens);
 
   return property ? (
     <Box id="similarHomesSection" className="similarHomesContainer">
@@ -66,44 +71,41 @@ function SimilarHomesSection({ property, rowsPerPage }) {
         <Box>
           <TabContext value={value}>
             <Box className="similarHomesTabListWrapper">
-              {isExtraSmallScreen?
-             <TabList
-             onChange={handleChange}
-             aria-label="lab API tabs example"
-             className="indicator"
-             variant="scrollable"
-             scrollButtons
-             allowScrollButtonsMobile
-           >
-             <Tab
-                  label="Recommended"
-                  value="RECOMMENDED"
-                  typography="DubaiRegular18"
-                />
-                <Tab label="Price" value="PRICE" />
-                <Tab label="Layout" value="LAYOUT" />
-                <Tab label="Location" value="LOCATION" />
-              </TabList>
-            :  
-            <TabList
-            onChange={handleChange}
-            aria-label="lab API tabs example"
-            className="indicator"
-           
-            allowScrollButtonsMobile
-          >
-            <Tab
-                 label="Recommended"
-                 value="RECOMMENDED"
-                 typography="DubaiRegular18"
-               />
-               <Tab label="Price" value="PRICE" />
-               <Tab label="Layout" value="LAYOUT" />
-               <Tab label="Location" value="LOCATION" />
-             </TabList>
-            }
-             
-               
+              {isExtraSmallScreen ? (
+                <TabList
+                  onChange={handleChange}
+                  aria-label="lab API tabs example"
+                  className="indicator"
+                  variant="scrollable"
+                  scrollButtons
+                  allowScrollButtonsMobile
+                >
+                  <Tab
+                    label="Recommended"
+                    value="RECOMMENDED"
+                    typography="DubaiRegular18"
+                  />
+                  <Tab label="Price" value="PRICE" />
+                  <Tab label="Layout" value="LAYOUT" />
+                  <Tab label="Location" value="LOCATION" />
+                </TabList>
+              ) : (
+                <TabList
+                  onChange={handleChange}
+                  aria-label="lab API tabs example"
+                  className="indicator"
+                  allowScrollButtonsMobile
+                >
+                  <Tab
+                    label="Recommended"
+                    value="RECOMMENDED"
+                    typography="DubaiRegular18"
+                  />
+                  <Tab label="Price" value="PRICE" />
+                  <Tab label="Layout" value="LAYOUT" />
+                  <Tab label="Location" value="LOCATION" />
+                </TabList>
+              )}
             </Box>
             <TabPanel value={value}>
               <Box
@@ -115,7 +117,14 @@ function SimilarHomesSection({ property, rowsPerPage }) {
                 <Grid container spacing={2}>
                   {visibleData ? (
                     visibleData?.map((item, key) => (
-                      <Grid item xs={12} sm={12} md={6} lg={4} key={key}>
+                      <Grid
+                        item
+                        xs={mobGrids}
+                        sm={tabGrids}
+                        md={laptopGrids}
+                        lg={laptopGrids}
+                        key={key}
+                      >
                         <Card item={item} key={key} />
                       </Grid>
                     ))

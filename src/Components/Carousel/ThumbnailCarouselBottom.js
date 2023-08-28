@@ -14,6 +14,7 @@ const VIDEO = "video";
 const ThumbnailCarouselBottom = ({
   images,
   Ref,
+  activeStep,
   setActiveStep,
   onViewChange,
   floorPlan = false,
@@ -39,6 +40,7 @@ const ThumbnailCarouselBottom = ({
         <Thumbnails
           images={images}
           Ref={Ref}
+          activeStep={activeStep}
           setActiveStep={setActiveStep}
           onViewChange={onViewChange}
         />

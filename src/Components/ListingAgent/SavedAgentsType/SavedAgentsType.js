@@ -50,14 +50,14 @@ function SavedAgentsType({ agentName, agentData, hasHeart, liked, handleLike }) 
           <Grid item xs={5} sm={10}>
             <CustomButton
               customClassName="viewBookingDetailsBtn"
-              onClick={handleClickOpen}
+              // onClick={handleClickOpen}
               text={"Get in contact"}
               typographyVariant="DubaiRegular16"
               rightIcon={<ListingCardIcon shape={"arrowRight"} />}
             />
-            <Dialog open={open} onClose={handleClose}>
+            {/* <Dialog open={open} onClose={handleClose}>
               <Typography sx={{ p: 2 }}>Coming Soon</Typography>
-            </Dialog>
+            </Dialog> */}
           </Grid>
         </Grid>
       </Grid>

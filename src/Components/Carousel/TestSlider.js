@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { NextArrow, BackArrow } from "../../Assets/SVG/Carousel/CarouselIcons";
 import isBoolean from "lodash/isBoolean";
 import { useNavigate } from "react-router-dom";
+import isEqual from "lodash/isEqual";
 
 const TestSlider = ({
   handleBack,
@@ -21,20 +22,17 @@ const TestSlider = ({
   const slideVariants = {
     hidden: {
       opacity: 0,
-      y: 0, // Start from bottom
     },
     visible: {
       opacity: 1,
-      y: 0, // Move to original position
       transition: {
-        duration: 1,
+        duration: 1.5,
       },
     },
     exit: {
       opacity: 0,
-      y: 0, // Move to top
       transition: {
-        duration: 0.5,
+        duration: 0.75,
       },
     },
   };
@@ -53,23 +51,37 @@ const TestSlider = ({
     }
   };
 
-  useEffect(() => {
-    console.log("availableGrids", availableGrids);
-    const newWidth = window.screen.availWidth;
+  const updateHeight = () => {
+    const newWidth = window.innerWidth;
     if (newWidth < 600) {
-      setNewHeight((window.screen.availWidth * 4) / 6);
+      setNewHeight((newWidth * 9) / 16);
+    } else if (newWidth < 900) {
+      let widths = newWidth / 2;
+      setNewHeight((widths * 4) / 6);
     } else {
-      if (availableGrids !== 2) {
-        console.log("availableGrids", availableGrids);
-        let widths = window.screen.availWidth / availableGrids;
-        setNewHeight((widths * 4) / 4.7);
+      let widths = availableGrids / 12;
+      widths = widths * newWidth;
+      if (isEqual(availableGrids, 2.4)) {
+        setNewHeight((widths * 5) / 4.1);
+      } else if (isEqual(availableGrids, 3)) {
+        setNewHeight((widths * 4) / 5.5);
+      } else if (isEqual(availableGrids, 4)) {
+        setNewHeight((widths * 4) / 6.5);
       } else {
-        console.log("availableGrids", availableGrids);
-        let widths = window.screen.availWidth / availableGrids;
-        setNewHeight((widths * 4) / 7);
+        setNewHeight((widths * 9) / 16);
       }
     }
-  }, []);
+  };
+
+  useEffect(() => {
+    updateHeight();
+
+    window.addEventListener("resize", updateHeight);
+
+    return () => {
+      window.removeEventListener("resize", updateHeight);
+    };
+  }, [availableGrids]);
 
   const imgPath = images[activeStep]?.imgPath;
   const separator = imgPath && imgPath.includes("?") ? "&" : "?";
@@ -77,8 +89,8 @@ const TestSlider = ({
 
   return (
     <div className="carouselBox">
-      <div className="imageContainer" style={{ height: `${newHeight}px` }}>
-        <AnimatePresence>
+      <div className="imageContainer">
+        <motion.div style={{ height: `${newHeight}px` }}>
           <motion.img
             key={activeStep}
             className="homePageBackgroundImage"
@@ -88,7 +100,7 @@ const TestSlider = ({
             exit="exit"
             variants={slideVariants}
           />
-        </AnimatePresence>
+        </motion.div>
         <div className="overlay" onClick={handleOverlayClick} />
       </div>
       <motion.div

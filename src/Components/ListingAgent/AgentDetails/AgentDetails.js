@@ -6,20 +6,22 @@ import ListingCardIcon from "../../../Assets/SVG/ListingCardIcons/ListingCardIco
 import { Designation } from "../Designation/Designation";
 
 export const AgentDetails = ({ agentName, agentData, sectionType }) => {
+  // console.log('agentData',agentData)
   return isEqual(sectionType, agentSectionTypes.agentSection) ? (
     <Grid item xs={12}>
       <Grid container spacing={1}>
+        
+        <Grid item xs={12}>
+          <Typography variant="DubaiRegular16" className="colorBlack">
+            RERA No. {agentData?.brn ? agentData.brn : null}
+          </Typography>
+        </Grid>
         <Grid item xs={12}>
           {agentData?.certifications
             ? agentData.certifications.map((certification, index) => {
                 return <ListingCardIcon key={index} shape={certification} width="35" height="35" />;
               })
             : null}
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="DubaiRegular16" className="colorBlack">
-            RERA No. {agentData?.brn ? agentData.brn : null}
-          </Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="DubaiRegular16" className="colorBlack">

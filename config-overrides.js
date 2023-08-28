@@ -2,11 +2,6 @@ const path = require("path");
 
 module.exports = function override(config, env) {
   // Add the rule for CSS files
-  config.module.rules.push({
-    test: /\.css$/,
-    use: ["style-loader", "css-loader", "sass-loader"],
-    include: path.resolve(__dirname, "../src"),
-  });
 
   config.module.rules.push({
     test: /\.(js|jsx)$/,

@@ -81,7 +81,7 @@ const SpecificNeighbourhood = () => {
       </Box>
 
       <Container className="specificNeighbourFactsContainer">
-        <Grid container>
+        <Grid container className="specificNeighbourGridCont">
           <Grid
             item
             xs={12}

@@ -4,8 +4,11 @@ import ListingCardIc from "../../Assets/SVG/ListingCardIcons/ListingCardIcons";
 import { isEmail, isMobilePhone } from "validator";
 import CustomButton from "../Button/CustomButton";
 import { contactAgent } from "../../network/apiServices";
-import isEqual from 'lodash/isEqual'
-import { isMediumScreens, isSmallScreens } from "../../Constants/ConstantValues";
+import isEqual from "lodash/isEqual";
+import {
+  isMediumScreens,
+  isSmallScreens,
+} from "../../Constants/ConstantValues";
 import { errorToast, successToast } from "../../utils/useToast";
 
 function ContactAgent({ propertyDetails }) {
@@ -13,12 +16,12 @@ function ContactAgent({ propertyDetails }) {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState(
-    `I would like more information about the ${propertyDetails.propertyType} in ${propertyDetails.building} Reference Number  ${propertyDetails.propertyReferenceNumber}`
+    `I would like more information about the ${propertyDetails.propertyType} in ${propertyDetails.building} Reference Number  ${propertyDetails.referenceNumber}`
   );
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
 
-  let message_placeholder = `I would like more information about the ${propertyDetails.propertyType} in ${propertyDetails.building} Reference Number ${propertyDetails.propertyReferenceNumber}`;
+  let message_placeholder = `I would like more information about the ${propertyDetails.propertyType} in ${propertyDetails.building} Reference Number ${propertyDetails.referenceNumber}`;
   const isMediumScreen = useMediaQuery(isMediumScreens);
   const isSmallScreen = useMediaQuery(isSmallScreens);
 
@@ -30,13 +33,13 @@ function ContactAgent({ propertyDetails }) {
     } else {
       let data = {
         // email: propertyDetails.owner.email,
-        email: "jannine.salvador@valcom.ae",
+        email: propertyDetails.owner.email,
 
         agentName: propertyDetails.owner.name,
         contactMessage: message,
         contactNumber: phone,
         contactEmail: email,
-        referenceNumber: propertyDetails.propertyReferenceNumber,
+        referenceNumber: propertyDetails.referenceNumber,
         contactPersonName: name,
       };
 
@@ -80,13 +83,23 @@ function ContactAgent({ propertyDetails }) {
 
   return (
     <Grid item xs={12}>
-      <Grid container item xs={12} bgcolor={"black"} p={2} borderRadius={2} textAlign={"center"}>
+      <Grid
+        container
+        item
+        xs={12}
+        bgcolor={"black"}
+        p={2}
+        borderRadius={2}
+        textAlign={"center"}
+      >
         <form onSubmit={handleSubmit}>
-          <Grid container item spacing={1}
-           justifyContent="center"
-           alignItems="center"
+          <Grid
+            container
+            item
+            spacing={1}
+            justifyContent="center"
+            alignItems="center"
           >
-            
             <Grid item xs={12}>
               <TextField
                 id="name"
@@ -100,7 +113,9 @@ function ContactAgent({ propertyDetails }) {
                 variant="filled"
                 InputProps={{ disableUnderline: true }}
                 onChange={(event) => setName(event.target.value)}
-                size={isSmallScreen ? "small" : isMediumScreen ? "normal" : "normal"}
+                size={
+                  isSmallScreen ? "small" : isMediumScreen ? "normal" : "normal"
+                }
               />
             </Grid>
             <Grid item xs={12}>
@@ -119,7 +134,9 @@ function ContactAgent({ propertyDetails }) {
                 helperText={emailError ? "Invalid email" : ""}
                 FormHelperTextProps={{ disabled: true }}
                 onChange={handleEmail}
-                size={isSmallScreen ? "small" : isMediumScreen ? "normal" : "normal"}
+                size={
+                  isSmallScreen ? "small" : isMediumScreen ? "normal" : "normal"
+                }
               />
             </Grid>
             <Grid item xs={12}>
@@ -137,7 +154,9 @@ function ContactAgent({ propertyDetails }) {
                 required={true}
                 helperText={phoneError ? "Invalid phone number" : ""}
                 onChange={handlePhone}
-                size={isSmallScreen ? "small" : isMediumScreen ? "normal" : "normal"}
+                size={
+                  isSmallScreen ? "small" : isMediumScreen ? "normal" : "normal"
+                }
               />
             </Grid>
             <Grid item xs={12}>
@@ -158,13 +177,20 @@ function ContactAgent({ propertyDetails }) {
               />
             </Grid>
             <Grid item xs={8} mt={1}>
-              <CustomButton customClassName="contactAgentSendMessage" dark={false} type="submit" text={"Send Message "} rightIcon={<ListingCardIc shape={"arrowRight"} />} fullWidth={true} />
+              <CustomButton
+                customClassName="contactAgentSendMessage"
+                dark={false}
+                type="submit"
+                text={"Send Message "}
+                rightIcon={<ListingCardIc shape={"arrowRight"} />}
+                fullWidth={true}
+              />
             </Grid>
           </Grid>
         </form>
       </Grid>
       <Grid item xs={12} p={2} textAlign={"center"}>
-        <Link href="#all-listing-agents">
+        <Link href="/find-an-agent">
           <CustomButton
             dark={false}
             onClick={() => {

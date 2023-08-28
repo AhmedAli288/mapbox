@@ -65,7 +65,7 @@ function BuildingFacts({ buildingObject }) {
     return (
       <>
         <Typography variant="DubaiRegular24Bold">Building Facts</Typography>
-        <Grid item xs={12} sm={12} mr={12} mt={2} style={{ flexDirection: "row" }}>
+        <Grid item xs={12} sm={12}  mt={2} style={{ flexDirection: "row" }}>
           <RatingsAAAndStar darkStars={false}  customStyles='customStylesTagWithInfoBuilding' infoIconClass='buildingInfoIcon'  />
         </Grid>
       </>

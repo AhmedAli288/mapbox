@@ -48,13 +48,13 @@ const LandingPageInternationalPropertySection = () => {
           <Typography variant="GothamBlack45" color="white">
             Explore our International Properties
           </Typography>
-          <Link href="/comingsoon">
+          <Link href="/comingsoon" className="linksNoTextDecorationBlackColor">
             <CustomButton
               dark={false}
               text="Learn More"
               rightIcon={<ButtonRightArrow />}
               fullWidth={false}
-              customClassName={"learnMoreBtnLanding"}
+              customClassName={"learnMoreBtnLanding "}
               textIconSpacingClass={1.4}
               typographyVariant="AlwynNewRoundedRegular18"
             />

@@ -33,7 +33,7 @@ function AgentSection({ agentDetails, propertyDetails }) {
         px={{ xs: 5, sm: 10, md: 15, lg: 20 }}
       >
         {agentData && (
-          <Grid item xs={12} md={5}>
+          <Grid item xs={12} md={6}>
             <Grid item xs={12} mb={2}>
               <Typography
                 className="contactAgentSectionHeading"
@@ -46,8 +46,8 @@ function AgentSection({ agentDetails, propertyDetails }) {
             <Grid item xs={12} md={12}>
               <ListingAgent
                 agentData={agentData}
-                sectionType={agentSectionTypes.agentSection}
-                hasHeart
+                sectionType={agentSectionTypes.otherAgents}
+                hasHeart={false}
               />
             </Grid>
           </Grid>

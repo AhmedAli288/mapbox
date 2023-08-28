@@ -2,7 +2,7 @@ import React from "react";
 import { Grid } from "@mui/material";
 import AmenitiesLists from "../../Pages/ListingDetailPage/ListingAmenities/AmenitiesLists/AmenitiesLists";
 import AmenitiesDescription from "../../Pages/ListingDetailPage/ListingAmenities/AmenitiesDescription/AmenitiesDescription";
-import { loremIpsum } from "../../Constants/ConstantValues";
+import { notAvailable } from "../../Constants/ConstantValues";
 
 function ListingAndBuildingFacts({
   leftData,
@@ -33,7 +33,7 @@ function ListingAndBuildingFacts({
           {text ? (
             <AmenitiesDescription text={text} />
           ) : (
-            <AmenitiesDescription text={loremIpsum} />
+            <AmenitiesDescription text={notAvailable} />
           )}
         </Grid>
         <Grid item xs={12} sm={6} className=" amenitiesParentContainerItem">

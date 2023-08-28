@@ -1,7 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Box } from "@mui/material";
 import { useParams } from "react-router-dom";
-import ListingDetailPageHeader from "../ListingDetailPage/ListingDetailPageHeader/ListingDetailPageHeader";
 import BuildingOtherInfo from "./BuildingOtherInfo/BuildingOtherInfo";
 import BuildingFacts from "./BuildingFacts/BuildingFacts";
 import BuildingAmenities from "./BuildingAmenities/BuildingAmenities";

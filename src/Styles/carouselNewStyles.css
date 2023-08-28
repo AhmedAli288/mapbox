@@ -90,6 +90,12 @@
   padding: 0;
 }
 
+.activeThumbnail.MuiButton-root {
+  border-radius: 0;
+  padding: 3px;
+  background-color: #000;
+}
+
 /* .carouselBox .imageContainer {
   position: relative;
   width: 100%;
@@ -103,17 +109,8 @@
   margin-bottom: 10px;
 }
 
-/* .ListingDetailBody .MuiGrid-root .carouselBox .imageContainer {
-  height: 65vh;
-} */
-
-/* .cardBoxWrapper .carouselBox .imageContainer {
-  height: 40vh;
-  border-radius: 5px;
-} */
-
 .cardBoxWrapper .carouselBox .imageContainer img {
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .carouselBox .imageContainer img {

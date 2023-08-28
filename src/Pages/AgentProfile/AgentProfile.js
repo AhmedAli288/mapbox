@@ -29,6 +29,10 @@ import {
   defaultAgentContactEmail,
   defaultAgentContactNumber,
   notAvailable,
+  defaultAgentABoutMe,
+  mobGrids,
+  tabGrids,
+  laptopGrids,
 } from "../../Constants/ConstantValues";
 import { errorToast } from "../../utils/useToast";
 import { cdnPath } from "../../Constants/StaticPagesConstants";
@@ -71,7 +75,7 @@ function AgentProfile() {
   let knowAgentParagraphs =
     agentData?.aboutMe && !isEqual(agentData?.aboutMe, "")
       ? agentData?.aboutMe
-      : notAvailable
+      : defaultAgentABoutMe;
 
   const headerLinks = [
     {
@@ -282,6 +286,7 @@ function AgentProfile() {
   const handleClick = () => {
     setExpanded(!expanded);
   };
+  console.log('agent', agent)
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallBack}>
@@ -303,7 +308,7 @@ function AgentProfile() {
           </Grid>
           <Grid item>
             <CustomButton
-              text={`Contact ${agentName}`}
+              text={`Contact ${agent?.firstName}`}
               dark={true}
               size="12px"
               typographyVariant="DubaiRegular16"
@@ -633,12 +638,22 @@ function AgentProfile() {
                     titleHeading={`${agentName}'s Listings`}
                     handleTabClick={handleListings}
                     itemSpacing={2}
+                    allAgentListings={allAgentListings}
                   >
-                    {filteredListings.length>0?filteredListings.map((listing, key) => (
-                      <Grid key={key} item xs={12} sm={12} md={4} lg={3}>
-                        <Card item={listing} key={key} />
-                      </Grid>
-                    )): notAvailable }
+                    {filteredListings.length > 0
+                      ? filteredListings.map((listing, key) => (
+                          <Grid
+                            key={key}
+                            item
+                            xs={mobGrids}
+                            sm={tabGrids}
+                            md={laptopGrids}
+                            lg={laptopGrids}
+                          >
+                            <Card item={listing} key={key} availableGrids={4} />
+                          </Grid>
+                        ))
+                      : notAvailable}
                     {/* children rendered listings according to listings */}
                   </AgentSalesRentals>
                 )}

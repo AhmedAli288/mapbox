@@ -44,7 +44,7 @@ function BuildingClassification() {
     }
     if (isEqual(content.type, "heading")) {
       return (
-        <Grid item xs={12}>
+        <Grid item xs={12} mt={2}>
           <LogoHeadingComponent
             heading={content.headingContent}
             headingTypoVariant={content.headingTypoVariant}
@@ -85,6 +85,7 @@ function BuildingClassification() {
                 tableContent={table}
                 tableHeadingType={content.tableHeadingType}
                 tableRowType={content.tableRowType}
+                // bottomData ={content.tableRowType}
               />
             </Grid>
           ))}
@@ -100,14 +101,16 @@ function BuildingClassification() {
           spacing={2}
           justifyContent={content.justifyContent?content.justifyContent:"center"}
           alignItems={""}
+          lg={content.gridSize? content.gridSize:5}
         >
           {content.cardContentArray.map((content, index) => (
             
-            <Grid key={index} item xs={12} md={5} lg={5}>
+            <Grid key={index} item xs={12} md={5} lg={content.gridSize? content.gridSize:5}>
               <RenderCardGrid
                 customClass={"buildingClassCardWhite"}
                 cardHeading={content.cardHeading}
                 cardBody={content.cardBody}
+
                 
               />
             </Grid>
@@ -117,7 +120,7 @@ function BuildingClassification() {
     }
   };
 
-  const { sectionOne, sectionTwo, sectionThree, sectionFour } =
+  const { sectionOne, sectionTwo, sectionThree, sectionFour, sectionTwoPart2 } =
     buildingClassificationData;
 
   return (
@@ -143,9 +146,9 @@ function BuildingClassification() {
           className="baaStepSectionLight"
           justifyContent={"center"}
         >
-          <Grid item xs={12} md={6} lg={8}>
+          <Grid item xs={12} md={6} lg={9}>
             {sectionOne.sectionHeading && (
-              <Grid item xs={8} mb={2}>
+              <Grid item xs={9} mb={2}>
                 <LogoHeadingComponent
                   heading={sectionOne.sectionHeading}
                   headingTypoVariant={"GothamBlack40"}
@@ -154,7 +157,7 @@ function BuildingClassification() {
             )}
             {/* section.bodyContent exists? map through  */}
             {sectionOne.bodyContent && (
-              <Grid item xs={12}>
+              <Grid item xs={10}>
                 <Grid container rowSpacing={3} spacing={2}>
                   {sectionOne.bodyContent.map((content, index) => {
                     return checkBodyContent(content, index);
@@ -171,9 +174,9 @@ function BuildingClassification() {
           className="baaStepSectionDark"
           justifyContent={"center"}
         >
-          <Grid item xs={12} md={6} lg={8}>
+          <Grid item xs={12} md={6} lg={9}>
             {sectionTwo.sectionHeading && (
-              <Grid item xs={8} mb={2}>
+              <Grid item xs={9} mb={2}>
                 <LogoHeadingComponent
                   heading={sectionTwo.sectionHeading}
                   headingTypoVariant={"GothamBlack40"}
@@ -183,11 +186,24 @@ function BuildingClassification() {
 
             {/* section.bodyContent exists? map through  */}
             {sectionTwo.bodyContent && (
-              <Grid item xs={12}>
-                <Grid container rowSpacing={3}>
+              <Grid item xs={10}>
+                <Grid container rowSpacing={3} justifyContent={'flex-end'}>
+                
                   {sectionTwo.bodyContent.map((content, index) => {
                     return checkBodyContent(content, index);
                   })}
+                 
+                </Grid>
+              </Grid>
+            )}
+               {sectionTwoPart2.bodyContent && (
+              <Grid item xs={11} mt={2}>
+                <Grid container rowSpacing={3} justifyContent={'flex-end'}>
+                
+                  {sectionTwoPart2.bodyContent.map((content, index) => {
+                    return checkBodyContent(content, index);
+                  })}
+                 
                 </Grid>
               </Grid>
             )}
@@ -201,9 +217,9 @@ function BuildingClassification() {
           className="baaStepSectionLight"
           justifyContent={"center"}
         >
-          <Grid item xs={12} md={12} lg={8}>
+          <Grid item xs={12} md={12} lg={9}>
             {sectionThree.sectionHeading && (
-              <Grid item xs={8} mb={2}>
+              <Grid item xs={9} mb={2}>
                 <LogoHeadingComponent
                   heading={sectionThree.sectionHeading}
                   headingTypoVariant={"GothamBlack40"}
@@ -230,7 +246,7 @@ function BuildingClassification() {
           className="baaStepSectionDark"
           justifyContent={"center"}
         >
-          <Grid item xs={12} md={12} lg={8}>
+          <Grid item xs={12} md={12} lg={9}>
             {sectionFour.sectionHeading && (
               <Grid item xs={6} mb={1}>
                 <LogoHeadingComponent
@@ -241,7 +257,7 @@ function BuildingClassification() {
             )}
             {/* section.bodyContent exists? map through  */}
             {sectionFour.bodyContent && (
-              <Grid item xs={12}>
+              <Grid item xs={12} mt={1}>
                 <Grid container rowSpacing={0} columnGap={0} justifyContent={'flex-start'}>
                   {sectionFour.bodyContent.map((content, index) => {
                     return checkBodyContent(content, index);

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import {
   desirableNeighborhoods,
   comingSoonURL,
-  loremIpsum,
+  defaultNeighborhoodDescription,
 } from "../../../Constants/ConstantValues";
 import { cdnPath } from "../../../Constants/StaticPagesConstants";
 import FindAreaCard from "../../LandingPage/LandingPageFindArea/FindAreaCard/FindAreaCard";
@@ -74,7 +74,7 @@ function Neighborhood({ property, width = 544, height = 273 }) {
                   {_.isEqual(property.area,'Jumeirah Village Circle' )?'Jumeirah Village Circle (JVC) is one of the most family-friendly master communities developed by Nakheel. Located at the heart of new Dubai and amidst landscaped gardens, it boasts a range of amenities making it an ideal spot for renters and buyers.':
                   property.neighborhoodDescription
                   ? property.neighborhoodDescription.slice(0, 100)
-                  : loremIpsum
+                  : defaultNeighborhoodDescription
                   }
                 
                 </Typography>

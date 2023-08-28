@@ -8,8 +8,15 @@ export const isExtraSmallScreens = "(max-width:540px)";
 export const zIndexMediumScreens = "(max-width:960px)";
 export const defaultCurrency = "AED د.إ";
 export const defaultCountry = "United Arab Emirates";
-export const loremIpsum =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempor dui a lacinia ullamcorper. Curabitur id erat pharetra, cursus erat tincidunt, ultricies ipsum. Vivamus hendrerit efficitur risus, id vehicula lacus sollicitudin eu. Etiam at purus eu sapien consequat lacinia. Donec fermentum commodo quam ac rhoncus.";
+export const defaultAgentABoutMe =
+  "A dedicated and experienced real estate property consultant who helps clients find their dream homes.";
+
+export const mobGrids = 12;
+export const tabGrids = 6;
+export const laptopGrids = 4;
+
+export const defaultNeighborhoodDescription =`This up-and-coming neighborhood is home to a diverse range of residents and businesses.`
+
 export const agentsMenuItems = [
   {
     title: "Find an Agent",

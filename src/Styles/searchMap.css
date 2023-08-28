@@ -153,11 +153,19 @@
   .searchHistoryNote {
     position: absolute;
     bottom: 50px;
-    left: 0px;
-    /* margin: auto; */
-    width: 100%;
-    display: flex;
     justify-content: flex-end;
     flex-direction: row;
+  }
+}
+
+@media (max-width: 768px) {
+  .searchHistoryNote {
+    position: initial;
+    justify-content: flex-end;
+    flex-direction: row;
+  }
+
+  .searchHistoryNoteCircle {
+    margin-left: 10px;
   }
 }

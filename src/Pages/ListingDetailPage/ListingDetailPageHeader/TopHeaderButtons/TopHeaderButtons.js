@@ -232,7 +232,7 @@ function TopHeaderButtons({ page, property }) {
         alignItems="center"
         spacing={2}
       >
-        <Grid item xs={12} sm={3}  md={3} lg={3} xl={1.7}>
+        <Grid item xs={isEqual(page, "listingDetails")?12:5} sm={isEqual(page, "listingDetails")?6:5}  md={isEqual(page, "listingDetails")?6:5} lg={3} xl={1.7}>
           <Link to="/" onClick={() => window.history.back()} className="noTextDecoration">
             <CustomButton
               customClassName="customClassNameTopHeaderButtons"
@@ -245,8 +245,9 @@ function TopHeaderButtons({ page, property }) {
             />
           </Link>
         </Grid>
-
-        <Grid item xs={12} sm={3}  md={4} lg={4} xl={2.7}>
+        {isEqual(page, "listingDetails") ? 
+        
+        <Grid item xs={12} sm={6}  md={6} lg={4} xl={2.7}>
           <Grid
             spacing={1}
             container
@@ -254,7 +255,7 @@ function TopHeaderButtons({ page, property }) {
             justifyContent="flex-end"
             alignItems="center"
           >
-            {isEqual(page, "listingDetails") ? (
+         
               <Grid item xs={6} md={6} lg={6} xl={5.4}>
                 <CustomButton
                   customClassName="customClassNameTopHeaderButtons"
@@ -277,11 +278,9 @@ function TopHeaderButtons({ page, property }) {
                   variant="outlined"
                 />
               </Grid>
-            ) : (
-              ""
-            )}
+           
 
-            {isEqual(page, "listingDetails") ? (
+           
               <Grid item xs={6} md={6} lg={6} xl={5}>
                 <CustomButton
                   customClassName="customClassNameTopHeaderButtons"
@@ -301,12 +300,13 @@ function TopHeaderButtons({ page, property }) {
                   variant="outlined"
                 />
               </Grid>
-            ) : (
-              ""
-            )}
+          
           </Grid>
         </Grid>
-        <Grid item xs={12} md={5} lg={3}>
+        :null }
+
+        
+        <Grid item xs={isEqual(page, "listingDetails") ?12:7} sm={isEqual(page, "listingDetails") ?12:7}md={isEqual(page, "listingDetails") ?12:7} lg={3}>
           <Grid
             spacing={1}
             container

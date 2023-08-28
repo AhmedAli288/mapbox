@@ -81,7 +81,7 @@ function ThumbnailCarousel({
             images={carouselImages}
             width={width}
             height={height}
-            availableGrids={2}
+            availableGrids={6}
             customState={modalIsOpen}
             setCustomState={setModalIsOpen}
           />
@@ -95,7 +95,7 @@ function ThumbnailCarousel({
             images={floorImages}
             width={width}
             height={height}
-            availableGrids={2}
+            availableGrids={6}
           />
         );
       case VIDEO:

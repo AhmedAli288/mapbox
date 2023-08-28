@@ -3,6 +3,11 @@ import { Grid, Typography } from "@mui/material";
 import Card from "../../../Components/Cards/Card";
 import AppContext from "../../../context/AppContext";
 import { toCarouselArray } from "../../../utils/utility";
+import {
+  laptopGrids,
+  mobGrids,
+  tabGrids,
+} from "../../../Constants/ConstantValues";
 
 const SavedProperties = () => {
   const context = useContext(AppContext);
@@ -24,7 +29,14 @@ const SavedProperties = () => {
       {savedListing?.length > 0 ? (
         <Grid container spacing={1.5}>
           {savedListing?.map((item, key) => (
-            <Grid item xs={12} sm={6} md={4} lg={4} key={key}>
+            <Grid
+              item
+              xs={mobGrids}
+              sm={tabGrids}
+              md={laptopGrids}
+              lg={laptopGrids}
+              key={key}
+            >
               <Card item={item} key={key} width={768} height={500} />
             </Grid>
           ))}

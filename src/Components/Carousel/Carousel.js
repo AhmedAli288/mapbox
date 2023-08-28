@@ -21,7 +21,7 @@ function Carousel({
   dark = true,
   width,
   height,
-  availableGrids = 2,
+  availableGrids = 6,
   customState,
   oldCarousel = false,
   autoScroll = false,

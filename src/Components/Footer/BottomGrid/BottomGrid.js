@@ -5,7 +5,7 @@ import { FlagRenderValue } from "../../FlagRenderValue/FlagRenderValue";
 
 function BottomGrid() {
   return (
-    <Grid container className="bottomGridFooter" mt={7} pb={5} px={9}>
+    <Grid container className="bottomGridFooter" mt={7} pb={3} px={9}>
       <Grid item xs={12} sm={6}>
         <Typography variant="DubaiRegular18" gutterBottom>
           Copyright © 2021-{new Date().getFullYear()} VALCOM Properties LLC. All
